@@ -57,18 +57,18 @@
                 <page name="hr_prima" string="HR Prima" groups="hr.group_hr_user">
                     <group>
                         <group string="Data prima" name="active_group">
-                            <field name="earned_average" string="Earned Average"/>
-                            <field name="paid_percentage" string="Paid Percentage" />
-                            <field name="days_considered" string="Days considered" />
-                            <field name="amount_paid" string="Amount paid" />
+                            <field name="earned_average" string="Promedio Ganado"/>
+                            <field name="paid_percentage" string="Porcentaje pagado" />
+                            <field name="days_considered" string="Días considerados" />
+                            <field name="amount_paid" string="Importe Pagado" />
                         </group>
                     </group>
                 </page>
-                <page name="attachment" string="Attachments" groups="hr.group_hr_user">
+                <page name="attachment" string="Documentos" groups="hr.group_hr_user">
                     <field name="attachment_ids" widget="one2many">
                         <tree editable="top" expand="true">
-                            <field name="name" />
-                            <field name="attachment" widget="attachment"/>
+                            <field name="name" string="Nombe"/>
+                            <field name="attachment" widget="attachment" string="Fichero"/>
                         </tree>
                     </field>
                 </page>
@@ -76,12 +76,12 @@
                     <div id="o_work_employee_container" class="d-lg-flex"> <!-- These two div are used to position org_chart -->
                         <div id="o_work_employee_main" class="flex-grow-1">
                             <group name="departure" string="Departure" attrs="{'invisible': [('active', '=', True)]}">
-                                <field name="departure_reason_id" options="{'no_edit': True, 'no_create': True, 'no_open': True}"/>
-                                <field name="departure_description"/>
-                                <field name="departure_date"/>
-                                <field name="date_of_pay"/>
-                                <field name="pay_in"/>
-                                <field name="bank_id" attrs="{'invisible': [('pay_in', '!=' , 'chk')]}"/>
+                                <field name="departure_reason_id" options="{'no_edit': True, 'no_create': True, 'no_open': True}" string="Clase de Rescisión"/>
+                                <field name="departure_description" string="Observación"/>
+                                <field name="departure_date" string="Fecha de Rescisión"/>
+                                <field name="date_of_pay" string="Fecha de Pago"/>
+                                <field name="pay_in" string="Pago en"/>
+                                <field name="bank_id" attrs="{'invisible': [('pay_in', '!=' , 'chk')]}" string="Banco"/>
                             </group>
                         </div>
                     </div>

@@ -8,13 +8,13 @@ class HrDepartureWizard(models.TransientModel):
     _inherit = 'hr.departure.wizard'
 
     pay_in = fields.Selection(
-        string='Pay in',
+        string='Pago en',
         selection=[('chk', 'Cheque'), ('ef', 'Efectivo')]
     )
 
-    bank_id = fields.Many2one('res.bank', string='Bank')
+    bank_id = fields.Many2one('res.bank', string='Banco')
 
-    date_of_pay = fields.Date(string='Date of pay',
+    date_of_pay = fields.Date(string='Fecha de pago',
                                 default=fields.Date.context_today,
                             )
     def action_register_departure(self):

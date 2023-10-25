@@ -48,24 +48,34 @@ class HrEmployee(models.Model):
 
     def _prepare_vals_on_create_firstname_lastname(self, vals):
         values = vals.copy()
-        res = super(HrEmployee, self)._prepare_vals_on_create_firstname_lastname(values)
-        if any([field in vals for field in ("treatment", "firstname", "lastname", "firstname2", "lastname2","married_name")]):
+        res = super(
+            HrEmployee, self)._prepare_vals_on_create_firstname_lastname(values)
+        if any([field in vals for field in ("treatment", "firstname", "lastname", "firstname2", "lastname2", "married_name")]):
             vals["name"] = self._get_name_lastnames(
-                vals.get("treatment"), vals.get("lastname"), vals.get("firstname"),
+                vals.get("treatment"), vals.get(
+                    "lastname"), vals.get("firstname"),
                 vals.get("firstname2"), vals.get("lastname2"), vals.get("married_name"))
         elif vals.get("name"):
             name_splitted = self.split_name(vals["name"])
-            vals["treatment"] = name_splitted["treatment"]
-            vals["firstname"] = name_splitted["firstname"]
-            vals["firstname2"] = name_splitted["firstname2"]
-            vals["lastname"] = name_splitted["lastname"]
-            vals["lastname2"] = name_splitted["lastname2"]
-            vals["married_name"] = name_splitted["married_name"]
+            keys = vals.keys()
+            if 'treatment' in keys:
+                vals["treatment"] = name_splitted["treatment"]
+            if 'lastname' in keys:
+                vals["lastname"] = name_splitted["lastname"]
+            if 'firstname' in keys:
+                vals["firstname"] = name_splitted["firstname"]
+            if 'firstname2' in keys:
+                vals["firstname2"] = name_splitted["firstname2"]
+            if 'lastname2' in keys:
+                vals["lastname2"] = name_splitted["lastname2"]
+            if 'married_name' in keys:
+                vals["married_name"] = name_splitted["married_name"]
         return res
 
     def _prepare_vals_on_write_firstname_lastname(self, vals):
         values = vals.copy()
-        res = super(HrEmployee, self)._prepare_vals_on_write_firstname_lastname(values)
+        res = super(
+            HrEmployee, self)._prepare_vals_on_write_firstname_lastname(values)
         if any([field in vals for field in ("treatment", "firstname", "lastname", "firstname2", "lastname2", "married_name")]):
             if "treatment" in vals:
                 treatment = vals["treatment"]
@@ -91,15 +101,23 @@ class HrEmployee(models.Model):
                 married_name = vals["married_name"]
             else:
                 married_name = self.married_name
-            vals["name"] = self._get_name_lastnames(treatment, lastname, firstname, firstname2, lastname2, married_name)
+            vals["name"] = self._get_name_lastnames(
+                treatment, lastname, firstname, firstname2, lastname2, married_name)
         elif vals.get("name"):
             name_splitted = self.split_name(vals["name"])
-            vals["treatment"] = name_splitted["treatment"]
-            vals["lastname"] = name_splitted["lastname"]
-            vals["firstname"] = name_splitted["firstname"]
-            vals["firstname2"] = name_splitted["firstname2"]
-            vals["lastname2"] = name_splitted["lastname2"]
-            vals["married_name"] = name_splitted["married_name"]
+            keys = vals.keys()
+            if 'treatment' in keys:
+                vals["treatment"] = name_splitted["treatment"]
+            if 'lastname' in keys:
+                vals["lastname"] = name_splitted["lastname"]
+            if 'firstname' in keys:
+                vals["firstname"] = name_splitted["firstname"]
+            if 'firstname2' in keys:
+                vals["firstname2"] = name_splitted["firstname2"]
+            if 'lastname2' in keys:
+                vals["lastname2"] = name_splitted["lastname2"]
+            if 'married_name' in keys:
+                vals["married_name"] = name_splitted["married_name"]
         return res
 
     def _update_partner_firstname(self):
@@ -134,7 +152,8 @@ class HrEmployee(models.Model):
         if order in ("first_last", "last_first_comma"):
             parts = self._split_part("lastname", result)
             if parts:
-                result.update({"lastname": parts[0], "lastname2": " ".join(parts[1:])})
+                result.update(
+                    {"lastname": parts[0], "lastname2": " ".join(parts[1:])})
         else:
             parts = self._split_part("firstname", result)
             if parts:
@@ -179,7 +198,8 @@ class HrEmployee(models.Model):
         correctly into the database. This can be called later too if needed.
         """
         # Find records with empty firstname and lastnames
-        records = self.search([("firstname", "=", False), ("lastname", "=", False)])
+        records = self.search(
+            [("firstname", "=", False), ("lastname", "=", False)])
 
         # Force calculations there
         records._inverse_name()

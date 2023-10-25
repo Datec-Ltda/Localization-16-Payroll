@@ -10,9 +10,9 @@
             <field name="active" eval="True" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='departure_date']" position="after">
-                    <field name="date_of_pay" attrs="{'required': 1}"/>
-                    <field name="pay_in" attrs="{'required': 1}"/>
-                    <field name="bank_id" attrs="{'invisible': [('pay_in', '!=' , 'chk')],'required': [('pay_in', '=' , 'chk')]}"/>
+                    <field name="date_of_pay" attrs="{'required': 1}" string="Fecha de Pago"/>
+                    <field name="pay_in" attrs="{'required': 1}" string="Pago en"/>
+                    <field string="Banco" name="bank_id" attrs="{'invisible': [('pay_in', '!=' , 'chk')],'required': [('pay_in', '=' , 'chk')]}"/>
                 </xpath>
             </field>
         </record>        

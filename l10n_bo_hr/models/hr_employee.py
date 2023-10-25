@@ -116,22 +116,22 @@ class HrEmployee(models.Model):
                 rec.afp_age_str = str(rec.afp_age) + ' años ' + str(rec.afp_age_months) + ' meses ' + str(rec.afp_age_days) + ' días'
                 # rec.age = dToday.year - dBday.year - ((dToday.month, dToday.day) < (dBday.month, dBday.day))
 
-    earned_average = fields.Float(string='Earned Average',
+    earned_average = fields.Float(string='Promedio Ganado',
                                   help='Campo calculado promedio sobre el total ganado de los 3 meses ',
                                   required=False
                                   )
 
     paid_percentage = fields.Float(string='Paid Percentage',
-                                   help='Porcentaje a pagar de prima',
+                                   help='Porcentaje pagado',
                                    required=False
                                    )
 
-    days_considered = fields.Integer(string='Days considered',
+    days_considered = fields.Integer(string='Días considerados',
                                      help='Días trabajados en la gestión a pagar por el cual se paga el monto de prima',
                                      required=False
                                      )
 
-    amount_paid = fields.Float(string='Amount paid',
+    amount_paid = fields.Float(string='Importe Pagado',
                                help='Campo calculado del monto de prima pagado para la gestión',
                                required=False
                                )
@@ -139,13 +139,13 @@ class HrEmployee(models.Model):
     attachment_ids = fields.One2many('l10n_bo_hr.employee_docs', 'employee_id')
 
     pay_in = fields.Selection(
-        string='Pay in',
+        string='Pago en',
         selection=[('chk', 'Cheque'), ('ef', 'Efectivo')]
     )
 
-    bank_id = fields.Many2one('res.bank', string='Bank')
+    bank_id = fields.Many2one('res.bank', string='Banco')
 
-    date_of_pay = fields.Date(string='Date of pay',
+    date_of_pay = fields.Date(string='Fecha de Pago',
                                 default=fields.Date.context_today,
                             )
     # Asignación organizativa
