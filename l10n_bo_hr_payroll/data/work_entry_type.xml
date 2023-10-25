@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="hr_work_entry_type_overtime" model="hr.work.entry.type">
+            <field name="name">Horas extras</field>
+            <field name="code">HE</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_hours_night_overtime" model="hr.work.entry.type">
+            <field name="name">Horas Recargo nocturno</field>
+            <field name="code">HRN</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_sunday_overtime" model="hr.work.entry.type">
+            <field name="name">Horas Extra Dominical</field>
+            <field name="code">HED</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_sunday_worked" model="hr.work.entry.type">
+            <field name="name">Domingos Trabajados</field>
+            <field name="code">DT</field>
+            <field name="sequence">26</field>
+        </record>
+
+    </data>
+</odoo>

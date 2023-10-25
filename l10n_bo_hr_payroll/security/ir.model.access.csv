@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hr_payroll_closing_table_manager,hr.payroll.closing.table.manager,model_hr_payroll_closing_table,hr_contract.group_hr_contract_manager,1,1,1,1
 access_hr_payroll_quinquennial_data_manager,hr.payroll.quinquennial.data.manager,model_hr_payroll_quinquennial_data,hr_contract.group_hr_contract_manager,1,1,1,1
+access_hr_payroll_overtime_hours_manager,hr.payroll.overtime.hours.manager,model_hr_payroll_overtime_hours,hr_contract.group_hr_contract_manager,1,1,1,1
+access_hr_payroll_overtime_hours_list_manager,hr.payroll.overtime.hours.list.manager,model_hr_payroll_overtime_hours_list,hr_contract.group_hr_contract_manager,1,1,1,1

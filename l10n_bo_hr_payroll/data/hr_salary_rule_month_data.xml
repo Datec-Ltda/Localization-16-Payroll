@@ -441,10 +441,11 @@ result = 0
         <field name="name">HORAS EXTRAS</field>
         <field name="code">EXTRAS</field>
         <field name="sequence">11</field>
-        <field name="condition_select">none</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HE</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(BASIC/30/8*2)
+result = special_round(BASIC/30/8 *2 * worked_days.HE.number_of_hours)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -454,10 +455,11 @@ result = special_round(BASIC/30/8*2)
         <field name="name">Dominical y Dom. Trab. </field>
         <field name="code">DOMINGO</field>
         <field name="sequence">11</field>
-        <field name="condition_select">none</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HED</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(BASIC/30/8*2)
+result = special_round(BASIC/30/8 * 2 * worked_days.HED.number_of_hours)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -467,10 +469,11 @@ result = special_round(BASIC/30/8*2)
         <field name="name">RECARGO</field>
         <field name="code">RECARGO</field>
         <field name="sequence">11</field>
-        <field name="condition_select">none</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HRN</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(BASIC/30/8*2)
+result = special_round(BASIC/30/8*2 * worked_days.HRN.number_of_hours)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -485,7 +488,9 @@ result = special_round(BASIC/30/8*2)
         <field name="amount_python_compute">
 if worked_days.VAC:
     wage = total_average_earned(payslip, employee, 'NET', 3)/30 * worked_days.VAC.number_of_days
-result = wage
+    result = wage
+else:
+    result = 0
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>

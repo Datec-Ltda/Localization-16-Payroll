@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+<!--    SUPPLEMENTARY WORK    -->
+        <record id="hr_payroll_overtime_hours_view_form" model="ir.ui.view">
+            <field name="name">hr.payroll.overtime.hours.form</field>
+            <field name="model">hr.payroll.overtime.hours</field>
+            <field name="arch" type="xml">
+                <form string="Supplementary Work">
+                    <header>
+<!--                        <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>-->
+                        <field name="state" readonly="1"/>
+                        <button string="Abrir" name="action_period_open" type="object" states="draft"/>
+<!--                        <button string="Cerrado" name="action_period_closed" states="open" type='object' />-->
+                        <button string="A borrador" name="action_period_draft" states="open" type='object' />
+                    </header>
+                    <group>
+                        <field name="name"/>
+                        <label for="date_from" string="Period" />
+                        <div>
+                            <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'closed'])]}"/>
+                        </div>
+                        <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                    </group>
+                    <notebook>
+                        <page string="Payroll supplementary work">
+                            <field name="overtime_hours_ids" nolabel="1">
+                                <tree>
+                                    <field name="employee_id" string="Empleado" readonly="1"/>
+                                    <field name="contract_id" string="Documento" readonly="1"/>
+                                    <field name="date_from" string="Desde" readonly="1" optional="show"/>
+                                    <field name="date_to" string="Hasta" readonly="1" optional="show"/>
+                                    <field name="state" string="Estado" readonly="1" optional="show"/>
+                                    <field name="number" string="Nómina" readonly="1" optional="hide"/>
+                                    <field name="overtime" widget="float_time"/>
+                                    <field name="hours_night_overtime"  widget="float_time"/>
+                                    <field name="sunday_overtime" widget="float_time"/>
+                                    <field name="sunday_worked"  widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_payroll_overtime_hours_view_tree" model="ir.ui.view">
+            <field name="name">hr.payroll.overtime.hours.tree</field>
+            <field name="model">hr.payroll.overtime.hours</field>
+            <field name="arch" type="xml">
+                <tree string="Horas extras">
+                      <field colspan="4" name="name"/>
+                      <field colspan="4" name="date_from"/>
+                      <field colspan="4" name="date_to"/>
+                      <field colspan="4" name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_payroll_overtime_hours_list_view_form" model="ir.ui.view">
+            <field name="name">hr.payroll.overtime.hours.list.form</field>
+            <field name="model">hr.payroll.overtime.hours.list</field>
+            <field name="arch" type="xml">
+                <form string="Horas extras">
+                    <header>
+                        <button string="Abrir" name="action_period_open" type="object" states="draft"/>
+<!--                        <button string="Close" name="action_period_closed" states="open" type='object' />-->
+                        <button string="A Borrador" name="action_period_draft" states="open" type='object' />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <label for="date_from" string="Period"/>
+                                <div>
+                                    <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" /> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                                </div>
+                                <field name="company_id" groups="base.group_multi_company" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            </group>
+                            <group>
+                                <field name="employee_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/>
+                                <field name="contract_id" domain="[('state', '=', 'open'), ('employee_id', '=', employee_id)]"
+                                                     attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/>
+                            </group>
+                        </group>
+                        <group col="3">
+                            <group>
+                                <field name="overtime"  attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                                <field name="hours_night_overtime"  attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                                <field name="sunday_overtime" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            </group>
+                            <group>
+                                <field name="sunday_worked"  attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="hr_payroll_overtime_hours_view_search" model="ir.ui.view">
+            <field name="name">hr.payroll.overtime.hours.search</field>
+            <field name="model">hr.payroll.overtime.hours</field>
+            <field name="arch" type="xml">
+                <search string="Horas extras">
+                    <field name="name" string="Year"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_payroll_overtime_hours" model="ir.actions.act_window">
+            <field name="name">Horas extras</field>
+            <field name="res_model">hr.payroll.overtime.hours</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_payroll_overtime_hours_view_search"/>
+        </record>
+
+        <menuitem
+            id="hr_co_menu_hr_payroll_overtime_hours"
+            action="action_hr_payroll_overtime_hours"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
+            sequence="45"
+            groups="hr_payroll.group_hr_payroll_manager" />
+</odoo>

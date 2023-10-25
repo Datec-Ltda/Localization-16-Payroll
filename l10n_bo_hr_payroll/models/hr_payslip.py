@@ -4,6 +4,7 @@ from odoo import api, fields, models, tools, _
 from datetime import date
 import calendar
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 # This will generate 16th of days
 ROUNDING_FACTOR = 16
@@ -115,6 +116,149 @@ class HrPayslip(models.Model):
                 if ruler == 'NET':
                     amount += record.net_salary
         return amount/months
+
+    def _get_worked_day_lines_values(self, domain=None):
+        self.ensure_one()
+        res = []
+        if self.struct_id.country_id.code != 'CO':
+            super()._get_worked_day_lines_values(domain=domain)
+
+        hours_per_day = self._get_worked_day_lines_hours_per_day()
+        date_from = datetime.combine(self.date_from, datetime.min.time())
+        date_to = datetime.combine(self.date_to, datetime.max.time())
+        work_hours = self.contract_id._get_work_hours(date_from, date_to, domain=domain)
+        work_hours_ordered = sorted(work_hours.items(), key=lambda x: x[1])
+        biggest_work = work_hours_ordered[-1][0] if work_hours_ordered else 0
+        add_days_rounding = 0
+        overtime_hours = self.env['hr.payroll.overtime.hours.list'].search([('employee_id', '=', self.employee_id.id),
+                                                                    ('contract_id', '=', self.contract_id.id),
+                                                                    ('date_from', '>=', self.date_from),
+                                                                    ('date_to', '<=', self.date_to),
+                                                                    ('state', '=', 'open')], limit=1)
+        for work_entry_type_id, hours in work_hours_ordered:
+            work_entry_type = self.env['hr.work.entry.type'].browse(work_entry_type_id)
+            if work_entry_type.code == 'WORK100':
+                we_type = self.env.ref('hr_work_entry.work_entry_type_attendance')
+                valor = 30
+                attendance_line = {
+                    'sequence': we_type.sequence,
+                    'work_entry_type_id': we_type.id,
+                    'number_of_days': valor,
+                    'number_of_hours': valor * hours_per_day,
+                }
+                res.append(attendance_line)
+            else:
+                work_entry_type = self.env['hr.work.entry.type'].browse(work_entry_type_id)
+                days = round(hours / hours_per_day, 5) if hours_per_day else 0
+                if work_entry_type_id == biggest_work:
+                    days += add_days_rounding
+                day_rounded = self._round_days(work_entry_type, days)
+                add_days_rounding += (days - day_rounded)
+                attendance_line = {
+                    'sequence': work_entry_type.sequence,
+                    'work_entry_type_id': work_entry_type_id,
+                    'number_of_days': day_rounded,
+                    'number_of_hours': hours,
+                }
+                res.append(attendance_line)
+
+        # obtener el tiempo de trabajo horas extras
+
+        if overtime_hours:
+            # overtime
+            we_type = self.env.ref('l10n_bo_hr_payroll.hr_work_entry_type_overtime')
+            if overtime_hours.overtime != 0:
+                res.append({
+                    'sequence': we_type.sequence,
+                    'work_entry_type_id': we_type.id,
+                    'number_of_days': overtime_hours.overtime / hours_per_day,
+                    'number_of_hours': overtime_hours.overtime,
+                })
+            # hours_night_overtime
+            we_type = self.env.ref('l10n_bo_hr_payroll.hr_work_entry_type_hours_night_overtime')
+            if overtime_hours.hours_night_overtime != 0:
+                res.append({
+                    'sequence': we_type.sequence,
+                    'work_entry_type_id': we_type.id,
+                    'number_of_days': overtime_hours.hours_night_overtime / hours_per_day,
+                    'number_of_hours': overtime_hours.hours_night_overtime,
+                    'amount': 0,
+                })
+            # sunday_overtime
+            we_type = self.env.ref('l10n_bo_hr_payroll.hr_work_entry_type_sunday_overtime')
+            if overtime_hours.sunday_overtime != 0:
+                res.append({
+                    'sequence': we_type.sequence,
+                    'work_entry_type_id': we_type.id,
+                    'number_of_days': overtime_hours.sunday_overtime / hours_per_day,
+                    'number_of_hours': overtime_hours.sunday_overtime,
+                })
+            # sunday_worked
+            we_type = self.env.ref('l10n_bo_hr_payroll.hr_work_entry_type_sunday_worked')
+            if overtime_hours.sunday_worked != 0:
+                res.append({
+                    'sequence': we_type.sequence,
+                    'work_entry_type_id': we_type.id,
+                    'number_of_days': overtime_hours.sunday_worked / hours_per_day,
+                    'number_of_hours': overtime_hours.sunday_worked,
+                })
+
+        return res
+
+    def _get_worked_day_lines(self, domain=None, check_out_of_contract=True):
+        """
+        :returns: a list of dict containing the worked days values that should be applied for the given payslip
+        """
+        res = []
+        # fill only if the contract as a working schedule linked
+        self.ensure_one()
+        contract = self.contract_id
+        if contract.resource_calendar_id:
+            res = self._get_worked_day_lines_values(domain=domain)
+            if not check_out_of_contract:
+                return res
+
+            # If the contract doesn't cover the whole month, create
+            # worked_days lines to adapt the wage accordingly
+            out_days, out_hours = 0, 0
+            reference_calendar = self._get_out_of_contract_calendar()
+            if self.date_from < contract.date_start:
+                start = fields.Datetime.to_datetime(self.date_from)
+                stop = fields.Datetime.to_datetime(contract.date_start) + relativedelta(days=-1, hour=23, minute=59)
+                out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
+                                                                     domain=['|', ('work_entry_type_id', '=', False), (
+                                                                     'work_entry_type_id.is_leave', '=', False)])
+                out_days += out_time['days']
+                out_hours += out_time['hours']
+            if contract.date_end and contract.date_end < self.date_to:
+                start = fields.Datetime.to_datetime(contract.date_end) + relativedelta(days=1)
+                stop = fields.Datetime.to_datetime(self.date_to) + relativedelta(hour=23, minute=59)
+                out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
+                                                                     domain=['|', ('work_entry_type_id', '=', False), (
+                                                                     'work_entry_type_id.is_leave', '=', False)])
+                out_days += out_time['days']
+                out_hours += out_time['hours']
+
+            if out_days or out_hours:
+                work_entry_type = self.env.ref('hr_payroll.hr_work_entry_type_out_of_contract')
+                res.append({
+                    'sequence': work_entry_type.sequence,
+                    'work_entry_type_id': work_entry_type.id,
+                    'number_of_days': out_days,
+                    'number_of_hours': out_hours,
+                })
+                work_entry_type = self.env.ref('hr_work_entry.work_entry_type_attendance')
+                work100 = next(filter(lambda x: x['work_entry_type_id'] == work_entry_type.id, res), None)
+                if work100:
+                    days = work100['number_of_days'] - out_days
+                    hours = work100['number_of_hours'] - out_hours
+                    work100.update(
+                        {
+                            'number_of_days': days,
+                            'number_of_hours': hours,
+                        }
+                )
+        return res
 
 
 def special_round(number):
