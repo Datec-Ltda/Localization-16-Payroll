@@ -479,7 +479,7 @@ result = special_round(BASIC/30/8*2 * worked_days.HRN.number_of_hours)
     </record>
 
     <record id="datec_l10n_bo_hr_payroll_vac" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="category_id" ref="BASIC_INF"/>
         <field name="name">VACACIONES</field>
         <field name="code">VAC</field>
         <field name="sequence">11</field>
@@ -491,6 +491,47 @@ if worked_days.VAC:
     result = wage
 else:
     result = 0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+<!--    Reglas de calculos basicos    -->
+
+    <record id="datec_l10n_bo_hr_payroll_bc_diaria" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Base cálculo diaria Básico</field>
+        <field name="code">BC_DIARIA</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = BASIC / 30
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_bc_diaria_horas" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Base de cálculo en hora</field>
+        <field name="code">BC_DIARIA_HORAS</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = BASIC / 30 / 8
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_bc_diaria_total" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Base cálculo diaria Total</field>
+        <field name="code">BC_DIARIA_TOTAL</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = NET / 30
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
