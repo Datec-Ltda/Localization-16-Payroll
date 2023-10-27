@@ -88,11 +88,11 @@ result = GROSS * employee.aft_quotation_type.percent/100
     </record>
 
 
-<!--   MONTO ANC 1%              -->
+<!--   MONTO ANS 1%              -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_1" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
-        <field name="name">MONTO ANC 1%</field>
-        <field name="code">ANC_ONE</field>
+        <field name="name">MONTO ANS 1%</field>
+        <field name="code">ANS_ONE</field>
         <field name="sequence">101</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
@@ -105,11 +105,11 @@ else:
         <field name="struct_id" ref="structure_month"/>
     </record>
 
-<!--   MONTO ANC 5%              -->
+<!--   MONTO ANS 5%              -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_5" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
-        <field name="name">MONTO ANC 5%</field>
-        <field name="code">ANC_FIVE</field>
+        <field name="name">MONTO ANS 5%</field>
+        <field name="code">ANS_FIVE</field>
         <field name="sequence">101</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
@@ -122,11 +122,11 @@ else:
         <field name="struct_id" ref="structure_month"/>
     </record>
 
-<!--   MONTO ANC 10%              -->
+<!--   MONTO ANS 10%              -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_10" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
-        <field name="name">MONTO ANC 10%</field>
-        <field name="code">ANC_TEN</field>
+        <field name="name">MONTO ANS 10%</field>
+        <field name="code">ANS_TEN</field>
         <field name="sequence">101</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
@@ -139,23 +139,23 @@ else:
         <field name="struct_id" ref="structure_month"/>
     </record>
 
-<!--   MONTO ANC TOTAL%              -->
+<!--   MONTO ANS TOTAL%              -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_discount_anc" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
-        <field name="name">DESCUENTO ANC</field>
-        <field name="code">DESCUENTO_ANC</field>
+        <field name="name">DESCUENTO ANS</field>
+        <field name="code">DESCUENTO_ANS</field>
         <field name="sequence">102</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-anc = 0
-if ANC_ONE:
-    anc += ANC_ONE
-if ANC_FIVE:
-    anc += ANC_FIVE
-if ANC_TEN:
-    anc += ANC_TEN
-result = anc
+ans = 0
+if ANS_ONE:
+    ans += ANS_ONE
+if ANS_FIVE:
+    ans += ANC_FIVE
+if ANS_TEN:
+    ans += ANS_TEN
+result = ans
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -172,8 +172,8 @@ result = anc
 total_afp = 0
 if AFP_DISCOUNT:
     total_afp += AFP_DISCOUNT
-if DESCUENTO_ANC:
-    total_afp += DESCUENTO_ANC
+if DESCUENTO_ANS:
+    total_afp += DESCUENTO_ANS
 result = -total_afp
         </field>
         <field name="struct_id" ref="structure_month"/>

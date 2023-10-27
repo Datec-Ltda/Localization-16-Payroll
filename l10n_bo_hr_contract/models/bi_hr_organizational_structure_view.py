@@ -32,7 +32,7 @@ class HrOrganizationalStructureReport(models.Model):
         SELECT
                 e."id",
                 e.company_id,
-                e.department_id,
+                d.id as department_id,
                 e."name",
                 e.gender,
                 e.staff_division_id,
@@ -40,9 +40,9 @@ class HrOrganizationalStructureReport(models.Model):
                 e.personnel_area_id,
                 e.personnel_group_id,
                 e.payroll_area_id
-                FROM hr_employee AS e
-                INNER JOIN hr_contract AS ct ON ct.employee_id = e."id"
-                WHERE ct."state" = 'open'
+                FROM hr_department d
+                LEFT JOIN hr_employee e ON e.department_id = d.id
+                LEFT JOIN hr_contract ct ON ct.employee_id = e.id
         """
         tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute(

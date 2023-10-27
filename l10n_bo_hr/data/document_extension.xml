@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id='hr_document_extension_1' model='hr.document.extension'>
+            <field name='code'>SC</field>
+            <field name='name'>SC Santa Cruz</field>
+        </record>
+        <record id='hr_document_extension_2' model='hr.document.extension'>
+            <field name='code'>CB</field>
+            <field name='name'>CB Cochabamba</field>
+        </record>
+    </data>
+</odoo>

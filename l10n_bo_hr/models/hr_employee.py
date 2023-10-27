@@ -21,11 +21,8 @@ class HrEmployee(models.Model):
 
     document_number = fields.Char(string="Número de documento", size=20)
 
-    document_extension = fields.Selection([
-        ('SC', 'SC Santa Cruz'),
-        ('CB', 'CB Cochabamba ')],
-        string='Extensión de documento', default='SC')
-
+    document_extension_id = fields.Many2one('hr.document.extension', 'Extensión de documento')
+        
     # Datos de la AFP
     
     afp_id = fields.Many2one('res.partner', string='Administradora de fondo de pensiones',
@@ -229,3 +226,10 @@ class HrCommunicationsForms(models.Model):
     code = fields.Char('Código', required=True)
     name = fields.Char(string="Formas de comunicación", translate=True, required=True)
 
+
+class HrDocumentExtension(models.Model):
+    _name = "hr.document.extension"
+    _description = "Extensión de documento"
+    _rec_name = 'name'
+    code = fields.Char('Código', required=True)
+    name = fields.Char(string="Extensión de documento", translate=True, required=True)

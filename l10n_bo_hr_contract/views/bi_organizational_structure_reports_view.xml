@@ -9,9 +9,9 @@
                 <pivot string="Actividad">
                     <field name="company_id" type="row" groups="base.group_multi_company"/>
                     <field name="department_id"/>
-                    <field name="staff_division_id" type="row"/>
-                    <field name="staffing_subdivision_id" type="row"/>
-                    <field name="gender" type="col"/>
+                    <field name="staff_division_id" type="col"/>
+                    <field name="staffing_subdivision_id" type="col"/>
+<!--                    <field name="gender" type="col"/>-->
                 </pivot>
             </field>
         </record>
@@ -50,7 +50,7 @@
             <field name="name">hr.organizational.structure.report.view.tree</field>
             <field name="model">hr.organizational.structure.report</field>
             <field name="arch" type="xml">
-                <tree string="Estructura Organizariva">
+                <tree string="Estructura Organizariva" create="false">
                     <field name="department_id"/>
                     <field name="staff_division_id"/>
                     <field name="staffing_subdivision_id"/>
@@ -67,8 +67,8 @@
             <field name="res_model">hr.organizational.structure.report</field>
             <field name="view_mode">pivot,graph,tree</field>
             <field name="context">{
-                'group_by': ['department_id', 'staff_division_id', 'staffing_subdivision_id'],
-                'opened_group_by': ['department_id', 'staff_division_id', 'staffing_subdivision_id']
+                'group_by': ['department_id'],
+                'opened_group_by': ['department_id']
             }</field>
             <field name="search_view_id" ref="hr_organizational_structure_report_view_search"/>
             <field name="view_id" ref="hr_organizational_structure_report_view_tree"/>

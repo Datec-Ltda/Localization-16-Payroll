@@ -78,8 +78,9 @@ class HrPayrollQuinquennialData(models.Model):
     def _check_amount_years(self):
         for record in self:
             paid_records = self.search([
-                ('state', 'in', ['draft', 'paid']),
+                ('state', 'in', ['draft', 'open', 'paid']),
                 ('id', '!=', record.id),
+                ('employee_id', '=', self.employee_id.id),
             ])
             if paid_records:
                 total_years = sum(paid_records.mapped('amount_years'))
@@ -96,7 +97,7 @@ class HrPayrollQuinquennialData(models.Model):
             if not record.employee_id.contract_id:
                 raise ValidationError("Error: No se puede adicionar pago quinquenal sin contrato asociado para el empleado.")
 
-    @api.constrains('date_from', 'date_to')
+    @api.constrains('date_from', 'date_to', 'amount_years')
     def _check_date_overlap(self):
         for record in self:
             if record.date_from and record.date_to:
@@ -106,16 +107,18 @@ class HrPayrollQuinquennialData(models.Model):
                 unpaid_records = self.search([
                     ('date_from', '<=', record.date_to),
                     ('date_to', '>=', record.date_from),
-                    ('state', 'in', ['draft', 'done']),
+                    ('state', 'in', ['draft', 'open']),
+                    ('employee_id', '=', self.employee_id.id),
                     ('id', '!=', record.id),
                 ])
 
                 if unpaid_records:
-                    raise ValidationError("No deben existir registros anteriores sin pagar, confecione un solo registro par el pago.")
+                    raise ValidationError("No deben existir registros anteriores sin pagar, confecione un solo registro para el pago.")
 
                 overlapping_records = self.search([
                     ('date_from', '<=', record.date_to),
                     ('date_to', '>=', record.date_from),
+                    ('employee_id', '=', self.employee_id.id),
                     ('id', '!=', record.id),
                 ])
 

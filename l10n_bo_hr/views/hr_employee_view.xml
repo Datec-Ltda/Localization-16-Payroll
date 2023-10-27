@@ -8,6 +8,9 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
+            <field name="address_home_id" position="attributes">
+                <attribute name="domain">[('is_company', '=', False), ('l10n_bo_afp', '=', False), ('l10n_bo_health_box', '=', False)]</attribute>
+            </field>
             <xpath expr="//field[@name='bank_account_id']" position="after">
                 <field name="currency_id"/>
                 <field name="payment_method"/>
@@ -17,7 +20,7 @@
                     <field name="type_identification_document"/>
                     <field name="valid_date"/>
                     <field name="document_number"/>
-                    <field name="document_extension"/>
+                    <field name="document_extension_id"/>
                 </group>
                 <group string="Asignación Organizativa" >
                     <field name="staff_division_id"/>
