@@ -56,22 +56,23 @@
 
             </xpath>
             <xpath expr="//page[@name='hr_settings']" position="after">
-                
                 <page name="hr_prima" string="HR Prima" groups="hr.group_hr_user">
-                    <group>
-                        <group string="Data prima" name="active_group">
+                    <field name="bonus_payment_ids" nolabel="1" >
+                        <tree create="0"  edit="0" delete="0">
                             <field name="earned_average" string="Promedio Ganado"/>
                             <field name="paid_percentage" string="Porcentaje pagado" />
                             <field name="days_considered" string="Días considerados" />
                             <field name="amount_paid" string="Importe Pagado" />
-                        </group>
-                    </group>
+                        </tree>
+                    </field>
                 </page>
                 <page name="attachment" string="Documentos" groups="hr.group_hr_user">
                     <field name="attachment_ids" widget="one2many">
                         <tree editable="top" expand="true">
-                            <field name="name" string="Nombe"/>
-                            <field name="attachment" widget="attachment" string="Fichero"/>
+                            <field name="name" string="Nombre"/>
+<!--                            <field name="attachment_name" string="Nombre del archivo adjunto" readonly="1"/>-->
+<!--                            <field name="attachment" widget="attachment" string="Fichero"/>-->
+                            <field name="doc_attachment_id" widget="many2many_binary" />
                         </tree>
                     </field>
                 </page>

@@ -8,6 +8,7 @@ from dateutil.relativedelta import relativedelta
 from odoo.tools.misc import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.exceptions import ValidationError
 
+
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
@@ -113,25 +114,7 @@ class HrEmployee(models.Model):
                 rec.afp_age_str = str(rec.afp_age) + ' años ' + str(rec.afp_age_months) + ' meses ' + str(rec.afp_age_days) + ' días'
                 # rec.age = dToday.year - dBday.year - ((dToday.month, dToday.day) < (dBday.month, dBday.day))
 
-    earned_average = fields.Float(string='Promedio Ganado',
-                                  help='Campo calculado promedio sobre el total ganado de los 3 meses ',
-                                  required=False
-                                  )
-
-    paid_percentage = fields.Float(string='Paid Percentage',
-                                   help='Porcentaje pagado',
-                                   required=False
-                                   )
-
-    days_considered = fields.Integer(string='Días considerados',
-                                     help='Días trabajados en la gestión a pagar por el cual se paga el monto de prima',
-                                     required=False
-                                     )
-
-    amount_paid = fields.Float(string='Importe Pagado',
-                               help='Campo calculado del monto de prima pagado para la gestión',
-                               required=False
-                               )
+    bonus_payment_ids = fields.One2many('hr.bonus.payment', 'employee_id')
 
     attachment_ids = fields.One2many('l10n_bo_hr.employee_docs', 'employee_id')
 
@@ -233,3 +216,30 @@ class HrDocumentExtension(models.Model):
     _rec_name = 'name'
     code = fields.Char('Código', required=True)
     name = fields.Char(string="Extensión de documento", translate=True, required=True)
+
+
+class HrDocumentExtension(models.Model):
+    _name = "hr.bonus.payment"
+    _description = "Pago de prima"
+
+    employee_id = fields.Many2one('hr.employee', string='Empleado', required=True)
+
+    earned_average = fields.Float(string='Promedio Ganado',
+                                  help='Campo calculado promedio sobre el total ganado de los 3 meses ',
+                                  required=False
+                                  )
+
+    paid_percentage = fields.Float(string='Paid Percentage',
+                                   help='Porcentaje pagado',
+                                   required=False
+                                   )
+
+    days_considered = fields.Integer(string='Días considerados',
+                                     help='Días trabajados en la gestión a pagar por el cual se paga el monto de prima',
+                                     required=False
+                                     )
+
+    amount_paid = fields.Float(string='Importe Pagado',
+                               help='Campo calculado del monto de prima pagado para la gestión',
+                               required=False
+                               )

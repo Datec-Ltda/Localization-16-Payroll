@@ -14,9 +14,8 @@ class HrDepartureWizard(models.TransientModel):
 
     bank_id = fields.Many2one('res.bank', string='Banco')
 
-    date_of_pay = fields.Date(string='Fecha de pago',
-                                default=fields.Date.context_today,
-                            )
+    date_of_pay = fields.Date(string='Fecha de pago',  default=fields.Date.context_today, )
+
     def action_register_departure(self):
         employee = self.employee_id
         if self.env.context.get('toggle_active', False) and employee.active:
