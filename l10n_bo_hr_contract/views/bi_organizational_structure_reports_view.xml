@@ -9,6 +9,7 @@
                 <pivot string="Actividad">
                     <field name="company_id" type="row" groups="base.group_multi_company"/>
                     <field name="department_id"/>
+                    <field name="job_id"/>
                     <field name="staff_division_id" type="col"/>
                     <field name="staffing_subdivision_id" type="col"/>
 <!--                    <field name="gender" type="col"/>-->
@@ -23,6 +24,7 @@
                 <graph string="Actividad">
                     <field name="company_id" type="row" groups="base.group_multi_company"/>
                     <field name="department_id"/>
+                    <field name="job_id"/>
                     <field name="staff_division_id" type="row"/>
                     <field name="staffing_subdivision_id" type="row"/>
                     <field name="name" type="col"/>
@@ -52,12 +54,13 @@
             <field name="arch" type="xml">
                 <tree string="Estructura Organizariva" create="false">
                     <field name="department_id"/>
+                    <field name="job_id"/>
                     <field name="staff_division_id"/>
                     <field name="staffing_subdivision_id"/>
                     <field name="personnel_area_id" optional="hide"/>
                     <field name="personnel_group_id" optional="hide"/>
                     <field name="payroll_area_id" optional="hide"/>
-                    <field name="name"/>
+                    <field name="employee_id"/>
                 </tree>
             </field>
         </record>

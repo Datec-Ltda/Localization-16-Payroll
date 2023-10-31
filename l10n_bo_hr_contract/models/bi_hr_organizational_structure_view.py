@@ -15,7 +15,9 @@ class HrOrganizationalStructureReport(models.Model):
 
     company_id = fields.Many2one('res.company', 'Compañia')
     department_id = fields.Many2one('hr.department', string='Departamento')
-    name = fields.Char(string="Empleado")
+    employee_id = fields.Many2one('hr.employee', string='Empleado')
+    job_id = fields.Many2one('hr.job', string='Puesto de trabajo')
+    name = fields.Char(string="Puesto de trabajo")
     gender = fields.Selection([
         ('male', 'Masculino'),
         ('female', 'Femenino'),
@@ -29,21 +31,21 @@ class HrOrganizationalStructureReport(models.Model):
 
     def init(self):
         query = """              
-        SELECT
-                e."id",
-                e.company_id,
-                d.id as department_id,
-                e."name",
-                e.gender,
-                e.staff_division_id,
-                e.staffing_subdivision_id,
-                e.personnel_area_id,
-                e.personnel_group_id,
-                e.payroll_area_id
-                FROM hr_department d
-                LEFT JOIN hr_employee e ON e.department_id = d.id
-                LEFT JOIN hr_contract ct ON ct.employee_id = e.id
-        """
+        SELECT concat(job.id::character varying, job.department_id::character varying, e.id::character varying)::integer AS id,
+            e.company_id,
+            job.id as job_id,
+            job.name,
+            job.department_id,
+            e.id as employee_id,
+            e.gender,
+            e.staff_division_id,
+            e.staffing_subdivision_id,
+            e.personnel_area_id,
+            e.personnel_group_id,
+            e.payroll_area_id
+           FROM hr_job job  
+             LEFT JOIN hr_employee e ON job.id = e.job_id
+         """
         tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute(
             sql.SQL("CREATE or REPLACE VIEW {} as ({})").format(
