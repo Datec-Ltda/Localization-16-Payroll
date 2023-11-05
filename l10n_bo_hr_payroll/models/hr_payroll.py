@@ -16,9 +16,9 @@ class HrPayrollClosingTable(models.Model):
 
     payslip_id = fields.Many2one('hr.payslip')
     contract_id = fields.Many2one('hr.contract', 'Contract', required=True)
-    employee_id = fields.Many2one('hr.employee', 'Employee',required=True)
-    date_from = fields.Date(string='Date From', required=True)
-    date_to = fields.Date(string='Date To', required=True)
+    employee_id = fields.Many2one('hr.employee', 'Employee', required=True)
+    date_from = fields.Date(string='Date From', copy=False)
+    date_to = fields.Date(string='Date To', copy=False)
 # Reglas --------------------------------------------------
     basic = fields.Float(string="Salario basico", required=True)
     antiquity_bonus = fields.Float(string="Bono de antigüedad", required=True)
@@ -40,9 +40,6 @@ class HrPayrollClosingTable(models.Model):
     overtime = fields.Float(string="Horas extras", required=True)
     sunday_overtime = fields.Float(string="Horas extra dominical", required=True)
     night_overtime_hours = fields.Float(string="Horas recargo nocturno", required=True)
-
-
-
 
     @api.constrains('date_from', 'date_to', 'contract_id')
     def _check_leave(self):

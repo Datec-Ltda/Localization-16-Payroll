@@ -13,8 +13,8 @@
                             <group>
                                 <label for="date_from" string="Period"/>
                                 <div>
-                                    <field name="date_from" class="oe_inline" attrs="{'readonly': [('payslip_id', '!=', False)]}"/> - <field name="date_to" class="oe_inline"
-                                attrs="{'readonly': [('payslip_id', '!=', False)]}"/>
+                                    <field name="date_from" class="oe_inline" required="1" attrs="{'readonly': [('payslip_id', '!=', False)]}"/> -
+                                    <field name="date_to" class="oe_inline" required="1" attrs="{'readonly': [('payslip_id', '!=', False)]}"/>
                                     <field name="payslip_id" readonly="1" />
                                 </div>
                             </group>

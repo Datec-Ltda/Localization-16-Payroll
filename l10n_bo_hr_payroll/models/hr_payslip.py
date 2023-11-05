@@ -295,14 +295,16 @@ def amount_total_gained_average(payslip, employee, aguinaldo, ruler):
                 date_start_cal = employee.date_hired
             date_to_cal = date(payslip.dict.date_from.year, 11, 30)
         else:
-            date_start_cal = date(payslip.dict.date_from.year, 10, 1)
-            date_to_cal = date(payslip.dict.date_from.year, 12, 31)
-        amount_christmas_bonus = payslip.dict._get_amount_total_gained(employee, date_start_cal, date_to_cal, ruler)
+            date_start_cal = date(payslip.dict.date_from.year-1, 10, 1)
+            date_to_cal = date(payslip.dict.date_from.year-1, 12, 31)
+            if employee.date_hired > date_start_cal:
+                return 0
+            else:
+                amount_christmas_bonus = payslip.dict._get_amount_total_gained(employee, date_start_cal, date_to_cal, ruler)
     return amount_christmas_bonus/3
 
 
-def days_total_worked(payslip, employee, aguinaldo, ruler):
-    amount_christmas_bonus = 0
+def days_total_worked(payslip, employee, aguinaldo):
     if payslip:
         if aguinaldo:
             date_limit = date(payslip.dict.date_from.year, 10, 1)
@@ -310,15 +312,26 @@ def days_total_worked(payslip, employee, aguinaldo, ruler):
                 return 0
             date_start_cal = date(payslip.dict.date_from.year, 9, 1)
             if employee.date_hired >= date_start_cal:
-                days = 30 - employee.date_hired.day + 1
-                return 60 + days
+                if employee.date_hired == date_limit:
+                    total_days = 60
+                else:
+                    days = 30 - employee.date_hired.day + 1
+                    total_days = 60 + days
             else:
-                return 360
+                total_days = 330
+            if not employee.departure_date:
+                return total_days + 30
         else:
-            date_start_cal = date(payslip.dict.date_from.year, 10, 1)
-            date_to_cal = date(payslip.dict.date_from.year, 12, 31)
-        amount_christmas_bonus = payslip.dict._get_amount_total_gained(employee, date_start_cal, date_to_cal, ruler)
-    return amount_christmas_bonus/3
+            date_start_cal = date(payslip.dict.date_from.year-1, 10, 1)
+            date_init_year = date(payslip.dict.date_from.year-1, 1, 1)
+            if employee.date_hired > date_start_cal:
+                return 0
+            else:
+                if employee.date_hired <= date_init_year:
+                    return 360
+                else:
+                    return (12 - employee.date_hired.month + 1) * 30
+    return 0
 
 
 def total_average_earned(payslip, employee, ruler, months):

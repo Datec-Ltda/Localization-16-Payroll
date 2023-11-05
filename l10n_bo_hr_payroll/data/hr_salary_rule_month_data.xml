@@ -799,7 +799,7 @@ result = amount_total_gained_average(payslip,employee, True, 'NET')
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = days_total_worked(payslip,employee, True, 'NET')
+result = days_total_worked(payslip,employee, True)
         </field>
         <field name="struct_id" ref="structure_christmas_bonus"/>
     </record>
@@ -849,7 +849,7 @@ result = amount_total_gained_average(payslip,employee, False, 'BASIC')
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">BONO DE ANTIGUEDAD PROMEDIO</field>
         <field name="code">B_ANT_PRO</field>
-        <field name="sequence">11</field>
+        <field name="sequence">12</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -862,7 +862,7 @@ result = amount_total_gained_average(payslip,employee, False, 'BONO_ANT')
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">BONO DE PRODUCCION PROMEDIO</field>
         <field name="code">B_PROD</field>
-        <field name="sequence">11</field>
+        <field name="sequence">13</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -875,7 +875,7 @@ result = amount_total_gained_average(payslip,employee, False, 'BONO_PROD')
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">SUBSIDIO EN FRONTERA PROMEDIO</field>
         <field name="code">SUB_FRONT_PRO</field>
-        <field name="sequence">11</field>
+        <field name="sequence">14</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -888,7 +888,7 @@ result = amount_total_gained_average(payslip,employee, False, 'SUBS_FRONTERA')
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">HORAS EXTRAS PROMEDIO</field>
         <field name="code">H_EXTRAS_PRO</field>
-        <field name="sequence">11</field>
+        <field name="sequence">15</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -901,7 +901,7 @@ result = amount_total_gained_average(payslip,employee, False, 'EXTRAS')
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">RECARGO PROMEDIO</field>
         <field name="code">RECARGOS_PRO</field>
-        <field name="sequence">11</field>
+        <field name="sequence">16</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -914,7 +914,7 @@ result = amount_total_gained_average(payslip,employee, False, 'RECARGO')
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">DOMINGO PROMEDIO</field>
         <field name="code">DOMINGO_PRO</field>
-        <field name="sequence">11</field>
+        <field name="sequence">17</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -923,11 +923,12 @@ result = amount_total_gained_average(payslip,employee, False, 'DOMINGO')
         <field name="struct_id" ref="structure_prima"/>
     </record>
 
+<!--Suma de todos los anteriores que estan sumados en la regla .NET-->
     <record id="datec_l10n_bo_hr_payroll_prima_total_gained_average" model="hr.salary.rule">
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">TOTAL GANADO</field>
         <field name="code">TOTAL_GANADO</field>
-        <field name="sequence">11</field>
+        <field name="sequence">18</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -936,15 +937,54 @@ result = amount_total_gained_average(payslip,employee, False, 'NET')
         <field name="struct_id" ref="structure_prima"/>
     </record>
 
+    <record id="datec_l10n_bo_hr_payroll_prima_total_gained_day" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">PROMEDIO DIARIO AL AÑO</field>
+        <field name="code">PROM_DIA</field>
+        <field name="sequence">18</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = TOTAL_GANADO / 360
+        </field>
+        <field name="struct_id" ref="structure_prima"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_prima_worked_days" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">DÍAS TRABAJADOS</field>
+        <field name="code">DIAS_TRAB</field>
+        <field name="sequence">19</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = days_total_worked(payslip,employee, False)
+        </field>
+        <field name="struct_id" ref="structure_prima"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_prima_percen_pay" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">% A PAGAR</field>
+        <field name="code">PERCEN_PAY</field>
+        <field name="sequence">19</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = payslip.rule_parameter('PRIMA')/100
+        </field>
+        <field name="struct_id" ref="structure_prima"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_prima" model="hr.salary.rule">
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">PRIMA</field>
         <field name="code">PRIMA</field>
-        <field name="sequence">11</field>
+        <field name="sequence">20</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = employee.GetQuinquennial(payslip.date_from, payslip.date_to)
+result = PROM_DIA * DIAS_TRAB * PERCEN_PAY
         </field>
         <field name="struct_id" ref="structure_prima"/>
     </record>
