@@ -20,6 +20,7 @@
         'views/hr_payroll_closing_table_view.xml',
         'views/hr_payroll_overtime_hours_view.xml',
         'views/l10n_bo_hr_payroll_view.xml',
+        'views/hr_payroll_housing_development_unit_view.xml',
         # 'report/hr_employee_payroll_report_views.xml',
 
     ],

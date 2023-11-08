@@ -330,7 +330,10 @@ result = credit_balance_previous_month(payslip,employee)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = SALDO_A_FAVOR_MES_ANT * CURRENT_UFV/LAST_UFV -SALDO_A_FAVOR_MES_ANT
+if LAST_UFV != 0:
+    result = SALDO_A_FAVOR_MES_ANT * CURRENT_UFV/LAST_UFV -SALDO_A_FAVOR_MES_ANT
+else:
+    result = 0
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -545,7 +548,7 @@ result = NET / 30
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = payslip.rule_parameter('LAST_UFV')
+result = get_ufv_from_code(payslip, 'LAST_UFV')
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -558,7 +561,7 @@ result = payslip.rule_parameter('LAST_UFV')
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = payslip.rule_parameter('CURRENT_UFV')
+result = get_ufv_from_code(payslip, 'CURRENT_UFV')
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>

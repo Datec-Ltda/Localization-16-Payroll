@@ -22,6 +22,7 @@ class HrPayslip(models.Model):
             'days_total_worked': days_total_worked,
             'special_round': special_round,
             'total_average_earned': total_average_earned,
+            'get_ufv_from_code': get_ufv_from_code,
         })
         return res
 
@@ -260,6 +261,19 @@ class HrPayslip(models.Model):
                 )
         return res
 
+    def _get_ufv_from_code(self, date_to, code):
+        if code == 'CURRENT_UFV':
+            date_search = date_to
+        else:
+            date_search = self.get_day_month_past(date_to)
+
+        parameter = self.env['hr.payroll.housing.development.unit'].search([
+            ('date_month', '<=', date_search)], limit=1,  order='date_month desc')
+        if parameter:
+            return parameter.ufv_value
+        else:
+            return 0
+
 
 def special_round(number):
     parte_decimal = number - int(number)  # Obtener la parte decimal del número
@@ -337,5 +351,10 @@ def days_total_worked(payslip, employee, aguinaldo):
 def total_average_earned(payslip, employee, ruler, months):
     average_earned = payslip.dict._get_total_average_earned(payslip.date_to, employee, ruler, months)
     return average_earned
+
+
+def get_ufv_from_code(payslip, code):
+    ufv = payslip.dict._get_ufv_from_code(payslip.date_to, code)
+    return ufv
 
 
