@@ -12,8 +12,11 @@ class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     years_of_service = fields.Integer(string="Años de antigüedad", compute='_compute_years_of_service', store=True)
-    allowed_vacation_days = fields.Integer(string="Días de vacaciones permitidos", readonly=True, compute='_compute_allowed_vacation_days', store=True)
+    allowed_vacation_days = fields.Integer(string="Días de vacaciones permitidos anual", readonly=True, compute='_compute_allowed_vacation_days', store=True)
     date_hired = fields.Date(string='Fecha Contratación', help="Fecha de inicio del primer contrato", compute='_compute_date_hired', store=True)
+    # accumulated_leave_year = fields.Integer(string="Días de vacaciones", readonly=True, compute='_compute_accumulated_leave_year', store=True)
+    # accumulated_leave_month = fields.Integer(string="acumulados mensual", readonly=True, compute='_compute_accumulated_leave_month', store=True)
+    # accumulated_leave_day = fields.Integer(string="acumulados dias", readonly=True, compute='_compute_accumulated_leave_day', store=True)
 
     @api.depends('contract_ids.date_start')
     def _compute_date_hired(self):

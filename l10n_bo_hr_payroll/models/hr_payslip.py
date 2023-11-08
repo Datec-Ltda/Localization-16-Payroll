@@ -28,7 +28,7 @@ class HrPayslip(models.Model):
     def _get_antiquity_bonus(self, employee):
         percent = 0
         years_of_service = employee.years_of_service
-        domain = [('years_of_antiquity_bonus_start', '<', years_of_service)]
+        domain = [('years_of_antiquity_bonus_start', '<=', years_of_service)]
         leave_antiquity = self.env['hr.antiquity.bonus.table'].search(domain, limit=1, order="years_of_antiquity_bonus_start desc")
         if leave_antiquity:
             percent = leave_antiquity.percentage

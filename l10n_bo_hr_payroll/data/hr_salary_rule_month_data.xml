@@ -152,7 +152,7 @@ ans = 0
 if ANS_ONE:
     ans += ANS_ONE
 if ANS_FIVE:
-    ans += ANC_FIVE
+    ans += ANS_FIVE
 if ANS_TEN:
     ans += ANS_TEN
 result = ans
