@@ -1,134 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="rule_parameter_smn" model="hr.rule.parameter">
-        <field name="name">Salario Mínimo Nacional</field>
-        <field name="code">SMN</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_smn" model="hr.rule.parameter.value">
-        <field name="parameter_value">2250</field>
-        <field name="rule_parameter_id" ref="rule_parameter_smn"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
-<!--Aportes Patronales-->
-<!-- -	Aporte Riesgo Profesional-->
-    <record id="rule_parameter_ap_arp" model="hr.rule.parameter">
-        <field name="name">Aporte Riesgo Profesional</field>
-        <field name="code">AP_ARP</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_ap_arp" model="hr.rule.parameter.value">
-        <field name="parameter_value">1.71</field>
-        <field name="rule_parameter_id" ref="rule_parameter_ap_arp"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
+     <data noupdate="0">
+        <record id="rule_parameter_smn" model="hr.rule.parameter">
+            <field name="name">Salario Mínimo Nacional</field>
+            <field name="code">SMN</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_smn" model="hr.rule.parameter.value">
+            <field name="parameter_value">2250</field>
+            <field name="rule_parameter_id" ref="rule_parameter_smn"/>
+            <field name="date_from" eval="datetime(2022, 1, 1).date()"/>
+        </record>
+    <!--Aportes Patronales-->
+    <!-- -	Aporte Riesgo Profesional-->
+        <record id="rule_parameter_ap_arp" model="hr.rule.parameter">
+            <field name="name">Aporte Riesgo Profesional</field>
+            <field name="code">AP_ARP</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_ap_arp" model="hr.rule.parameter.value">
+            <field name="parameter_value">1.71</field>
+            <field name="rule_parameter_id" ref="rule_parameter_ap_arp"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
 
-<!-- -  Aporte Solidario Patronal-->
-    <record id="rule_parameter_ap_asp" model="hr.rule.parameter">
-        <field name="name">Aporte Solidario Patronal</field>
-        <field name="code">AP_ASP</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_ap_asp" model="hr.rule.parameter.value">
-        <field name="parameter_value">3</field>
-        <field name="rule_parameter_id" ref="rule_parameter_ap_asp"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
+    <!-- -  Aporte Solidario Patronal-->
+        <record id="rule_parameter_ap_asp" model="hr.rule.parameter">
+            <field name="name">Aporte Solidario Patronal</field>
+            <field name="code">AP_ASP</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_ap_asp" model="hr.rule.parameter.value">
+            <field name="parameter_value">3</field>
+            <field name="rule_parameter_id" ref="rule_parameter_ap_asp"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
 
-<!-- -	Aporte Pro-Vivienda-->
-    <record id="rule_parameter_ap_apv" model="hr.rule.parameter">
-        <field name="name">Aporte Pro-Vivienda</field>
-        <field name="code">AP_APV</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_ap_apv" model="hr.rule.parameter.value">
-        <field name="parameter_value">2</field>
-        <field name="rule_parameter_id" ref="rule_parameter_ap_apv"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
+    <!-- -	Aporte Pro-Vivienda-->
+        <record id="rule_parameter_ap_apv" model="hr.rule.parameter">
+            <field name="name">Aporte Pro-Vivienda</field>
+            <field name="code">AP_APV</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_ap_apv" model="hr.rule.parameter.value">
+            <field name="parameter_value">2</field>
+            <field name="rule_parameter_id" ref="rule_parameter_ap_apv"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
 
-    <!-- -	Aporte de Salud-->
-    <record id="rule_parameter_ap_as" model="hr.rule.parameter">
-        <field name="name">Aporte de Salud</field>
-        <field name="code">AP_AS</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_ap_as" model="hr.rule.parameter.value">
-        <field name="parameter_value">10</field>
-        <field name="rule_parameter_id" ref="rule_parameter_ap_as"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
+        <!-- -	Aporte de Salud-->
+        <record id="rule_parameter_ap_as" model="hr.rule.parameter">
+            <field name="name">Aporte de Salud</field>
+            <field name="code">AP_AS</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_ap_as" model="hr.rule.parameter.value">
+            <field name="parameter_value">10</field>
+            <field name="rule_parameter_id" ref="rule_parameter_ap_as"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
 
-    <!-- -	AFP Solidario Nacional minimo-->
-    <record id="rule_parameter_afp_snm" model="hr.rule.parameter">
-        <field name="name">AFP Solidario Nacional minimo</field>
-        <field name="code">AFP_SNM</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_afp_snm" model="hr.rule.parameter.value">
-        <field name="parameter_value">13000</field>
-        <field name="rule_parameter_id" ref="rule_parameter_afp_snm"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
+        <!-- -	AFP Solidario Nacional minimo-->
+        <record id="rule_parameter_afp_snm" model="hr.rule.parameter">
+            <field name="name">AFP Solidario Nacional minimo</field>
+            <field name="code">AFP_SNM</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_afp_snm" model="hr.rule.parameter.value">
+            <field name="parameter_value">13000</field>
+            <field name="rule_parameter_id" ref="rule_parameter_afp_snm"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
 
-    <!-- -	Provisiones-->
-    <record id="rule_parameter_prov" model="hr.rule.parameter">
-        <field name="name">Provisiones %</field>
-        <field name="code">PROV</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_prov" model="hr.rule.parameter.value">
-        <field name="parameter_value">8.33</field>
-        <field name="rule_parameter_id" ref="rule_parameter_prov"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
+        <!-- -	Provisiones-->
+        <record id="rule_parameter_prov" model="hr.rule.parameter">
+            <field name="name">Provisiones %</field>
+            <field name="code">PROV</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_prov" model="hr.rule.parameter.value">
+            <field name="parameter_value">8.33</field>
+            <field name="rule_parameter_id" ref="rule_parameter_prov"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
 
-    <!-- -	Impuesto-->
-    <record id="rule_parameter_tax" model="hr.rule.parameter">
-        <field name="name">Impuesto</field>
-        <field name="code">TAX</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_tax" model="hr.rule.parameter.value">
-        <field name="parameter_value">13</field>
-        <field name="rule_parameter_id" ref="rule_parameter_tax"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
+        <!-- -	Impuesto-->
+        <record id="rule_parameter_tax" model="hr.rule.parameter">
+            <field name="name">Impuesto</field>
+            <field name="code">TAX</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_tax" model="hr.rule.parameter.value">
+            <field name="parameter_value">13</field>
+            <field name="rule_parameter_id" ref="rule_parameter_tax"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
 
-    <!-- -	% Pago Prima-->
-    <record id="rule_parameter_prima" model="hr.rule.parameter">
-        <field name="name">Prima</field>
-        <field name="code">PRIMA</field>
-        <field name="country_id" ref="base.bo"/>
-    </record>
-    <record id="rule_parameter_value_prima" model="hr.rule.parameter.value">
-        <field name="parameter_value">75</field>
-        <field name="rule_parameter_id" ref="rule_parameter_prima"/>
-        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
-    </record>
-
-<!--    Parametro temporal que se deben ontener de finanzas y son mensuales-->
-<!--    UFV MES ANTERIOR            last month-->
-<!--    <record id="rule_parameter_last_month_ufv" model="hr.rule.parameter">-->
-<!--        <field name="name">UFV MES ANTERIOR</field>-->
-<!--        <field name="code">LAST_UFV</field>-->
-<!--        <field name="country_id" ref="base.bo"/>-->
-<!--    </record>-->
-<!--    <record id="rule_parameter_value_last_month" model="hr.rule.parameter.value">-->
-<!--        <field name="parameter_value">240878</field>-->
-<!--        <field name="rule_parameter_id" ref="rule_parameter_last_month_ufv"/>-->
-<!--        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>-->
-<!--    </record>-->
-<!--&lt;!&ndash;    UFV MES ACTUAL              current month&ndash;&gt;-->
-<!--    <record id="rule_parameter_current_month_ufv" model="hr.rule.parameter">-->
-<!--        <field name="name">UFV MES ACTUAL</field>-->
-<!--        <field name="code">CURRENT_UFV</field>-->
-<!--        <field name="country_id" ref="base.bo"/>-->
-<!--    </record>-->
-<!--    <record id="rule_parameter_value_current_month_ufv" model="hr.rule.parameter.value">-->
-<!--        <field name="parameter_value">241518</field>-->
-<!--        <field name="rule_parameter_id" ref="rule_parameter_current_month_ufv"/>-->
-<!--        <field name="date_from" eval="datetime(2023, 1, 1).date()"/>-->
-<!--    </record>-->
+        <!-- -	% Pago Prima-->
+        <record id="rule_parameter_prima" model="hr.rule.parameter">
+            <field name="name">Prima</field>
+            <field name="code">PRIMA</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_prima" model="hr.rule.parameter.value">
+            <field name="parameter_value">75</field>
+            <field name="rule_parameter_id" ref="rule_parameter_prima"/>
+            <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
+        </record>
+     </data>
 </odoo>
 

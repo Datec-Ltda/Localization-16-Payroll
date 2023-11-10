@@ -575,7 +575,7 @@ result = get_ufv_from_code(payslip, 'CURRENT_UFV')
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * payslip.rule_parameter('AP_ARP')/100)
+result = special_round(GROSS * payslip.rule_parameter('AP_ARP')/100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -588,7 +588,7 @@ result = special_round(NET * payslip.rule_parameter('AP_ARP')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * payslip.rule_parameter('AP_ASP')/100)
+result = special_round(GROSS * payslip.rule_parameter('AP_ASP')/100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -601,7 +601,7 @@ result = special_round(NET * payslip.rule_parameter('AP_ASP')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * payslip.rule_parameter('AP_APV')/100)
+result = special_round(GROSS * payslip.rule_parameter('AP_APV')/100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -614,7 +614,7 @@ result = special_round(NET * payslip.rule_parameter('AP_APV')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * payslip.rule_parameter('AP_AS')/100)
+result = special_round(GROSS * payslip.rule_parameter('AP_AS')/100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -627,7 +627,7 @@ result = special_round(NET * payslip.rule_parameter('AP_AS')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * 8.33 / 100)
+result = special_round(GROSS * 8.33 / 100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -640,7 +640,7 @@ result = special_round(NET * 8.33 / 100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * 8.33 / 100)
+result = special_round(GROSS * 8.33 / 100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -653,7 +653,7 @@ result = special_round(NET * 8.33 / 100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * 8.33 / 100)
+result = special_round(GROSS * 8.33 / 100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -666,7 +666,7 @@ result = special_round(NET * 8.33 / 100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(NET * 8.33 / 100)
+result = special_round(GROSS * 8.33 / 100)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
