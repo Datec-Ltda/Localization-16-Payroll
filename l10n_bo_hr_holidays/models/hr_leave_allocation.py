@@ -68,9 +68,10 @@ class HolidaysAllocation(models.Model):
             number_of_days = self.number_of_days
         if employee_id:
             employee_one = self.env['hr.employee'].search([('id', '=', employee_id)], limit=1)
-            if number_of_days > employee_one.allowed_vacation_days:
-                raise UserError(_("El numero de días de vacaciones a planificar es mayor que el permitido al "
-                                  "empleado %s.", employee_one.allowed_vacation_days))
+            if self.holiday_status_id and self.holiday_status_id.id == 1:
+                if number_of_days > employee_one.allowed_vacation_days:
+                    raise UserError(_("El numero de días de vacaciones a planificar es mayor que el permitido al "
+                                      "empleado %s.", employee_one.allowed_vacation_days))
         else:
             error = False
             description = ""

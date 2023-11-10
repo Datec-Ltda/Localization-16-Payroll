@@ -16,7 +16,16 @@
                             <field name="years_of_service"/>
                         </group>
                         <group string="Datos vacaciones">
-                            <field name="allowed_vacation_days"/>
+                            <group>
+                                <field name="allowed_vacation_days"/>
+                                <field name="accumulated_leave_year"/>
+                                <field name="remaining_leave_year"/>
+                            </group>
+                            <group>
+                                <field name="accumulated_leave_month"/>
+                                <field name="accumulated_leave_day"/>
+                                <field name="total_vacation_day"/>
+                            </group>
                         </group>
                     </group>
                 </page>
