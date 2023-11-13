@@ -378,7 +378,7 @@ else:
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-if SALDO_A_FAVOR_FISCO &lt;= SALDO_UTILIZADO:
+if SALDO_A_FAVOR_FISCO > SALDO_UTILIZADO:
     result = SALDO_A_FAVOR_FISCO - SALDO_UTILIZADO
 else:
     result = 0
