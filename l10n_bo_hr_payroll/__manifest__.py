@@ -15,6 +15,7 @@
         'data/hr_salary_rule_month_data.xml',
         'data/hr_payslip_input_type.xml',
         'data/work_entry_type.xml',
+        'data/hr_leave_type_data.xml',
         'security/ir.model.access.csv',
         'views/hr_employee_view.xml',
         'views/hr_payroll_closing_table_view.xml',

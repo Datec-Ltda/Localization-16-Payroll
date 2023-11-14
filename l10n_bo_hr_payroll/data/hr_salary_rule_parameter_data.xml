@@ -107,6 +107,66 @@
             <field name="rule_parameter_id" ref="rule_parameter_prima"/>
             <field name="date_from" eval="datetime(2023, 1, 1).date()"/>
         </record>
+        <!-- -	Baja Médica Enfermedad Común días a descontar-->
+        <record id="rule_parameter_discount_bm_ec" model="hr.rule.parameter">
+            <field name="name">Días a descontar Baja Médica Enfermedad Común</field>
+            <field name="code">Discount_BMEC</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_discount_bm_ec" model="hr.rule.parameter.value">
+            <field name="parameter_value">3</field>
+            <field name="rule_parameter_id" ref="rule_parameter_discount_bm_ec"/>
+            <field name="date_from" eval="datetime(2022, 1, 1).date()"/>
+        </record>
+
+        <!-- -	Baja Médica Prenatal días a descontar-->
+        <record id="rule_parameter_discount_bm_prenatal" model="hr.rule.parameter">
+            <field name="name">Días a descontar Baja Médica Prenatal</field>
+            <field name="code">Discount_BM_PRENATAL</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_discount_bm_prenatal" model="hr.rule.parameter.value">
+            <field name="parameter_value">0</field>
+            <field name="rule_parameter_id" ref="rule_parameter_discount_bm_prenatal"/>
+            <field name="date_from" eval="datetime(2022, 1, 1).date()"/>
+        </record>
+
+        <!-- -	Baja Médica Postnatal días a descontar-->
+        <record id="rule_parameter_discount_bm_postnatal" model="hr.rule.parameter">
+            <field name="name">Días a descontar Baja Médica Postnatal</field>
+            <field name="code">Discount_BM_POSTNATAL</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_discount_bm_postnatal" model="hr.rule.parameter.value">
+            <field name="parameter_value">0</field>
+            <field name="rule_parameter_id" ref="rule_parameter_discount_bm_postnatal"/>
+            <field name="date_from" eval="datetime(2022, 1, 1).date()"/>
+        </record>
+
+        <!-- -	Baja Médica Accidente Laboral días a descontar-->
+        <record id="rule_parameter_discount_bm_acc_lab" model="hr.rule.parameter">
+            <field name="name">Días a descontar Baja Médica Accidente Laboral</field>
+            <field name="code">Discount_BM_ACC_LAB</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_discount_bm_acc_lab" model="hr.rule.parameter.value">
+            <field name="parameter_value">0</field>
+            <field name="rule_parameter_id" ref="rule_parameter_discount_bm_acc_lab"/>
+            <field name="date_from" eval="datetime(2022, 1, 1).date()"/>
+        </record>
+
+        <!-- -	Baja Médica Riesg Extraor días a descontar-->
+        <record id="rule_parameter_discount_bm_risk_ext" model="hr.rule.parameter">
+            <field name="name">Días a descontar Baja Médica Riesg Extraor</field>
+            <field name="code">Discount_BM_RIESGO_EXT</field>
+            <field name="country_id" ref="base.bo"/>
+        </record>
+        <record id="rule_parameter_value_discount_bm_risk_ext" model="hr.rule.parameter.value">
+            <field name="parameter_value">0</field>
+            <field name="rule_parameter_id" ref="rule_parameter_discount_bm_risk_ext"/>
+            <field name="date_from" eval="datetime(2022, 1, 1).date()"/>
+        </record>
+
      </data>
 </odoo>
 

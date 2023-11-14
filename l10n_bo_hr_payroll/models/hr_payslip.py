@@ -23,6 +23,7 @@ class HrPayslip(models.Model):
             'special_round': special_round,
             'total_average_earned': total_average_earned,
             'get_ufv_from_code': get_ufv_from_code,
+            'get_medical_leave_percent': get_medical_leave_percent,
         })
         return res
 
@@ -274,6 +275,26 @@ class HrPayslip(models.Model):
         else:
             return 0
 
+    def _get_medical_leave_percent_by_name(self, code):
+        percent = 0
+        if code == 'BMEC':
+            holiday_type = self.env.ref('l10n_bo_hr_payroll.holiday_type_bm_enf_comun')
+        if code == 'BM_PRENATAL':
+            holiday_type = self.env.ref('l10n_bo_hr_payroll.holiday_type_bm_prenatal')
+        if code == 'BM_POSTNATAL':
+            holiday_type = self.env.ref('l10n_bo_hr_payroll.holiday_type_bm_postnatal')
+        if code == 'BM_ACC_LAB':
+            holiday_type = self.env.ref('l10n_bo_hr_payroll.holiday_type_bm_acc_lab')
+        if code == 'BM_RIESG_EXT':
+            holiday_type = self.env.ref('l10n_bo_hr_payroll.holiday_type_bm_ext_risk')
+
+        domain = [('id', '=', holiday_type.id)]
+        leave_type = self.env['hr.leave.type'].search(domain, limit=1)
+        if leave_type:
+            percent = leave_type.get_percent()
+
+        return percent
+
 
 def special_round(number):
     parte_decimal = number - int(number)  # Obtener la parte decimal del número
@@ -356,5 +377,12 @@ def total_average_earned(payslip, employee, ruler, months):
 def get_ufv_from_code(payslip, code):
     ufv = payslip.dict._get_ufv_from_code(payslip.date_to, code)
     return ufv
+
+
+def get_medical_leave_percent(payslip, code):
+    percent = 0
+    if payslip:
+        percent = payslip.dict._get_medical_leave_percent_by_name(code)
+    return percent/100
 
 

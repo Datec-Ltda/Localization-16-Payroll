@@ -26,5 +26,35 @@
             <field name="sequence">26</field>
         </record>
 
+        <record id="hr_work_entry_type_bm_ec" model="hr.work.entry.type">
+            <field name="name">Baja Médica Enfermedad Común</field>
+            <field name="code">BMEC</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_bm_prenatal" model="hr.work.entry.type">
+            <field name="name">Baja Médica Prenatal</field>
+            <field name="code">BM_PRENATAL</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_bm_postnatal" model="hr.work.entry.type">
+            <field name="name">Baja Médica Postnatal</field>
+            <field name="code">BM_POSTNATAL</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_bm_acc_lab" model="hr.work.entry.type">
+            <field name="name">Baja Médica Accidente Laboral</field>
+            <field name="code">BM_ACC_LAB</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_bm_ext_risk" model="hr.work.entry.type">
+            <field name="name">Baja Médica Riesg Extraor</field>
+            <field name="code">BM_RIESG_EXT</field>
+            <field name="sequence">26</field>
+        </record>
+
     </data>
 </odoo>

@@ -539,6 +539,170 @@ result = NET / 30
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+<!--    Ausencias de bajas médicas que NO figuran como descuento en boleta pero se pueden cargar en el mes -->
+<!--    y se deben generar los conceptos en la nómina para el reporte de la   -->
+
+    <record id="datec_l10n_bo_hr_payroll_baja_bmec_day" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Dias aplicar en Baja Médica Enfermedad Común</field>
+        <field name="code">BMEC_DAYS</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BMEC</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.BMEC.number_of_days - payslip.rule_parameter('Discount_BMEC')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_baja_med_enf_com" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Baja Médica Enfermedad Común</field>
+        <field name="code">BMEC</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BMEC</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+days = worked_days.BMEC.number_of_days - payslip.rule_parameter('Discount_BMEC')
+if days > 0:
+    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BMEC') * days
+else:
+    result = 0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_bm_prenatal_day" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Dias aplicar en Baja Médica Prenatal</field>
+        <field name="code">BM_PRENATAL_DAYS</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_PRENATAL</field>
+        <field name="amount_select">code</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.BM_PRENATAL.number_of_days - payslip.rule_parameter('Discount_BM_PRENATAL')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_baja_med_prenatal" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Baja Médica Prenatal</field>
+        <field name="code">BM_PRENATAL</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_PRENATAL</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+days = worked_days.BM_PRENATAL.number_of_days - payslip.rule_parameter('Discount_BM_PRENATAL')
+if days > 0:
+    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_PRENATAL') * days
+else:
+    result = 0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_bm_postnatal_day" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Dias aplicar en Baja Médica Postnatal</field>
+        <field name="code">BM_POSTNATAL_DAYS</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_POSTNATAL</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.BM_POSTNATAL.number_of_days - payslip.rule_parameter('Discount_BM_POSTNATAL')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_baja_med_postnatal" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Baja Médica Postnatal</field>
+        <field name="code">BM_POSTNATAL</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_POSTNATAL</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+days = worked_days.BM_POSTNATAL.number_of_days - payslip.rule_parameter('Discount_BM_POSTNATAL')
+if days > 0:
+    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_POSTNATAL') * days
+else:
+    result = 0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_bm_acc_lab_day" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Dias aplicar en Baja Médica Accidente Laboral</field>
+        <field name="code">BM_ACC_LAB_DAY</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_ACC_LAB</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.BM_ACC_LAB.number_of_days - payslip.rule_parameter('Discount_BM_ACC_LAB')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_baja_acc_lab" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Baja Médica Accidente Laboral</field>
+        <field name="code">BM_ACC_LAB</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_ACC_LAB</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+days = worked_days.BM_ACC_LAB.number_of_days - payslip.rule_parameter('Discount_BM_ACC_LAB')
+if days > 0:
+    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_ACC_LAB') * days
+else:
+    result = 0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_bm_riesg_ext_day" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Dias aplicar en  Baja Médica RiesgO Extraordinario</field>
+        <field name="code">BM_RIESG_EXT_DAY</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_RIESG_EXT</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.BM_RIESG_EXT.number_of_days - payslip.rule_parameter('Discount_BM_RIESGO_EXT')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_baja_riesg_ext" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Baja Médica Riesg Extraor</field>
+        <field name="code">BM_RIESG_EXT</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.BM_RIESG_EXT</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+days = worked_days.BM_RIESG_EXT.number_of_days - payslip.rule_parameter('Discount_BM_RIESGO_EXT')
+if days > 0:
+    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_RIESG_EXT') * days
+else:
+    result = 0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
 <!-- REGLAS TEMPORALES A MODIFICAR                          -->
     <record id="datec_l10n_bo_hr_payroll_last_ufv" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
