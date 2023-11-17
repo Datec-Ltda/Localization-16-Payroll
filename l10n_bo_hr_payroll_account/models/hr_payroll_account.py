@@ -60,7 +60,7 @@ class HrPayslip(models.Model):
             for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL']):
                 if line.code == 'QUINQUENAL':
                     return 0
-            for line in slip.line_ids.filtered(lambda x: x.code in ['BASIC', 'BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA', 'EXTRAS', 'DOMINGO', 'RECARGO', 'NET', 'SAL_PROX_MES']):
+            for line in slip.line_ids.filtered(lambda x: x.code in ['BASIC', 'BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA', 'EXTRAS', 'DOMINGO', 'RECARGO', 'NET', 'SAL_PROX_MES', 'PRIMA']):
                 if line.code == 'BASIC':
                     closing_table['basic'] = line.amount
                 if line.code == 'BONO_ANT':
@@ -79,6 +79,8 @@ class HrPayslip(models.Model):
                     closing_table['net_salary'] = line.amount
                 if line.code == 'SAL_PROX_MES':
                     closing_table['credit_next_month'] = line.amount
+                if line.code == 'PRIMA':
+                    closing_table['prima'] = line.amount
             for worked_day in slip.worked_days_line_ids.filtered(lambda x: x.code in ['WORK100']):
                 if worked_day.code == 'WORK100':
                     closing_table['worked_days'] = worked_day.number_of_days

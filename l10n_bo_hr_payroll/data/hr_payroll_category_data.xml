@@ -7,5 +7,9 @@
             <field name="code">BASIC_INF</field>
         </record>
 
+         <record id="FOR_TAX" model="hr.salary.rule.category">
+            <field name="name">PARA IMPUESTO</field>
+            <field name="code">FOR_TAX</field>
+        </record>
     </data>
 </odoo>

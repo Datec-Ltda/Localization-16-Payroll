@@ -6,5 +6,15 @@
             <field name="code">IVA_Form_110</field>
             <field name="struct_ids" eval="[(4, ref('structure_month'))]"/>
         </record>
+        <record id="payslip_input_type_bono_prod" model="hr.payslip.input.type">
+            <field name="name">BONO DE PRODUCCION</field>
+            <field name="code">BONO_PROD</field>
+            <field name="struct_ids" eval="[(4, ref('structure_month'))]"/>
+        </record>
+        <record id="payslip_input_type_sub_front" model="hr.payslip.input.type">
+            <field name="name">SUBSIDIO FRONTERA</field>
+            <field name="code">SUB_FRONT</field>
+            <field name="struct_ids" eval="[(4, ref('structure_month'))]"/>
+        </record>
     </data>
 </odoo>

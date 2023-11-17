@@ -51,6 +51,7 @@
                             <group>
                                 <field name="net_salary" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                                 <field name="gross" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
+                                <field name="prima" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                             </group>
                         </group>
                     </sheet>

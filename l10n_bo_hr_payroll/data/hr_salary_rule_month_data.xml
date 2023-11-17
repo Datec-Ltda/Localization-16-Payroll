@@ -192,16 +192,64 @@ result = SMN * 2
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+
+    <!--   2 VACACIONES              -->
+    <record id="datec_l10n_bo_hr_payroll_vac_payed" model="hr.salary.rule">
+        <field name="category_id" ref="FOR_TAX"/>
+        <field name="name">Vacaciones</field>
+        <field name="code">VAC_PAGADA</field>
+        <field name="sequence">200</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = amount_total_gained_in_month(payslip,employee, 'VAC')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <!--   2 PRIMA              -->
+    <record id="datec_l10n_bo_hr_payroll_prima_payed" model="hr.salary.rule">
+        <field name="category_id" ref="FOR_TAX"/>
+        <field name="name">Prima</field>
+        <field name="code">PRIMA_PAGADA</field>
+        <field name="sequence">200</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = amount_total_gained_in_month(payslip,employee, 'PRIMA')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <!--   NETO IMPONIBLE               -->
+    <record id="datec_l10n_bo_hr_payroll_neto_deduciones" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Sueldo neto menos deducciones</field>
+        <field name="code">NETO_IMPONIBLE</field>
+        <field name="sequence">202</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+total = 0
+if VAC_PAGADA:
+    total += VAC_PAGADA
+if PRIMA_PAGADA:
+    total += PRIMA_PAGADA
+result = NET + total
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
     <!--   BASE IMPONIBLE               -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_taxable_base" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">BASE IMPONIBLE</field>
         <field name="code">BASE_IMPONIBLE</field>
-        <field name="sequence">202</field>
+        <field name="sequence">203</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = NET - TWO_SMN
+result = NETO_IMPONIBLE - TWO_SMN
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -256,7 +304,10 @@ else:
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = IMPUESTO - TAX_2_SMN
+if (IMPUESTO - TAX_2_SMN) &lt; 0:
+    result = 0
+else:
+    result = IMPUESTO - TAX_2_SMN
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -295,7 +346,7 @@ else:
 
     <record id="datec_l10n_bo_hr_payroll_saldo_depend" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
-        <field name="name">SALDO A FAVOR DEL DESPENDIENTE</field>
+        <field name="name">SALDO A FAVOR DEL DEPENDIENTE</field>
         <field name="code">SALDO_A_FAVOR_DEPEND</field>
         <field name="sequence">208</field>
         <field name="condition_select">none</field>
@@ -421,7 +472,10 @@ result = (payslip.rule_parameter('SMN') * 3 * leave_antiquity_bonus(payslip,empl
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = 0
+if inputs.BONO_PROD:
+    result = inputs.BONO_PROD.amount
+else:
+    result=0
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -434,7 +488,10 @@ result = 0
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = 0
+if inputs.SUB_FRONT:
+    result = inputs.SUB_FRONT.amount
+else:
+    result=0
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -477,23 +534,6 @@ result = special_round(BASIC/30/8 * 2 * worked_days.HED.number_of_hours)
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = special_round(BASIC/30/8*2 * worked_days.HRN.number_of_hours)
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
-
-    <record id="datec_l10n_bo_hr_payroll_vac" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC_INF"/>
-        <field name="name">VACACIONES</field>
-        <field name="code">VAC</field>
-        <field name="sequence">11</field>
-        <field name="condition_select">none</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-if worked_days.VAC:
-    wage = total_average_earned(payslip, employee, 'NET', 3)/30 * worked_days.VAC.number_of_days
-    result = wage
-else:
-    result = 0
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -739,7 +779,7 @@ result = get_ufv_from_code(payslip, 'CURRENT_UFV')
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * payslip.rule_parameter('AP_ARP')/100)
+result = GROSS * payslip.rule_parameter('AP_ARP')/100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -752,7 +792,7 @@ result = special_round(GROSS * payslip.rule_parameter('AP_ARP')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * payslip.rule_parameter('AP_ASP')/100)
+result = GROSS * payslip.rule_parameter('AP_ASP')/100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -765,7 +805,7 @@ result = special_round(GROSS * payslip.rule_parameter('AP_ASP')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * payslip.rule_parameter('AP_APV')/100)
+result = GROSS * payslip.rule_parameter('AP_APV')/100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -778,7 +818,7 @@ result = special_round(GROSS * payslip.rule_parameter('AP_APV')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * payslip.rule_parameter('AP_AS')/100)
+result = GROSS * payslip.rule_parameter('AP_AS')/100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -791,7 +831,7 @@ result = special_round(GROSS * payslip.rule_parameter('AP_AS')/100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * 8.33 / 100)
+result = GROSS * 8.33 / 100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -804,7 +844,7 @@ result = special_round(GROSS * 8.33 / 100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * 8.33 / 100)
+result = GROSS * 8.33 / 100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -817,7 +857,7 @@ result = special_round(GROSS * 8.33 / 100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * 8.33 / 100)
+result = GROSS * 8.33 / 100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -830,7 +870,7 @@ result = special_round(GROSS * 8.33 / 100)
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(GROSS * 8.33 / 100)
+result = GROSS * 8.33 / 100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -1155,6 +1195,24 @@ result = PROM_DIA * DIAS_TRAB * PERCEN_PAY
         </field>
         <field name="struct_id" ref="structure_prima"/>
     </record>
+
+<!--    Reglas para el finiquito-->
+<!--    <record id="datec_l10n_bo_hr_payroll_vac" model="hr.salary.rule">-->
+<!--        <field name="category_id" ref="BASIC_INF"/>-->
+<!--        <field name="name">VACACIONES</field>-->
+<!--        <field name="code">VAC</field>-->
+<!--        <field name="sequence">11</field>-->
+<!--        <field name="condition_select">none</field>-->
+<!--        <field name="amount_select">code</field>-->
+<!--        <field name="amount_python_compute">-->
+<!--if worked_days.VAC:-->
+<!--    wage = total_average_earned(payslip, employee, 'NET', 3)/30 * worked_days.VAC.number_of_days-->
+<!--    result = wage-->
+<!--else:-->
+<!--    result = 0-->
+<!--        </field>-->
+<!--        <field name="struct_id" ref="structure_month"/>-->
+<!--    </record>-->
 
 </odoo>
 

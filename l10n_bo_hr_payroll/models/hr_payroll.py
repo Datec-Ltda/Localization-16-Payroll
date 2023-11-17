@@ -31,7 +31,7 @@ class HrPayrollClosingTable(models.Model):
     overtime_amount = fields.Float(string="Monto horas extras", required=True)
     sunday_overtime_amount = fields.Float(string="Monto horas extras dominical", required=True)
     night_overtime_hours_amount = fields.Float(string="Monto horas recargo nocturno", required=True)
-
+    prima = fields.Float(string="Prima")
 # Categorias ----------------------------------------------
     gross = fields.Float(string="Salario devengado", required=True)
 # Dias  ----------------------------------------------------
