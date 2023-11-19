@@ -158,7 +158,6 @@ class HrEmployee(models.Model):
                         'employee_company_id': contract.company_id.id,
                         'employee_id': contract.employee_id.id,
                         # 'employee_ids': contract.employee_id,
-                        'employee_overtime':  0.0,
                         'holiday_status_id': 1,
                         'holiday_type': 'employee',
                         'hr_attendance_overtime': True,
