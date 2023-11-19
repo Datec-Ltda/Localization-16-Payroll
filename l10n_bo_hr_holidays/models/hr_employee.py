@@ -160,7 +160,6 @@ class HrEmployee(models.Model):
                         # 'employee_ids': contract.employee_id,
                         'holiday_status_id': 1,
                         'holiday_type': 'employee',
-                        'hr_attendance_overtime': True,
                         'max_leaves': days_allocation,
                         'number_of_days':  days_allocation,
                         'number_of_days_display': days_allocation,
