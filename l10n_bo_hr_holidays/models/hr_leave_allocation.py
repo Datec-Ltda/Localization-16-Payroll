@@ -18,7 +18,6 @@ from odoo.tools.float_utils import float_round
 from odoo.tools.date_utils import get_timedelta
 from odoo.osv import expression
 
-
 _logger = logging.getLogger(__name__)
 
 
@@ -27,13 +26,15 @@ class HolidaysAllocation(models.Model):
     _inherit = 'hr.leave.allocation'
 
     # max_allocated_vacation = fields.Float(related='employee_id.allowed_vacation_days', readonly=True, string='Maximas vacaciones permitidas' )
+    initial_load = fields.Boolean(string="Carga inicial", default=False)
 
     @api.model_create_multi
     def create(self, vals_list):
         """ Override to avoid automatic logging of creation """
         for values in vals_list:
             holiday_status_id = values.get('holiday_status_id', False)
-            if holiday_status_id and holiday_status_id == 1:
+            initial_load = values.get('initial_load', False)
+            if holiday_status_id and holiday_status_id == 1 and initial_load is False:
                 employee_id = values.get('employee_id', False)
                 number_of_days = values.get('number_of_days', False)
                 if employee_id:
@@ -52,12 +53,16 @@ class HolidaysAllocation(models.Model):
                             description += employee_one.name + ' ' + str(employee_one.allowed_vacation_days) + ' '
                     if error:
                         raise UserError(_("El numero de días de vacaciones a planificar es mayor que el permitido por "
-                                            "empleado %s.", description))
+                                          "empleado %s.", description))
         holidays = super(HolidaysAllocation, self.with_context(mail_create_nosubscribe=True)).create(vals_list)
         return holidays
 
     def write(self, values):
         employee_id = values.get('employee_id', False)
+        if 'initial_load' in values:
+            initial_load = values.get('initial_load', False)
+        else:
+            initial_load = self.initial_load
         if not employee_id:
             employee_id = self.employee_id.id
         employee_all = values.get('employee_ids', False)
@@ -68,21 +73,23 @@ class HolidaysAllocation(models.Model):
             number_of_days = self.number_of_days
         if employee_id:
             employee_one = self.env['hr.employee'].search([('id', '=', employee_id)], limit=1)
-            if self.holiday_status_id and self.holiday_status_id.id == 1:
+            if self.holiday_status_id and self.holiday_status_id.id == 1 and initial_load is False:
                 if number_of_days > employee_one.allowed_vacation_days:
-                    raise UserError(_("El numero de días de vacaciones a planificar es mayor que el permitido al "
-                                      "empleado %s.", employee_one.allowed_vacation_days))
+                    raise UserError(
+                        _("El numero de días de vacaciones a planificar es mayor que el permitido al "
+                          "empleado %s.", employee_one.allowed_vacation_days))
         else:
-            error = False
-            description = ""
-            for employee_id in employee_all[0][2]:
-                employee_one = self.env['hr.employee'].search([('id', '=', employee_id)], limit=1)
-                if number_of_days > employee_one.allowed_vacation_days:
-                    error = True
-                    description += employee_one.name + ' ' + str(employee_one.allowed_vacation_days) + ' '
-            if error:
-                raise UserError(_("El numero de días de vacaciones a planificar es mayor que el permitido por "
-                                  "empleado %s.", description))
+            if initial_load is False:
+                error = False
+                description = ""
+                for employee_id in employee_all[0][2]:
+                    employee_one = self.env['hr.employee'].search([('id', '=', employee_id)], limit=1)
+                    if number_of_days > employee_one.allowed_vacation_days:
+                        error = True
+                        description += employee_one.name + ' ' + str(employee_one.allowed_vacation_days) + ' '
+                if error:
+                    raise UserError(_("El numero de días de vacaciones a planificar es mayor que el permitido por "
+                                      "empleado %s.", description))
 
         if values.get('state'):
             self._check_approval_update(values['state'])

@@ -5,6 +5,7 @@ from odoo import fields, models, api, _
 from datetime import date
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
+from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools.misc import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 
 
@@ -115,9 +116,12 @@ class HrEmployee(models.Model):
     def _create_contract_date_arrangement(self, contract):
         contract_dates_updated = []
         date_hired = contract.date_start
-        while date_hired + relativedelta(years=1) <= fields.Date.today():
-            date_hired += relativedelta(years=1)
-            contract_dates_updated.append(date_hired)
+        date_init_load = contract.company_id.init_load_vacation_date
+        if date_init_load:
+            while date_hired + relativedelta(years=1) <= fields.Date.today():
+                date_hired += relativedelta(years=1)
+                if date_hired > date_init_load:
+                    contract_dates_updated.append(date_hired)
         return contract_dates_updated
 
     def compute_years_until_date(self, contract, date_end):
@@ -143,6 +147,7 @@ class HrEmployee(models.Model):
         ])
         for contract in contracts:
             dates_update = self._create_contract_date_arrangement(contract)
+            leave_allocation = self.env['hr.leave.allocation']
             for date_init in dates_update:
                 days_allocation = self.compute_years_until_date(contract, date_init)
                 if days_allocation > 0:
@@ -169,15 +174,56 @@ class HrEmployee(models.Model):
                         'type_request_unit':'day',
                         'validation_type': 'officer',
                     }
-                    leave_allocation = self.env['hr.leave.allocation']
                     leave_allocation_element = leave_allocation.search([('holiday_status_id', '=', 1),
                                                                       ('employee_id', '=', contract.employee_id.id),
                                                                       ('date_from', '=', date_init)])
                     if not leave_allocation_element:
                         move = leave_allocation.sudo().create(value)
-                        # current_employee = self.env.user.employee_id
-                        # move.write({
-                        #     'state': 'validate',
-                        #     'approver_id': current_employee.id
-                        # })
+
+    @api.model
+    def manage_vacation_assignment_init_load(self):
+        contracts = self.env['hr.contract'].search([
+            ('state', '=', 'open'),
+            '|',
+            ('date_end', '=', False),
+            ('date_end', '=', None),
+        ])
+        for contract in contracts:
+            date_init = contract.company_id.init_load_vacation_date
+            if date_init is False:
+                raise UserError(_("Debe definir la fecha de carga inicial de las vacaciones"))
+            if contract.employee_id.date_hired <= date_init:
+                leave_allocation = self.env['hr.leave.allocation']
+                leave_allocation_element = leave_allocation.search([('holiday_status_id', '=', 1),
+                                                                    ('employee_id', '=', contract.employee_id.id),
+                                                                    ('date_from', '=', date_init),
+                                                                    ('initial_load', '=', True)])
+                if not leave_allocation_element:
+                    value = {
+                        'allocation_type': 'regular',
+                        'can_approve': True,
+                        'can_reset': True,
+                        'initial_load': True,
+                        'create_uid': 1,
+                        'date_from': date_init,
+                        'date_to': False,
+                        'display_name': 'Carga inicial de días de vacaciones' + contract.employee_id.name,
+                        'duration_display': 15,
+                        'employee_company_id': contract.company_id.id,
+                        'employee_id': contract.employee_id.id,
+                        # 'employee_ids': contract.employee_id,
+                        'holiday_status_id': 1,
+                        'holiday_type': 'employee',
+                        'max_leaves': 15,
+                        'number_of_days':  15,
+                        'number_of_days_display': 15,
+                        'number_of_hours_display': 15 * 8,
+                        'private_name': 'Carga inicial de vacaciones',
+                        'state': 'confirm',
+                        'type_request_unit': 'day',
+                        'validation_type': 'officer',
+                    }
+                    move = leave_allocation.sudo().create(value)
+
+
 

@@ -17,5 +17,35 @@
                 </xpath>
             </field>
         </record>
+
+       <record id="action_manage_vacation_assignment_init_load" model="ir.actions.server">
+           <field name="name">Ejecutar Acción Personalizada</field>
+           <field name="model_id" ref="model_hr_employee" />
+           <field name="state">code</field>
+           <field name="code">model.manage_vacation_assignment_init_load()</field>
+       </record>
+
+       <record id="action_manage_vacation_assignment" model="ir.actions.server">
+           <field name="name">Generar asignación anual</field>
+           <field name="model_id" ref="model_hr_employee" />
+           <field name="state">code</field>
+           <field name="code">model.manage_vacation_assignment_requests()</field>
+       </record>
+
+        <menuitem
+            id="hr_holidays_init_load_menu_configuration"
+            action="action_manage_vacation_assignment_init_load"
+            name="Carga Inicial de Vacaciones"
+            parent="hr_holidays.menu_hr_holidays_configuration"
+            groups="hr_holidays.group_hr_holidays_manager"
+            sequence="6"/>
+
+        <menuitem
+            id="hr_holidays_assignment_menu_configuration"
+            action="action_manage_vacation_assignment"
+            name="Asignar vacaciones anuales"
+            parent="hr_holidays.menu_hr_holidays_configuration"
+            groups="hr_holidays.group_hr_holidays_manager"
+            sequence="7"/>
     </data>
 </odoo>

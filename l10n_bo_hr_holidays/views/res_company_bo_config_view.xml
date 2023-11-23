@@ -9,6 +9,7 @@
                 <xpath expr="//notebook//page[@name='general_info']" position="after">
                     <page string="Configuración Bolivia" name="conf_bolivia">
                         <group string="Contingente de Vacaciones">
+                            <field name="init_load_vacation_date"/>
                             <field name="vacation_quota_table_ids">
                                 <tree>
                                     <field name="description"/>

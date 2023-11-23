@@ -18,7 +18,7 @@
         'views/hr_employee_view.xml',
         'views/res_company_bo_config_view.xml',
         'views/hr_leave_type_views.xml',
-
+        'views/hr_holidays_leave_view.xml',
 
     ],
     "development_status": "Beta",
