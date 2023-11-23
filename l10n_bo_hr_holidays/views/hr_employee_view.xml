@@ -14,6 +14,7 @@
                         <group string="Datos generales">
                             <field name="date_hired"/>
                             <field name="years_of_service"/>
+                            <field name="frontier_subsidy"/>
                         </group>
                         <group string="Datos vacaciones">
                             <group>

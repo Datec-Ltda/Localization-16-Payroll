@@ -488,8 +488,8 @@ else:
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-if inputs.SUB_FRONT:
-    result = inputs.SUB_FRONT.amount
+if employee.frontier_subsidy:
+    result = BASIC * payslip.rule_parameter('SUB_FRONT')/100
 else:
     result=0
         </field>

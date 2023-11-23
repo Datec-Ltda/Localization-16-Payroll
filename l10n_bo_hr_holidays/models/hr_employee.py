@@ -24,6 +24,7 @@ class HrEmployee(models.Model):
                                            readonly=True, compute='_compute_accumulated_leave_day')
     total_vacation_day = fields.Float(string="Total de vacaciones",
                                            readonly=True, compute='_compute_total_vacation_day')
+    frontier_subsidy = fields.Boolean('Subsidio Frontera', default=False)
 
     @api.depends('contract_ids.date_start')
     def _compute_date_hired(self):
