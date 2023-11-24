@@ -566,6 +566,19 @@ result = BASIC / 30 / 8
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+    <record id="datec_l10n_bo_hr_payroll_bc_diaria_gross_total" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Base cálculo diaria Total Devengado</field>
+        <field name="code">BC_DIARIA_TOTAL_BRUTO</field>
+        <field name="sequence">101</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = GROSS / 30
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_bc_diaria_total" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">Base cálculo diaria Total</field>
@@ -607,7 +620,7 @@ result = worked_days.BMEC.number_of_days - payslip.rule_parameter('Discount_BMEC
         <field name="amount_python_compute">
 days = worked_days.BMEC.number_of_days - payslip.rule_parameter('Discount_BMEC')
 if days > 0:
-    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BMEC') * days
+    result = BC_DIARIA_TOTAL_BRUTO * get_medical_leave_percent(payslip, 'BMEC') * days
 else:
     result = 0
         </field>
@@ -640,7 +653,7 @@ result = worked_days.BM_PRENATAL.number_of_days - payslip.rule_parameter('Discou
         <field name="amount_python_compute">
 days = worked_days.BM_PRENATAL.number_of_days - payslip.rule_parameter('Discount_BM_PRENATAL')
 if days > 0:
-    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_PRENATAL') * days
+    result = BC_DIARIA_TOTAL_BRUTO * get_medical_leave_percent(payslip, 'BM_PRENATAL') * days
 else:
     result = 0
         </field>
@@ -672,7 +685,7 @@ result = worked_days.BM_POSTNATAL.number_of_days - payslip.rule_parameter('Disco
         <field name="amount_python_compute">
 days = worked_days.BM_POSTNATAL.number_of_days - payslip.rule_parameter('Discount_BM_POSTNATAL')
 if days > 0:
-    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_POSTNATAL') * days
+    result = BC_DIARIA_TOTAL_BRUTO * get_medical_leave_percent(payslip, 'BM_POSTNATAL') * days
 else:
     result = 0
         </field>
@@ -704,7 +717,7 @@ result = worked_days.BM_ACC_LAB.number_of_days - payslip.rule_parameter('Discoun
         <field name="amount_python_compute">
 days = worked_days.BM_ACC_LAB.number_of_days - payslip.rule_parameter('Discount_BM_ACC_LAB')
 if days > 0:
-    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_ACC_LAB') * days
+    result = BC_DIARIA_TOTAL_BRUTO * get_medical_leave_percent(payslip, 'BM_ACC_LAB') * days
 else:
     result = 0
         </field>
@@ -736,7 +749,7 @@ result = worked_days.BM_RIESG_EXT.number_of_days - payslip.rule_parameter('Disco
         <field name="amount_python_compute">
 days = worked_days.BM_RIESG_EXT.number_of_days - payslip.rule_parameter('Discount_BM_RIESGO_EXT')
 if days > 0:
-    result = BASIC / 30 * get_medical_leave_percent(payslip, 'BM_RIESG_EXT') * days
+    result = BC_DIARIA_TOTAL_BRUTO * get_medical_leave_percent(payslip, 'BM_RIESG_EXT') * days
 else:
     result = 0
         </field>
