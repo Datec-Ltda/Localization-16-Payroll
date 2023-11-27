@@ -228,22 +228,31 @@ class HrPayslip(models.Model):
             out_days, out_hours = 0, 0
             reference_calendar = self._get_out_of_contract_calendar()
             if self.date_from < contract.date_start:
-                start = fields.Datetime.to_datetime(self.date_from)
-                stop = fields.Datetime.to_datetime(contract.date_start) + relativedelta(days=-1, hour=23, minute=59)
-                out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
-                                                                     domain=['|', ('work_entry_type_id', '=', False), (
-                                                                     'work_entry_type_id.is_leave', '=', False)])
-                out_days += out_time['days']
-                out_hours += out_time['hours']
+                # start = fields.Datetime.to_datetime(self.date_from)
+                # stop = fields.Datetime.to_datetime(contract.date_start) + relativedelta(days=-1, hour=23, minute=59)
+                # out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
+                #                                                      domain=['|', ('work_entry_type_id', '=', False), (
+                #                                                      'work_entry_type_id.is_leave', '=', False)])
+                if self.date_from.month == contract.date_start.month:
+                    out_day = contract.date_start + relativedelta(days=-1, hour=23, minute=59)
+                    out_days += out_day.day
+                    out_hours += out_day.day * 8
+                else:
+                    out_days += 30
+                    out_hours += 240
             if contract.date_end and contract.date_end < self.date_to:
-                start = fields.Datetime.to_datetime(contract.date_end) + relativedelta(days=1)
-                stop = fields.Datetime.to_datetime(self.date_to) + relativedelta(hour=23, minute=59)
-                out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
-                                                                     domain=['|', ('work_entry_type_id', '=', False), (
-                                                                     'work_entry_type_id.is_leave', '=', False)])
-                out_days += out_time['days']
-                out_hours += out_time['hours']
-
+                # start = fields.Datetime.to_datetime(contract.date_end) + relativedelta(days=1)
+                # stop = fields.Datetime.to_datetime(self.date_to) + relativedelta(hour=23, minute=59)
+                # out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
+                #                                                      domain=['|', ('work_entry_type_id', '=', False), (
+                #                                                      'work_entry_type_id.is_leave', '=', False)])
+                if self.date_to.month == contract.date_end.month:
+                    out_day = 30 - contract.date_end.day
+                    out_days += out_day
+                    out_hours += out_day * 8
+                else:
+                    out_days += 30
+                    out_hours += 240
             if out_days or out_hours:
                 work_entry_type = self.env.ref('hr_payroll.hr_work_entry_type_out_of_contract')
                 res.append({
