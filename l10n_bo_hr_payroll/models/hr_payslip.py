@@ -332,6 +332,7 @@ def amount_total_gained_average(payslip, employee, aguinaldo, ruler):
             if employee.date_hired == date_limit:
                 date_start_cal = employee.date_hired
             date_to_cal = date(payslip.dict.date_from.year, 11, 30)
+            amount_christmas_bonus = payslip.dict._get_amount_total_gained(employee, date_start_cal, date_to_cal, ruler)
         else:
             date_start_cal = date(payslip.dict.date_from.year-1, 10, 1)
             date_to_cal = date(payslip.dict.date_from.year-1, 12, 31)
