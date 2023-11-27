@@ -505,7 +505,7 @@ else:
         <field name="condition_python">result = worked_days.HE</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(BASIC/30/8 *2 * worked_days.HE.number_of_hours)
+result = BASIC/30/8 *2 * worked_days.HE.number_of_hours
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -519,7 +519,7 @@ result = special_round(BASIC/30/8 *2 * worked_days.HE.number_of_hours)
         <field name="condition_python">result = worked_days.HED</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(BASIC/30/8 * 2 * worked_days.HED.number_of_hours)
+result = BASIC/30/8 * 2 * worked_days.HED.number_of_hours
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -533,7 +533,7 @@ result = special_round(BASIC/30/8 * 2 * worked_days.HED.number_of_hours)
         <field name="condition_python">result = worked_days.HRN</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(BASIC/30/8*2 * worked_days.HRN.number_of_hours)
+result = BASIC/30/8*2 * worked_days.HRN.number_of_hours
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>

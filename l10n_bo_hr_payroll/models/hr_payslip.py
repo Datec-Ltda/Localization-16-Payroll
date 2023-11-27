@@ -271,7 +271,19 @@ class HrPayslip(models.Model):
                             'number_of_days': days,
                             'number_of_hours': hours,
                         }
-                )
+                    )
+            else:
+                work_entry_type = self.env.ref('hr_work_entry.work_entry_type_attendance')
+                work100 = next(filter(lambda x: x['work_entry_type_id'] == work_entry_type.id, res), None)
+                if not work100:
+                    valor = 30
+                    attendance_line = {
+                        'sequence': work_entry_type.sequence,
+                        'work_entry_type_id': work_entry_type.id,
+                        'number_of_days': valor,
+                        'number_of_hours': valor * 8,
+                    }
+                    res.append(attendance_line)
         return res
 
     def _get_ufv_from_code(self, date_to, code):
@@ -306,6 +318,18 @@ class HrPayslip(models.Model):
             percent = leave_type.get_percent()
 
         return percent
+
+    def _get_paid_amount(self):
+        self.ensure_one()
+        if self.env.context.get('no_paid_amount'):
+            return 0.0
+        if not self.worked_days_line_ids:
+            return self._get_contract_wage()
+        total_amount = 0
+        for line in self.worked_days_line_ids:
+            if line.code == 'WORK100':
+                total_amount += line.amount
+        return total_amount
 
 
 def special_round(number):
