@@ -1152,7 +1152,7 @@ result = amount_total_gained_average(payslip,employee, False, 'DOMINGO')
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = amount_total_gained_average(payslip,employee, False, 'NET')
+result = amount_total_gained_average(payslip,employee, False, 'GROSS')
         </field>
         <field name="struct_id" ref="structure_prima"/>
     </record>
