@@ -93,6 +93,8 @@ class HrPayslip(models.Model):
                 amount += record.net_salary
             if ruler == 'PRIMA':
                 amount += record.prima
+            if ruler == 'GROSS':
+                amount += record.gross
 
         return amount
 
