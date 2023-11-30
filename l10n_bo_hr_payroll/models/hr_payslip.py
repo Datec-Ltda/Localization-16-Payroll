@@ -147,11 +147,12 @@ class HrPayslip(models.Model):
             if work_entry_type.code == 'WORK100':
                 we_type = self.env.ref('hr_work_entry.work_entry_type_attendance')
                 valor = 30
+                horas = 240
                 attendance_line = {
                     'sequence': we_type.sequence,
                     'work_entry_type_id': we_type.id,
                     'number_of_days': valor,
-                    'number_of_hours': valor * hours_per_day,
+                    'number_of_hours': horas,
                 }
                 res.append(attendance_line)
             else:
