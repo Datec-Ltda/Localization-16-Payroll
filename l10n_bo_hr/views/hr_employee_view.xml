@@ -16,12 +16,6 @@
                 <field name="payment_method"/>
             </xpath>
             <xpath expr="//page[@name='hr_settings']/group" position="inside">
-                <group string="ID personal" >
-                    <field name="type_identification_document"/>
-                    <field name="valid_date"/>
-                    <field name="document_number"/>
-                    <field name="document_extension_id"/>
-                </group>
                 <group string="Asignación Organizativa" >
                     <field name="staff_division_id"/>
                     <field name="staffing_subdivision_id"/>
@@ -29,6 +23,16 @@
                     <field name="personnel_area_id"/>
                     <field name="payroll_area_id"/>
                 </group>
+            </xpath>
+            <xpath expr="//page[@name='hr_settings']/group" position="inside">
+                <field name="identification_documents" string="ID Personal">
+                    <tree>
+                        <field name="type_identification_document"/>
+                        <field name="valid_date" />
+                        <field name="document_number" />
+                        <field name="document_extension_id" />
+                    </tree>
+                </field>
             </xpath>
             <xpath expr="//page[@name='personal_information']/group" position="inside">
                 <group string="Datos Afp" >

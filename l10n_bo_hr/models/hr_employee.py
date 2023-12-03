@@ -12,18 +12,9 @@ from odoo.exceptions import ValidationError
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
-    type_identification_document = fields.Selection([
-        ('01', 'Cédula de identidad'),
-        ('02', 'Licencia de Conducir'),
-        ('03', 'Código de Dependiente')],
-        string='Clase de documento', default='01')
+    identification_documents = fields.One2many('hr.identification.documents', 'employee_id')
 
-    valid_date = fields.Date(string='Fecha de validez')
 
-    document_number = fields.Char(string="Número de documento", size=20)
-
-    document_extension_id = fields.Many2one('hr.document.extension', 'Extensión de documento')
-        
     # Datos de la AFP
     
     afp_id = fields.Many2one('res.partner', string='Administradora de fondo de pensiones',
@@ -243,3 +234,27 @@ class HrDocumentExtension(models.Model):
                                help='Campo calculado del monto de prima pagado para la gestión',
                                required=False
                                )
+
+
+class HrIdentificationDocuments(models.Model):
+    _name = "hr.identification.documents"
+    _description = "Documentos de Identificacion"
+
+    employee_id = fields.Many2one('hr.employee', string='Empleado', required=True)
+
+    type_identification_document = fields.Selection([
+        ('01', 'Cédula de identidad'),
+        ('02', 'Licencia de Conducir'),
+        ('03', 'Código de Dependiente')],
+        string='Clase de documento', default='01')
+
+    valid_date = fields.Date(string='Fecha de validez')
+
+    document_number = fields.Char(string="Número de documento", size=20)
+
+    document_extension_id = fields.Many2one('hr.document.extension', 'Extensión de documento')
+
+    _sql_constraints = [
+        ('code_uniq', 'unique (type_identification_document, employee_id)',
+         "Ya el empleado tiene asignado ese tipo de documento."),
+    ]

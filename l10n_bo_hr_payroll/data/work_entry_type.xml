@@ -56,5 +56,22 @@
             <field name="sequence">26</field>
         </record>
 
+        <record id="hr_work_entry_type_leave_hours" model="hr.work.entry.type">
+            <field name="name">Horas de ausencia</field>
+            <field name="code">LEAVE_HOURS</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_leave_days" model="hr.work.entry.type">
+            <field name="name">Días de ausencia</field>
+            <field name="code">LEAVE_DAYS</field>
+            <field name="sequence">26</field>
+        </record>
+
+        <record id="hr_work_entry_type_leave_unjustified_absence" model="hr.work.entry.type">
+            <field name="name">Falta injustificada</field>
+            <field name="code">LEAVE_UNJUSTIFIED</field>
+            <field name="sequence">26</field>
+        </record>
     </data>
 </odoo>

@@ -179,6 +179,51 @@ result = -total_afp
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+<!--    Horas de ausencia-->
+    <record id="datec_l10n_bo_hr_payroll_leave_hours" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">Horas de ausencia</field>
+        <field name="code">LEAVE_HOURS</field>
+        <field name="sequence">102</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.LEAVE_HOURS</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.LEAVE_HOURS.number_of_hours * BC_DIARIA_HORAS
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+<!--    Dias de ausencia-->
+    <record id="datec_l10n_bo_hr_payroll_leave_days" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">Días de ausencia</field>
+        <field name="code">LEAVE_DAYS</field>
+        <field name="sequence">102</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.LEAVE_DAYS</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.LEAVE_DAYS.number_of_days * BC_DIARIA
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+<!--    Falta injustificada-->
+    <record id="datec_l10n_bo_hr_payroll_leave_unjustified_absence" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">Falta injustificada</field>
+        <field name="code">LEAVE_UNJUSTIFIED</field>
+        <field name="sequence">102</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.LEAVE_UNJUSTIFIED</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = special_round(worked_days.LEAVE_UNJUSTIFIED.number_of_hours * BC_DIARIA_FALTA)
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
     <!--   2 SMN              -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_two_smn" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
@@ -553,6 +598,21 @@ result = BASIC / 30
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+<!--    Reglas de calculos basicos    -->
+
+    <record id="datec_l10n_bo_hr_payroll_bc_diaria_falta" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Base cálculo para falta</field>
+        <field name="code">BC_DIARIA_FALTA</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = round(BASIC / 30 * 2, 2)
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_bc_diaria_horas" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">Base de cálculo en hora</field>
@@ -756,6 +816,7 @@ else:
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+
 <!-- REGLAS TEMPORALES A MODIFICAR                          -->
     <record id="datec_l10n_bo_hr_payroll_last_ufv" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
@@ -892,6 +953,33 @@ result = GROSS * 8.33 / 100
 
 
 <!--     Reglas para quinquenal   -->
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_year" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">QUINQUENAL AÑOS</field>
+        <field name="code">QUINQUENAL_YEAR</field>
+        <field name="sequence">10</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialYear(payslip.date_from, payslip.date_to)
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">QUINQUENAL PROMEDIO</field>
+        <field name="code">QUINQUENAL_AVERAGE</field>
+        <field name="sequence">10</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to)
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_quinquenial" model="hr.salary.rule">
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">QUINQUENAL</field>
@@ -900,7 +988,7 @@ result = GROSS * 8.33 / 100
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = employee.GetQuinquennial(payslip.date_from, payslip.date_to)
+result = QUINQUENAL_YEAR * QUINQUENAL_AVERAGE
         </field>
         <field name="struct_id" ref="structure_quinquennial"/>
     </record>

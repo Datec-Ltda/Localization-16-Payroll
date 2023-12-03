@@ -27,6 +27,7 @@
         'views/hr_afp_quotation_type_view.xml',
         'views/hr_communications_forms_view.xml',
         'views/hr_document_extension_view.xml',
+        'views/hr_identification_document_view.xml',
         # 'report/hr_employee_payroll_report_views.xml',
 
     ],
