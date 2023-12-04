@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id='hr_type_identification_document_1' model='hr.type.identification.document'>
+            <field name='code'>01</field>
+            <field name='name'>Cédula de identidad</field>
+        </record>
+        <record id='hr_type_identification_document_2' model='hr.type.identification.document'>
+            <field name='code'>02</field>
+            <field name='name'>Licencia de Conducir</field>
+        </record>
+        <record id='hr_type_identification_document_3' model='hr.type.identification.document'>
+            <field name='code'>03</field>
+            <field name='name'>Código de Dependiente</field>
+        </record>
+    </data>
+</odoo>

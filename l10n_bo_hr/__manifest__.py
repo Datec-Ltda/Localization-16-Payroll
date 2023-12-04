@@ -16,6 +16,7 @@
         'data/afp_quotation_type_details.xml',
         'data/communications_forms.xml',
         'data/document_extension.xml',
+        'data/hr_type_identification_document.xml',
         'views/res_partner_view.xml',
         'views/hr_employee_view.xml',
         'wizard/hr_departure_wizard_views.xml',
@@ -28,6 +29,7 @@
         'views/hr_communications_forms_view.xml',
         'views/hr_document_extension_view.xml',
         'views/hr_identification_document_view.xml',
+        'views/hr_type_identification_doc_view.xml',
         # 'report/hr_employee_payroll_report_views.xml',
 
     ],

@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form string="Documento de identificación">
                     <group col="4">
-                        <field colspan="4" name="type_identification_document"/>
+                        <field colspan="4" name="type_identification_document_id"/>
                         <field colspan="4" name="valid_date"/>
                         <field colspan="4" name="document_number"/>
                         <field colspan="4" name="document_extension_id"/>
@@ -22,7 +22,7 @@
             <field name="model">hr.identification.documents</field>
             <field name="arch" type="xml">
                 <tree string="Documento de identificación">
-                    <field colspan="4" name="type_identification_document"/>
+                    <field colspan="4" name="type_identification_document_id"/>
                     <field colspan="4" name="valid_date"/>
                     <field colspan="4" name="document_number"/>
                     <field colspan="4" name="document_extension_id"/>
@@ -35,7 +35,7 @@
             <field name="model">hr.identification.documents</field>
             <field name="arch" type="xml">
                 <search string="Search Documento de identificación">
-                    <field name="type_identification_document" string="Documento de identificación"/>
+                    <field name="type_identification_document_id" string="Documento de identificación"/>
                     <field name="document_number" />
                </search>
             </field>

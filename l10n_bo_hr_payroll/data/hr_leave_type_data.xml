@@ -89,7 +89,7 @@
         <field name="name">Falta injustificada</field>
         <field name="requires_allocation">no</field>
         <field name="employee_requests">no</field>
-        <field name="request_unit">hour</field>
+        <field name="request_unit">day</field>
         <field name="time_type">other</field>
         <field name="color_name">lavender</field>
         <field name="leave_validation_type">both</field>

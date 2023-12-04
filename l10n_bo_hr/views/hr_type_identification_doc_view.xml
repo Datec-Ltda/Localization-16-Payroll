@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+<!--    EMPLOYEE CLASE DE DOCUMENTO   -->
+    <record id="hr_type_identification_document_form" model="ir.ui.view">
+            <field name="name">hr.type.identification.document.form</field>
+            <field name="model">hr.type.identification.document</field>
+            <field name="arch" type="xml">
+                <form string="Clase documento">
+                    <group col="4">
+                        <field colspan="4" name="code"/>
+                        <field colspan="4" name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_type_identification_document_tree" model="ir.ui.view">
+            <field name="name">hr.type.identification.document.tree</field>
+            <field name="model">hr.type.identification.document</field>
+            <field name="arch" type="xml">
+                <tree string="Clase documento">
+                      <field colspan="4" name="code"/>
+                      <field colspan="4" name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_type_identification_document_search" model="ir.ui.view">
+            <field name="name">hr.type.identification.document.search</field>
+            <field name="model">hr.type.identification.document</field>
+            <field name="arch" type="xml">
+                <search string="Search Clases de documentos">
+                    <field name="code" string="Code"/>
+                    <field name="name" string="Clase documento"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="action_hr_type_identification_document" model="ir.actions.act_window">
+            <field name="name">Clase documentos</field>
+            <field name="res_model">hr.type.identification.document</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_type_identification_document_search"/>
+        </record>
+
+        <menuitem
+            id="menu_hr_type_identification_document"
+            action="action_hr_type_identification_document"
+            parent="hr_menu_empleado_bolivia"
+            sequence="4"
+            groups="hr.group_hr_manager"/>
+
+</odoo>

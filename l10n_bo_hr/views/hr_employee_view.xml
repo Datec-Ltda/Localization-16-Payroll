@@ -27,7 +27,7 @@
             <xpath expr="//page[@name='hr_settings']/group" position="inside">
                 <field name="identification_documents" string="ID Personal">
                     <tree>
-                        <field name="type_identification_document"/>
+                        <field name="type_identification_document_id"/>
                         <field name="valid_date" />
                         <field name="document_number" />
                         <field name="document_extension_id" />

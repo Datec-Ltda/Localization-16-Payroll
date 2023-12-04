@@ -197,7 +197,6 @@ class HrEmployee(models.Model):
                 leave_allocation = self.env['hr.leave.allocation']
                 leave_allocation_element = leave_allocation.search([('holiday_status_id', '=', 1),
                                                                     ('employee_id', '=', contract.employee_id.id),
-                                                                    ('date_from', '=', date_init),
                                                                     ('initial_load', '=', True)])
                 if not leave_allocation_element:
                     value = {

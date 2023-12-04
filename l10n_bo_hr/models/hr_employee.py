@@ -242,11 +242,7 @@ class HrIdentificationDocuments(models.Model):
 
     employee_id = fields.Many2one('hr.employee', string='Empleado', required=True)
 
-    type_identification_document = fields.Selection([
-        ('01', 'Cédula de identidad'),
-        ('02', 'Licencia de Conducir'),
-        ('03', 'Código de Dependiente')],
-        string='Clase de documento', default='01')
+    type_identification_document_id = fields.Many2one('hr.type.identification.document', 'Clase de documento')
 
     valid_date = fields.Date(string='Fecha de validez')
 
@@ -255,6 +251,20 @@ class HrIdentificationDocuments(models.Model):
     document_extension_id = fields.Many2one('hr.document.extension', 'Extensión de documento')
 
     _sql_constraints = [
-        ('code_uniq', 'unique (type_identification_document, employee_id)',
+        ('code_uniq', 'unique (type_identification_document_id, employee_id)',
          "Ya el empleado tiene asignado ese tipo de documento."),
+    ]
+
+
+class HrTypeIdentificationDocument(models.Model):
+
+    _name = "hr.type.identification.document"
+    _description = "Clase de documento"
+
+    code = fields.Char('Código', required=True)
+    name = fields.Char(string="Clase de documento", translate=True, required=True)
+
+
+    _sql_constraints = [
+        ('code_uniq', 'unique (code)', "El código ya existe !"),
     ]
