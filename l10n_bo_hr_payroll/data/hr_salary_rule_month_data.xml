@@ -368,7 +368,7 @@ if VAC_PAGADA:
     total += VAC_PAGADA
 if PRIMA_PAGADA:
     total += PRIMA_PAGADA
-result = GROSS + total - TOTAL_AFP
+result = GROSS + total + TOTAL_AFP
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -579,7 +579,7 @@ else:
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 if SALDO_A_FAVOR_FISCO > SALDO_UTILIZADO:
-    result = SALDO_A_FAVOR_FISCO - SALDO_UTILIZADO
+    result = -(SALDO_A_FAVOR_FISCO - SALDO_UTILIZADO)
 else:
     result = 0
         </field>
