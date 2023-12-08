@@ -6,7 +6,7 @@
     "maintainer": "Vauxoo",
     "website": "https://github.com/OCA/hr",
     "license": "AGPL-3",
-    "category": "Human Resources",
+    "category": "Línea base Bolivia/Human Resources/Employees",
     "summary": "Split Name in First Name, Father's Last Name and Mother's Last Name",
     "depends": ["hr_employee_firstname"],
     "data": ["views/hr_views.xml"],

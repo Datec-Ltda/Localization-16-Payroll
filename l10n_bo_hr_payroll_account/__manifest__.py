@@ -6,7 +6,7 @@
     'depends': ['l10n_bo_hr_payroll', 'hr_payroll_account', 'analytic', 'hr_recruitment'],
     'author': "Datec",
     'license': 'OPL-1',
-    'category': 'Payroll Localization',
+    'category': 'Línea base Bolivia/Human Resources/Payroll',
     'website': "",
     'description': """
         Bolivia Payroll Account Localization

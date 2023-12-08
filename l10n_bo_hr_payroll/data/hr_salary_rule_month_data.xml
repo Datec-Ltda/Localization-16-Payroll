@@ -16,6 +16,94 @@ result = payslip.rule_parameter('SMN')
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+    <record id="datec_l10n_bo_hr_payroll_antiquity_bonus" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">BONO ANTIGUEDAD</field>
+        <field name="code">BONO_ANT</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = (payslip.rule_parameter('SMN') * 3 * leave_antiquity_bonus(payslip,employee))/100
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_production_bonus" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">BONO PRODUCCION</field>
+        <field name="code">BONO_PROD</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+if inputs.BONO_PROD:
+    result = inputs.BONO_PROD.amount
+else:
+    result=0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_frontier_subsidy" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">SUBSIDIO FRONTERA</field>
+        <field name="code">SUBS_FRONTERA</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+if employee.frontier_subsidy:
+    result = BASIC * payslip.rule_parameter('SUB_FRONT')/100
+else:
+    result=0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_overtime_amount" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">HORAS EXTRAS</field>
+        <field name="code">EXTRAS</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HE</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = BASIC/30/8 *2 * worked_days.HE.number_of_hours
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_sunday_overtime" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">Dominical y Dom. Trab. </field>
+        <field name="code">DOMINGO</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HED</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = BASIC/30/8 * 2 * worked_days.HED.number_of_hours
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_night_overtime" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">RECARGO</field>
+        <field name="code">RECARGO</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HRN</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = BASIC/30/8*2 * worked_days.HRN.number_of_hours
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+
 <!--    Reglas de AFP                   -->
 <!--    Cotización mensual              -->
     <record id="datec_l10n_bo_hr_payroll_afp_cm" model="hr.salary.rule">
@@ -219,7 +307,7 @@ result = worked_days.LEAVE_DAYS.number_of_days * BC_DIARIA
         <field name="condition_python">result = worked_days.LEAVE_UNJUSTIFIED</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = special_round(worked_days.LEAVE_UNJUSTIFIED.number_of_hours * BC_DIARIA_FALTA)
+result = special_round(worked_days.LEAVE_UNJUSTIFIED.number_of_days * BC_DIARIA_FALTA)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -229,7 +317,7 @@ result = special_round(worked_days.LEAVE_UNJUSTIFIED.number_of_hours * BC_DIARIA
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">2 SMN</field>
         <field name="code">TWO_SMN</field>
-        <field name="sequence">201</field>
+        <field name="sequence">150</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -237,13 +325,13 @@ result = SMN * 2
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
-
+<!--Lo baje de 201 a 150-->
     <!--   2 VACACIONES              -->
     <record id="datec_l10n_bo_hr_payroll_vac_payed" model="hr.salary.rule">
         <field name="category_id" ref="FOR_TAX"/>
         <field name="name">Vacaciones</field>
         <field name="code">VAC_PAGADA</field>
-        <field name="sequence">200</field>
+        <field name="sequence">150</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -251,13 +339,13 @@ result = amount_total_gained_in_month(payslip,employee, 'VAC')
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
-
+<!--Cambio la secuencia de 200 a 150-->
     <!--   2 PRIMA              -->
     <record id="datec_l10n_bo_hr_payroll_prima_payed" model="hr.salary.rule">
         <field name="category_id" ref="FOR_TAX"/>
         <field name="name">Prima</field>
         <field name="code">PRIMA_PAGADA</field>
-        <field name="sequence">200</field>
+        <field name="sequence">150</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -265,13 +353,13 @@ result = amount_total_gained_in_month(payslip,employee, 'PRIMA')
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
-
+<!--Cambio la secuencia de 200 a 150-->
     <!--   NETO IMPONIBLE               -->
     <record id="datec_l10n_bo_hr_payroll_neto_deduciones" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">Sueldo neto menos deducciones</field>
         <field name="code">NETO_IMPONIBLE</field>
-        <field name="sequence">202</field>
+        <field name="sequence">152</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -280,24 +368,30 @@ if VAC_PAGADA:
     total += VAC_PAGADA
 if PRIMA_PAGADA:
     total += PRIMA_PAGADA
-result = NET + total
+result = GROSS + total - TOTAL_AFP
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Quite el NET y puse el GROSS Y reste el total AFP   -->
+<!--Cambio la secuencia de 202 a 152-->
 
     <!--   BASE IMPONIBLE               -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_taxable_base" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">BASE IMPONIBLE</field>
         <field name="code">BASE_IMPONIBLE</field>
-        <field name="sequence">203</field>
+        <field name="sequence">153</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = NETO_IMPONIBLE - TWO_SMN
+if NETO_IMPONIBLE &lt; TWO_SMN:
+    result = 0
+else:
+    result = NETO_IMPONIBLE - TWO_SMN
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 203 a 153-->
 
     <record id="datec_l10n_bo_hr_payroll_percen_tax" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
@@ -316,7 +410,7 @@ result = payslip.rule_parameter('TAX')
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">IMPUESTO</field>
         <field name="code">IMPUESTO</field>
-        <field name="sequence">203</field>
+        <field name="sequence">153</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -324,12 +418,13 @@ result = BASE_IMPONIBLE * PERCEN_TAX / 100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 203 a 153-->
 
     <record id="datec_l10n_bo_hr_payroll_tax_smn" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">TAX * 2 SMN</field>
         <field name="code">TAX_2_SMN</field>
-        <field name="sequence">204</field>
+        <field name="sequence">154</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -340,12 +435,13 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 204 a 154-->
 
     <record id="datec_l10n_bo_hr_payroll_tax_neto_rc_iva" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">IMPUESTO NETO RC-IVA</field>
         <field name="code">IMP_NETO_RC_IVA</field>
-        <field name="sequence">205</field>
+        <field name="sequence">155</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -356,12 +452,13 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 205 a 155-->
 
     <record id="datec_l10n_bo_hr_payroll_iva_form_110" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">IVA FORM.110</field>
         <field name="code">IVA_FORM_110</field>
-        <field name="sequence">206</field>
+        <field name="sequence">156</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -372,12 +469,13 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 206 a 156-->
 
     <record id="datec_l10n_bo_hr_payroll_saldo_fisco" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">SALDO A FAVOR DE FISCO</field>
         <field name="code">SALDO_A_FAVOR_FISCO</field>
-        <field name="sequence">207</field>
+        <field name="sequence">157</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -388,12 +486,13 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 207 a 157-->
 
     <record id="datec_l10n_bo_hr_payroll_saldo_depend" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">SALDO A FAVOR DEL DEPENDIENTE</field>
         <field name="code">SALDO_A_FAVOR_DEPEND</field>
-        <field name="sequence">208</field>
+        <field name="sequence">158</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -404,12 +503,13 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 208 a 158-->
 
     <record id="datec_l10n_bo_hr_payroll_saldo_favor_mes_ant" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">SALDO A FAVOR MES ANTERIOR</field>
         <field name="code">SALDO_A_FAVOR_MES_ANT</field>
-        <field name="sequence">209</field>
+        <field name="sequence">159</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -417,12 +517,13 @@ result = credit_balance_previous_month(payslip,employee)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 209 a 159-->
 
     <record id="datec_l10n_bo_hr_payroll_saldo_actualizacion" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">ACTUALIZACION</field>
         <field name="code">ACTUALIZACION</field>
-        <field name="sequence">210</field>
+        <field name="sequence">160</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -433,12 +534,13 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 210 a 160-->
 
     <record id="datec_l10n_bo_hr_payroll_sal_ant_act" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">SALDO ANTERIOR ACTUALIZADO</field>
         <field name="code">SAL_ANT_ACT</field>
-        <field name="sequence">211</field>
+        <field name="sequence">161</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -446,12 +548,13 @@ result = SALDO_A_FAVOR_MES_ANT + ACTUALIZACION
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 211 a 161-->
 
     <record id="datec_l10n_bo_hr_payroll_sal_use" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">SALDO UTILIZADO</field>
         <field name="code">SALDO_UTILIZADO</field>
-        <field name="sequence">212</field>
+        <field name="sequence">162</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -465,12 +568,13 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 212 a 162-->
 
     <record id="datec_l10n_bo_hr_payroll_tax_ret" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC_INF"/>
+        <field name="category_id" ref="hr_payroll.DED"/>
         <field name="name">IMPUESTO RETENIDO A PAGAR</field>
         <field name="code">IMP_RET_PAGAR</field>
-        <field name="sequence">213</field>
+        <field name="sequence">163</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -481,6 +585,8 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--    Cambio la secuencia de 213 a 163        -->
+<!--    Se cambio a la categoría deducciones    -->
 
     <record id="datec_l10n_bo_hr_payroll_amount_next_month" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
@@ -494,94 +600,8 @@ result = SALDO_A_FAVOR_DEPEND + SAL_ANT_ACT - SALDO_UTILIZADO
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+<!--Cambio la secuencia de 213 a 163-->
 
-
-    <record id="datec_l10n_bo_hr_payroll_antiquity_bonus" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.ALW"/>
-        <field name="name">BONO ANTIGUEDAD</field>
-        <field name="code">BONO_ANT</field>
-        <field name="sequence">11</field>
-        <field name="condition_select">none</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-result = (payslip.rule_parameter('SMN') * 3 * leave_antiquity_bonus(payslip,employee))/100
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
-
-    <record id="datec_l10n_bo_hr_payroll_production_bonus" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.ALW"/>
-        <field name="name">BONO PRODUCCION</field>
-        <field name="code">BONO_PROD</field>
-        <field name="sequence">11</field>
-        <field name="condition_select">none</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-if inputs.BONO_PROD:
-    result = inputs.BONO_PROD.amount
-else:
-    result=0
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
-
-    <record id="datec_l10n_bo_hr_payroll_frontier_subsidy" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.ALW"/>
-        <field name="name">SUBSIDIO FRONTERA</field>
-        <field name="code">SUBS_FRONTERA</field>
-        <field name="sequence">11</field>
-        <field name="condition_select">none</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-if employee.frontier_subsidy:
-    result = BASIC * payslip.rule_parameter('SUB_FRONT')/100
-else:
-    result=0
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
-
-    <record id="datec_l10n_bo_hr_payroll_overtime_amount" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.ALW"/>
-        <field name="name">HORAS EXTRAS</field>
-        <field name="code">EXTRAS</field>
-        <field name="sequence">11</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.HE</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-result = BASIC/30/8 *2 * worked_days.HE.number_of_hours
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
-
-    <record id="datec_l10n_bo_hr_payroll_sunday_overtime" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.ALW"/>
-        <field name="name">Dominical y Dom. Trab. </field>
-        <field name="code">DOMINGO</field>
-        <field name="sequence">11</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.HED</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-result = BASIC/30/8 * 2 * worked_days.HED.number_of_hours
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
-
-    <record id="datec_l10n_bo_hr_payroll_night_overtime" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.ALW"/>
-        <field name="name">RECARGO</field>
-        <field name="code">RECARGO</field>
-        <field name="sequence">11</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.HRN</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-result = BASIC/30/8*2 * worked_days.HRN.number_of_hours
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
 
 <!--    Reglas de calculos basicos    -->
 
@@ -626,6 +646,7 @@ result = BASIC / 30 / 8
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+
     <record id="datec_l10n_bo_hr_payroll_bc_diaria_gross_total" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">Base cálculo diaria Total Devengado</field>
@@ -635,6 +656,19 @@ result = BASIC / 30 / 8
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = GROSS / 30
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_total_descuento" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Total Descuento</field>
+        <field name="code">TOTAL_DESC</field>
+        <field name="sequence">200</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = categories.DED
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>

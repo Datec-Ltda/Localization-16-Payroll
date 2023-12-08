@@ -4,7 +4,7 @@
     'depends': ['l10n_bo_hr_contract', 'hr_holidays'],
     'author': "Datec",
     'license': 'OPL-1',
-    'category': 'Payroll Localization',
+    'category': 'Línea base Bolivia/Human Resources/Time Off',
     'description': """
     Bolivia Payroll Localization
     """,

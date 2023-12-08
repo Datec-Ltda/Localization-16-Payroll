@@ -11,7 +11,7 @@
     "maintainer": "Savoir-faire Linux",
     "website": "https://github.com/OCA/hr",
     "license": "AGPL-3",
-    "category": "Human Resources",
+    "category": "Línea base Bolivia/Human Resources/Employees",
     "summary": "Adds First Name to Employee",
     "depends": ["hr"],
     "data": ["views/hr_view.xml", "views/base_config_view.xml"],

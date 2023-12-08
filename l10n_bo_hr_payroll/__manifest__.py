@@ -4,7 +4,7 @@
     'depends': ['hr_payroll', 'l10n_bo_hr', 'l10n_bo_hr_holidays', 'hr_bo_employee_lastnames'],
     'author': "Datec",
     'license': 'OPL-1',
-    'category': 'Payroll Localization',
+    'category': 'Línea base Bolivia/Human Resources/Payroll',
     'description': """
     Bolivia Payroll Localization
     """,

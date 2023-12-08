@@ -10,7 +10,7 @@
     """,
     'license': 'OPL-1',
     'author': "Datec",
-    'category': 'Sitio Web',
+    'category': 'Línea base Bolivia/Sitio Web',
     'version': '0.1.0.0.0.3',
     'depends': ['base'],
     # always loaded
