@@ -36,23 +36,23 @@ class HrPayslip(models.Model):
                 return
             self.contract_id = self.env['hr.contract'].browse(contract_ids[0])
 
-        if not self.contract_id.structure_type_id:
-            return
-        self.struct_id = self.contract_id.structure_type_id.struct_id
+        # if not self.contract_id.structure_type_id:
+        #     return
+        # self.structure_type_id = self.contract_id.structure_type_id
 
         # computation of the salary input
-        contracts = self.env['hr.contract'].browse(contract_ids)
-        worked_days_line_ids = self.get_worked_day_lines(contracts, date_from, date_to)
-        worked_days_lines = self.worked_days_line_ids.browse([])
-        for r in worked_days_line_ids:
-            worked_days_lines += worked_days_lines.new(r)
-        self.worked_days_line_ids = worked_days_lines
-        if contracts:
-            input_line_ids = self.get_inputs(contracts, date_from, date_to)
-            input_lines = self.input_line_ids.browse([])
-            for r in input_line_ids:
-                input_lines += input_lines.new(r)
-            self.input_line_ids = input_lines
+        # contracts = self.env['hr.contract'].browse(contract_ids)
+        # worked_days_line_ids = self.get_worked_day_lines(contracts, date_from, date_to)
+        # worked_days_lines = self.worked_days_line_ids.browse([])
+        # for r in worked_days_line_ids:
+        #     worked_days_lines += worked_days_lines.new(r)
+        # self.worked_days_line_ids = worked_days_lines
+        # if contracts:
+        #     input_line_ids = self.get_inputs(contracts, date_from, date_to)
+        #     input_lines = self.input_line_ids.browse([])
+        #     for r in input_line_ids:
+        #         input_lines += input_lines.new(r)
+        #     self.input_line_ids = input_lines
         return
 
     def get_inputs(self, contract_ids, date_from, date_to):

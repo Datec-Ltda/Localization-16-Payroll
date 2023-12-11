@@ -111,19 +111,19 @@
                                     <tbody>
                                         <tr>
                                             <td>Indemnización</td>
-                                            <td class="text-center"><field name="indemnity_year" readonly="1"/></td>
+                                            <td class="text-center"><field name="indemnity_year" readonly="1" force_save="1"/></td>
                                             <td>Años</td>
-                                            <td class="text-center"><field name="indemnity_year_amount"/></td>
+                                            <td class="text-center"><field name="indemnity_year_amount" /></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td class="text-center"><field name="indemnity_month" readonly="1"/></td>
+                                            <td class="text-center"><field name="indemnity_month" readonly="1" force_save="1"/></td>
                                             <td>Meses</td>
                                             <td class="text-center"><field name="indemnity_month_amount"/></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td class="text-center"><field name="indemnity_day" readonly="1"/></td>
+                                            <td class="text-center"><field name="indemnity_day" readonly="1" force_save="1"/></td>
                                             <td>Dias</td>
                                             <td class="text-center"><field name="indemnity_day_amount"/></td>
                                         </tr>
@@ -140,7 +140,7 @@
                                         </tr>
                                         <tr>
                                             <td>Vacaciones</td>
-                                            <td class="text-center"><field name="holidays_days" readonly="1"/></td>
+                                            <td class="text-center"><field name="holidays_days" readonly="1" force_save="1"/></td>
                                             <td>Dias</td>
                                             <td class="text-center"><field name="holidays_amount"/></td>
                                         </tr>
