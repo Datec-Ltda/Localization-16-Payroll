@@ -317,17 +317,23 @@ class HrPayrollFiniquito(models.Model):
 
 
 def indemnity_accumulated_month(employee_id):
-    date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
-    db_today = datetime.now().date()
-    diff = relativedelta(db_today, date_hired_this_year)
-    return diff.months
+    if employee_id.date_hired:
+        date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
+        db_today = datetime.now().date()
+        diff = relativedelta(db_today, date_hired_this_year)
+        return diff.months
+    else:
+        return 0
 
 
 def indemnity_accumulated_day(employee_id):
-    date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
-    db_today = datetime.now().date()
-    diff = relativedelta(db_today, date_hired_this_year)
-    return diff.days
+    if employee_id.date_hired:
+        date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
+        db_today = datetime.now().date()
+        diff = relativedelta(db_today, date_hired_this_year)
+        return diff.days
+    else:
+        return 0
 
 
 def christmas_bonus_accumulated_month(employee_id):
