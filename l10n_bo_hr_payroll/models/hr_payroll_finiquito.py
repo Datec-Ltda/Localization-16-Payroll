@@ -343,7 +343,10 @@ def christmas_bonus_accumulated_month(employee_id):
 
 
 def christmas_bonus_accumulated_day(employee_id):
-    date_init_month = date(date.today().year, employee_id.departure_date.month, 1)
-    diff = relativedelta(employee_id.departure_date, date_init_month)
-    return diff.days
+    if employee_id.departure_date:
+        date_init_month = date(date.today().year, employee_id.departure_date.month, 1)
+        diff = relativedelta(employee_id.departure_date, date_init_month)
+        return diff.days
+    else:
+        return 0
 
