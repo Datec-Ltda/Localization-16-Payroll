@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+<!--    SUPPLEMENTARY WORK    -->
+        <record id="hr_payroll_finiquito_view_form" model="ir.ui.view">
+            <field name="name">hr.payroll.finiquito.form</field>
+            <field name="model">hr.payroll.finiquito</field>
+            <field name="arch" type="xml">
+                <form string="Supplementary Work">
+                    <header>
+                        <field name="state" readonly="1"/>
+                        <button string="Abrir" name="action_period_open" type="object" states="draft"/>
+                        <button string="A borrador" name="action_period_draft" states="open" type='object' />
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <group >
+                                <field name="employee_id"/>
+                                <field name="contract_id"/>
+                            </group>
+                            <group>
+                                <field name="date_hire"/>
+                                <field name="date_end"/>
+                                <field name="report_date"/>
+                            </group>
+                            <group>
+                                <field name="has_penalties"/>
+                                <field name="penalties"
+                                    attrs="{'invisible': [('has_penalties', '=', False)], 'required':[('has_penalties', '!=', False)]}"/>
+                            </group>
+                            <group>
+                                <field name="has_eviction"/>
+                                <field name="eviction"
+                                    attrs="{'invisible': [('has_eviction', '=', False)], 'required':[('has_eviction', '!=', False)]}"/>
+                            </group>
+                        </group>
+                        <group col="2">
+                            <group>
+                                <table colspan="8" border="0" cellpadding="0" style="background-color: white; padding: 0px; border-collapse:separate;">
+                                    <thead>
+                                        <tr>
+                                            <th>Concepto</th>
+                                            <th class="text-center">Mes 1</th>
+                                            <th class="text-center">Mes 2</th>
+                                            <th class="text-center">Mes 3</th>
+                                            <th class="text-center">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Remuneración</td>
+                                            <td class="text-center"><field name="monthly_compensation1"/></td>
+                                            <td class="text-center"><field name="monthly_compensation2"/></td>
+                                            <td class="text-center"><field name="monthly_compensation3"/></td>
+                                            <td class="text-center"><field name="monthly_compensation_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bono antigüedad</td>
+                                            <td class="text-center"><field name="seniority_bonus1"/></td>
+                                            <td class="text-center"><field name="seniority_bonus2"/></td>
+                                            <td class="text-center"><field name="seniority_bonus3"/></td>
+                                            <td class="text-center"><field name="seniority_bonus_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bono Frontera</td>
+                                            <td class="text-center"><field name="border_bonus1"/></td>
+                                            <td class="text-center"><field name="border_bonus2"/></td>
+                                            <td class="text-center"><field name="border_bonus3"/></td>
+                                            <td class="text-center"><field name="border_bonus_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Comisiones</td>
+                                            <td class="text-center"><field name="commissions1"/></td>
+                                            <td class="text-center"><field name="commissions2"/></td>
+                                            <td class="text-center"><field name="commissions3"/></td>
+                                            <td class="text-center"><field name="commissions_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Horas Estras</td>
+                                            <td class="text-center"><field name="overtime1"/></td>
+                                            <td class="text-center"><field name="overtime2"/></td>
+                                            <td class="text-center"><field name="overtime3"/></td>
+                                            <td class="text-center"><field name="overtime_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Otros Bonos</td>
+                                            <td class="text-center"><field name="other_bonuses1"/></td>
+                                            <td class="text-center"><field name="other_bonuses2"/></td>
+                                            <td class="text-center"><field name="other_bonuses3"/></td>
+                                            <td class="text-center"><field name="other_bonuses_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td class="text-center"><field name="total1"/></td>
+                                            <td class="text-center"><field name="total2"/></td>
+                                            <td class="text-center"><field name="total3"/></td>
+                                            <td class="text-center"><field name="total_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Promedio</td>
+                                            <td class="text-center"></td>
+                                            <td class="text-center"></td>
+                                            <td class="text-center"><field name="average"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </group>
+                            <group>
+                                <table colspan="8" border="0" cellpadding="0" style="background-color: white; padding: 0px; border-collapse:separate;">
+                                    <tbody>
+                                        <tr>
+                                            <td>Indemnización</td>
+                                            <td class="text-center"><field name="indemnity_year" readonly="1"/></td>
+                                            <td>Años</td>
+                                            <td class="text-center"><field name="indemnity_year_amount"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="text-center"><field name="indemnity_month" readonly="1"/></td>
+                                            <td>Meses</td>
+                                            <td class="text-center"><field name="indemnity_month_amount"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="text-center"><field name="indemnity_day" readonly="1"/></td>
+                                            <td>Dias</td>
+                                            <td class="text-center"><field name="indemnity_day_amount"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aguinaldo</td>
+                                            <td class="text-center"><field name="christmas_bonus_month"/></td>
+                                            <td>Mes</td>
+                                            <td class="text-center"><field name="christmas_bonus_month_amount"/></td>
+                                        </tr>                                        <tr>
+                                            <td></td>
+                                            <td class="text-center"><field name="christmas_bonus_day"/></td>
+                                            <td>Días</td>
+                                            <td class="text-center"><field name="christmas_bonus_day_amount"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vacaciones</td>
+                                            <td class="text-center"><field name="holidays_days" readonly="1"/></td>
+                                            <td>Dias</td>
+                                            <td class="text-center"><field name="holidays_amount"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Otros bonos extraordinarios</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-center"><field name="other_extraordinary_bonuses"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total de finiquito</td>
+                                            <td></td>
+                                            <td class="text-center"><field name="finiquito"/></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_payroll_finiquito_view_tree" model="ir.ui.view">
+            <field name="name">hr.payroll.finiquito.tree</field>
+            <field name="model">hr.payroll.finiquito</field>
+            <field name="arch" type="xml">
+                <tree string="Finiquito">
+                      <field colspan="4" name="employee_id"/>
+                      <field colspan="4" name="date_hire"/>
+                      <field colspan="4" name="date_end"/>
+                      <field colspan="4" name="report_date"/>
+                      <field colspan="4" name="monthly_compensation_total"/>
+                      <field colspan="4" name="seniority_bonus_total"/>
+                      <field colspan="4" name="commissions_total"/>
+                      <field colspan="4" name="overtime_total"/>
+                      <field colspan="4" name="other_bonuses_total"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="hr_payroll_finiquito_view_search" model="ir.ui.view">
+            <field name="name">hr.payroll.finiquito.search</field>
+            <field name="model">hr.payroll.finiquito</field>
+            <field name="arch" type="xml">
+                <search string="Finiquito">
+                    <field name="employee_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_payroll_finiquito" model="ir.actions.act_window">
+            <field name="name">Finiquito</field>
+            <field name="res_model">hr.payroll.finiquito</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_payroll_finiquito_view_search"/>
+        </record>
+
+        <menuitem
+            id="hr_co_menu_hr_payroll_finiquito"
+            action="action_hr_payroll_finiquito"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
+            sequence="45"
+            groups="hr_payroll.group_hr_payroll_manager" />
+</odoo>

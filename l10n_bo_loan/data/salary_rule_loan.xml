@@ -18,7 +18,7 @@ result = inputs.LO and - (inputs.LO.amount)
         </record>
 
         <record id="hr_work_entry_type_loan" model="hr.work.entry.type">
-            <field name="name">Adelanto</field>
+            <field name="name">Prestamo</field>
             <field name="code">LO</field>
             <field name="sequence">26</field>
         </record>

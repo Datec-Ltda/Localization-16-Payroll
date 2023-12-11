@@ -79,7 +79,6 @@ class HrEmployee(models.Model):
                 diff_days = diff.days
                 per_day = self.allowed_vacation_days/30
                 record.accumulated_leave_day = diff_days * per_day
-
             else:
                 record.accumulated_leave_day = 0
 
