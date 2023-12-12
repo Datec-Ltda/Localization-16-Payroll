@@ -55,7 +55,7 @@ result = amount_total_gained_average(payslip,employee, True, 'SUBS_FRONTERA')
         <field name="struct_id" ref="structure_christmas_bonus_second"/>
     </record>
 
-    <record id="datec_l10n_bo_hr_payroll_other_bonuses_average" model="hr.salary.rule">
+    <record id="datec_l10n_bo_hr_payroll_sa_other_bonuses_average" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">OTROS BONOS PROMEDIO</field>
         <field name="code">OTROS_BONOS</field>
