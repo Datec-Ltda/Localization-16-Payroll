@@ -90,14 +90,23 @@ class HrPayslip(models.Model):
             categories = {}
             categories_mapping = {
                 'GROSS': 'gross',
+                'BONOS': 'other_bonuses',
             }
             for line in slip.line_ids:
                 category_code = line.category_id.code
-                if category_code in ('GROSS',):
+                if category_code in ('GROSS', 'BONOS'):
                     if category_code not in categories:
-                        categories[category_code] = line.amount
+                        if category_code == 'BONOS':
+                            if line.code not in ('BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA'):
+                                categories[category_code] = line.amount
+                        else:
+                            categories[category_code] = line.amount
                     else:
-                        categories[category_code] += line.amount
+                        if category_code == 'BONOS':
+                            if line.code not in ('BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA'):
+                                categories[category_code] += line.amount
+                        else:
+                            categories[category_code] += line.amount
             for category in categories:
                 if category in categories_mapping:
                     field_name = categories_mapping[category]

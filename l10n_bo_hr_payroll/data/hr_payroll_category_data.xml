@@ -12,9 +12,9 @@
             <field name="code">FOR_TAX</field>
         </record>
 
-         <record id="BONO" model="hr.salary.rule.category">
-            <field name="name">Bono</field>
-            <field name="code">BONO</field>
-        </record>
+<!--         <record id="BONO" model="hr.salary.rule.category">-->
+<!--            <field name="name">Bono</field>-->
+<!--            <field name="code">BONO</field>-->
+<!--        </record>-->
     </data>
 </odoo>
