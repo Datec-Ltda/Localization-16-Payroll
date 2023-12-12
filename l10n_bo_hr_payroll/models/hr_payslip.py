@@ -95,7 +95,8 @@ class HrPayslip(models.Model):
                 amount += record.prima
             if ruler == 'GROSS':
                 amount += record.gross
-
+            if ruler == 'BONOS':
+                amount += record.other_bonuses
         return amount
 
     def _get_total_average_earned(self, date_to, employee, ruler, months):

@@ -55,6 +55,19 @@ result = amount_total_gained_average(payslip,employee, True, 'SUBS_FRONTERA')
         <field name="struct_id" ref="structure_christmas_bonus_second"/>
     </record>
 
+    <record id="datec_l10n_bo_hr_payroll_other_bonuses_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">OTROS BONOS PROMEDIO</field>
+        <field name="code">OTROS_BONOS</field>
+        <field name="sequence">14</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = amount_total_gained_average(payslip,employee, True, 'BONOS')
+        </field>
+        <field name="struct_id" ref="structure_christmas_bonus_second"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_sa_overtime_amount_average" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">HORAS EXTRAS PROMEDIO</field>
