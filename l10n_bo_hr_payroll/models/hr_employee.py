@@ -21,7 +21,7 @@ class HrEmployee(models.Model):
             record.balance = record.years_of_service - total_amount_years
 
     def get_total_average_earned(self, date_to, employee, months):
-        domain = [('date_to', '<=', date_to), ('employee_id', '=', employee.id)]
+        domain = [('date_to', '<', date_to), ('employee_id', '=', employee.id)]
 
         registers = self.env['hr.payroll.closing.table'].search(domain, order='date_to desc', limit=months)
         if not registers:
