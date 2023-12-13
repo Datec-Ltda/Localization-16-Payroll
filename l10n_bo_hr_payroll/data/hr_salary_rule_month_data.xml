@@ -103,6 +103,20 @@ result = BASIC/30/8*2 * worked_days.HRN.number_of_hours
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+    <record id="datec_l10n_bo_hr_payroll_work_mondat" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">Domingo trabajado</field>
+        <field name="code">DT</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.DT</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = BASIC/30/8*2 * worked_days.DT.number_of_hours
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
 
 <!--    Reglas de AFP                   -->
 <!--    Cotización mensual              -->

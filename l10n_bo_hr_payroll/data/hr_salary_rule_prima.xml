@@ -42,6 +42,19 @@ result = amount_total_gained_average(payslip,employee, False, 'BONO_PROD')
         <field name="struct_id" ref="structure_prima"/>
     </record>
 
+    <record id="datec_l10n_bo_hr_payroll_prima_other_bonuses_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">OTROS BONOS PROMEDIO</field>
+        <field name="code">OTROS_BONOS</field>
+        <field name="sequence">14</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = amount_total_gained_average(payslip,employee, False, 'BONOS')
+        </field>
+        <field name="struct_id" ref="structure_prima"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_prima_frontier_subsidy_average" model="hr.salary.rule">
         <field name="category_id" ref="hr_payroll.ALW"/>
         <field name="name">SUBSIDIO EN FRONTERA PROMEDIO</field>
