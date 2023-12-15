@@ -25,12 +25,12 @@
                                 <field name="report_date"/>
                             </group>
                             <group>
-                                <field name="has_penalties"/>
+                                <field name="has_penalties" attrs="{'readonly': [('state', '=', 'paid')]}" />
                                 <field name="penalties"
                                     attrs="{'invisible': [('has_penalties', '=', False)], 'required':[('has_penalties', '!=', False)]}"/>
                             </group>
                             <group>
-                                <field name="has_eviction"/>
+                                <field name="has_eviction" attrs="{'readonly': [('state', '=', 'paid')]}"/>
                                 <field name="eviction"
                                     attrs="{'invisible': [('has_eviction', '=', False)], 'required':[('has_eviction', '!=', False)]}"/>
                             </group>
@@ -148,7 +148,7 @@
                                             <td>Otros bonos extraordinarios</td>
                                             <td></td>
                                             <td></td>
-                                            <td class="text-center"><field name="other_extraordinary_bonuses"/></td>
+                                            <td class="text-center"><field name="other_extraordinary_bonuses" attrs="{'readonly': [('state', '=', 'paid')]}"/></td>
                                         </tr>
                                         <tr>
                                             <td>Total de finiquito</td>

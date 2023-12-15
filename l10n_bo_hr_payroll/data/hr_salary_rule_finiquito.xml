@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--     Reglas para El Finiquitp  -->
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_promedio" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">PROMEDIO</field>
+        <field name="code">FINQ_PROM</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'PROMEDIO')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_multas" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Multas</field>
+        <field name="code">FINQ_MULTA</field>
+        <field name="sequence">12</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'MULTA')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_desahucio" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Desahucio</field>
+        <field name="code">FINQ_DESAU</field>
+        <field name="sequence">13</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'DESAHUSIO')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_indemnity" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Indemnización</field>
+        <field name="code">FINQ_INDEM</field>
+        <field name="sequence">14</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'INDEM')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_aguinaldo" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">Aguinaldo</field>
+        <field name="code">AGUINALDO</field>
+        <field name="sequence">15</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'AGUINALDO')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_vacaciones" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Vacaciones</field>
+        <field name="code">FINIQ_VAC</field>
+        <field name="sequence">16</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'VAC')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_other_bonuses" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Otros bonos extraordinarios	</field>
+        <field name="code">FINQ_OTROS_BONOS_EXT</field>
+        <field name="sequence">17</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'OTROS_BONOS')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_finiquito_total" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Finiquito</field>
+        <field name="code">FINIQUITO</field>
+        <field name="sequence">18</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'FINIQUITO')
+        </field>
+        <field name="struct_id" ref="structure_finiquito"/>
+    </record>
+
+</odoo>
+

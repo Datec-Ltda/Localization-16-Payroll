@@ -25,6 +25,7 @@ class HrPayslip(models.Model):
             'get_ufv_from_code': get_ufv_from_code,
             'get_medical_leave_percent': get_medical_leave_percent,
             'amount_total_gained_in_month': amount_total_gained_in_month,
+            'get_finiquito_value': get_finiquito_value,
         })
         return res
 
@@ -359,6 +360,34 @@ class HrPayslip(models.Model):
                         '|'] + clause_1 + clause_2 + clause_3
         return self.env['hr.contract'].search(clause_final).ids
 
+    def _get_rule_finiquito_by_code(self, date_from, date_to, code):
+        domain = [('report_date', '>=', date_from),
+                  ('report_date', '<=', date_to),
+                  ('employee_id', '=', self.employee_id.id),
+                  ('contract_id', '=', self.contract_id.id),
+                  ('state', '=', 'open'),
+                  ]
+        finiquito = self.env['hr.payroll.finiquito'].search(domain, limit=1)
+        value = 0
+        if finiquito:
+            if code == 'PROMEDIO':
+                value = finiquito.average
+            if code == 'MULTA':
+                value = finiquito.penalties
+            if code == 'DESAHUSIO':
+                value = finiquito.eviction
+            if code == 'INDEM':
+                value = finiquito.indemnity_year_amount + finiquito.indemnity_month_amount + finiquito.indemnity_day_amount
+            if code == 'AGUINALDO':
+                value = finiquito.christmas_bonus_month_amount + finiquito.christmas_bonus_day_amount
+            if code == 'VAC':
+                value = finiquito.holidays_amount
+            if code == 'OTROS_BONOS':
+                value = finiquito.other_extraordinary_bonuses
+            if code == 'FINIQUITO':
+                value = finiquito.finiquito
+        return value
+
 
 def special_round(number):
     parte_decimal = number - int(number)  # Obtener la parte decimal del número
@@ -450,7 +479,6 @@ def get_ufv_from_code(payslip, code):
     ufv = payslip.dict._get_ufv_from_code(payslip.date_to, code)
     return ufv
 
-
 def get_medical_leave_percent(payslip, code):
     percent = 0
     if payslip:
@@ -458,3 +486,6 @@ def get_medical_leave_percent(payslip, code):
     return percent/100
 
 
+def get_finiquito_value(payslip, code):
+    value = payslip.dict._get_rule_finiquito_by_code(payslip.date_from,payslip.date_to, code)
+    return value

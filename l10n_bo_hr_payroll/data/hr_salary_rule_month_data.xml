@@ -354,6 +354,33 @@ result = amount_total_gained_in_month(payslip,employee, 'VAC')
         <field name="struct_id" ref="structure_month"/>
     </record>
 <!--Cambio la secuencia de 200 a 150-->
+
+    <record id="datec_l10n_bo_hr_payroll_vac_finiquito" model="hr.salary.rule">
+        <field name="category_id" ref="FOR_TAX"/>
+        <field name="name">Finiquito Vacaciones</field>
+        <field name="code">FINIQ_VACACIONES</field>
+        <field name="sequence">150</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'VAC')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_other_bonuses_finiquito" model="hr.salary.rule">
+        <field name="category_id" ref="FOR_TAX"/>
+        <field name="name">Finiquito Otros bonos extraordinarios</field>
+        <field name="code">FINQ_OB_EXT</field>
+        <field name="sequence">150</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_finiquito_value(payslip, 'OTROS_BONOS')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
     <!--   2 PRIMA              -->
     <record id="datec_l10n_bo_hr_payroll_prima_payed" model="hr.salary.rule">
         <field name="category_id" ref="FOR_TAX"/>
@@ -382,6 +409,10 @@ if VAC_PAGADA:
     total += VAC_PAGADA
 if PRIMA_PAGADA:
     total += PRIMA_PAGADA
+if FINIQ_VACACIONES:
+    total += FINIQ_VACACIONES
+if FINQ_OB_EXT:
+    total += FINQ_OB_EXT
 result = GROSS + total + TOTAL_AFP
         </field>
         <field name="struct_id" ref="structure_month"/>
