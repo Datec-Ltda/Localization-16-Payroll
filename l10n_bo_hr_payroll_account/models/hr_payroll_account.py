@@ -56,14 +56,14 @@ class HrPayslip(models.Model):
                              'employee_id': slip.employee_id.id, 'date_from': slip.date_from, 'date_to': slip.date_to,
                              'basic': 0.0, 'antiquity_bonus': 0.0, 'production_bonus': 0.0, 'frontier_subsidy': 0.0,
                              'other_bonuses': 0.0, 'net_salary': 0.0, 'credit_next_month': 0.0, 'overtime_amount': 0.0,
-                             'sunday_overtime_amount': 0.0, 'night_overtime_hours_amount': 0.0, 'gross': 0.0,
+                             'sunday_overtime_amount': 0.0, 'sunday_worked_amount': 0.0, 'night_overtime_hours_amount': 0.0, 'gross': 0.0,
                              'worked_days': 0.0, 'worked_hours': 0.0, 'overtime': 0.0, 'sunday_overtime': 0.0,
-                             'night_overtime_hours': 0.0}
+                             'night_overtime_hours': 0.0, 'sunday_worked': 0.0}
             # Para el caso que el pago quinquenal no archivar en la tabla de cierre, si es una estructura aparte
             for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL', 'FINIQUITO']):
                 if line.code == 'QUINQUENAL' or line.code == 'FINIQUITO':
                     return 0
-            for line in slip.line_ids.filtered(lambda x: x.code in ['BASIC', 'BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA', 'EXTRAS', 'DOMINGO', 'RECARGO', 'NET', 'SAL_PROX_MES', 'PRIMA']):
+            for line in slip.line_ids.filtered(lambda x: x.code in ['BASIC', 'BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA', 'EXTRAS', 'DOMINGO', 'DT', 'RECARGO', 'NET', 'SAL_PROX_MES', 'PRIMA']):
                 if line.code == 'BASIC':
                     closing_table['basic'] = line.amount
                 if line.code == 'BONO_ANT':
@@ -76,6 +76,8 @@ class HrPayslip(models.Model):
                     closing_table['overtime_amount'] = line.amount
                 if line.code == 'DOMINGO':
                     closing_table['sunday_overtime_amount'] = line.amount
+                if line.code == 'DT':
+                    closing_table['sunday_worked_amount'] = line.amount
                 if line.code == 'RECARGO':
                     closing_table['night_overtime_hours_amount'] = line.amount
                 if line.code == 'NET':
@@ -84,10 +86,18 @@ class HrPayslip(models.Model):
                     closing_table['credit_next_month'] = line.amount
                 if line.code == 'PRIMA':
                     closing_table['prima'] = line.amount
-            for worked_day in slip.worked_days_line_ids.filtered(lambda x: x.code in ['WORK100']):
+            for worked_day in slip.worked_days_line_ids.filtered(lambda x: x.code in ['WORK100', 'HE', 'HRN', 'HED', 'DT']):
                 if worked_day.code == 'WORK100':
                     closing_table['worked_days'] = worked_day.number_of_days
                     closing_table['worked_hours'] = worked_day.number_of_hours
+                if worked_day.code == 'HE':
+                    closing_table['overtime'] = worked_day.number_of_hours
+                if worked_day.code == 'HRN':
+                    closing_table['night_overtime_hours'] = worked_day.number_of_hours
+                if worked_day.code == 'HED':
+                    closing_table['sunday_overtime'] = worked_day.number_of_hours
+                if worked_day.code == 'DT':
+                    closing_table['sunday_worked'] = worked_day.number_of_hours
             # Para las categorias
             categories = {}
             categories_mapping = {

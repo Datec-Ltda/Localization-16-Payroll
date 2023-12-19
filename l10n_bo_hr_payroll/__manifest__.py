@@ -16,6 +16,7 @@
         'data/hr_salary_rule_aguinaldo.xml',
         'data/hr_salary_rule_second_aguinaldo.xml',
         'data/hr_salary_rule_prima.xml',
+        'data/hr_salary_rule_quinquenal.xml',
         'data/hr_payslip_input_type.xml',
         'data/work_entry_type.xml',
         'data/hr_leave_type_data.xml',

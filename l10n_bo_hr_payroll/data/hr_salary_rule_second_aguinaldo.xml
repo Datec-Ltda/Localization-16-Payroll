@@ -107,6 +107,20 @@ result = amount_total_gained_average(payslip,employee, True, 'DOMINGO')
         <field name="struct_id" ref="structure_christmas_bonus_second"/>
     </record>
 
+
+    <record id="datec_l10n_bo_hr_payroll_sa_sunday_worked_amount_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">DOMINGO TRABAJADO PROMEDIO</field>
+        <field name="code">SA_DOMINGO_TRAB_PROM</field>
+        <field name="sequence">18</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = amount_total_gained_average(payslip,employee, True, 'DT')
+        </field>
+        <field name="struct_id" ref="structure_christmas_bonus_second"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_sa_total_gained_average" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">TOTAL GANADO</field>

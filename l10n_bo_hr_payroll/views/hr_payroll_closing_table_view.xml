@@ -32,11 +32,13 @@
                                 <field name="overtime" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                                 <field name="sunday_overtime" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                                 <field name="night_overtime_hours" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
+                                <field name="sunday_worked" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                             </group>
                             <group>
                                 <field name="overtime_amount" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                                 <field name="sunday_overtime_amount" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                                 <field name="night_overtime_hours_amount" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
+                                <field name="sunday_worked_amount" attrs="{'readonly': [('payslip_id', '!=', False)]}" />
                             </group>
                             <group>
                                 <field name="basic" attrs="{'readonly': [('payslip_id', '!=', False)]}" />

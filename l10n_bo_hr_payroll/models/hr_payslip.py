@@ -110,6 +110,8 @@ class HrPayslip(models.Model):
                 amount += record.overtime_amount
             if ruler == 'DOMINGO':
                 amount += record.sunday_overtime_amount
+            if ruler == 'DT':
+                amount += record.sunday_worked_amount
             if ruler == 'RECARGO':
                 amount += record.night_overtime_hours_amount
             if ruler == 'NET':
@@ -142,10 +144,18 @@ class HrPayslip(models.Model):
                     amount += record.overtime_amount
                 if ruler == 'DOMINGO':
                     amount += record.sunday_overtime_amount
+                if ruler == 'DT':
+                    amount += record.sunday_worked_amount
                 if ruler == 'RECARGO':
                     amount += record.night_overtime_hours_amount
                 if ruler == 'NET':
                     amount += record.net_salary
+                if ruler == 'PRIMA':
+                    amount += record.prima
+                if ruler == 'GROSS':
+                    amount += record.gross
+                if ruler == 'BONOS':
+                    amount += record.other_bonuses
         return amount/months
 
     def _get_worked_day_lines_values(self, domain=None):

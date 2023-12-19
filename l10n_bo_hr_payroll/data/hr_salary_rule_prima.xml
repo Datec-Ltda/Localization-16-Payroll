@@ -96,13 +96,26 @@ result = amount_total_gained_average(payslip,employee, False, 'RECARGO')
 
     <record id="datec_l10n_bo_hr_payroll_prima_sunday_overtime_amount_average" model="hr.salary.rule">
         <field name="category_id" ref="hr_payroll.ALW"/>
-        <field name="name">DOMINGO PROMEDIO</field>
+        <field name="name">DOMINGO HORAS EXTRAS PROMEDIO</field>
         <field name="code">DOMINGO_PRO</field>
         <field name="sequence">17</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = amount_total_gained_average(payslip,employee, False, 'DOMINGO')
+        </field>
+        <field name="struct_id" ref="structure_prima"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_prima__sunday_worked_amount_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">DOMINGO TRABAJADO PROMEDIO</field>
+        <field name="code">DOMINGO_TRAB_PROM</field>
+        <field name="sequence">18</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = amount_total_gained_average(payslip,employee, False, 'DT')
         </field>
         <field name="struct_id" ref="structure_prima"/>
     </record>

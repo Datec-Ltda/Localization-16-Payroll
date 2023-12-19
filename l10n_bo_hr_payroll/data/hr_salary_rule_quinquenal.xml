@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--     Reglas para quinquenal   -->
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_basic_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">BASICO PROMEDIO</field>
+        <field name="code">QUINQUENAL_BASICO_PROMEDIO</field>
+        <field name="sequence">1</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'BASIC')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_antiquity_bonus_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">BONO DE ANTIGUEDAD PROMEDIO</field>
+        <field name="code">QUINQUENAL_B_ANT_PRO</field>
+        <field name="sequence">2</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'BONO_ANT')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_production_bonus_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">BONO DE PRODUCCION PROMEDIO</field>
+        <field name="code">QUINQUENAL_B_PROD</field>
+        <field name="sequence">3</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'BONO_PROD')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_frontier_subsidy_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">SUBSIDIO EN FRONTERA PROMEDIO</field>
+        <field name="code">QUINQUENAL_SUB_FRONT_PRO</field>
+        <field name="sequence">4</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'SUBS_FRONTERA')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_other_bonuses_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">OTROS BONOS PROMEDIO</field>
+        <field name="code">QUINQUENAL_OTROS_BONOS</field>
+        <field name="sequence">5</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'BONOS')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_overtime_amount_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">HORAS EXTRAS PROMEDIO</field>
+        <field name="code">QUINQUENAL_H_EXTRAS_PRO</field>
+        <field name="sequence">6</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'EXTRAS')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_night_overtime_hours_amount_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">RECARGO PROMEDIO</field>
+        <field name="code">QUINQUENAL_RECARGOS_PRO</field>
+        <field name="sequence">7</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'RECARGO')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_sunday_overtime_amount_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">DOMINGO HORAS EXT PROMEDIO</field>
+        <field name="code">QUINQUENAL_DOMINGO_PRO</field>
+        <field name="sequence">8</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'DOMINGO')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_sunday_worked_amount_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">DOMINGO TRABAJADO PROMEDIO</field>
+        <field name="code">QUINQUENAL_DOMINGO_TRAB_PROM</field>
+        <field name="sequence">9</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'DT')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_year" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">QUINQUENAL AÑOS</field>
+        <field name="code">QUINQUENAL_YEAR</field>
+        <field name="sequence">10</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialYear(payslip.date_from, payslip.date_to)
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial_average" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">QUINQUENAL PROMEDIO</field>
+        <field name="code">QUINQUENAL_AVERAGE</field>
+        <field name="sequence">10</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.GetQuinquennialAverage(payslip.date_from, payslip.date_to, 'GROSS')
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_quinquenial" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">QUINQUENAL</field>
+        <field name="code">QUINQUENAL</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = QUINQUENAL_YEAR * QUINQUENAL_AVERAGE
+        </field>
+        <field name="struct_id" ref="structure_quinquennial"/>
+    </record>
+
+</odoo>
+

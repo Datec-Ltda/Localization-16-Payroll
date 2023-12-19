@@ -20,7 +20,7 @@ class HrEmployee(models.Model):
             total_amount_years = sum(record.quinquennial_ids.mapped('amount_years'))
             record.balance = record.years_of_service - total_amount_years
 
-    def get_total_average_earned(self, date_to, employee, months):
+    def get_total_average_earned(self, date_to, employee, ruler, months):
         domain = [('date_to', '<', date_to), ('employee_id', '=', employee.id)]
 
         registers = self.env['hr.payroll.closing.table'].search(domain, order='date_to desc', limit=months)
@@ -30,11 +30,35 @@ class HrEmployee(models.Model):
             sum_day = 0
             sum_salary = 0
             for register in registers:
-                sum_salary += register.gross
                 sum_day += register.worked_days
+                if ruler == 'BASIC':
+                    sum_salary += register.basic
+                if ruler == 'BONO_ANT':
+                    sum_salary += register.antiquity_bonus
+                if ruler == 'BONO_PROD':
+                    sum_salary += register.production_bonus
+                if ruler == 'SUBS_FRONTERA':
+                    sum_salary += register.frontier_subsidy
+                if ruler == 'EXTRAS':
+                    sum_salary += register.overtime_amount
+                if ruler == 'DOMINGO':
+                    sum_salary += register.sunday_overtime_amount
+                if ruler == 'DT':
+                    sum_salary += register.sunday_worked_amount
+                if ruler == 'RECARGO':
+                    sum_salary += register.night_overtime_hours_amount
+                if ruler == 'NET':
+                    sum_salary += register.net_salary
+                if ruler == 'PRIMA':
+                    sum_salary += register.prima
+                if ruler == 'GROSS':
+                    sum_salary += register.gross
+                if ruler == 'BONOS':
+                    sum_salary += register.other_bonuses
+
             return sum_salary/months
 
-    def GetQuinquennialAverage(self, date_from, date_to):
+    def GetQuinquennialAverage(self, date_from, date_to, ruler):
         domain = [('date_pay', '<=', date_to),
                   ('date_pay', '>=', date_from),
                   ('state', '=', 'open'),
@@ -42,7 +66,7 @@ class HrEmployee(models.Model):
 
         register = self.env['hr.payroll.quinquennial.data'].search(domain, order='date_to desc', limit=1)
         if register:
-            average = self.get_total_average_earned(date_to, self, 3)
+            average = self.get_total_average_earned(date_to, self, ruler, 3)
             return average
         else:
             return 0

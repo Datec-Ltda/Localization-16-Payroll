@@ -31,6 +31,7 @@ class HrPayrollClosingTable(models.Model):
     overtime_amount = fields.Float(string="Monto horas extras", required=True)
     sunday_overtime_amount = fields.Float(string="Monto horas extras dominical", required=True)
     night_overtime_hours_amount = fields.Float(string="Monto horas recargo nocturno", required=True)
+    sunday_worked_amount = fields.Float(string="Monto domingo trabajado", required=True)
     prima = fields.Float(string="Prima")
 # Categorias ----------------------------------------------
     gross = fields.Float(string="Salario devengado", required=True)
@@ -40,6 +41,7 @@ class HrPayrollClosingTable(models.Model):
     overtime = fields.Float(string="Horas extras", required=True)
     sunday_overtime = fields.Float(string="Horas extra dominical", required=True)
     night_overtime_hours = fields.Float(string="Horas recargo nocturno", required=True)
+    sunday_worked = fields.Float(string="Domingos trabajados", required=True)
 
     @api.constrains('date_from', 'date_to', 'contract_id')
     def _check_leave(self):
