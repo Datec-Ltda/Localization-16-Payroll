@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, models, _
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 
@@ -17,6 +17,16 @@ class HrPayslipLine(models.Model):
                              'SALDO_A_FAVOR_MES_ANT', 'ACTUALIZACION', 'SAL_ANT_ACT', 'SALDO_UTILIZADO',
                              'IMP_RET_PAGAR', 'SAL_PROX_MES', 'TOTAL_AFP']:
                 line.total = special_round(line.total)
+
+    retroactive = fields.Boolean(default=False)
+    amount_retroactive = fields.Monetary(default=0.0)
+    different_amount = fields.Monetary(compute='_compute_different', string='Total', store=True)
+    category_retroactive_id = fields.Many2one(related='salary_rule_id.category_id', readonly=True, store=True)
+
+    @api.depends('amount_retroactive')
+    def _compute_different(self):
+        for line in self:
+            line.different_amount =  line.amount_retroactive - line.amount
 
 
 def special_round(number):

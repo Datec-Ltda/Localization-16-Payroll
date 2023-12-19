@@ -8,10 +8,14 @@
         <field name="name">SALARIO MINIMO NACIONAL</field>
         <field name="code">SMN</field>
         <field name="sequence">10</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = payslip.rule_parameter('SMN')
+if payslip.is_retroactive:
+    result = payslip.rule_parameter('SMN') + (payslip.rule_parameter('SMN') * payslip.smn_percent) / 100
+else:
+    result = payslip.rule_parameter('SMN')
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -21,10 +25,11 @@ result = payslip.rule_parameter('SMN')
         <field name="name">BONO ANTIGUEDAD</field>
         <field name="code">BONO_ANT</field>
         <field name="sequence">11</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = (payslip.rule_parameter('SMN') * 3 * leave_antiquity_bonus(payslip,employee))/100
+result = (SMN * 3 * leave_antiquity_bonus(payslip,employee))/100
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -50,6 +55,7 @@ else:
         <field name="name">SUBSIDIO FRONTERA</field>
         <field name="code">SUBS_FRONTERA</field>
         <field name="sequence">11</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -66,6 +72,7 @@ else:
         <field name="name">HORAS EXTRAS</field>
         <field name="code">EXTRAS</field>
         <field name="sequence">11</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">python</field>
         <field name="condition_python">result = worked_days.HE</field>
         <field name="amount_select">code</field>
@@ -80,6 +87,7 @@ result = BASIC/30/8 *2 * worked_days.HE.number_of_hours
         <field name="name">Dominical y Dom. Trab. </field>
         <field name="code">DOMINGO</field>
         <field name="sequence">11</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">python</field>
         <field name="condition_python">result = worked_days.HED</field>
         <field name="amount_select">code</field>
@@ -94,6 +102,7 @@ result = BASIC/30/8 * 2 * worked_days.HED.number_of_hours
         <field name="name">RECARGO</field>
         <field name="code">RECARGO</field>
         <field name="sequence">11</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">python</field>
         <field name="condition_python">result = worked_days.HRN</field>
         <field name="amount_select">code</field>
@@ -108,6 +117,7 @@ result = BASIC/30/8*2 * worked_days.HRN.number_of_hours
         <field name="name">Domingo trabajado</field>
         <field name="code">DT</field>
         <field name="sequence">11</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">python</field>
         <field name="condition_python">result = worked_days.DT</field>
         <field name="amount_select">code</field>
@@ -125,6 +135,7 @@ result = BASIC/30/8*2 * worked_days.DT.number_of_hours
         <field name="name">Cotización mensual </field>
         <field name="code">AFP_CM</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -139,6 +150,7 @@ result = GROSS * employee.monthly_quotation/100
         <field name="name">Prima riesgo común</field>
         <field name="code">AFP_PRC</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -153,6 +165,7 @@ result = GROSS * employee.common_risk_premium/100
         <field name="name">Aporte solidario</field>
         <field name="code">AFP_AS</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -167,6 +180,7 @@ result = GROSS * employee.solidarity_contribution/100
         <field name="name">Comisión AFP</field>
         <field name="code">AFP_COM</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -181,6 +195,7 @@ result = GROSS * employee.afp_commission/100
         <field name="name">DESCUENTO AFP</field>
         <field name="code">AFP_DISCOUNT</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -196,6 +211,7 @@ result = GROSS * employee.aft_quotation_type.percent/100
         <field name="name">MONTO ANS 1%</field>
         <field name="code">ANS_ONE</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -213,6 +229,7 @@ else:
         <field name="name">MONTO ANS 5%</field>
         <field name="code">ANS_FIVE</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -230,6 +247,7 @@ else:
         <field name="name">MONTO ANS 10%</field>
         <field name="code">ANS_TEN</field>
         <field name="sequence">101</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -332,6 +350,7 @@ result = special_round(worked_days.LEAVE_UNJUSTIFIED.number_of_days * BC_DIARIA_
         <field name="name">2 SMN</field>
         <field name="code">TWO_SMN</field>
         <field name="sequence">150</field>
+        <field name="retroactive">True</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">

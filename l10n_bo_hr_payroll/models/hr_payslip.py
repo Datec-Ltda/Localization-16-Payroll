@@ -3,15 +3,33 @@
 from odoo import api, fields, models, tools, _
 from datetime import date
 import calendar
+import logging
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from odoo.tools import float_round, date_utils, convert_file, html2plaintext, is_html_empty, format_amount
+from odoo.exceptions import UserError, ValidationError
 
 # This will generate 16th of days
 ROUNDING_FACTOR = 16
+_logger = logging.getLogger(__name__)
 
 
 class HrPayslip(models.Model):
     _inherit = 'hr.payslip'
+
+    is_retroactive = fields.Boolean()
+    basic_percent = fields.Float()
+    smn_percent = fields.Float()
+
+    line_ids2 = fields.One2many(
+        'hr.payslip.line', 'slip_id', string='Payslip Lines',
+        compute='_compute_line_ids', store=True, readonly=True, copy=True,
+        states={'draft': [('readonly', False)], 'verify': [('readonly', False)]}, domain=[('retroactive', '=', True)])
+
+    payslip_retroactive_id = fields.Many2one(
+        'hr.payroll.employee.payments.retroactive.list', string='Batch Name', readonly=True,
+        copy=False, states={'draft': [('readonly', False)], 'verify': [('readonly', False)]},
+        domain="[('company_id', '=', company_id)]")
 
     def _get_base_local_dict(self):
         res = super()._get_base_local_dict()
@@ -26,8 +44,12 @@ class HrPayslip(models.Model):
             'get_medical_leave_percent': get_medical_leave_percent,
             'amount_total_gained_in_month': amount_total_gained_in_month,
             'get_finiquito_value': get_finiquito_value,
+            'get_is_retroactive': get_is_retroactive,
         })
         return res
+
+    def _get_is_retroactive(self):
+        return self.is_retroactive
 
     def _get_antiquity_bonus(self, employee):
         percent = 0
@@ -388,6 +410,179 @@ class HrPayslip(models.Model):
                 value = finiquito.finiquito
         return value
 
+    def compute_sheet(self):
+        payslips = self.filtered(lambda slip: slip.state in ['draft', 'verify'])
+        # delete old payslip lines
+        self.is_retroactive = self.env.context.get('retroactive', False)
+
+        if not self.is_retroactive:
+            payslips.line_ids.unlink()
+            # this guarantees consistent results
+            self.env.flush_all()
+            today = fields.Date.today()
+            for payslip in payslips:
+                number = payslip.number or self.env['ir.sequence'].next_by_code('salary.slip')
+                payslip.write({
+                    'number': number,
+                    'state': 'verify',
+                    'compute_date': today
+                })
+            self.env['hr.payslip.line'].create(payslips._get_payslip_lines())
+        else:
+            self._act_payslip_lines()
+        return True
+
+    def _get_payslip_lines(self):
+        line_vals = []
+        for payslip in self:
+            if not payslip.contract_id:
+                raise UserError(_("There's no contract set on payslip %s for %s. Check that there is at least a contract set on the employee form.", payslip.name, payslip.employee_id.name))
+
+            localdict = self.env.context.get('force_payslip_localdict', None)
+            if localdict is None:
+                localdict = payslip._get_localdict()
+
+            rules_dict = localdict['rules'].dict
+            result_rules_dict = localdict['result_rules'].dict
+
+            blacklisted_rule_ids = self.env.context.get('prevent_payslip_computation_line_ids', [])
+
+            result = {}
+            for rule in sorted(payslip.struct_id.rule_ids, key=lambda x: x.sequence):
+                if rule.id in blacklisted_rule_ids:
+                    continue
+                localdict.update({
+                    'result': None,
+                    'result_qty': 1.0,
+                    'result_rate': 100,
+                    'result_name': False
+                })
+                if rule._satisfy_condition(localdict):
+                    # Retrieve the line name in the employee's lang
+                    employee_lang = payslip.employee_id.sudo().address_home_id.lang
+                    # This actually has an impact, don't remove this line
+                    context = {'lang': employee_lang}
+                    if rule.code in localdict['same_type_input_lines']:
+                        for multi_line_rule in localdict['same_type_input_lines'][rule.code]:
+                            localdict['inputs'].dict[rule.code] = multi_line_rule
+                            amount, qty, rate = rule._compute_rule(localdict)
+                            tot_rule = amount * qty * rate / 100.0
+                            localdict = rule.category_id._sum_salary_rule_category(localdict,
+                                                                                   tot_rule)
+                            rule_name = payslip._get_rule_name(localdict, rule, employee_lang)
+                            line_vals.append({
+                                'sequence': rule.sequence,
+                                'code': rule.code,
+                                'retroactive': rule.retroactive,
+                                'name':  rule_name,
+                                'note': html2plaintext(rule.note) if not is_html_empty(rule.note) else '',
+                                'salary_rule_id': rule.id,
+                                'contract_id': localdict['contract'].id,
+                                'employee_id': localdict['employee'].id,
+                                'amount': amount,
+                                'quantity': qty,
+                                'rate': rate,
+                                'slip_id': payslip.id,
+                            })
+                    else:
+                        amount, qty, rate = rule._compute_rule(localdict)
+                        #check if there is already a rule computed with that code
+                        previous_amount = rule.code in localdict and localdict[rule.code] or 0.0
+                        #set/overwrite the amount computed for this rule in the localdict
+                        tot_rule = amount * qty * rate / 100.0
+                        localdict[rule.code] = tot_rule
+                        result_rules_dict[rule.code] = {'total': tot_rule, 'amount': amount, 'quantity': qty}
+                        rules_dict[rule.code] = rule
+                        # sum the amount for its salary category
+                        localdict = rule.category_id._sum_salary_rule_category(localdict, tot_rule - previous_amount)
+                        rule_name = payslip._get_rule_name(localdict, rule, employee_lang)
+                        # create/overwrite the rule in the temporary results
+                        result[rule.code] = {
+                            'sequence': rule.sequence,
+                            'code': rule.code,
+                            'retroactive': rule.retroactive,
+                            'name': rule_name,
+                            'note': html2plaintext(rule.note) if not is_html_empty(rule.note) else '',
+                            'salary_rule_id': rule.id,
+                            'contract_id': localdict['contract'].id,
+                            'employee_id': localdict['employee'].id,
+                            'amount': amount,
+                            'quantity': qty,
+                            'rate': rate,
+                            'slip_id': payslip.id,
+                        }
+            line_vals += list(result.values())
+        return line_vals
+
+    def _act_payslip_lines(self):
+        line_vals = []
+        for payslip in self:
+            if not payslip.contract_id:
+                raise UserError(_("There's no contract set on payslip %s for %s. Check that there is at least a contract set on the employee form.", payslip.name, payslip.employee_id.name))
+
+            localdict = self.env.context.get('force_payslip_localdict', None)
+            if localdict is None:
+                localdict = payslip._get_localdict()
+
+            rules_dict = localdict['rules'].dict
+            result_rules_dict = localdict['result_rules'].dict
+
+            blacklisted_rule_ids = self.env.context.get('prevent_payslip_computation_line_ids', [])
+
+            result = {}
+            for line in sorted(self.line_ids, key=lambda x: x.sequence):
+                for rule in payslip.struct_id.rule_ids.filtered(lambda x: x.code == line.code):
+                    if rule.id in blacklisted_rule_ids:
+                        continue
+                    # localdict.update({
+                    #     'result': None,
+                    #     'result_qty': 1.0,
+                    #     'result_rate': 100,
+                    #     'result_name': False
+                    # })
+                    if rule._satisfy_condition(localdict):
+                        # Retrieve the line name in the employee's lang
+                        employee_lang = payslip.employee_id.sudo().address_home_id.lang
+                        # This actually has an impact, don't remove this line
+                        context = {'lang': employee_lang}
+                        self.basic_percent = self.env.context.get('basic_percent', 0)
+                        self.smn_percent = self.env.context.get('smn_percent', 0)
+                        if rule.code in localdict['same_type_input_lines']:
+                            for multi_line_rule in localdict['same_type_input_lines'][rule.code]:
+                                localdict['inputs'].dict[rule.code] = multi_line_rule
+                                amount_retroactive, qty, rate = rule._compute_rule(localdict)
+                                localdict = rule.category_id._sum_salary_rule_category(localdict,
+                                                                                       amount_retroactive)
+                                # if rule.code == 'BASIC':
+                                #     amount_retroactive += (amount_retroactive * basic_porcent)/100
+                                # if rule.code == 'SMN':
+                                #     amount_retroactive += (amount_retroactive * nmn_porcent)/100
+                                line.write({
+                                    'retroactive': rule.retroactive,
+                                    'amount_retroactive': amount_retroactive,
+                                })
+                        else:
+                            amount_retroactive, qty, rate = rule._compute_rule(localdict)
+                            #check if there is already a rule computed with that code
+                            previous_amount = rule.code in localdict and localdict[rule.code] or 0.0
+                            #set/overwrite the amount computed for this rule in the localdict
+                            localdict[rule.code] = amount_retroactive
+                            # result_rules_dict[rule.code] = {'amount_retroactive': amount_retroactive}
+                            rules_dict[rule.code] = rule
+                            # sum the amount for its salary category
+                            localdict = rule.category_id._sum_salary_rule_category(localdict, amount_retroactive - previous_amount)
+                            # rule_name = payslip._get_rule_name(localdict, rule, employee_lang)
+                            # create/overwrite the rule in the temporary results
+                            # if rule.code == 'BASIC':
+                            #     amount_retroactive += (amount_retroactive * basic_porcent) / 100
+                            # if rule.code == 'SMN':
+                            #     amount_retroactive += (amount_retroactive * nmn_porcent) / 100
+                            line.write({
+                                'retroactive': rule.retroactive,
+                                'amount_retroactive': amount_retroactive,
+                            })
+        return True
+
 
 def special_round(number):
     parte_decimal = number - int(number)  # Obtener la parte decimal del número
@@ -488,4 +683,9 @@ def get_medical_leave_percent(payslip, code):
 
 def get_finiquito_value(payslip, code):
     value = payslip.dict._get_rule_finiquito_by_code(payslip.date_from,payslip.date_to, code)
+    return value
+
+
+def get_is_retroactive(payslip):
+    value = payslip.dict._get_is_retroactive()
     return value

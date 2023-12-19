@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+<!--    Pago retroactivo    -->
+        <record id="hr_payroll_employee_payments_retroactive_view_form" model="ir.ui.view">
+            <field name="name">hr.payroll.employee.payments.retroactive.form</field>
+            <field name="model">hr.payroll.employee.payments.retroactive</field>
+            <field name="arch" type="xml">
+                <form string="Pago retroactivo">
+                    <header>
+                        <button name="execute_retroactive_pay" type="object" string="Calcular pago retroactivo" class="oe_highlight"
+                                states="draft"/>
+<!--                        <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>-->
+                        <field name="state" readonly="1"/>
+                        <button string="Abrir" name="action_period_open" type="object" states="draft"/>
+<!--                        <button string="Cerrado" name="action_period_closed" states="open" type='object' />-->
+                        <button string="A borrador" name="action_period_draft" states="open" type='object' />
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <label for="date_from" string="Period" />
+                            <div>
+                                <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'closed'])]}"/>
+                            </div>
+                            <field name="month_init_pay" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                        </group>
+                        <group>
+                            <field name="basic_percent" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            <field name="smn_percent" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Pagos retroactivos">
+                            <field name="payment_retroactive_ids" nolabel="1">
+                                <tree>
+                                    <field name="employee_id" string="Empleado" readonly="1"/>
+                                    <field name="contract_id"  readonly="1"/>
+                                    <field name="date_from" readonly="1"/>
+                                    <field name="date_to" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_payroll_employee_payments_retroactive_view_tree" model="ir.ui.view">
+            <field name="name">hr.payroll.employee.payments.retroactive.tree</field>
+            <field name="model">hr.payroll.employee.payments.retroactive</field>
+            <field name="arch" type="xml">
+                <tree string="Pagos retroactivos">
+                      <field colspan="4" name="name"/>
+                      <field colspan="4" name="month_init_pay"/>
+                      <field colspan="4" name="date_from"/>
+                      <field colspan="4" name="date_to"/>
+                      <field colspan="4" name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_payroll_employee_payments_retroactive_list_view_form" model="ir.ui.view">
+            <field name="name">hr.payroll.employee.payments.retroactive.list.form</field>
+            <field name="model">hr.payroll.employee.payments.retroactive.list</field>
+            <field name="arch" type="xml">
+                <form string="Supplementary work">
+                    <header>
+                        <button string="Abrir" name="action_period_open" type="object" states="draft"/>
+<!--                        <button string="Close" name="action_period_closed" states="open" type='object' />-->
+                        <button string="A Borrador" name="action_period_draft" states="open" type='object' />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" attrs="{'readonly':[('state','!=','draft')]}" placeholder="Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <label for="date_from" string="Period" />
+                                <div>
+                                    <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'closed'])]}"/>
+                                </div>
+                                <field name="month_init_pay" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                                <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            </group>
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="contract_id" domain="[('state', '=', 'open'), ('employee_id', '=', employee_id)]"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <notebook>
+                        <page string="Meses procesados">
+                            <field name="slip_ids" nolabel="1" context="{'form_view_ref': 'l10n_bo_hr_payroll.view_hr_payslip_form_modif'}">
+                                <tree>
+                                    <field name="name"  readonly="1"/>
+                                    <field name="date_from"  readonly="1"/>
+                                    <field name="date_to"  readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_payroll_employee_payments_retroactive_view_search" model="ir.ui.view">
+            <field name="name">hr.payroll.employee.payments.retroactive.search</field>
+            <field name="model">hr.payroll.employee.payments.retroactive</field>
+            <field name="arch" type="xml">
+                <search string="Pago retroactivo">
+                    <field name="name" string="Year"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_payroll_employee_payments_retroactive" model="ir.actions.act_window">
+            <field name="name">Pago retroactivo</field>
+            <field name="res_model">hr.payroll.employee.payments.retroactive</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_payroll_employee_payments_retroactive_view_search"/>
+        </record>
+
+        <menuitem
+            id="hr_co_menu_hr_payroll_employee_payments_retroactive"
+            name="Pago retroactivo"
+            parent="hr_payroll.menu_hr_payroll_payslips"
+            sequence="11"
+            action="action_hr_payroll_employee_payments_retroactive"
+            groups="hr_payroll.group_hr_payroll_manager" />
+
+        <record id="view_hr_payslip_form_modif" model="ir.ui.view">
+        <field name="name">hr.payslip.form.modif</field>
+        <field name="model">hr.payslip</field>
+        <field name="arch" type="xml">
+            <form string="Payslip">
+            <header invisible="1">
+                <button string="Confirm" name="action_payslip_done" type="object" states="verify" class="oe_highlight" context="{'payslip_generate_pdf': True}"/>
+                <button string="Mark as paid" name="action_payslip_paid" type="object" states="done" class="oe_highlight"/>
+                <button string="Refund" name="refund_sheet" type='object' attrs="{'invisible': ['|', '|', ('has_refund_slip', '=', True), ('credit_note', '=', True), ('state', 'not in', ('done', 'paid'))]}"/>
+                <button string="Refund" name="refund_sheet" type='object' attrs="{'invisible': ['|', '|', ('has_refund_slip', '=', False), ('credit_note', '=', True), ('state', 'not in', ('done', 'paid'))]}"
+                    confirm="Another refund payslip with the same amount has been found. Do you want to create a new one ?"/>
+                <button string="Set to Draft" name="action_payslip_draft" type="object" states="cancel"/>
+                <button string="Compute Sheet" name="compute_sheet" type="object" attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('credit_note', '=', True)]}" class="oe_highlight" help="Recompute the payslip lines only, not the worked days / input lines"/>
+                <button string="Compute Sheet" name="compute_sheet" type="object" attrs="{'invisible': ['|', ('state', '!=', 'verify'), ('credit_note', '=', True)]}" help="Recompute the payslip lines only, not the worked days / input lines"/>
+                <button string="Cancel" name="action_payslip_cancel" type="object" states="draft,done,verify"/>
+                <button string="Print" name="action_print_payslip" type="object"/>
+                <button string="Export Payslip" name="action_export_payslip" type="object" attrs="{'invisible': [('is_superuser', '=', False)]}"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,done,paid"/>
+            </header>
+            <sheet>
+                <div class="oe_button_box" name="button_box" invisible="1">
+                    <button type="object" class="oe_stat_button" id="open_work_entries"
+                        icon="fa-calendar" name="action_open_work_entries" string="Work Entries">
+                    </button>
+                    <button type="object" class="oe_stat_button" name="action_open_salary_attachments" id="open_salary_attachments"
+                        icon="fa-files-o" attrs="{'invisible': [('salary_attachment_count', '=', 0)]}">
+                        <field name="salary_attachment_count" widget="statinfo" string="Salary Attachments"/>
+                    </button>
+                </div>
+                <div class="oe_title" name="title">
+                    <h1><field name="employee_id" placeholder="Employee"/></h1>
+                    <h2><field name="number" attrs="{'invisible': [('state', '=', 'draft')]}"/></h2>
+                </div>
+                <div class="alert alert-warning" role="alert" attrs="{'invisible': [('warning_message','=',False)]}">
+                    <field name="warning_message" readonly="1"/>
+                </div>
+                <group col="4">
+                    <label for="date_from" string="Period"/>
+                    <div>
+                        <field name="date_from" class="oe_inline"/> - <field name="date_to" class="oe_inline"/>
+                    </div>
+                    <field name="company_id" invisible="1"/>
+                    <field name="contract_id" context="{'default_employee_id': employee_id}" required="1"/>
+                    <field name="country_id" invisible="1"/>
+                    <field name="country_code" invisible="1"/>
+                    <field name="payslip_run_id" string="Batch" invisible="1"/>
+                    <field name="struct_id" required="1"/>
+                    <field name="salary_attachment_ids" invisible="1" force_save="1"/>
+                    <field name="wage_type" invisible="1"/>
+                    <field name="sum_worked_hours" invisible="1"/>
+                    <field name="normal_wage" invisible="1"/>
+                    <field name="credit_note" invisible="1"/>
+                    <field name="is_superuser" invisible="1"/>
+                    <field name="has_refund_slip" invisible="1"/>
+                </group>
+                <notebook>
+                    <page string="Worked Days &amp; Inputs" name="worked_days_input" class="o_hr_payroll_worked_days_input" invisible = "1">
+                        <separator string="Worked Days"/>
+                        <field name="worked_days_line_ids"  >
+                            <tree string="Worked Days" editable="bottom" create="0" delete="0">
+                                <field name="work_entry_type_id" readonly="1" force_save="1"/>
+                                <field name="name"/>
+                                <field name="number_of_days" sum="Total Working Days" readonly="1" force_save="1"/>
+                                <field name="number_of_hours"  widget="float_time" sum="Total Working Hours" readonly="1" force_save="1"/>
+                                <field name="amount" readonly="1" sum="Total Amount" force_save="1"/>
+                                <field name="is_paid" invisible="True" readonly="1" force_save="1"/>
+                                <field name="sequence" invisible="True" readonly="1" force_save="1"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                            <form string="Worked Day">
+                                <group col="4">
+                                    <field name="work_entry_type_id"/>
+                                    <field name="name"/>
+                                    <field name="sequence"/>
+                                    <field name="number_of_days"/>
+                                    <field name="number_of_hours" widget="float_time"/>
+                                    <field name="amount"/>
+                                    <field name="is_paid"/>
+                                    <field name="contract_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </group>
+                            </form>
+                        </field>
+                        <separator string="Other Inputs"/>
+                        <div class="alert alert-warning" role="alert" attrs="{'invisible': [('negative_net_to_report_display', '=', False)]}">
+                            <field name="negative_net_to_report_message"/>
+                            <button name="action_report_negative_amount" class="oe_link" type="object" string=" -> Report"/>
+                        </div>
+                        <field name="input_line_ids" colspan="4" nolabel="1">
+                            <tree string="Input Data" editable="bottom">
+                                <!--
+                                    Required 0 to force client to send on change request even when not defined
+                                    Salary Attachments would otherwise not properly be computed and payslip_id is
+                                    required for _allowed_input_type_ids to work..
+                                -->
+                                <field name="payslip_id" invisible="1" required="0"/>
+                                <field name="_allowed_input_type_ids" invisible="1"/>
+                                <field name="input_type_id"/>
+                                <field name="name"/>
+                                <field name="amount"/>
+                                <field name="contract_id" invisible="True"/>
+                                <field name="sequence" invisible="True"/>
+                            </tree>
+                            <form string="Payslip Line">
+                                <group col="4">
+                                    <field name="payslip_id" invisible="1"/>
+                                    <field name="_allowed_input_type_ids" invisible="1"/>
+                                    <field name="input_type_id"/>
+                                    <field name="name"/>
+                                    <field name="sequence"/>
+                                    <field name="amount"/>
+                                    <field name="contract_id"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                    <page string="Salary Computation" name="salary_computation" class="o_hr_payroll_salary_computation">
+                        <field name="line_ids2" colspan="4" nolabel="1"  >
+                            <tree string="Salary Structure" editable="bottom" decoration-info="total == 0" create="0" delete="0" >
+                                <field name="name"/>
+                                <field name="retroactive" invisible="1"/>
+                                <field name="code" readonly="1" force_save="1" optional="hide"/>
+                                <field name="category_id" readonly="1" force_save="1" optional="hide"/>
+                                <field name="sequence" invisible="1" readonly="1" force_save="1"/>
+                                <field name="quantity" readonly="1" force_save="1" optional="hide"/>
+                                <field name="rate" readonly="1" force_save="1" optional="hide"/>
+                                <field name="salary_rule_id" groups="base.group_no_one" readonly="1" force_save="1" optional="hide"/>
+                                <field name="amount" readonly="1" force_save="1"/>
+                                <field name="total" readonly="1" force_save="1"/>
+                                <field name="amount_retroactive" string="Retroactivo" readonly="1"/>
+                                <field name="different_amount"  string="Diferencia" readonly="1"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                            <form string="Payslip Line">
+                                <group col="4">
+                                    <field name="name"/>
+                                    <field name="retroactive"/>
+                                    <field name="code"/>
+                                    <field name="category_id"/>
+                                    <field name="sequence"/>
+                                    <field name="quantity"/>
+                                    <field name="rate"/>
+                                    <field name="amount"/>
+                                    <field name="total"/>
+                                    <field name="amount_retroactive" string="Retroactivo" readonly="1"/>
+                                    <field name="different_amount" readonly="1" string="Diferencia"/>
+                                    <field name="salary_rule_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                    <page string="Other Info" name="account_info" invisible="1">
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="contract_domain_ids" invisible="1"/>
+                                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                            </group>
+                            <group name="accounting">
+                                <field name="has_negative_net_to_report"/>
+                                <field name="negative_net_to_report_display" invisible="1"/>
+                                <field name="paid" invisible="1"/>
+                            </group>
+                        </group>
+                        <div colspan="4">
+                            <field name="note" placeholder="Add an internal note..."/>
+                        </div>
+                    </page>
+                </notebook>
+                </sheet>
+                <div class="oe_chatter" invisible = "1">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

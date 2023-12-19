@@ -203,8 +203,9 @@
 
         <menuitem
             id="hr_co_menu_hr_payroll_finiquito"
+            name="Finiquito"
+            parent="hr_payroll.menu_hr_payroll_payslips"
+            sequence="10"
             action="action_hr_payroll_finiquito"
-            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
-            sequence="45"
             groups="hr_payroll.group_hr_payroll_manager" />
 </odoo>
