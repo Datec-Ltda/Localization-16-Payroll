@@ -238,10 +238,10 @@ class HrPayrollFiniquito(models.Model):
     def onchange_employee_id(self):
         self.holidays_days = self.employee_id.remaining_leave_year
         self.indemnity_year = self.employee_id.balance
-        self.indemnity_month = indemnity_accumulated_month(self.employee_id)
-        self.indemnity_day = indemnity_accumulated_day(self.employee_id)
-        self.christmas_bonus_month = christmas_bonus_accumulated_month(self.employee_id)
-        self.christmas_bonus_day = christmas_bonus_accumulated_day(self.employee_id)
+        self.indemnity_month = self.indemnity_accumulated_month(self.employee_id)
+        self.indemnity_day = self.indemnity_accumulated_day(self.employee_id)
+        self.christmas_bonus_month = self.christmas_bonus_accumulated_month(self.employee_id)
+        self.christmas_bonus_day = self.christmas_bonus_accumulated_day(self.employee_id)
         values_basic = self.get_previous_month_rule('BASIC')
         if values_basic:
             self.monthly_compensation1 = values_basic['mes 1']
@@ -315,38 +315,33 @@ class HrPayrollFiniquito(models.Model):
             values['mes {}'.format(idx)] = amount
         return values
 
+    def indemnity_accumulated_month(self, employee_id):
+        if employee_id.date_hired:
+            date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
 
-def indemnity_accumulated_month(employee_id):
-    if employee_id.date_hired:
-        date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
-        db_today = datetime.now().date()
-        diff = relativedelta(db_today, date_hired_this_year)
+            diff = relativedelta(self.date_end, date_hired_this_year)
+            return diff.months
+        else:
+            return 0
+
+    def indemnity_accumulated_day(self, employee_id):
+        if employee_id.date_hired:
+            date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
+            diff = relativedelta(self.date_end, date_hired_this_year)
+            return diff.days
+        else:
+            return 0
+
+    def christmas_bonus_accumulated_month(self, employee_id):
+        date_init = date(date.today().year, 1, 1)
+        diff = relativedelta(employee_id.departure_date, date_init)
         return diff.months
-    else:
-        return 0
 
-
-def indemnity_accumulated_day(employee_id):
-    if employee_id.date_hired:
-        date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
-        db_today = datetime.now().date()
-        diff = relativedelta(db_today, date_hired_this_year)
-        return diff.days
-    else:
-        return 0
-
-
-def christmas_bonus_accumulated_month(employee_id):
-    date_init = date(date.today().year, 1, 1)
-    diff = relativedelta(employee_id.departure_date, date_init)
-    return diff.months
-
-
-def christmas_bonus_accumulated_day(employee_id):
-    if employee_id.departure_date:
-        date_init_month = date(date.today().year, employee_id.departure_date.month, 1)
-        diff = relativedelta(employee_id.departure_date, date_init_month)
-        return diff.days
-    else:
-        return 0
+    def christmas_bonus_accumulated_day(self, employee_id):
+        if employee_id.departure_date:
+            date_init_month = date(date.today().year, employee_id.departure_date.month, 1)
+            diff = relativedelta(self.date_end, date_init_month)
+            return diff.days + 1
+        else:
+            return 0
 

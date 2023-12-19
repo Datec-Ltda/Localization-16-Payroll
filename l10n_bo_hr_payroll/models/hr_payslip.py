@@ -671,7 +671,10 @@ def days_total_worked(payslip, employee, aguinaldo):
                 if employee.date_hired <= date_init_year:
                     return 360
                 else:
-                    return (12 - employee.date_hired.month + 1) * 30
+                    days_month = (12 - employee.date_hired.month) * 30
+                    days = 30 - employee.date_hired.day + 1
+                    total_days = days_month + days
+                    return total_days
     return 0
 
 
