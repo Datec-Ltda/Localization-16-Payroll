@@ -37,35 +37,22 @@ class HrPayrollFiniquito(models.Model):
         ('paid', 'Pagado'),
     ], string='Status', index=True, readonly=True, copy=False, default='draft')
 
-    month1 = fields.Char(compute='_compute_month1')
+    month1 = fields.Char(compute='_compute_month')
 
     @api.depends('date_end')
-    def _compute_month1(self):
+    def _compute_month(self):
         if self.date_end:
-            month = (self.date_end + relativedelta(months=-3)).month
-            self.month1 = MESES[str(month)]
+            months = self.get_previous_months()
+            self.month1 = MESES[str(months['mes 1'])]
+            self.month2 = MESES[str(months['mes 2'])]
+            self.month3 = MESES[str(months['mes 3'])]
         else:
             self.month1 = "Mes 1"
-
-    month2 = fields.Char(compute='_compute_month2')
-
-    @api.depends('date_end')
-    def _compute_month2(self):
-        if self.date_end:
-            month = (self.date_end + relativedelta(months=-2)).month
-            self.month2 = MESES[str(month)]
-        else:
             self.month2 = "Mes 2"
-
-    month3 = fields.Char(compute='_compute_month3')
-
-    @api.depends('date_end')
-    def _compute_month3(self):
-        if self.date_end:
-            month = (self.date_end + relativedelta(months=-1)).month
-            self.month3 = MESES[str(month)]
-        else:
             self.month3 = "Mes 3"
+
+    month2 = fields.Char(compute='_compute_month')
+    month3 = fields.Char(compute='_compute_month')
 
     monthly_compensation1 = fields.Float(string="Remuneración Mensual mes 1", required=True)
     monthly_compensation2 = fields.Float(string="Remuneración Mensual mes 2", required=True)
@@ -374,6 +361,16 @@ class HrPayrollFiniquito(models.Model):
             if ruler == 'BONOS':
                 amount = record.other_bonuses
             values['mes {}'.format(idx)] = amount
+        return values
+
+    def get_previous_months(self):
+        domain = [('employee_id', '=', self.employee_id.id),
+                  ('contract_id', '=', self.contract_id.id),
+                  ('date_from', '<', self.date_end)]
+        closing_table = self.env['hr.payroll.closing.table'].search(domain,  order='date_to desc', limit=3)
+        values = {}
+        for idx, record in enumerate(reversed(closing_table), start=1):
+            values['mes {}'.format(idx)] = record.date_from.month
         return values
 
     def indemnity_accumulated_month(self, employee_id):
