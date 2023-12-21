@@ -318,11 +318,12 @@ class HrPayrollFiniquito(models.Model):
             self.overtime1 = values_basic['mes 1']
             self.overtime2 = values_basic['mes 2']
             self.overtime3 = values_basic['mes 3']
-        values_basic = self.get_previous_month_rule('BONOS')
+        values_prod = self.get_previous_month_rule('BONO_PROD')
+        values_bono = self.get_previous_month_rule('BONOS')
         if values_basic:
-            self.other_bonuses1 = values_basic['mes 1']
-            self.other_bonuses2 = values_basic['mes 2']
-            self.other_bonuses3 = values_basic['mes 3']
+            self.other_bonuses1 = values_prod['mes 1'] + values_bono['mes 1']
+            self.other_bonuses2 = values_prod['mes 2'] + values_bono['mes 2']
+            self.other_bonuses3 = values_prod['mes 3'] + values_bono['mes 3']
 
     @api.constrains('employee_id', 'contract_id')
     def _check_unique_employee_contract(self):
