@@ -104,9 +104,9 @@
                                             <td class="text-center"><field name="total_total"/></td>
                                         </tr>
                                         <tr>
-                                            <td>Promedio</td>
-                                            <td class="text-center"></td>
-                                            <td class="text-center"></td>
+                                            <td>Total</td>
+                                            <td class="text-center"><field name="total_total"/></td>
+                                            <td class="text-center">Promedio</td>
                                             <td class="text-center"><field name="average"/></td>
                                         </tr>
                                     </tbody>
