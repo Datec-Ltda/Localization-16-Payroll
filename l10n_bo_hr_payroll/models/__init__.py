@@ -9,6 +9,8 @@ from . import hr_payslip_line
 from . import hr_payroll_finiquito
 from . import hr_payroll_employee_retroactive_payments
 from . import hr_salary_rule
+from . import bi_hr_payroll_pay_retroactive_view
+
 
 
 

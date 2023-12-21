@@ -35,7 +35,7 @@
                     <notebook>
                         <page string="Pagos retroactivos">
                             <field name="payment_retroactive_ids" nolabel="1">
-                                <tree>
+                                <tree create="0">
                                     <field name="employee_id" string="Empleado" readonly="1"/>
                                     <field name="contract_id"  readonly="1"/>
                                     <field name="date_from" readonly="1"/>
@@ -74,35 +74,35 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>
                     </header>
                     <sheet>
-                        <div class="oe_title">
+                        <div class="oe_title" invisible="1">
                             <label for="name"/>
                             <h1>
                                 <field name="name" attrs="{'readonly':[('state','!=','draft')]}" placeholder="Name"/>
                             </h1>
                         </div>
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <label for="date_from" string="Period" />
-                                <div>
-                                    <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'closed'])]}"/>
-                                </div>
-                                <field name="month_init_pay" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
-                                <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
-                            </group>
-                            <group>
-                                <field name="employee_id"/>
-                                <field name="contract_id" domain="[('state', '=', 'open'), ('employee_id', '=', employee_id)]"/>
-                            </group>
-                        </group>
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="name"/>-->
+<!--                                <label for="date_from" string="Period" />-->
+<!--                                <div>-->
+<!--                                    <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'closed'])]}"/>-->
+<!--                                </div>-->
+<!--                                <field name="month_init_pay" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />-->
+<!--                                <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="employee_id"/>-->
+<!--                                <field name="contract_id" domain="[('state', '=', 'open'), ('employee_id', '=', employee_id)]"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
                     </sheet>
                     <notebook>
                         <page string="Meses procesados">
                             <field name="slip_ids" nolabel="1" context="{'form_view_ref': 'l10n_bo_hr_payroll.view_hr_payslip_form_modif'}">
-                                <tree>
+                                <tree create="0">
                                     <field name="name"  readonly="1"/>
                                     <field name="date_from"  readonly="1"/>
-                                    <field name="date_to"  readonly="1"/>
+                                    <field name="date_to"  readonly="1" string="Hasta"/>
                                 </tree>
                             </field>
                         </page>

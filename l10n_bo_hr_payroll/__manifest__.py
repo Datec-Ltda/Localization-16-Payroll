@@ -29,6 +29,7 @@
         'views/hr_payroll_housing_development_unit_view.xml',
         'views/hr_payroll_finiquito_view.xml',
         'views/hr_payroll_employee_retroactive_payment_view.xml',
+        'views/bi_hr_payroll_pay_retroactive_view.xml',
         # 'wizard/hr_payroll_retroactive_payment_wizard_views.xml',
         # 'report/hr_employee_payroll_report_views.xml',
 
