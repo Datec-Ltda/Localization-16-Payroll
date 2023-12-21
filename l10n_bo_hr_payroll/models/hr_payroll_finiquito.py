@@ -331,46 +331,50 @@ class HrPayrollFiniquito(models.Model):
                 raise ValidationError("Ya existe un registro de finiquito con el mismo empleado y contrato.")
 
     def get_previous_month_rule(self, ruler):
-        domain = [('employee_id', '=', self.employee_id.id),
-                  ('contract_id', '=', self.contract_id.id),
-                  ('date_from', '<', self.date_end)]
-        closing_table = self.env['hr.payroll.closing.table'].search(domain,  order='date_to desc', limit=3)
         values = {}
-        amount = 0
-        for idx, record in enumerate(reversed(closing_table), start=1):
-            if ruler == 'BASIC':
-                amount = record.basic
-            if ruler == 'BONO_ANT':
-                amount = record.antiquity_bonus
-            if ruler == 'BONO_PROD':
-                amount = record.production_bonus
-            if ruler == 'SUBS_FRONTERA':
-                amount = record.frontier_subsidy
-            if ruler == 'EXTRAS':
-                amount = record.overtime_amount
-            if ruler == 'DOMINGO':
-                amount = record.sunday_overtime_amount
-            if ruler == 'RECARGO':
-                amount = record.night_overtime_hours_amount
-            if ruler == 'NET':
-                amount = record.net_salary
-            if ruler == 'PRIMA':
-                amount = record.prima
-            if ruler == 'GROSS':
-                amount = record.gross
-            if ruler == 'BONOS':
-                amount = record.other_bonuses
-            values['mes {}'.format(idx)] = amount
+        if self.date_end:
+            date_to_cal = date(self.date_end.year, self.date_end.month, 1)
+            domain = [('employee_id', '=', self.employee_id.id),
+                      ('contract_id', '=', self.contract_id.id),
+                      ('date_from', '<', date_to_cal)]
+            closing_table = self.env['hr.payroll.closing.table'].search(domain,  order='date_to desc', limit=3)
+            amount = 0
+            for idx, record in enumerate(reversed(closing_table), start=1):
+                if ruler == 'BASIC':
+                    amount = record.basic
+                if ruler == 'BONO_ANT':
+                    amount = record.antiquity_bonus
+                if ruler == 'BONO_PROD':
+                    amount = record.production_bonus
+                if ruler == 'SUBS_FRONTERA':
+                    amount = record.frontier_subsidy
+                if ruler == 'EXTRAS':
+                    amount = record.overtime_amount
+                if ruler == 'DOMINGO':
+                    amount = record.sunday_overtime_amount
+                if ruler == 'RECARGO':
+                    amount = record.night_overtime_hours_amount
+                if ruler == 'NET':
+                    amount = record.net_salary
+                if ruler == 'PRIMA':
+                    amount = record.prima
+                if ruler == 'GROSS':
+                    amount = record.gross
+                if ruler == 'BONOS':
+                    amount = record.other_bonuses
+                values['mes {}'.format(idx)] = amount
         return values
 
     def get_previous_months(self):
-        domain = [('employee_id', '=', self.employee_id.id),
-                  ('contract_id', '=', self.contract_id.id),
-                  ('date_from', '<', self.date_end)]
-        closing_table = self.env['hr.payroll.closing.table'].search(domain,  order='date_to desc', limit=3)
         values = {}
-        for idx, record in enumerate(reversed(closing_table), start=1):
-            values['mes {}'.format(idx)] = record.date_from.month
+        if self.date_end:
+            date_to_cal = date(self.date_end.year, self.date_end.month, 1)
+            domain = [('employee_id', '=', self.employee_id.id),
+                      ('contract_id', '=', self.contract_id.id),
+                      ('date_from', '<', date_to_cal)]
+            closing_table = self.env['hr.payroll.closing.table'].search(domain,  order='date_to desc', limit=3)
+            for idx, record in enumerate(reversed(closing_table), start=1):
+                values['mes {}'.format(idx)] = record.date_from.month
         return values
 
     def indemnity_accumulated_month(self, employee_id):
