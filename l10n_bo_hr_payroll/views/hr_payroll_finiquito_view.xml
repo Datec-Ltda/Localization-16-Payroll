@@ -41,9 +41,15 @@
                                     <thead>
                                         <tr>
                                             <th>Concepto</th>
-                                            <th class="text-center">Mes 1</th>
-                                            <th class="text-center">Mes 2</th>
-                                            <th class="text-center">Mes 3</th>
+                                            <th class="text-center">
+                                                <field name="month1"/>
+                                            </th>
+                                            <th class="text-center">
+                                                <field name="month2"/>
+                                            </th>
+                                            <th class="text-center">
+                                                <field name="month3"/>
+                                            </th>
                                             <th class="text-center">Total</th>
                                         </tr>
                                     </thead>
@@ -57,16 +63,16 @@
                                         </tr>
                                         <tr>
                                             <td>Bono antigüedad</td>
-                                            <td class="text-center"><field name="seniority_bonus1"/></td>
-                                            <td class="text-center"><field name="seniority_bonus2"/></td>
-                                            <td class="text-center"><field name="seniority_bonus3"/></td>
+                                            <td class="text-center"><field name="seniority_bonus1" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="seniority_bonus2" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="seniority_bonus3" readonly="1" force_save="1"/></td>
                                             <td class="text-center"><field name="seniority_bonus_total"/></td>
                                         </tr>
                                         <tr>
                                             <td>Bono Frontera</td>
-                                            <td class="text-center"><field name="border_bonus1"/></td>
-                                            <td class="text-center"><field name="border_bonus2"/></td>
-                                            <td class="text-center"><field name="border_bonus3"/></td>
+                                            <td class="text-center"><field name="border_bonus1" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="border_bonus2" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="border_bonus3" readonly="1" force_save="1"/></td>
                                             <td class="text-center"><field name="border_bonus_total"/></td>
                                         </tr>
                                         <tr>
@@ -78,16 +84,16 @@
                                         </tr>
                                         <tr>
                                             <td>Horas Estras</td>
-                                            <td class="text-center"><field name="overtime1"/></td>
-                                            <td class="text-center"><field name="overtime2"/></td>
-                                            <td class="text-center"><field name="overtime3"/></td>
+                                            <td class="text-center"><field name="overtime1" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="overtime2" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="overtime3" readonly="1" force_save="1"/></td>
                                             <td class="text-center"><field name="overtime_total"/></td>
                                         </tr>
                                         <tr>
                                             <td>Otros Bonos</td>
-                                            <td class="text-center"><field name="other_bonuses1"/></td>
-                                            <td class="text-center"><field name="other_bonuses2"/></td>
-                                            <td class="text-center"><field name="other_bonuses3"/></td>
+                                            <td class="text-center"><field name="other_bonuses1" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="other_bonuses2" readonly="1" force_save="1"/></td>
+                                            <td class="text-center"><field name="other_bonuses3" readonly="1" force_save="1"/></td>
                                             <td class="text-center"><field name="other_bonuses_total"/></td>
                                         </tr>
                                         <tr>

@@ -58,7 +58,7 @@ class HrPayslip(models.Model):
                              'other_bonuses': 0.0, 'net_salary': 0.0, 'credit_next_month': 0.0, 'overtime_amount': 0.0,
                              'sunday_overtime_amount': 0.0, 'sunday_worked_amount': 0.0, 'night_overtime_hours_amount': 0.0, 'gross': 0.0,
                              'worked_days': 0.0, 'worked_hours': 0.0, 'overtime': 0.0, 'sunday_overtime': 0.0,
-                             'night_overtime_hours': 0.0, 'sunday_worked': 0.0}
+                             'prima': 0.0, 'night_overtime_hours': 0.0, 'sunday_worked': 0.0}
             # Para el caso que el pago quinquenal no archivar en la tabla de cierre, si es una estructura aparte
             for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL', 'FINIQUITO']):
                 if line.code == 'QUINQUENAL' or line.code == 'FINIQUITO':

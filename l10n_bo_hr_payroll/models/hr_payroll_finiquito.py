@@ -1,14 +1,24 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from random import randint
 
-from odoo import fields, models, api, _
+from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 from datetime import date
-from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
+MESES= {'1': 'Enero',
+        '2':'Febrero',
+        '3':'Marzo',
+        '4':'Abril',
+        '5':'Mayo',
+        '6':'Junio',
+        '7':'Julio',
+        '8':'Agosto',
+        '9':'Septiembre',
+        '10':'Octubre',
+        '11':'Noviembre',
+        '12':'Diciembre'}
 
 class HrPayrollFiniquito(models.Model):
     _name = "hr.payroll.finiquito"
@@ -26,6 +36,36 @@ class HrPayrollFiniquito(models.Model):
         ('open', 'Abierto'),
         ('paid', 'Pagado'),
     ], string='Status', index=True, readonly=True, copy=False, default='draft')
+
+    month1 = fields.Char(compute='_compute_month1')
+
+    @api.depends('date_end')
+    def _compute_month1(self):
+        if self.date_end:
+            month = (self.date_end + relativedelta(months=-3)).month
+            self.month1 = MESES[str(month)]
+        else:
+            self.month1 = "Mes 1"
+
+    month2 = fields.Char(compute='_compute_month2')
+
+    @api.depends('date_end')
+    def _compute_month2(self):
+        if self.date_end:
+            month = (self.date_end + relativedelta(months=-2)).month
+            self.month2 = MESES[str(month)]
+        else:
+            self.month2 = "Mes 2"
+
+    month3 = fields.Char(compute='_compute_month3')
+
+    @api.depends('date_end')
+    def _compute_month3(self):
+        if self.date_end:
+            month = (self.date_end + relativedelta(months=-1)).month
+            self.month3 = MESES[str(month)]
+        else:
+            self.month3 = "Mes 3"
 
     monthly_compensation1 = fields.Float(string="Remuneración Mensual mes 1", required=True)
     monthly_compensation2 = fields.Float(string="Remuneración Mensual mes 2", required=True)
@@ -242,6 +282,25 @@ class HrPayrollFiniquito(models.Model):
         self.indemnity_day = self.indemnity_accumulated_day(self.employee_id)
         self.christmas_bonus_month = self.christmas_bonus_accumulated_month(self.employee_id)
         self.christmas_bonus_day = self.christmas_bonus_accumulated_day(self.employee_id)
+        # inicializar variables
+        self.monthly_compensation1 = 0
+        self.monthly_compensation2 = 0
+        self.monthly_compensation3 = 0
+        self.seniority_bonus1 = 0
+        self.seniority_bonus2 = 0
+        self.seniority_bonus3 = 0
+        self.border_bonus1 = 0
+        self.border_bonus2 = 0
+        self.border_bonus3 = 0
+        self.commissions1 = 0
+        self.commissions2 = 0
+        self.commissions3 = 0
+        self.overtime1 = 0
+        self.overtime2 = 0
+        self.overtime3 = 0
+        self.other_bonuses1 = 0
+        self.other_bonuses2 = 0
+        self.other_bonuses3 = 0
         values_basic = self.get_previous_month_rule('BASIC')
         if values_basic:
             self.monthly_compensation1 = values_basic['mes 1']
@@ -257,7 +316,7 @@ class HrPayrollFiniquito(models.Model):
             self.border_bonus1 = values_basic['mes 1']
             self.border_bonus2 = values_basic['mes 2']
             self.border_bonus3 = values_basic['mes 3']
-        # values_basic = self.get_previous_month_rule('SUBS_FRONTERA')
+        # values_basic = self.get_previous_month_rule('')
         # if values_basic:
             # self.commissions1 = values_basic['mes 1']
             # self.commissions2 = values_basic['mes 2']
@@ -273,7 +332,6 @@ class HrPayrollFiniquito(models.Model):
             self.other_bonuses2 = values_basic['mes 2']
             self.other_bonuses3 = values_basic['mes 3']
 
-
     @api.constrains('employee_id', 'contract_id')
     def _check_unique_employee_contract(self):
         for finiquito in self:
@@ -287,7 +345,8 @@ class HrPayrollFiniquito(models.Model):
 
     def get_previous_month_rule(self, ruler):
         domain = [('employee_id', '=', self.employee_id.id),
-                  ('contract_id', '=', self.contract_id.id)]
+                  ('contract_id', '=', self.contract_id.id),
+                  ('date_from', '<', self.date_end)]
         closing_table = self.env['hr.payroll.closing.table'].search(domain,  order='date_to desc', limit=3)
         values = {}
         amount = 0
@@ -312,6 +371,8 @@ class HrPayrollFiniquito(models.Model):
                 amount = record.prima
             if ruler == 'GROSS':
                 amount = record.gross
+            if ruler == 'BONOS':
+                amount = record.other_bonuses
             values['mes {}'.format(idx)] = amount
         return values
 
