@@ -313,7 +313,7 @@ class HrPayrollFiniquito(models.Model):
             self.overtime1 = values_basic['mes 1']
             self.overtime2 = values_basic['mes 2']
             self.overtime3 = values_basic['mes 3']
-        values_basic = self.get_previous_month_rule('BONO_PROD')
+        values_basic = self.get_previous_month_rule('BONOS')
         if values_basic:
             self.other_bonuses1 = values_basic['mes 1']
             self.other_bonuses2 = values_basic['mes 2']
