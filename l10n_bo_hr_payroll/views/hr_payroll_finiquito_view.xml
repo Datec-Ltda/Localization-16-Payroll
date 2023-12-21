@@ -12,6 +12,7 @@
                         <field name="state" readonly="1"/>
                         <button string="Abrir" name="action_period_open" type="object" states="draft"/>
                         <button string="A borrador" name="action_period_draft" states="open" type='object' />
+                        <button string="Refrescar" name="action_refresh" states="draft" type='object' />
                     </header>
                     <sheet>
                         <group col="4">
@@ -35,9 +36,9 @@
                                     attrs="{'invisible': [('has_eviction', '=', False)], 'required':[('has_eviction', '!=', False)]}"/>
                             </group>
                         </group>
-                        <group col="2">
+                        <group >
                             <group>
-                                <table colspan="8" border="0" cellpadding="0" style="background-color: white; padding: 0px; border-collapse:separate;">
+                                <table colspan="8" border="0" cellpadding="0" style="background-color: white; padding: 0px; border-spacing:0;">
                                     <thead>
                                         <tr>
                                             <th>Concepto</th>

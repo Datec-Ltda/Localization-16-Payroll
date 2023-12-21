@@ -128,6 +128,11 @@ class HrPayrollFiniquito(models.Model):
         self.write({'state': 'open'})
         return True
 
+    def action_refresh(self):
+        if self.employee_id:
+            self.onchange_employee_id()
+        return True
+
     def action_period_closed(self):
         self.write({'state': 'closed'})
         return True
