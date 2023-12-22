@@ -46,6 +46,7 @@ class HrPayslip(models.Model):
             'get_finiquito_value': get_finiquito_value,
             'get_is_retroactive': get_is_retroactive,
             'get_retroactive_sum_rule': get_retroactive_sum_rule,
+            'get_retroactive_neto_value': get_retroactive_neto_value,
         })
         return res
 
@@ -71,6 +72,22 @@ class HrPayslip(models.Model):
                         return line.amount_retroactive
                     else:
                         value += line.different_amount
+        return value
+
+    def _get_retroactive_neto_value(self, date_from, date_to):
+        structure = self.env.ref('l10n_bo_hr_payroll.structure_retroactive')
+        domain = [('date_from', '=', date_from),
+                  ('date_to', '=', date_to),
+                  ('employee_id', '=', self.employee_id.id),
+                  ('contract_id', '=', self.contract_id.id),
+                  ('state', 'in', ['done', 'paid']),
+                  ('struct_id', '=', structure.id),
+                  ]
+        value = 0
+        payslip= self.env['hr.payslip'].search(domain, limit=1)
+        if payslip:
+            for line in payslip.line_ids.filtered(lambda l: l.code == 'NET'):
+                return line.amount
         return value
 
     def _get_antiquity_bonus(self, employee):
@@ -728,5 +745,10 @@ def get_is_retroactive(payslip):
 
 def get_retroactive_sum_rule(payslip, code):
     value = payslip.dict._get_retroactive_sum_rule(payslip.date_from,payslip.date_to, code)
+    return value
+
+
+def get_retroactive_neto_value(payslip):
+    value = payslip.dict._get_retroactive_neto_value(payslip.date_from,payslip.date_to)
     return value
 

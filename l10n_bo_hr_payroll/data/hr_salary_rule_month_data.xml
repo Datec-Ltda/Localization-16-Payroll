@@ -413,6 +413,20 @@ result = amount_total_gained_in_month(payslip,employee, 'PRIMA')
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_payed" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">PAGO RETROACTIVO</field>
+        <field name="code">RETROACTIVE</field>
+        <field name="sequence">150</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_neto_value(payslip)
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
 <!--Cambio la secuencia de 200 a 150-->
     <!--   NETO IMPONIBLE               -->
     <record id="datec_l10n_bo_hr_payroll_neto_deduciones" model="hr.salary.rule">
@@ -432,6 +446,8 @@ if FINIQ_VACACIONES:
     total += FINIQ_VACACIONES
 if FINQ_OB_EXT:
     total += FINQ_OB_EXT
+if RETROACTIVE:
+    total += RETROACTIVE
 result = GROSS + total + TOTAL_AFP
         </field>
         <field name="struct_id" ref="structure_month"/>
