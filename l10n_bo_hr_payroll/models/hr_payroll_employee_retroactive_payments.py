@@ -66,21 +66,21 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
 
     def action_period_draft(self):
         self.write({'state': 'draft'})
-        for record in self.supplementary_work_ids:
+        for record in self.payment_retroactive_ids:
             if record.state != 'closed':
                 record.write({'state': 'draft'})
         return True
 
     def action_period_open(self):
         self.write({'state': 'open'})
-        for record in self.supplementary_work_ids:
+        for record in self.payment_retroactive_ids:
             if record.state != 'closed':
                 record.write({'state': 'open'})
         return True
 
     def action_period_closed(self):
         self.write({'state': 'closed'})
-        self.supplementary_work_ids.write({'state': 'closed'})
+        self.payment_retroactive_ids.write({'state': 'closed'})
         return True
 
     payment_retroactive_ids = fields.One2many(

@@ -143,23 +143,23 @@ result = employee.GetQuinquennialYear(payslip.date_from, payslip.date_to)
         <field name="amount_python_compute">
 total = 0
 if QUINQUENAL_BASICO_PROMEDIO:
-    total += QUINQUENAL_BASICO_PROMEDIO
+    total += round(QUINQUENAL_BASICO_PROMEDIO,2)
 if QUINQUENAL_B_ANT_PRO:
-    total += QUINQUENAL_B_ANT_PRO
+    total += round(QUINQUENAL_B_ANT_PRO,2)
 if QUINQUENAL_B_PROD:
-    total += QUINQUENAL_B_PROD
+    total += round(QUINQUENAL_B_PROD,2)
 if QUINQUENAL_SUB_FRONT_PRO:
-    total += QUINQUENAL_SUB_FRONT_PRO
+    total += round(QUINQUENAL_SUB_FRONT_PRO,2)
 if QUINQUENAL_OTROS_BONOS:
-    total += QUINQUENAL_OTROS_BONOS
+    total += round(QUINQUENAL_OTROS_BONOS,2)
 if QUINQUENAL_H_EXTRAS_PRO:
-    total += QUINQUENAL_H_EXTRAS_PRO
+    total += round(QUINQUENAL_H_EXTRAS_PRO,2)
 if QUINQUENAL_RECARGOS_PRO:
-    total += QUINQUENAL_RECARGOS_PRO
+    total += round(QUINQUENAL_RECARGOS_PRO,2)
 if QUINQUENAL_DOMINGO_PRO:
-    total += QUINQUENAL_DOMINGO_PRO
+    total += round(QUINQUENAL_DOMINGO_PRO,2)
 if QUINQUENAL_DOMINGO_TRAB_PROM:
-    total += QUINQUENAL_DOMINGO_TRAB_PROM
+    total += round(QUINQUENAL_DOMINGO_TRAB_PROM,2)
 result = total
         </field>
         <field name="struct_id" ref="structure_quinquennial"/>
