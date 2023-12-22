@@ -45,11 +45,33 @@ class HrPayslip(models.Model):
             'amount_total_gained_in_month': amount_total_gained_in_month,
             'get_finiquito_value': get_finiquito_value,
             'get_is_retroactive': get_is_retroactive,
+            'get_retroactive_sum_rule': get_retroactive_sum_rule,
         })
         return res
 
     def _get_is_retroactive(self):
         return self.is_retroactive
+
+    def _get_retroactive_sum_rule(self, date_from, date_to, code):
+        domain = [('date_from', '=', date_from),
+                  ('date_to', '=', date_to),
+                  ('employee_id', '=', self.employee_id.id),
+                  ('contract_id', '=', self.contract_id.id),
+                  ('state', '=', 'open'),
+                  ]
+        value = 0
+        retroactive = self.env['hr.payroll.employee.payments.retroactive.list'].search(domain, limit=1)
+        if retroactive:
+            for slip in retroactive.slip_ids:
+                domain2 = [('slip_id', '=', slip.id),
+                           ('code', '=', code)]
+                lines = self.env['hr.payslip.line'].search(domain2)
+                for line in lines:
+                    if line.code == 'SMN':
+                        return line.amount_retroactive
+                    else:
+                        value += line.different_amount
+        return value
 
     def _get_antiquity_bonus(self, employee):
         percent = 0
@@ -702,3 +724,9 @@ def get_finiquito_value(payslip, code):
 def get_is_retroactive(payslip):
     value = payslip.dict._get_is_retroactive()
     return value
+
+
+def get_retroactive_sum_rule(payslip, code):
+    value = payslip.dict._get_retroactive_sum_rule(payslip.date_from,payslip.date_to, code)
+    return value
+

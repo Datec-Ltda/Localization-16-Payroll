@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    SALARIO MENSUAL    ************************************    -->
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_basic" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.BASIC"/>
+        <field name="name">Salario básico total</field>
+        <field name="code">BASIC</field>
+        <field name="sequence">1</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'BASIC')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_smn" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">SALARIO MINIMO NACIONAL</field>
+        <field name="code">SMN</field>
+        <field name="sequence">10</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'SMN')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_antiquity_bonus" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">BONO ANTIGUEDAD</field>
+        <field name="code">BONO_ANT</field>
+        <field name="sequence">11</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'BONO_ANT')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_frontier_subsidy" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">SUBSIDIO FRONTERA</field>
+        <field name="code">SUBS_FRONTERA</field>
+        <field name="sequence">11</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'SUBS_FRONTERA')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_overtime_amount" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">HORAS EXTRAS</field>
+        <field name="code">EXTRAS</field>
+        <field name="sequence">11</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HE</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'EXTRAS')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_sunday_overtime" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">Dominical y Dom. Trab. </field>
+        <field name="code">DOMINGO</field>
+        <field name="sequence">11</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HED</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'DOMINGO')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_night_overtime" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">RECARGO</field>
+        <field name="code">RECARGO</field>
+        <field name="sequence">11</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.HRN</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'RECARGO')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_work_mondat" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">Domingo trabajado</field>
+        <field name="code">DT</field>
+        <field name="sequence">11</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.DT</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'DT')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+
+<!--    Reglas de AFP                   -->
+<!--    Cotización mensual              -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_afp_cm" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Cotización mensual </field>
+        <field name="code">AFP_CM</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AFP_CM')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--   Prima riesgo común               -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_afp_prc" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Prima riesgo común</field>
+        <field name="code">AFP_PRC</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AFP_PRC')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--    Aporte solidario              -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_afp_as" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Aporte solidario</field>
+        <field name="code">AFP_AS</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AFP_AS')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--   Comisión AFP               -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_afp_comis" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Comisión AFP</field>
+        <field name="code">AFP_COM</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AFP_COM')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--   DESCUENTO AFP               -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_afp_discount" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">DESCUENTO AFP</field>
+        <field name="code">AFP_DISCOUNT</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AFP_DISCOUNT')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+
+<!--   MONTO ANS 1%              -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_anc_amount_1" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">MONTO ANS 1%</field>
+        <field name="code">ANS_ONE</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'ANS_ONE')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--   MONTO ANS 5%              -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_anc_amount_5" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">MONTO ANS 5%</field>
+        <field name="code">ANS_FIVE</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'ANS_FIVE')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--   MONTO ANS 10%              -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_anc_amount_10" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">MONTO ANS 10%</field>
+        <field name="code">ANS_TEN</field>
+        <field name="sequence">101</field>
+        <field name="retroactive">True</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'ANS_TEN')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--   MONTO ANS TOTAL%              -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_anc_amount_discount_anc" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">DESCUENTO ANS</field>
+        <field name="code">DESCUENTO_ANS</field>
+        <field name="sequence">102</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'DESCUENTO_ANS')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_gross" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.GROSS"/>
+        <field name="name">TOTAL GANADO</field>
+        <field name="code">GROSS</field>
+        <field name="sequence">100</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = categories.BASIC + categories.ALW
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--   MONTO TOTAL AFP              -->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_anc_amount_total_afp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">TOTAL AFP</field>
+        <field name="code">TOTAL_AFP</field>
+        <field name="sequence">104</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'TOTAL_AFP')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--    Horas de ausencia-->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_leave_hours" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">Horas de ausencia</field>
+        <field name="code">LEAVE_HOURS</field>
+        <field name="sequence">102</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.LEAVE_HOURS</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'LEAVE_HOURS')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--    Dias de ausencia-->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_leave_days" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">Días de ausencia</field>
+        <field name="code">LEAVE_DAYS</field>
+        <field name="sequence">102</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.LEAVE_DAYS</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'LEAVE_DAYS')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+<!--    Falta injustificada-->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_leave_unjustified_absence" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">Falta injustificada</field>
+        <field name="code">LEAVE_UNJUSTIFIED</field>
+        <field name="sequence">102</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = worked_days.LEAVE_UNJUSTIFIED</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'LEAVE_UNJUSTIFIED')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_total_descuento" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Total DESCUENTO</field>
+        <field name="code">TOTAL_DESC</field>
+        <field name="sequence">200</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = categories.DED
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+
+<!--    Reglas para aportes patronales-->
+    <record id="datec_l10n_bo_hr_payroll_retroactive_a_risk_arp" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Aporte Riesgo Profesional</field>
+        <field name="code">AP_ARP</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AP_ARP')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_a_risk_asp" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Aporte Solidario Patronal</field>
+        <field name="code">AP_ASP</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AP_ASP')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_a_risk_apv" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Aporte Pro-Vivienda</field>
+        <field name="code">AP_APV</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AP_APV')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_a_risk_as" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Aporte de Salud</field>
+        <field name="code">AP_AS</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'AP_AS')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+     <record id="datec_l10n_bo_hr_payroll_retroactive_prov_indemnification" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Prov Indemnización</field>
+        <field name="code">PROV_INDEN</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'PROV_INDEN')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_christmas_bonus_accruals" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Prov Aguinaldo</field>
+        <field name="code">PROV_AGUI</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'PROV_AGUI')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_second_christmas_bonus_accruals" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Prov Segundo Aguinaldo</field>
+        <field name="code">PROV_2_AGUI</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'PROV_2_AGUI')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_provisions_utility_bonus" model="hr.salary.rule">
+        <field name="category_id" ref="BASIC_INF"/>
+        <field name="name">Prov Prima utilidades</field>
+        <field name="code">PROV_PRIMA</field>
+        <field name="sequence">201</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = get_retroactive_sum_rule(payslip,'PROV_PRIMA')
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_retroactive_net" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.NET"/>
+        <field name="name">LÍQUIDO PAGABLE</field>
+        <field name="code">NET</field>
+        <field name="sequence">200</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = categories.GROSS + categories.DED
+        </field>
+        <field name="struct_id" ref="structure_retroactive"/>
+    </record>
+
+</odoo>
+
