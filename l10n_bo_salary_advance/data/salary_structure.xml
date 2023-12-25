@@ -4,7 +4,7 @@
         <!-- advance salary rule -->
         <record id="hr_payslip_rule_advance" model="hr.salary.rule">
             <field name="code">SAR</field>
-            <field name="name">Advance Salary</field>
+            <field name="name">Anticipo de sueldo</field>
             <field name="category_id" ref="hr_payroll.DED"/>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
@@ -15,12 +15,11 @@ result = inputs.SAR and - (inputs.SAR.amount)
             <field name="struct_id" ref="l10n_bo_hr_payroll.structure_month"/>
         </record>
 
-        <record id="hr_work_entry_type_advance" model="hr.work.entry.type">
-            <field name="name">Adelanto de salario</field>
+        <record id="payslip_input_type_advance" model="hr.payslip.input.type">
+            <field name="name">Anticipo de sueldo</field>
             <field name="code">SAR</field>
-            <field name="sequence">26</field>
+            <field name="struct_ids" eval="[(4, ref('l10n_bo_hr_payroll.structure_month'))]"/>
         </record>
-
         <!-- salary structure -->
 <!--        <record model="ir.ui.view" id="model_salary_structure">-->
 <!--            <field name="name">salary.structure.form</field>-->

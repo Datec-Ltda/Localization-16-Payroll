@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e-20230909\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-08 17:29+0000\n"
-"PO-Revision-Date: 2023-12-08 17:29+0000\n"
+"POT-Creation-Date: 2023-12-24 14:45+0000\n"
+"PO-Revision-Date: 2023-12-24 14:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -41,19 +41,30 @@ msgid "Activity Type Icon"
 msgstr "Icono del tipo de actividad"
 
 #. module: l10n_bo_salary_advance
-#: model:hr.work.entry.type,name:l10n_bo_salary_advance.hr_work_entry_type_advance
-msgid "Adelanto de salario"
-msgstr ""
-
-#. module: l10n_bo_salary_advance
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__advance
 #: model:ir.ui.menu,name:l10n_bo_salary_advance.parent_menu_salary_advance
 msgid "Advance"
 msgstr "Adelanto"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid "Advance amount is greater than allotted"
+msgstr "El importe del anticipo es superior al asignado"
+
+#. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid "Advance can be requested once in a month"
+msgstr "Se puede solicitar un anticipo una vez al mes"
+
+#. module: l10n_bo_salary_advance
 #: model:hr.salary.rule,name:l10n_bo_salary_advance.hr_payslip_rule_advance
-msgid "Advance Salary"
+#: model:hr.work.entry.type,name:l10n_bo_salary_advance.hr_work_entry_type_advance
+msgid "Anticipo de sueldo"
 msgstr "Adelanto de Salario"
 
 #. module: l10n_bo_salary_advance
@@ -62,8 +73,11 @@ msgid "Approve"
 msgstr "Aprobar"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields.selection,name:l10n_bo_salary_advance.selection__salary_advance__state__approve
 #: model_terms:ir.ui.view,arch_db:l10n_bo_salary_advance.view_salary_advance_filter
+#, python-format
 msgid "Approved"
 msgstr "Aprobado"
 
@@ -75,7 +89,7 @@ msgstr "Solicitudes aprobadas"
 #. module: l10n_bo_salary_advance
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Recuento de archivos adjuntos"
 
 #. module: l10n_bo_salary_advance
 #: model_terms:ir.ui.view,arch_db:l10n_bo_salary_advance.view_salary_advance_form
@@ -83,7 +97,10 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields.selection,name:l10n_bo_salary_advance.selection__salary_advance__state__cancel
+#, python-format
 msgid "Cancelled"
 msgstr "Cancelado"
 
@@ -115,7 +132,10 @@ msgid "Created on"
 msgstr "Creada en"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__credit
+#, python-format
 msgid "Credit Account"
 msgstr "Cuenta de crédito"
 
@@ -131,10 +151,37 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__debit
+#, python-format
 msgid "Debit Account"
 msgstr "Cuenta de débito"
 
+#. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid "Define a contract for the employee"
+msgstr "Definir un contrato para el empleado"
+
+#. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid "Define a structure type for the employee"
+msgstr "Definir un tipo de estructura para el empleado"
+
+#. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid ""
+"Define home address for the employee. i.e address under private information "
+"of the employee."
+msgstr ""
+"Definir la dirección del domicilio del empleado, es decir, la dirección bajo información privada"
+"del empleado."
 #. module: l10n_bo_salary_advance
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__department
 msgid "Department"
@@ -146,14 +193,20 @@ msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields.selection,name:l10n_bo_salary_advance.selection__salary_advance__state__draft
+#, python-format
 msgid "Draft"
 msgstr "Borrador"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__employee_id
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__employee_id
 #: model_terms:ir.ui.view,arch_db:l10n_bo_salary_advance.view_salary_advance_filter
+#, python-format
 msgid "Employee"
 msgstr "Empleado"
 
@@ -195,18 +248,18 @@ msgstr ""
 #. module: l10n_bo_salary_advance
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icono para indicar una actividad de excepción."
 
 #. module: l10n_bo_salary_advance
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Si está marcada, nuevos mensajes requieren su atención."
 
 #. module: l10n_bo_salary_advance
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__message_has_error
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Si está marcada, algunos mensajes tienen un error de entrega."
 
 #. module: l10n_bo_salary_advance
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__message_is_follower
@@ -214,7 +267,10 @@ msgid "Is Follower"
 msgstr "Es Seguidor"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__journal
+#, python-format
 msgid "Journal"
 msgstr "Diario"
 
@@ -345,7 +401,10 @@ msgid "Reject"
 msgstr "Rechazar"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields.selection,name:l10n_bo_salary_advance.selection__salary_advance__state__reject
+#, python-format
 msgid "Rejected"
 msgstr "Rechazado"
 
@@ -359,7 +418,9 @@ msgstr "Solicitar anticipo de sueldo"
 #: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #, python-format
 msgid "Request can be done after \"%s\" Days From prevoius month salary"
-msgstr "La solicitud se puede hacer después de \ '%s\' Días de salario del mes prevoius"
+msgstr ""
+"La solicitud se puede hacer después de \\ '%s\\' Días de salario del mes "
+"prevoius"
 
 #. module: l10n_bo_salary_advance
 #: model:ir.model.fields,field_description:l10n_bo_salary_advance.field_salary_advance__activity_user_id
@@ -435,12 +496,18 @@ msgid "Submit"
 msgstr "Enviar"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__date
+#, python-format
 msgid "Submit date"
-msgstr ""
+msgstr "Enviar fecha"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields.selection,name:l10n_bo_salary_advance.selection__salary_advance__state__submit
+#, python-format
 msgid "Submitted"
 msgstr "Enviado"
 
@@ -450,9 +517,20 @@ msgid "Submitted Requests"
 msgstr "Fecha de envío"
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__exceed_condition
+#, python-format
 msgid "The Advance is greater than the maximum percentage in salary structure"
-msgstr "El Anticipo es superior al porcentaje máximo en la estructura salarial"
+msgstr ""
+"El Anticipo es superior al porcentaje máximo en la estructura salarial"
+
+#. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid "This month salary already calculated"
+msgstr "Salario de este mes ya calculado"
 
 #. module: l10n_bo_salary_advance
 #: model_terms:ir.ui.view,arch_db:l10n_bo_salary_advance.view_salary_advance_filter
@@ -470,7 +548,10 @@ msgid "Type of the exception activity on record."
 msgstr "Tipo de la actividad de excepción registrada."
 
 #. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
 #: model:ir.model.fields.selection,name:l10n_bo_salary_advance.selection__salary_advance__state__waiting_approval
+#, python-format
 msgid "Waiting Approval"
 msgstr "En espera de aprobación"
 
@@ -483,6 +564,21 @@ msgstr "Mensajes del sitio web"
 #: model:ir.model.fields,help:l10n_bo_salary_advance.field_salary_advance__website_message_ids
 msgid "Website communication history"
 msgstr "Historia de la comunicación en la web"
+
+#. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid "You must Enter the Salary Advance amount"
+msgstr "Debe Introducir el importe del Anticipo de Salario"
+
+#. module: l10n_bo_salary_advance
+#. odoo-python
+#: code:addons/l10n_bo_salary_advance/models/salary_advance.py:0
+#, python-format
+msgid "You must enter Debit & Credit account and journal to approve "
+msgstr "Debe introducir la cuenta de débito y crédito y el diario para aprobar"
 
 #. module: l10n_bo_salary_advance
 #: model:ir.model,name:l10n_bo_salary_advance.model_salary_advance
