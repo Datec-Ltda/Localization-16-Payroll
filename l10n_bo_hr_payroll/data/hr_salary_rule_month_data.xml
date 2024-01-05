@@ -651,7 +651,7 @@ else:
 <!--Cambio la secuencia de 212 a 162-->
 
     <record id="datec_l10n_bo_hr_payroll_tax_ret" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="category_id" ref="BASIC_INF"/>
         <field name="name">IMPUESTO RETENIDO A PAGAR</field>
         <field name="code">IMP_RET_PAGAR</field>
         <field name="sequence">163</field>
@@ -667,6 +667,18 @@ else:
     </record>
 <!--    Cambio la secuencia de 213 a 163        -->
 <!--    Se cambio a la categoría deducciones    -->
+    <record id="datec_l10n_bo_hr_payroll_discount_iva" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">DESCUENTO IVA</field>
+        <field name="code">DESC_IVA</field>
+        <field name="sequence">164</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result=IMP_RET_PAGAR
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
 
     <record id="datec_l10n_bo_hr_payroll_amount_next_month" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
@@ -755,23 +767,6 @@ else:
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
-
-    <record id="datec_l10n_bo_hr_payroll_discount_iva" model="hr.salary.rule">
-        <field name="category_id" ref="hr_payroll.DED"/>
-        <field name="name">DESCUENTO IVA</field>
-        <field name="code">DESC_IVA</field>
-        <field name="sequence">150</field>
-        <field name="condition_select">none</field>
-        <field name="amount_select">code</field>
-        <field name="amount_python_compute">
-if inputs.DESC_IVA:
-    result = -inputs.DESC_IVA.amount
-else:
-    result=0
-        </field>
-        <field name="struct_id" ref="structure_month"/>
-    </record>
-
 
     <record id="datec_l10n_bo_hr_payroll_total_descuento" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
