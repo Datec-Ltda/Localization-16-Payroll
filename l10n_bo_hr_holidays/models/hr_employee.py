@@ -60,9 +60,13 @@ class HrEmployee(models.Model):
     def _compute_accumulated_leave_month(self):
         for record in self:
             if record.date_hired:
+                date_hired_last_year = date(date.today().year-1, record.date_hired.month, record.date_hired.day)
                 date_hired_this_year = date(date.today().year, record.date_hired.month, record.date_hired.day)
                 db_today = datetime.now().date()
-                diff = relativedelta(db_today, date_hired_this_year)
+                if db_today < date_hired_this_year:
+                    diff = relativedelta(db_today, date_hired_last_year)
+                else:
+                    diff = relativedelta(db_today, date_hired_this_year)
                 diff_months = diff.months
                 per_month = self.allowed_vacation_days/12
                 record.accumulated_leave_month = diff_months * per_month
@@ -73,9 +77,13 @@ class HrEmployee(models.Model):
     def _compute_accumulated_leave_day(self):
         for record in self:
             if record.date_hired:
+                date_hired_last_year = date(date.today().year-1, record.date_hired.month, record.date_hired.day)
                 date_hired_this_year = date(date.today().year, record.date_hired.month, record.date_hired.day)
                 db_today = datetime.now().date()
-                diff = relativedelta(db_today, date_hired_this_year)
+                if db_today < date_hired_this_year:
+                    diff = relativedelta(db_today, date_hired_last_year)
+                else:
+                    diff = relativedelta(db_today, date_hired_this_year)
                 diff_days = diff.days
                 per_day = self.allowed_vacation_days/30
                 record.accumulated_leave_day = diff_days * per_day
