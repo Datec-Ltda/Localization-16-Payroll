@@ -749,7 +749,23 @@ result = GROSS / 30
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 if inputs.OTRO_DESC:
-    result = inputs.OTRO_DESC.amount
+    result = -inputs.OTRO_DESC.amount
+else:
+    result=0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
+    <record id="datec_l10n_bo_hr_payroll_discount_iva" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">DESCUENTO IVA</field>
+        <field name="code">DESC_IVA</field>
+        <field name="sequence">150</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+if inputs.DESC_IVA:
+    result = -inputs.DESC_IVA.amount
 else:
     result=0
         </field>
