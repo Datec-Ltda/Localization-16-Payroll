@@ -223,6 +223,16 @@ class HrEmployee(models.Model):
                         'validation_type': 'officer',
                     }
                     move = leave_allocation.sudo().create(value)
+        self.send_success_notification()
 
+    def send_success_notification(self):
+        message = "La carga inicial de las vacaciones se ha completado con éxito."
+        # Enviar la notificación al usuario actual
+        self.env['bus.bus']._sendone('notify', self.env.user.partner_id.id, {
+            'title': 'Acción Completada',
+            'message': message,
+            'type': 'success',  # Tipo de notificación para indicar éxito
+            'sticky': False,  # Define si la notificación desaparece automáticamente después de cierto tiempo
+        })
 
 

@@ -749,6 +749,6 @@ def get_retroactive_sum_rule(payslip, code):
 
 
 def get_retroactive_neto_value(payslip):
-    value = payslip.dict._get_retroactive_neto_value(payslip.date_from,payslip.date_to)
+    value = payslip.dict._get_retroactive_neto_value(payslip.date_from, payslip.date_to)
     return value
 

@@ -11,5 +11,10 @@
             <field name="code">BONO_PROD</field>
             <field name="struct_ids" eval="[(4, ref('structure_month'))]"/>
         </record>
+        <record id="payslip_input_type_other_discount" model="hr.payslip.input.type">
+            <field name="name">OTROS DESCUENTOS</field>
+            <field name="code">OTRO_DESC</field>
+            <field name="struct_ids" eval="[(4, ref('structure_month'))]"/>
+        </record>
     </data>
 </odoo>
