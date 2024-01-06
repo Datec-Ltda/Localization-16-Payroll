@@ -385,29 +385,39 @@ class HrPayrollFiniquito(models.Model):
 
     def indemnity_accumulated_month(self, employee_id):
         if employee_id.date_hired:
+            date_hired_last_year = date(date.today().year - 1, employee_id.date_hired.month, employee_id.date_hired.day)
             date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
-
-            diff = relativedelta(self.date_end, date_hired_this_year)
+            if self.date_end < date_hired_this_year:
+                diff = relativedelta(self.date_end, date_hired_last_year)
+            else:
+                diff = relativedelta(self.date_end, date_hired_this_year)
             return diff.months
         else:
             return 0
 
     def indemnity_accumulated_day(self, employee_id):
         if employee_id.date_hired:
+            date_hired_last_year = date(date.today().year - 1, employee_id.date_hired.month, employee_id.date_hired.day)
             date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
-            diff = relativedelta(self.date_end, date_hired_this_year)
+            if self.date_end < date_hired_this_year:
+                diff = relativedelta(self.date_end, date_hired_last_year)
+            else:
+                diff = relativedelta(self.date_end, date_hired_this_year)
             return diff.days
         else:
             return 0
 
     def christmas_bonus_accumulated_month(self, employee_id):
-        date_init = date(date.today().year, 1, 1)
-        diff = relativedelta(employee_id.departure_date, date_init)
-        return diff.months
+        if employee_id.departure_date:
+            date_init = date(employee_id.departure_date.year, 1, 1)
+            diff = relativedelta(employee_id.departure_date, date_init)
+            return diff.months
+        else:
+            return 0
 
     def christmas_bonus_accumulated_day(self, employee_id):
         if employee_id.departure_date:
-            date_init_month = date(date.today().year, employee_id.departure_date.month, 1)
+            date_init_month = date(employee_id.departure_date.year, employee_id.departure_date.month, 1)
             diff = relativedelta(self.date_end, date_init_month)
             return diff.days + 1
         else:
