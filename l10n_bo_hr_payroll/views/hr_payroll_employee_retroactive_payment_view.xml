@@ -35,7 +35,7 @@
                     <notebook>
                         <page string="Pagos retroactivos">
                             <field name="payment_retroactive_ids" nolabel="1">
-                                <tree create="0" deleted="0">
+                                <tree create="0" >
                                     <field name="employee_id" string="Empleado" readonly="1"/>
                                     <field name="contract_id"  readonly="1"/>
                                     <field name="date_from" readonly="1"/>

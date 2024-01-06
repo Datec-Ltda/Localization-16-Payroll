@@ -239,4 +239,10 @@ class PayrollEmployeePaymentsRetroactiveList(models.Model):
     #
     #            )""" % (self._table, ))
 
-
+    def unlink(self):
+        for line in self:
+            if line.state != 'draft':
+                raise UserError(
+                    _('No puede borrar el registro si no esta en estado borrador.')
+                )
+        return super(PayrollEmployeePaymentsRetroactiveList, self).unlink()

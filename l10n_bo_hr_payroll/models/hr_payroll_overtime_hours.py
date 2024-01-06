@@ -132,3 +132,12 @@ class HrPayrollOvertimeHoursList(models.Model):
     def action_period_closed(self):
         self.write({'state': 'closed'})
         return True
+
+    def unlink(self):
+        for line in self:
+            if line.state != 'draft':
+                raise UserError(
+                    _('No puede borrar el registro si no esta en estado borrador.')
+                )
+        return super(HrPayrollOvertimeHoursList, self).unlink()
+
