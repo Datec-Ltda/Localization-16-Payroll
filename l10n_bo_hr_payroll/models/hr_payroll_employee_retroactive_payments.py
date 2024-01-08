@@ -51,7 +51,7 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
 
     @api.onchange('date_from')
     def onchange_name(self):
-        if self.date_pay:
+        if self.date_from:
             ttyme = datetime.fromtimestamp(time.mktime(self.date_from.timetuple()))
             self.name = _('Pago retroactivo para %s') % (tools.ustr(ttyme.strftime('%B-%Y')))
 
