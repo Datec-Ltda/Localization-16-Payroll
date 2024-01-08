@@ -438,8 +438,6 @@ result = get_retroactive_neto_value(payslip)
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 total = 0
-<!--if VAC_PAGADA:-->
-<!--    total += VAC_PAGADA-->
 if PRIMA_PAGADA:
     total += PRIMA_PAGADA
 if FINIQ_VACACIONES:
@@ -454,7 +452,8 @@ result = GROSS + total + TOTAL_AFP
     </record>
 <!--Quite el NET y puse el GROSS Y reste el total AFP   -->
 <!--Cambio la secuencia de 202 a 152-->
-
+<!--if VAC_PAGADA:-->
+<!--    total += VAC_PAGADA-->
     <!--   BASE IMPONIBLE               -->
     <record id="datec_l10n_bo_hr_payroll_anc_amount_taxable_base" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
