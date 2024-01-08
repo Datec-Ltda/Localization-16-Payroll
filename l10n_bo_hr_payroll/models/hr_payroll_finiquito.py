@@ -30,6 +30,7 @@ class HrPayrollFiniquito(models.Model):
     date_hire = fields.Date(related='employee_id.date_hired', string='Fecha contratación', required=True)
     date_end = fields.Date(related='employee_id.departure_date', string='Fecha fin del contrato', required=True)
     report_date = fields.Date(string='Fecha de reporte', required=True)
+    leave_id = fields.Many2one('hr.leave', string="Ausencia")
 
     state = fields.Selection([
         ('draft', 'Borrador'),

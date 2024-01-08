@@ -7,6 +7,7 @@ from markupsafe import Markup
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import float_compare, float_is_zero, plaintext2html
+from dateutil.relativedelta import relativedelta
 
 
 class HrPayslip(models.Model):
@@ -211,6 +212,43 @@ class HrPayslip(models.Model):
                                                                     ('state', '=', 'open')])
                     if finiquito_element:
                         move = finiquito_element.sudo().write({'state': 'paid'})
+                        if finiquito_element.holidays_days > 0:
+                            # generar la petición de usencia con los dias pedidos
+                            current_employee = self.env.user.employee_id
+                            date_to = finiquito_element.date_end + relativedelta(days=finiquito_element.holidays_days)
+                            values = [{
+                                'date_from': finiquito_element.date_end,
+                                'date_to': date_to,
+                                'request_date_from': finiquito_element.date_end,
+                                'request_date_to': date_to,
+                                'holiday_status_id': 1,
+                                'employee_id': finiquito_element.employee_id.id,
+                                'employee_company_id': finiquito_element.contract_id.company_id.id,
+                                'department_id': finiquito_element.contract_id.department_id.id,
+                                'first_approver_id': current_employee.id,
+                                'second_approver_id': current_employee.id,
+                                'private_name': 'vacaciones liquidadas por finiquito'  + finiquito_element.employee_id.name,
+                                'state': 'draft',
+                                'duration_display': finiquito_element.holidays_days,
+                                'holiday_type': 'employee',
+                                'payslip_state': 'done',
+                            }]
+                            leave_env = self.env['hr.leave']
+                            # work_days_data = leave_env._get_work_days_data_batch(finiquito_element.date_end, date_to)
+                            if finiquito_element.leave_id:
+                                leave_element = leave_env.search([('id', '=', finiquito_element.leave_id.id)])
+                                if leave_element:
+                                    leave_element.update({
+                                        'state': 'draft',
+                                    })
+                                    move = leave_element.sudo().unlink()
+                            leave = leave_env.sudo().create(values)
+                            leave.update({
+                                'state': 'validate',
+                                'number_of_days': finiquito_element.holidays_days,
+                                'duration_display': finiquito_element.holidays_days,
+                            })
+                            finiquito_element.write({'leave_id': leave.id})
 
     def _action_finiquito_cancel(self):
         precision = self.env['decimal.precision'].precision_get('Payroll')
@@ -236,4 +274,11 @@ class HrPayslip(models.Model):
                                                                     ('report_date', '<=', slip.date_to),
                                                                     ('state', '=', 'paid')])
                     if finiquito_element:
-                        move = finiquito_element.sudo().write({'state': 'open'})
+                        move = finiquito_element.sudo().update({'state': 'open'})
+                        leave_env = self.env['hr.leave']
+                        if finiquito_element.leave_id:
+                            leave_element = leave_env.search([('id', '=', finiquito_element.leave_id.id)])
+                            leave_element.update({
+                                'state': 'draft',
+                            })
+                            move = leave_element.sudo().unlink()

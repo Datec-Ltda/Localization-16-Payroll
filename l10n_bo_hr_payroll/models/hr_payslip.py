@@ -436,7 +436,7 @@ class HrPayslip(models.Model):
                   ('report_date', '<=', date_to),
                   ('employee_id', '=', self.employee_id.id),
                   ('contract_id', '=', self.contract_id.id),
-                  ('state', '=', 'open'),
+                  ('state', 'in', ['open', 'paid']),
                   ]
         finiquito = self.env['hr.payroll.finiquito'].search(domain, limit=1)
         value = 0
