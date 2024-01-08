@@ -360,18 +360,18 @@ result = SMN * 2
     </record>
 <!--Lo baje de 201 a 150-->
     <!--   2 VACACIONES              -->
-<!--    <record id="datec_l10n_bo_hr_payroll_vac_payed" model="hr.salary.rule">-->
-<!--        <field name="category_id" ref="FOR_TAX"/>-->
-<!--        <field name="name">Vacaciones</field>-->
-<!--        <field name="code">VAC_PAGADA</field>-->
-<!--        <field name="sequence">150</field>-->
-<!--        <field name="condition_select">none</field>-->
-<!--        <field name="amount_select">code</field>-->
-<!--        <field name="amount_python_compute">-->
-<!--result = amount_total_gained_in_month(payslip,employee, 'VAC')-->
-<!--        </field>-->
-<!--        <field name="struct_id" ref="structure_month"/>-->
-<!--    </record>-->
+    <record id="datec_l10n_bo_hr_payroll_vac_payed" model="hr.salary.rule">
+        <field name="category_id" ref="FOR_TAX"/>
+        <field name="name">Vacaciones</field>
+        <field name="code">VAC_PAGADA</field>
+        <field name="sequence">150</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = amount_total_gained_in_month(payslip,employee, 'VAC')
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
 <!--Cambio la secuencia de 200 a 150-->
 
     <record id="datec_l10n_bo_hr_payroll_vac_finiquito" model="hr.salary.rule">
