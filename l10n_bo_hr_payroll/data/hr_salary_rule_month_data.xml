@@ -767,6 +767,22 @@ else:
         <field name="struct_id" ref="structure_month"/>
     </record>
 
+    <record id="datec_l10n_bo_hr_payroll_bono_caja" model="hr.salary.rule">
+        <field name="category_id" ref="BONO"/>
+        <field name="name">BONO DE CAJA</field>
+        <field name="code">BONO_CAJA</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+if inputs.BONO_CAJA:
+    result = inputs.BONO_CAJA.amount
+else:
+    result=0
+        </field>
+        <field name="struct_id" ref="structure_month"/>
+    </record>
+
     <record id="datec_l10n_bo_hr_payroll_total_descuento" model="hr.salary.rule">
         <field name="category_id" ref="BASIC_INF"/>
         <field name="name">Total Descuento</field>

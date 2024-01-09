@@ -716,6 +716,8 @@ def days_total_worked(payslip, employee, aguinaldo):
                     total_days = days_month + days
                     return total_days
     return total_days
+# else:
+# total_days += employee.departure_date.day + 1
 
 
 def total_average_earned(payslip, employee, ruler, months):
