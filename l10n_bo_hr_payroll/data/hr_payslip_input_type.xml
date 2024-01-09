@@ -17,7 +17,7 @@
             <field name="struct_ids" eval="[(4, ref('structure_month'))]"/>
         </record>
         <record id="payslip_input_type_bono_caja" model="hr.payslip.input.type">
-            <field name="name">BONO CAJA</field>
+            <field name="name">BONO DE CAJA</field>
             <field name="code">BONO_CAJA</field>
             <field name="struct_ids" eval="[(4, ref('structure_month'))]"/>
         </record>
