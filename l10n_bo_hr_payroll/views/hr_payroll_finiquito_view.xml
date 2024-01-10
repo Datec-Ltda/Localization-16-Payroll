@@ -29,11 +29,17 @@
                                 <field name="has_penalties" attrs="{'readonly': [('state', '=', 'paid')]}" />
                                 <field name="penalties"
                                     attrs="{'invisible': [('has_penalties', '=', False)], 'required':[('has_penalties', '!=', False)]}"/>
+                                <field name="has_christmas_bonus_one" invisible="1"/>
+                                <field name="christmas_bonus_one" readonly="1" attrs="{'invisible': [('has_christmas_bonus_one', '=', False)]}" string="Tiene Aguinaldo"/>
                             </group>
                             <group>
                                 <field name="has_eviction" attrs="{'readonly': [('state', '=', 'paid')]}"/>
                                 <field name="eviction"
                                     attrs="{'invisible': [('has_eviction', '=', False)], 'required':[('has_eviction', '!=', False)]}"/>
+                                <field name="has_christmas_bonus_two" invisible="1"/>
+                                <field name="christmas_bonus_two" readonly="1" attrs="{'invisible': [('has_christmas_bonus_two', '=', False)]}" string="Tiene Segundo Aguinaldo"/>
+                                <field name="pay_second" attrs="{'invisible': [('has_christmas_bonus_two', '=', True)]}" string="Pagar Seg Aguinaldo"/>
+
                             </group>
                         </group>
                         <group >

@@ -55,6 +55,14 @@ class HrPayrollFiniquito(models.Model):
     month2 = fields.Char(compute='_compute_month')
     month3 = fields.Char(compute='_compute_month')
 
+    christmas_bonus_one = fields.Char(string="Aguinaldo uno")
+    has_christmas_bonus_one = fields.Boolean(string="Tiene Aguinaldo", default=False)
+
+    christmas_bonus_two = fields.Char(string="Segundo aguinaldo")
+    has_christmas_bonus_two = fields.Boolean(string="Tiene Seg Aguinaldo", default=False)
+
+    pay_second = fields.Boolean(string="Segundo Aguinaldo", default=False)
+
     monthly_compensation1 = fields.Float(string="Remuneración Mensual mes 1", required=True)
     monthly_compensation2 = fields.Float(string="Remuneración Mensual mes 2", required=True)
     monthly_compensation3 = fields.Float(string="Remuneración Mensual mes 3", required=True)
@@ -117,6 +125,9 @@ class HrPayrollFiniquito(models.Model):
     other_extraordinary_bonuses = fields.Float(string="Otros Bonos extraordinarios", required=True)
 
     has_penalties = fields.Boolean(string="Tiene Multa", required=True)
+
+    second_aguinaldo = fields.Boolean(string="Segundo Aguinaldo", required=True)
+
     penalties = fields.Float(string="Multas", compute='_get_penalties', store=True)
 
     finiquito = fields.Float(string="Finiquito", compute='_get_finiquito', store=True)
@@ -411,16 +422,86 @@ class HrPayrollFiniquito(models.Model):
     def christmas_bonus_accumulated_month(self, employee_id):
         if employee_id.departure_date:
             date_init = date(employee_id.departure_date.year, 1, 1)
-            diff = relativedelta(employee_id.departure_date, date_init)
-            return diff.months
+            date_from_aguinaldo = date(employee_id.departure_date.year, 12, 1)
+            month_bonus = 0
+            if date_from_aguinaldo < employee_id.departure_date:
+                if self.has_christmas_bonus(employee_id):
+                    if self.pay_second:
+                        diff = relativedelta(employee_id.departure_date, date_init)
+                        month_bonus = diff.months
+                    else:
+                        month_bonus = 0
+                else:
+                    diff = relativedelta(employee_id.departure_date, date_init)
+                    month_bonus = diff.months
+            else:
+                diff = relativedelta(employee_id.departure_date, date_init)
+                month_bonus = diff.months
+            return month_bonus
         else:
             return 0
 
     def christmas_bonus_accumulated_day(self, employee_id):
         if employee_id.departure_date:
             date_init_month = date(employee_id.departure_date.year, employee_id.departure_date.month, 1)
-            diff = relativedelta(self.date_end, date_init_month)
-            return diff.days + 1
+            date_from_aguinaldo = date(employee_id.departure_date.year, 12, 1)
+            days_bonus = 0
+            if date_from_aguinaldo < employee_id.departure_date:
+                if self.has_christmas_bonus(employee_id):
+                    if self.pay_second:
+                        diff = relativedelta(self.date_end, date_init_month)
+                        days_bonus = diff.days + 1
+                    else:
+                        days_bonus = 0
+                else:
+                    diff = relativedelta(self.date_end, date_init_month)
+                    days_bonus = diff.days + 1
+            else:
+                diff = relativedelta(self.date_end, date_init_month)
+                days_bonus = diff.days + 1
+            return days_bonus
         else:
             return 0
 
+    def has_christmas_bonus(self, employee_id):
+        # Ver si tiene aguinaldo
+        date_from_aguinaldo = date(employee_id.departure_date.year, 12, 1)
+        date_to_aguinaldo = date(employee_id.departure_date.year, 12, 31)
+        structure_one = self.env.ref('l10n_bo_hr_payroll.structure_christmas_bonus')
+        structure_two = self.env.ref('l10n_bo_hr_payroll.structure_christmas_bonus_second')
+        # Crear el domain para buscar cominas de aguinando en el año de baja
+        payroll_domain = [
+            ('date_from', '>=', date_from_aguinaldo),
+            ('date_to', '<=', date_to_aguinaldo),
+            ('employee_id', '=', employee_id.id),
+            ('struct_id', '=', structure_one.id),
+            ('state', '=', 'paid'),
+            ('has_refund_slip', '=', True),
+        ]
+
+        # Buscar las nóminas de aguinaldo del mes actual mes actual
+        payrolls = self.env['hr.payslip'].search(payroll_domain)
+        if payrolls:
+            payroll_domain_two = [
+                ('date_from', '>=', date_from_aguinaldo),
+                ('date_to', '<=', date_to_aguinaldo),
+                ('employee_id', '=', employee_id.id),
+                ('struct_id', '=', structure_two.id),
+                ('state', '=', 'paid'),
+                ('has_refund_slip', '=', False),
+            ]
+            payrolls_two = self.env['hr.payslip'].search(payroll_domain_two)
+            if payrolls_two:
+                self.has_christmas_bonus_one = True
+                self.has_christmas_bonus_two = True
+                self.pay_second = False
+                return True
+            else:
+                self.has_christmas_bonus_one = True
+                self.has_christmas_bonus_two = False
+                return True
+        else:
+            self.has_christmas_bonus_one = False
+            self.has_christmas_bonus_two = False
+            self.pay_second = False
+            return False

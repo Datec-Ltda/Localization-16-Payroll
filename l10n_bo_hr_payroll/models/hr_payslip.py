@@ -702,6 +702,8 @@ def days_total_worked(payslip, employee, aguinaldo):
                 total_days = 330
             if not employee.departure_date:
                 total_days += 30
+            else:
+                total_days += employee.departure_date.day
         else:
             date_start_cal = date(payslip.dict.date_from.year-1, 10, 1)
             date_init_year = date(payslip.dict.date_from.year-1, 1, 1)
@@ -716,8 +718,7 @@ def days_total_worked(payslip, employee, aguinaldo):
                     total_days = days_month + days
                     return total_days
     return total_days
-# else:
-# total_days += employee.departure_date.day + 1
+
 
 
 def total_average_earned(payslip, employee, ruler, months):
