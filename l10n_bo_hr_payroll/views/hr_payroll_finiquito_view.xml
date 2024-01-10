@@ -38,7 +38,7 @@
                                     attrs="{'invisible': [('has_eviction', '=', False)], 'required':[('has_eviction', '!=', False)]}"/>
                                 <field name="has_christmas_bonus_two" invisible="1"/>
                                 <field name="christmas_bonus_two" readonly="1" attrs="{'invisible': [('has_christmas_bonus_two', '=', False)]}" string="Tiene Segundo Aguinaldo"/>
-                                <field name="pay_second" attrs="{'invisible': [('has_christmas_bonus_two', '=', True)]}" string="Pagar Seg Aguinaldo"/>
+                                <field name="pay_second" attrs="{'invisible': ['|',('has_christmas_bonus_one', '=', False),('has_christmas_bonus_two', '=', True)]}" string="Pagar Seg Aguinaldo"/>
 
                             </group>
                         </group>
