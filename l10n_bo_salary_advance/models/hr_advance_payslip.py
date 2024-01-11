@@ -15,7 +15,10 @@ class HrPayslip(models.Model):
         lines_to_remove = self.input_line_ids.filtered(lambda x: x.input_type_id.id in attachment_type_ids)
         input_line_vals = [Command.unlink(line.id) for line in lines_to_remove]
         if self.employee_id:
-            adv_salary = self.env['salary.advance'].search([('employee_id', '=', self.employee_id.id)])
+            adv_salary = self.env['salary.advance'].search(
+                [('employee_id', '=', self.employee_id.id),
+                 ('state', '=', 'waiting_approval')
+                 ])
             for adv_obj in adv_salary:
                 current_date = self.date_from.month
                 date = adv_obj.date

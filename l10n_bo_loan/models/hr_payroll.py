@@ -41,10 +41,12 @@ class HrPayslip(models.Model):
             self.update({'input_line_ids': input_line_vals})
 
     def action_payslip_done(self):
-        for line in self.input_line_ids:
-            if line.loan_line_id:
-                line.loan_line_id.paid = True
-                line.loan_line_id.loan_id._compute_loan_amount()
+        structure = self.env.ref('l10n_bo_hr_payroll.structure_month')
+        if self.struct_id.id == structure.id:
+            for line in self.input_line_ids:
+                if line.loan_line_id:
+                    line.loan_line_id.paid = True
+                    line.loan_line_id.loan_id._compute_loan_amount()
         return super(HrPayslip, self).action_payslip_done()
 
     @api.model

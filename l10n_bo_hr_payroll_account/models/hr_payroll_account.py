@@ -103,19 +103,19 @@ class HrPayslip(models.Model):
             categories = {}
             categories_mapping = {
                 'GROSS': 'gross',
-                'BONOS': 'other_bonuses',
+                'BONO': 'other_bonuses',
             }
             for line in slip.line_ids:
                 category_code = line.category_id.code
-                if category_code in ('GROSS', 'BONOS'):
+                if category_code in ('GROSS', 'BONO'):
                     if category_code not in categories:
-                        if category_code == 'BONOS':
+                        if category_code == 'BONO':
                             if line.code not in ('BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA'):
                                 categories[category_code] = line.amount
                         else:
                             categories[category_code] = line.amount
                     else:
-                        if category_code == 'BONOS':
+                        if category_code == 'BONO':
                             if line.code not in ('BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA'):
                                 categories[category_code] += line.amount
                         else:
@@ -130,7 +130,7 @@ class HrPayslip(models.Model):
                                                               ('date_from', '=', slip.date_from),
                                                               ('date_to', '=', slip.date_to)])
             if closing_table_element:
-                move = closing_table_element.sudo().write(closing_table)
+                move = closing_table_element.sudo().update(closing_table)
             else:
                 move = closing_table_env.sudo().create(closing_table)
 

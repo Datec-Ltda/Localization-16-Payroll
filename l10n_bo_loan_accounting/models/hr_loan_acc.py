@@ -183,11 +183,13 @@ class HrPayslipAcc(models.Model):
     _inherit = 'hr.payslip'
 
     def action_payslip_done(self):
-        for line in self.input_line_ids:
-            date_from = self.date_from
-            tym = datetime.combine(fields.Date.from_string(date_from), time.min)
-            locale = self.env.context.get('lang') or 'en_US'
-            month = tools.ustr(babel.dates.format_date(date=tym, format='MMMM-y', locale=locale))
-            if line.loan_line_id:
-                line.loan_line_id.action_paid_amount(month)
+        structure = self.env.ref('l10n_bo_hr_payroll.structure_month')
+        if self.struct_id.id == structure.id:
+            for line in self.input_line_ids:
+                date_from = self.date_from
+                tym = datetime.combine(fields.Date.from_string(date_from), time.min)
+                locale = self.env.context.get('lang') or 'en_US'
+                month = tools.ustr(babel.dates.format_date(date=tym, format='MMMM-y', locale=locale))
+                if line.loan_line_id:
+                    line.loan_line_id.action_paid_amount(month)
         return super(HrPayslipAcc, self).action_payslip_done()
