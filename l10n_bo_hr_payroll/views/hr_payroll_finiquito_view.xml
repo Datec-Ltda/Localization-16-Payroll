@@ -142,14 +142,14 @@
                                         </tr>
                                         <tr>
                                             <td>Aguinaldo</td>
-                                            <td class="text-center"><field name="christmas_bonus_month"/></td>
+                                            <td class="text-center"><field name="christmas_bonus_month" readonly="1" force_save="1"/></td>
                                             <td>Mes</td>
-                                            <td class="text-center"><field name="christmas_bonus_month_amount"/></td>
+                                            <td class="text-center"><field name="christmas_bonus_month_amount" readonly="1" force_save="1"/></td>
                                         </tr>                                        <tr>
                                             <td></td>
-                                            <td class="text-center"><field name="christmas_bonus_day"/></td>
+                                            <td class="text-center"><field name="christmas_bonus_day" readonly="1" force_save="1"/></td>
                                             <td>Días</td>
-                                            <td class="text-center"><field name="christmas_bonus_day_amount"/></td>
+                                            <td class="text-center"><field name="christmas_bonus_day_amount" readonly="1" force_save="1"/></td>
                                         </tr>
                                         <tr>
                                             <td>Vacaciones</td>
