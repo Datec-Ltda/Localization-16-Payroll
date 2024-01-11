@@ -126,7 +126,7 @@ class HrPayrollFiniquito(models.Model):
 
     has_penalties = fields.Boolean(string="Tiene Multa", required=True)
 
-    second_aguinaldo = fields.Boolean(string="Segundo Aguinaldo", required=True)
+    # second_aguinaldo = fields.Boolean(string="Segundo Aguinaldo", default=False)
 
     penalties = fields.Float(string="Multas", compute='_get_penalties', store=True)
 
