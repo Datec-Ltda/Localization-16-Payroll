@@ -18,7 +18,7 @@ class HrPayslip(models.Model):
             if payslip.employee_id:
                 adv_salary = payslip.env['salary.advance'].search(
                     [('employee_id', '=', payslip.employee_id.id),
-                     ('state', '=', 'waiting_approval')
+                     ('state', '=', 'approve')
                      ])
                 for adv_obj in adv_salary:
                     current_date = payslip.date_from.month
