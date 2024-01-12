@@ -14,25 +14,26 @@ class HrPayslip(models.Model):
         attachment_type_ids = [f.id for f in attachment_types.values()]
         lines_to_remove = self.input_line_ids.filtered(lambda x: x.input_type_id.id in attachment_type_ids)
         input_line_vals = [Command.unlink(line.id) for line in lines_to_remove]
-        if self.employee_id:
-            adv_salary = self.env['salary.advance'].search(
-                [('employee_id', '=', self.employee_id.id),
-                 ('state', '=', 'waiting_approval')
-                 ])
-            for adv_obj in adv_salary:
-                current_date = self.date_from.month
-                date = adv_obj.date
-                existing_date = date.month
-                if current_date == existing_date:
-                    input_type = self.env.ref('l10n_bo_salary_advance.payslip_input_type_advance')
-                    input_line_vals.append(Command.create({
-                        'name': adv_obj.reason,
-                        'amount': adv_obj.advance,
-                        'input_type_id': input_type.id,
-                    }))
-                self.update({'input_line_ids': input_line_vals})
-        else:
-            self.update({'input_line_ids': input_line_vals})
+        for payslip in self:
+            if payslip.employee_id:
+                adv_salary = payslip.env['salary.advance'].search(
+                    [('employee_id', '=', payslip.employee_id.id),
+                     ('state', '=', 'waiting_approval')
+                     ])
+                for adv_obj in adv_salary:
+                    current_date = payslip.date_from.month
+                    date = adv_obj.date
+                    existing_date = date.month
+                    if current_date == existing_date:
+                        input_type = payslip.env.ref('l10n_bo_salary_advance.payslip_input_type_advance')
+                        input_line_vals.append(Command.create({
+                            'name': adv_obj.reason,
+                            'amount': adv_obj.advance,
+                            'input_type_id': input_type.id,
+                        }))
+                    payslip.update({'input_line_ids': input_line_vals})
+            else:
+                payslip.update({'input_line_ids': input_line_vals})
 
     @api.model
     def _get_attachment_types_advance(self):

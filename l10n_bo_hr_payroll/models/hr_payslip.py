@@ -462,9 +462,9 @@ class HrPayslip(models.Model):
     def compute_sheet(self):
         payslips = self.filtered(lambda slip: slip.state in ['draft', 'verify'])
         # delete old payslip lines
-        self.is_retroactive = self.env.context.get('retroactive', False)
+        is_retroactive = self.env.context.get('retroactive', False)
 
-        if not self.is_retroactive:
+        if not is_retroactive:
             payslips.line_ids.unlink()
             # this guarantees consistent results
             self.env.flush_all()

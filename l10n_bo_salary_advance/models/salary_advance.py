@@ -89,7 +89,9 @@ class SalaryAdvancePayment(models.Model):
             raise UserError(_('Define a contract for the employee'))
         if not self.employee_contract_id.structure_type_id:
             raise UserError(_('Define a structure type for the employee'))
-        struct_id = self.employee_contract_id.structure_type_id
+        if not self.employee_contract_id.structure_type_id.default_struct_id:
+            raise UserError(_('Define a structure for structure type'))
+        struct_id = self.employee_contract_id.structure_type_id.default_struct_id
         adv = self.advance
         amt = self.employee_contract_id.wage
         if adv > amt and not self.exceed_condition:

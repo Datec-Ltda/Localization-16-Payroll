@@ -23,30 +23,32 @@ class HrPayslip(models.Model):
         lines_to_remove = self.input_line_ids.filtered(lambda x: x.input_type_id.id in attachment_type_ids)
         input_line_vals = [Command.unlink(line.id) for line in lines_to_remove]
 
-        emp_id = self.employee_id
-        if self.employee_id:
-            lon_obj = self.env['hr.loan'].search([('employee_id', '=', emp_id.id), ('state', '=', 'approve')])
-            for loan in lon_obj:
-                for loan_line in loan.loan_lines:
-                    if self.date_from <= loan_line.date <= self.date_to and not loan_line.paid:
-                        input_type = self.env.ref('l10n_bo_loan.payslip_input_type_loan')
-                        input_line_vals.append(Command.create({
-                            'name': loan.name,
-                            'amount': loan_line.amount,
-                            'input_type_id': input_type.id,
-                            'loan_line_id': loan_line.id
-                        }))
-                self.update({'input_line_ids': input_line_vals})
-        else:
-            self.update({'input_line_ids': input_line_vals})
+        for payslip in self:
+            emp_id = payslip.employee_id
+            if payslip.employee_id:
+                lon_obj = payslip.env['hr.loan'].search([('employee_id', '=', emp_id.id), ('state', '=', 'approve')])
+                for loan in lon_obj:
+                    for loan_line in loan.loan_lines:
+                        if payslip.date_from <= loan_line.date <= payslip.date_to and not loan_line.paid:
+                            input_type = payslip.env.ref('l10n_bo_loan.payslip_input_type_loan')
+                            input_line_vals.append(Command.create({
+                                'name': loan.name,
+                                'amount': loan_line.amount,
+                                'input_type_id': input_type.id,
+                                'loan_line_id': loan_line.id
+                            }))
+                    payslip.update({'input_line_ids': input_line_vals})
+            else:
+                payslip.update({'input_line_ids': input_line_vals})
 
     def action_payslip_done(self):
-        structure = self.env.ref('l10n_bo_hr_payroll.structure_month')
-        if self.struct_id.id == structure.id:
-            for line in self.input_line_ids:
-                if line.loan_line_id:
-                    line.loan_line_id.paid = True
-                    line.loan_line_id.loan_id._compute_loan_amount()
+        for payslip in self:
+            structure = self.env.ref('l10n_bo_hr_payroll.structure_month')
+            if payslip.struct_id.id == structure.id:
+                for line in payslip.input_line_ids:
+                    if line.loan_line_id:
+                        line.loan_line_id.paid = True
+                        line.loan_line_id.loan_id._compute_loan_amount()
         return super(HrPayslip, self).action_payslip_done()
 
     @api.model
