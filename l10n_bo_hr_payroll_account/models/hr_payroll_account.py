@@ -21,6 +21,7 @@ class HrPayslip(models.Model):
         moves.unlink()
         self._action_quinquennial_cancel()
         self._action_finiquito_cancel()
+        self._action_prima_cancel()
         return super(HrPayslip, self).action_payslip_cancel()
 
     def action_payslip_done(self):
@@ -32,6 +33,7 @@ class HrPayslip(models.Model):
         self._action_create_closing_table()
         self._action_quinquennial_pay()
         self._action_finiquito_pay()
+        self._action_create_prima_table()
         return res
 
     # def _action_close_suplementary_work(self):
@@ -282,3 +284,71 @@ class HrPayslip(models.Model):
                                 'state': 'draft',
                             })
                             move = leave_element.sudo().unlink()
+
+    def _action_create_prima_table(self):
+        precision = self.env['decimal.precision'].precision_get('Payroll')
+
+        # Add payslip without run
+        payslips_to_post = self.filtered(lambda slip: not slip.payslip_run_id)
+
+        # Adding pay slips from a batch and deleting pay slips with a batch that is not ready for validation.
+        payslip_runs = (self - payslips_to_post).mapped('payslip_run_id')
+        for run in payslip_runs:
+            if run._are_payslips_ready():
+                payslips_to_post |= run.slip_ids
+
+        # A payslip need to have a done state and not an accounting move.
+        payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done' and not slip.closing_table)
+
+        for slip in payslips_to_post:
+            bonus_table = {'payslip_id': slip.id, 'contract_id': slip.contract_id.id,
+                             'employee_id': slip.employee_id.id, 'date_from': slip.date_from, 'date_to': slip.date_to,
+                             'earned_average': 0.0, 'paid_percentage': 0.0, 'days_considered': 0.0, 'amount_paid': 0.0}
+            # Para el caso que el pago quinquenal no archivar en la tabla bonus
+            for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL', 'FINIQUITO']):
+                if line.code == 'QUINQUENAL' or line.code == 'FINIQUITO':
+                    return 0
+            for line in slip.line_ids.filtered(lambda x: x.code in ['TOTAL_GANADO', 'PERCEN_PAY', 'DIAS_TRAB', 'PRIMA']):
+                if line.code == 'TOTAL_GANADO':
+                    bonus_table['earned_average'] = line.amount
+                if line.code == 'PERCEN_PAY':
+                    bonus_table['paid_percentage'] = line.amount
+                if line.code == 'DIAS_TRAB':
+                    bonus_table['days_considered'] = line.amount
+                if line.code == 'PRIMA':
+                    bonus_table['amount_paid'] = line.amount
+
+            bonus_table_env = self.env['hr.bonus.payment']
+            bonus_table_element = bonus_table_env.search([('contract_id', '=', slip.contract_id.id),
+                                                          ('date_from', '=', slip.date_from,),
+                                                          ('date_to', '=', slip.date_to)])
+
+            if bonus_table_element:
+                move = bonus_table_element.sudo().update(bonus_table)
+            else:
+                move = bonus_table_env.sudo().create(bonus_table)
+
+    def _action_prima_cancel(self):
+        precision = self.env['decimal.precision'].precision_get('Payroll')
+
+        # Add payslip without run
+        payslips_to_post = self.filtered(lambda slip: not slip.payslip_run_id)
+
+        # Adding pay slips from a batch and deleting pay slips with a batch that is not ready for validation.
+        payslip_runs = (self - payslips_to_post).mapped('payslip_run_id')
+        for run in payslip_runs:
+            if run._are_payslips_ready():
+                payslips_to_post |= run.slip_ids
+
+        # A payslip need to have a done state and not an accounting move.
+        payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done' and not slip.closing_table)
+
+        for slip in payslips_to_post:
+            for line in slip.line_ids.filtered(lambda x: x.code in ['PRIMA']):
+                if line.code == 'PRIMA':
+                    bonus_table_env = self.env['hr.bonus.payment']
+                    bonus_table_element = bonus_table_env.search([('contract_id', '=', slip.contract_id.id),
+                                                                  ('date_from', '=', slip.date_from,),
+                                                                  ('date_to', '=', slip.date_to)])
+                    if bonus_table_element:
+                        move = bonus_table_element.sudo().unlink()

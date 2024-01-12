@@ -9,6 +9,5 @@ access_hr_aft_quotation_type_manager,hr.aft.quotation.type.manager,model_hr_aft_
 access_hr_aft_quotation_type_details_manager,hr.aft.quotation.type.details.manager,model_hr_aft_quotation_type_details,hr.group_hr_manager,1,1,1,1
 access_hr_communications_forms_manager,hr.communications.forms.manager,model_hr_communications_forms,hr.group_hr_manager,1,1,1,1
 access_hr_document_extension_manager,hr.document.extension.manager,model_hr_document_extension,hr.group_hr_manager,1,1,1,1
-access_hr_bonus_payment_manager,hr.bonus.payment.manager,model_hr_bonus_payment,hr.group_hr_manager,1,1,1,1
 access_hr_identification_documents_manager,hr.identification.documents.manager,model_hr_identification_documents,hr.group_hr_manager,1,1,1,1
 access_hr_type_identification_document_manager,hr.type.identification.document.manager,model_hr_type_identification_document,hr.group_hr_manager,1,1,1,1

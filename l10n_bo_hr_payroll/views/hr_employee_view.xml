@@ -28,6 +28,21 @@
                     </field>
                 </group>
             </xpath>
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page name="hr_prima" string="HR Prima" groups="hr.group_hr_user">
+                    <field name="bonus_payment_ids" nolabel="1" >
+                        <tree create="0"  edit="0" delete="0">
+                            <field name="number" string="Nómina"/>
+                            <field name="date_from" string="Fecha inicio"/>
+                            <field name="date_to" string="Fecha fin"/>
+                            <field name="earned_average" string="Promedio Ganado"/>
+                            <field name="paid_percentage" string="Porcentaje pagado" />
+                            <field name="days_considered" string="Días considerados" />
+                            <field name="amount_paid" string="Importe Pagado" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
         </field>
     </record>
 
