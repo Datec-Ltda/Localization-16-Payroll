@@ -445,12 +445,12 @@ msgstr "Por favor, compute la cuota"
 #: model:hr.salary.rule,name:l10n_bo_loan.hr_rule_loan
 #: model:hr.work.entry.type,name:l10n_bo_loan.hr_work_entry_type_loan
 msgid "Préstamo"
-msgstr "Prestamo"
+msgstr "Préstamo"
 
 #. module: l10n_bo_loan
 #: model_terms:ir.ui.view,arch_db:l10n_bo_loan.hr_loan_form_view
 msgid "Refuse"
-msgstr "Rechasar"
+msgstr "Rechazar"
 
 #. module: l10n_bo_loan
 #: model:ir.model.fields.selection,name:l10n_bo_loan.selection__hr_loan__state__refuse
