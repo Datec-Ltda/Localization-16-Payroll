@@ -70,14 +70,24 @@
             <field name="model">hr.bonus.payment</field>
             <field name="arch" type="xml">
                 <form string="Datos PRIMA">
-                    <group col="4">
-                        <field name="number" string="Nómina" readonly = "1"/>
-                        <field name="date_from" string="Fecha inicio" readonly = "1"/>
-                        <field name="date_to" string="Fecha fin" readonly = "1"/>
-                        <field name="earned_average" string="Promedio Ganado" readonly = "1"/>
-                        <field name="paid_percentage" string="Porcentaje pagado" readonly = "1" />
-                        <field name="days_considered" string="Días considerados" readonly = "1" />
-                        <field name="amount_paid" string="Importe Pagado" readonly = "1" />
+                    <group>
+                        <group>
+                            <field name="number" string="Nómina" readonly = "1"/>
+                        </group>
+                        <group>
+                            <field name="date_from" string="Fecha inicio" readonly = "1"/>
+                            <field name="date_to" string="Fecha fin" readonly = "1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="earned_average" string="Promedio Ganado" readonly = "1"/>
+                            <field name="paid_percentage" string="Porcentaje pagado" readonly = "1" />
+                        </group>
+                        <group>
+                            <field name="days_considered" string="Días considerados" readonly = "1" />
+                            <field name="amount_paid" string="Importe Pagado" readonly = "1" />
+                        </group>
                     </group>
                 </form>
             </field>

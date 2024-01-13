@@ -40,6 +40,12 @@
                     <group expand="0" string="Group By">
                         <filter string="Empleado" name="employee_id" domain="[]" context="{'group_by':'employee_id'}"/>
                     </group>
+                    <separator/>
+                    <group expand="1" string="Categoría">
+                        <filter string="Básica" name="category_basic" domain="[('category_id', '=', 'Básico')]"/>
+                        <filter string="Subsidio" name="category_ded" domain="[('category_id', '=', 'Subsidio')]"/>
+                        <filter string="Información" name="category_inf" domain="[('category_id', '=', 'INFORMACIÓN BASICA')]"/>
+                    </group>
                 </search>
             </field>
         </record>
