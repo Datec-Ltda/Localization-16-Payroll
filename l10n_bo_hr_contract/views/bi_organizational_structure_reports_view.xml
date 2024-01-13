@@ -52,7 +52,7 @@
             <field name="name">hr.organizational.structure.report.view.tree</field>
             <field name="model">hr.organizational.structure.report</field>
             <field name="arch" type="xml">
-                <tree string="Estructura Organizativa" create="false">
+                <tree string="Estructura Organizativa" create="false" delete="false">
                     <field name="department_id"/>
                     <field name="job_id"/>
                     <field name="staff_division_id"/>
