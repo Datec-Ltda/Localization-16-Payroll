@@ -157,36 +157,37 @@ class HrEmployee(models.Model):
             dates_update = self._create_contract_date_arrangement(contract)
             leave_allocation = self.env['hr.leave.allocation']
             for date_init in dates_update:
-                days_allocation = self.compute_years_until_date(contract, date_init)
-                if days_allocation > 0:
-                    value = {
-                        'allocation_type': 'regular',
-                        'can_approve': True,
-                        'can_reset': True,
-                        'create_uid': 1,
-                        'date_from': date_init,
-                        'date_to': False,
-                        'display_name': 'Asignación de Vacaciones ' + str(days_allocation) + ' días de ' + contract.employee_id.name,
-                        'duration_display': 15,
-                        'employee_company_id': contract.company_id.id,
-                        'employee_id': contract.employee_id.id,
-                        # 'employee_ids': contract.employee_id,
-                        'holiday_status_id': 1,
-                        'holiday_type': 'employee',
-                        'max_leaves': days_allocation,
-                        'number_of_days':  days_allocation,
-                        'number_of_days_display': days_allocation,
-                        'number_of_hours_display': days_allocation * 8,
-                        'private_name': 'vacaciones',
-                        'state': 'confirm',
-                        'type_request_unit':'day',
-                        'validation_type': 'officer',
-                    }
-                    leave_allocation_element = leave_allocation.search([('holiday_status_id', '=', 1),
-                                                                      ('employee_id', '=', contract.employee_id.id),
-                                                                      ('date_from', '=', date_init)])
-                    if not leave_allocation_element:
-                        move = leave_allocation.sudo().create(value)
+                if contract.employee_id.active:
+                    days_allocation = self.compute_years_until_date(contract, date_init)
+                    if days_allocation > 0:
+                        value = {
+                            'allocation_type': 'regular',
+                            'can_approve': True,
+                            'can_reset': True,
+                            'create_uid': 1,
+                            'date_from': date_init,
+                            'date_to': False,
+                            'display_name': 'Asignación de Vacaciones ' + str(days_allocation) + ' días de ' + contract.employee_id.name,
+                            'duration_display': 15,
+                            'employee_company_id': contract.company_id.id,
+                            'employee_id': contract.employee_id.id,
+                            # 'employee_ids': contract.employee_id,
+                            'holiday_status_id': 1,
+                            'holiday_type': 'employee',
+                            'max_leaves': days_allocation,
+                            'number_of_days':  days_allocation,
+                            'number_of_days_display': days_allocation,
+                            'number_of_hours_display': days_allocation * 8,
+                            'private_name': 'vacaciones',
+                            'state': 'confirm',
+                            'type_request_unit':'day',
+                            'validation_type': 'officer',
+                        }
+                        leave_allocation_element = leave_allocation.search([('holiday_status_id', '=', 1),
+                                                                          ('employee_id', '=', contract.employee_id.id),
+                                                                          ('date_from', '=', date_init)])
+                        if not leave_allocation_element:
+                            move = leave_allocation.sudo().create(value)
 
     @api.model
     def manage_vacation_assignment_init_load(self):
@@ -201,36 +202,37 @@ class HrEmployee(models.Model):
             if date_init is False:
                 raise UserError(_("Debe definir la fecha de carga inicial de las vacaciones"))
             if contract.employee_id.date_hired <= date_init:
-                leave_allocation = self.env['hr.leave.allocation']
-                leave_allocation_element = leave_allocation.search([('holiday_status_id', '=', 1),
-                                                                    ('employee_id', '=', contract.employee_id.id),
-                                                                    ('initial_load', '=', True)])
-                if not leave_allocation_element:
-                    value = {
-                        'allocation_type': 'regular',
-                        'can_approve': True,
-                        'can_reset': True,
-                        'initial_load': True,
-                        'create_uid': 1,
-                        'date_from': date_init,
-                        'date_to': False,
-                        'display_name': 'Carga inicial de días de vacaciones' + contract.employee_id.name,
-                        'duration_display': 15,
-                        'employee_company_id': contract.company_id.id,
-                        'employee_id': contract.employee_id.id,
-                        # 'employee_ids': contract.employee_id,
-                        'holiday_status_id': 1,
-                        'holiday_type': 'employee',
-                        'max_leaves': 15,
-                        'number_of_days':  15,
-                        'number_of_days_display': 15,
-                        'number_of_hours_display': 15 * 8,
-                        'private_name': 'Carga inicial de vacaciones',
-                        'state': 'confirm',
-                        'type_request_unit': 'day',
-                        'validation_type': 'officer',
-                    }
-                    move = leave_allocation.sudo().create(value)
+                if contract.employee_id.active:
+                    leave_allocation = self.env['hr.leave.allocation']
+                    leave_allocation_element = leave_allocation.search([('holiday_status_id', '=', 1),
+                                                                        ('employee_id', '=', contract.employee_id.id),
+                                                                        ('initial_load', '=', True)])
+                    if not leave_allocation_element:
+                        value = {
+                            'allocation_type': 'regular',
+                            'can_approve': True,
+                            'can_reset': True,
+                            'initial_load': True,
+                            'create_uid': 1,
+                            'date_from': date_init,
+                            'date_to': False,
+                            'display_name': 'Carga inicial de días de vacaciones' + contract.employee_id.name,
+                            'duration_display': 15,
+                            'employee_company_id': contract.company_id.id,
+                            'employee_id': contract.employee_id.id,
+                            # 'employee_ids': contract.employee_id,
+                            'holiday_status_id': 1,
+                            'holiday_type': 'employee',
+                            'max_leaves': 15,
+                            'number_of_days':  15,
+                            'number_of_days_display': 15,
+                            'number_of_hours_display': 15 * 8,
+                            'private_name': 'Carga inicial de vacaciones',
+                            'state': 'confirm',
+                            'type_request_unit': 'day',
+                            'validation_type': 'officer',
+                        }
+                        move = leave_allocation.sudo().create(value)
         self.send_success_notification()
 
     def send_success_notification(self):
