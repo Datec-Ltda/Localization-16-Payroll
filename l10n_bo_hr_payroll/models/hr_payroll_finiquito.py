@@ -44,9 +44,14 @@ class HrPayrollFiniquito(models.Model):
     def _compute_month(self):
         if self.date_end:
             months = self.get_previous_months()
-            self.month1 = MESES[str(months['mes 1'])]
-            self.month2 = MESES[str(months['mes 2'])]
-            self.month3 = MESES[str(months['mes 3'])]
+            if months:
+                self.month1 = MESES[str(months['mes 1'])]
+                self.month2 = MESES[str(months['mes 2'])]
+                self.month3 = MESES[str(months['mes 3'])]
+            else:
+                self.month1 = "Mes 1"
+                self.month2 = "Mes 2"
+                self.month3 = "Mes 3"
         else:
             self.month1 = "Mes 1"
             self.month2 = "Mes 2"
@@ -402,8 +407,8 @@ class HrPayrollFiniquito(models.Model):
 
     def indemnity_accumulated_month(self, employee_id):
         if employee_id.date_hired:
-            date_hired_last_year = date(date.today().year - 1, employee_id.date_hired.month, employee_id.date_hired.day)
-            date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
+            date_hired_last_year = date(self.date_end.year - 1, employee_id.date_hired.month, employee_id.date_hired.day)
+            date_hired_this_year = date(self.date_end.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
             if self.date_end < date_hired_this_year:
                 diff = relativedelta(self.date_end, date_hired_last_year)
             else:
@@ -414,8 +419,8 @@ class HrPayrollFiniquito(models.Model):
 
     def indemnity_accumulated_day(self, employee_id):
         if employee_id.date_hired:
-            date_hired_last_year = date(date.today().year - 1, employee_id.date_hired.month, employee_id.date_hired.day)
-            date_hired_this_year = date(date.today().year, employee_id.date_hired.month, employee_id.date_hired.day)
+            date_hired_last_year = date(self.date_end.year - 1, employee_id.date_hired.month, employee_id.date_hired.day)
+            date_hired_this_year = date(self.date_end.year, employee_id.date_hired.month, employee_id.date_hired.day)
             if self.date_end < date_hired_this_year:
                 diff = relativedelta(self.date_end, date_hired_last_year)
             else:
