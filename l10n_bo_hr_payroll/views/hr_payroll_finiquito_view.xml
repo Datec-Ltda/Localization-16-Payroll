@@ -90,7 +90,7 @@
                                             <td class="text-center"><field name="commissions_total"/></td>
                                         </tr>
                                         <tr>
-                                            <td>Horas Estras</td>
+                                            <td>Horas Extras</td>
                                             <td class="text-center"><field name="overtime1" readonly="1" force_save="1"/></td>
                                             <td class="text-center"><field name="overtime2" readonly="1" force_save="1"/></td>
                                             <td class="text-center"><field name="overtime3" readonly="1" force_save="1"/></td>

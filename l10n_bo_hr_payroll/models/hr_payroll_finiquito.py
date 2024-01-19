@@ -24,7 +24,7 @@ class HrPayrollFiniquito(models.Model):
     _name = "hr.payroll.finiquito"
     _description = "Calculo del finiquito"
 
-    employee_id = fields.Many2one('hr.employee', 'Employee', required=True,
+    employee_id = fields.Many2one('hr.employee', 'Empleado', required=True,
                                   domain="[('active', '=', False)]")
     contract_id = fields.Many2one(related='employee_id.contract_id', string="Contrato", store=True)
     date_hire = fields.Date(related='employee_id.date_hired', string='Fecha contratación', required=True)
