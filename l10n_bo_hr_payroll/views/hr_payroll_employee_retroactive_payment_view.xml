@@ -9,13 +9,16 @@
             <field name="arch" type="xml">
                 <form string="Pago retroactivo">
                     <header>
-                        <button name="execute_retroactive_pay" type="object" string="Calcular pago retroactivo" class="oe_highlight"
+                        <button name="create_new_contract" type="object" string="Generar nuevos contratos" class="oe_highlight"
                                 states="draft"/>
-<!--                        <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>-->
+                        <button name="execute_retroactive_pay" type="object" string="Calcular pago retroactivo" class="oe_highlight"
+                                states="contract"/>
+                        <button name="action_period_draft" type="object" string="Borrador" class="oe_highlight"
+                                states="contract"/>
                         <field name="state" readonly="1"/>
-                        <button string="Abrir" name="action_period_open" type="object" states="draft"/>
-<!--                        <button string="Cerrado" name="action_period_closed" states="open" type='object' />-->
-                        <button string="A borrador" name="action_period_draft" states="open" type='object' />
+                        <button string="Abrir" name="action_period_open" type="object" states="generated" class="oe_highlight"/>
+                        <button string="A Generar" name="action_period_generated" states="open" type='object' class="oe_highlight" />
+                        <button string="Contratos creados" name="action_period_contract" states="generated" type='object' class="oe_highlight" />
                     </header>
                     <group>
                         <group>
@@ -28,8 +31,8 @@
                             <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
                         </group>
                         <group>
-                            <field name="basic_percent" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
-                            <field name="smn_percent" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            <field name="basic_percent" attrs="{'readonly': [('state', 'in', ['contract','open', 'closed'])]}" />
+                            <field name="smn_percent" attrs="{'readonly': [('state', 'in', ['contract','open', 'closed'])]}" />
                         </group>
                     </group>
                     <notebook>
@@ -40,6 +43,20 @@
                                     <field name="contract_id"  readonly="1"/>
                                     <field name="date_from" readonly="1"/>
                                     <field name="date_to" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="contratos">
+                            <field name="payment_retroactive_contract_ids" nolabel="1">
+                                <tree create="0" >
+                                    <field name="employee_id" string="Empleado" readonly="1"/>
+                                    <field name="old_contract_id"  readonly="1"/>
+                                    <field name="old_wage" readonly="1"/>
+                                    <field name="old_date_start" readonly="1"/>
+                                    <field name="old_date_end" readonly="1"/>
+                                    <field name="new_contract_id"  readonly="1"/>
+                                    <field name="new_wage" readonly="1"/>
+                                    <field name="new_date_start" readonly="1"/>
                                 </tree>
                             </field>
                         </page>
@@ -68,10 +85,10 @@
             <field name="arch" type="xml">
                 <form string="Supplementary work">
                     <header>
-                        <button string="Abrir" name="action_period_open" type="object" states="draft"/>
+                        <button string="Abrir" name="action_period_open" type="object" states="contract"/>
 <!--                        <button string="Close" name="action_period_closed" states="open" type='object' />-->
-                        <button string="A Borrador" name="action_period_draft" states="open" type='object' />
-                        <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>
+                        <button string="A contrato" name="action_period_draft" states="open" type='object' />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,contract,open,closed"/>
                     </header>
                     <sheet>
                         <div class="oe_title" invisible="1">
