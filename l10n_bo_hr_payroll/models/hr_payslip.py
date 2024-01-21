@@ -31,6 +31,11 @@ class HrPayslip(models.Model):
         copy=False, states={'draft': [('readonly', False)], 'verify': [('readonly', False)]},
         domain="[('company_id', '=', company_id)]")
 
+    def action_payslip_paid(self):
+        if any(slip.state not in ['done', 'paid'] for slip in self):
+            raise UserError(_('Cannot mark payslip as paid if not confirmed.'))
+        self.write({'state': 'paid'})
+
     def _get_base_local_dict(self):
         res = super()._get_base_local_dict()
         res.update({
