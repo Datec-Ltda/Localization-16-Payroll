@@ -23,7 +23,7 @@ class HrPayslip(models.Model):
 
     line_ids2 = fields.One2many(
         'hr.payslip.line', 'slip_id', string='Payslip Lines',
-        compute='_compute_line_ids', store=True, readonly=True, copy=True,
+        compute='_compute_line_ids', store=True, readonly=True, copy=False,
         states={'draft': [('readonly', False)], 'verify': [('readonly', False)]}, domain=[('retroactive', '=', True)])
 
     payslip_retroactive_id = fields.Many2one(
