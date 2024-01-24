@@ -231,6 +231,7 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
             # Crear una copia del contrato con fecha de inicio modificada y salario cambiado
             new_contract = contract.copy(default={'name': contract.name + ' ' + str(self.date_from),
                                                 'date_start': self.date_from,
+                                                'resource_calendar_id': contract.resource_calendar_id.id,
                                                   'wage': contract.wage + contract.wage * self.basic_percent / 100})
 
             # Actualizar el contrato existente
