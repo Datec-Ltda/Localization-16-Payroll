@@ -253,9 +253,7 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
                     'name': contract.employee_id.name,
                     'employee_id': contract.employee_id.id,
                     'old_contract_id': contract.id,
-                    # 'old_wage': contract.wage,
                     'new_contract_id': new_contract.id,
-                    # 'new_wage': new_contract.wage,
                 }
                 contract_retroactive_env.create(value)
         self.action_period_contract()
