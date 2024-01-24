@@ -65,8 +65,7 @@ result = get_retroactive_sum_rule(payslip,'SUBS_FRONTERA')
         <field name="code">EXTRAS</field>
         <field name="sequence">11</field>
         <field name="retroactive">True</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.HE</field>
+        <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = get_retroactive_sum_rule(payslip,'EXTRAS')
@@ -80,8 +79,7 @@ result = get_retroactive_sum_rule(payslip,'EXTRAS')
         <field name="code">DOMINGO</field>
         <field name="sequence">11</field>
         <field name="retroactive">True</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.HED</field>
+        <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = get_retroactive_sum_rule(payslip,'DOMINGO')
@@ -95,8 +93,7 @@ result = get_retroactive_sum_rule(payslip,'DOMINGO')
         <field name="code">RECARGO</field>
         <field name="sequence">11</field>
         <field name="retroactive">True</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.HRN</field>
+        <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = get_retroactive_sum_rule(payslip,'RECARGO')
@@ -110,8 +107,7 @@ result = get_retroactive_sum_rule(payslip,'RECARGO')
         <field name="code">DT</field>
         <field name="sequence">11</field>
         <field name="retroactive">True</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.DT</field>
+        <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = get_retroactive_sum_rule(payslip,'DT')
@@ -290,8 +286,7 @@ result = get_retroactive_sum_rule(payslip,'TOTAL_AFP')
         <field name="name">Horas de ausencia</field>
         <field name="code">LEAVE_HOURS</field>
         <field name="sequence">102</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.LEAVE_HOURS</field>
+        <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = get_retroactive_sum_rule(payslip,'LEAVE_HOURS')
@@ -305,8 +300,7 @@ result = get_retroactive_sum_rule(payslip,'LEAVE_HOURS')
         <field name="name">Días de ausencia</field>
         <field name="code">LEAVE_DAYS</field>
         <field name="sequence">102</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.LEAVE_DAYS</field>
+        <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = get_retroactive_sum_rule(payslip,'LEAVE_DAYS')
@@ -320,8 +314,7 @@ result = get_retroactive_sum_rule(payslip,'LEAVE_DAYS')
         <field name="name">Falta injustificada</field>
         <field name="code">LEAVE_UNJUSTIFIED</field>
         <field name="sequence">102</field>
-        <field name="condition_select">python</field>
-        <field name="condition_python">result = worked_days.LEAVE_UNJUSTIFIED</field>
+        <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 result = get_retroactive_sum_rule(payslip,'LEAVE_UNJUSTIFIED')
