@@ -48,7 +48,7 @@
                         </page>
                         <page string="contratos">
                             <field name="payment_retroactive_contract_ids" nolabel="1">
-                                <tree create="0" >
+                                <tree create="0" delete="0">
                                     <field name="employee_id" string="Empleado" readonly="1"/>
                                     <field name="old_contract_id"  readonly="1"/>
                                     <field name="old_wage" readonly="1"/>
