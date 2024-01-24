@@ -15,7 +15,8 @@
                                 states="contract"/>
                         <button name="action_period_draft" type="object" string="Borrador" class="oe_highlight"
                                 states="contract"/>
-                        <field name="state" readonly="1"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,contract,generated,open,closed"/>
+<!--                        <field name="state" readonly="1" />-->
                         <button string="Abrir" name="action_period_open" type="object" states="generated" class="oe_highlight"/>
                         <button string="A Generar" name="action_period_generated" states="open" type='object' class="oe_highlight" />
                         <button string="Contratos creados" name="action_period_contract" states="generated" type='object' class="oe_highlight" />
@@ -83,7 +84,7 @@
             <field name="name">hr.payroll.employee.payments.retroactive.list.form</field>
             <field name="model">hr.payroll.employee.payments.retroactive.list</field>
             <field name="arch" type="xml">
-                <form string="Supplementary work">
+                <form string="Pago retroactivo">
                     <header>
                         <button string="Abrir" name="action_period_open" type="object" states="contract"/>
 <!--                        <button string="Close" name="action_period_closed" states="open" type='object' />-->
