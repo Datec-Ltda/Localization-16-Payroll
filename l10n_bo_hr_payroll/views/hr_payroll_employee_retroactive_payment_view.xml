@@ -32,8 +32,8 @@
                             <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
                         </group>
                         <group>
-                            <field name="basic_percent" attrs="{'readonly': [('state', 'in', ['contract','open', 'closed'])]}" />
-                            <field name="smn_percent" attrs="{'readonly': [('state', 'in', ['contract','open', 'closed'])]}" />
+                            <field name="basic_percent" attrs="{'readonly': [('state', 'in', ['contract','generated', 'open', 'closed'])]}" />
+                            <field name="smn_percent" attrs="{'readonly': [('state', 'in', ['contract', 'generated', 'open', 'closed'])]}" />
                         </group>
                     </group>
                     <notebook>

@@ -63,10 +63,10 @@
                                     <tbody>
                                         <tr>
                                             <td>Remuneración</td>
-                                            <td class="text-center"><field name="monthly_compensation1"/></td>
-                                            <td class="text-center"><field name="monthly_compensation2"/></td>
-                                            <td class="text-center"><field name="monthly_compensation3"/></td>
-                                            <td class="text-center"><field name="monthly_compensation_total"/></td>
+                                            <td class="text-center"><field name="monthly_compensation1" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
+                                            <td class="text-center"><field name="monthly_compensation2" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
+                                            <td class="text-center"><field name="monthly_compensation3" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
+                                            <td class="text-center"><field name="monthly_compensation_total" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
                                         </tr>
                                         <tr>
                                             <td>Bono antigüedad</td>
@@ -84,10 +84,10 @@
                                         </tr>
                                         <tr>
                                             <td>Comisiones</td>
-                                            <td class="text-center"><field name="commissions1"/></td>
-                                            <td class="text-center"><field name="commissions2"/></td>
-                                            <td class="text-center"><field name="commissions3"/></td>
-                                            <td class="text-center"><field name="commissions_total"/></td>
+                                            <td class="text-center"><field name="commissions1" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
+                                            <td class="text-center"><field name="commissions2" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
+                                            <td class="text-center"><field name="commissions3" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
+                                            <td class="text-center"><field name="commissions_total" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/></td>
                                         </tr>
                                         <tr>
                                             <td>Horas Extras</td>
