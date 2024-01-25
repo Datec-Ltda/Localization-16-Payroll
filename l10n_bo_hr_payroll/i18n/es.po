@@ -1,0 +1,2337 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_bo_hr_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e-20230909\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-25 20:54+0000\n"
+"PO-Revision-Date: 2024-01-25 20:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_percen_pay
+msgid "% A PAGAR"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_percen_tax
+msgid "% IMPUESTO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "-> Report"
+msgstr "Reporte"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_anc_amount_two_smn
+msgid "2 SMN"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_list_view_form
+msgid "A Borrador"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+msgid "A Generar"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "A borrador"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_list_view_form
+msgid "A contrato"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_saldo_actualizacion
+msgid "ACTUALIZACION"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_christmas_bonus
+msgid "AGUINALDO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__state__open
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__state__open
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_finiquito__state__open
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_overtime_hours__state__open
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_overtime_hours_list__state__open
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_pay_retroactive_report__state__open
+msgid "Abierto"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__4
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__4
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__4
+msgid "Abril"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_list_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_list_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Abrir"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Add an internal note..."
+msgstr "Añadir una nota interna..."
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_quinquennial_data__type_of_payment__0002
+msgid "Adelanto de Quinquenio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__8
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__8
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__8
+msgid "Agosto"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_aguinaldo
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__christmas_bonus_day
+msgid "Aguinaldo dias"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__christmas_bonus_month
+msgid "Aguinaldo meses"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__christmas_bonus_one
+msgid "Aguinaldo uno"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip_line__amount_retroactive
+msgid "Amount Retroactive"
+msgstr "Importe Retroactivo"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid ""
+"Another refund payslip with the same amount has been found. Do you want to "
+"create a new one ?"
+msgstr ""
+" Se ha encontrado otra nómina de devolución con el mismo importe. ¿Desea "
+"crear una nueva?"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.ui.menu,name:l10n_bo_hr_payroll.hr_co_menu_hr_payroll_payments_retroactive_check
+msgid "Análisis de Pago retroactivo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_a_risk_apv
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_a_risk_apv
+msgid "Aporte Pro-Vivienda"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_a_risk_arp
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_a_risk_arp
+msgid "Aporte Riesgo Profesional"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_a_risk_asp
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_a_risk_asp
+msgid "Aporte Solidario Patronal"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_a_risk_as
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_a_risk_as
+msgid "Aporte de Salud"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_afp_as
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_afp_as
+msgid "Aporte solidario"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__leave_id
+msgid "Ausencia"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__year
+msgid "Año"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Años"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__indemnity_year_amount
+msgid "Años Importe"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_anc_amount_taxable_base
+msgid "BASE IMPONIBLE"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_basic_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_basic_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_basic_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_basic_average
+msgid "BASICO PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_antiquity_bonus
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_antiquity_bonus
+msgid "BONO ANTIGUEDAD"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_antiquity_bonus_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_antiquity_bonus_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_antiquity_bonus_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_antiquity_bonus_average
+msgid "BONO DE ANTIGUEDAD PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bono_caja
+msgid "BONO DE CAJA"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_production_bonus_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_production_bonus_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_production_bonus_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_production_bonus_average
+msgid "BONO DE PRODUCCION PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_production_bonus
+msgid "BONO PRODUCCION"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_bm_acc_lab
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_baja_acc_lab
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_bm_acc_lab
+msgid "Baja Médica Accidente Laboral"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_bm_enf_comun
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_baja_med_enf_com
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_bm_ec
+msgid "Baja Médica Enfermedad Común"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_bm_postnatal
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_baja_med_postnatal
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_bm_postnatal
+msgid "Baja Médica Postnatal"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_bm_prenatal
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_baja_med_prenatal
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_bm_prenatal
+msgid "Baja Médica Prenatal"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_bm_ext_risk
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_baja_riesg_ext
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_bm_ext_risk
+msgid "Baja Médica Riesg Extraor"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bc_diaria
+msgid "Base cálculo diaria Básico"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bc_diaria_total
+msgid "Base cálculo diaria Total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bc_diaria_gross_total
+msgid "Base cálculo diaria Total Devengado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bc_diaria_falta
+msgid "Base cálculo para falta"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bc_diaria_horas
+msgid "Base de cálculo en hora"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip__basic_percent
+msgid "Basic Percent"
+msgstr "Porcentaje básico"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Batch"
+msgstr "Lote"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip__payslip_retroactive_id
+msgid "Batch Name"
+msgstr "Nombre del lote"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_bo_hr_payroll.BONO
+msgid "Bono"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__seniority_bonus_total
+msgid "Bono Antiguedad Total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__seniority_bonus1
+msgid "Bono Antiguedad mes 1"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__seniority_bonus2
+msgid "Bono Antiguedad mes 2"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__seniority_bonus3
+msgid "Bono Antiguedad mes 3"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Bono Frontera"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__border_bonus_total
+msgid "Bono Frontera Total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__border_bonus1
+msgid "Bono Frontera mes 1"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__border_bonus2
+msgid "Bono Frontera mes 2"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__border_bonus3
+msgid "Bono Frontera mes 3"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Bono antigüedad"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__antiquity_bonus
+msgid "Bono de antigüedad"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__production_bonus
+msgid "Bono de producción"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_employee__bonus_payment_ids
+msgid "Bonus Payment"
+msgstr "Pago de bonificaciones"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__state__draft
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__state__draft
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_finiquito__state__draft
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_overtime_hours__state__draft
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_overtime_hours_list__state__draft
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_pay_retroactive_report__state__draft
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_quinquennial_data__state__draft
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+msgid "Borrador"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_housing_development_unit_search
+msgid "Buscar Unidad de Fomento de Vivienda"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Básica"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+msgid "Calcular pago retroactivo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_finiquito
+msgid "Calculo del finiquito"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_bonus_payment__amount_paid
+msgid "Campo calculado del monto de prima pagado para la gestión"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_bonus_payment__earned_average
+msgid "Campo calculado promedio sobre el total ganado de los 3 meses "
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Cannot mark payslip as paid if not confirmed."
+msgstr "No se puede marcar la nómina como pagada si no está confirmada."
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__amount_years
+msgid "Cantidad"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__indemnity_year
+msgid "Cantidad de Años"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__indemnity_month
+msgid "Cantidad de Meses"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__indemnity_day
+msgid "Cantidad de días"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_search
+msgid "Carga inicial"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__category_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip_line__category_retroactive_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Categoría"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__state__closed
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__state__closed
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_overtime_hours__state__closed
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_overtime_hours_list__state__closed
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_pay_retroactive_report__state__closed
+msgid "Cerrado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.actions.act_window,name:l10n_bo_hr_payroll.action_hr_payroll_closing_table
+#: model:ir.ui.menu,name:l10n_bo_hr_payroll.hr_co_menu_hr_payroll_closing_table
+msgid "Cierres"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__type_of_payment
+msgid "Clase de documento"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Comisiones"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__commissions_total
+msgid "Comisiones Total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__commissions1
+msgid "Comisiones mes 1"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__commissions2
+msgid "Comisiones mes 2"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__commissions3
+msgid "Comisiones mes 3"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_afp_comis
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_afp_comis
+msgid "Comisión AFP"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__comments
+msgid "Comments"
+msgstr "Comentarios"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__company_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__company_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__company_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__company_id
+msgid "Compañia"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Compute Sheet"
+msgstr "Hoja de cálculo"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Concepto"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__contract_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__contract_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__contract_id
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__contract_id
+msgid "Contrato"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__state__contract
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__state__contract
+msgid "Contrato Generado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__old_contract_id
+msgid "Contrato anterior"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__new_contract_id
+msgid "Contrato nuevo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+msgid "Contratos creados"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_employee_payments_retroactive_contract_list
+msgid "Contratos y salarios"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_afp_cm
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_afp_cm
+msgid "Cotización mensual "
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__contract_id
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_finiquito__contract_id
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__contract_id
+msgid "Current contract of the employee"
+msgstr "Contrato actual del trabajador"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__code
+msgid "Código"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_afp_discount
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_afp_discount
+msgid "DESCUENTO AFP"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_anc_amount_discount_anc
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_anc_amount_discount_anc
+msgid "DESCUENTO ANS"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_discount_iva
+msgid "DESCUENTO IVA"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_sunday_overtime_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sunday_overtime_amount_average
+msgid "DOMINGO HORAS EXT PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_sunday_overtime_amount_average
+msgid "DOMINGO HORAS EXTRAS PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_sunday_overtime_amount_average
+msgid "DOMINGO PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima__sunday_worked_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_sunday_worked_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_sunday_worked_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sunday_worked_amount_average
+msgid "DOMINGO TRABAJADO PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__date_from
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__date_from
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__date_from
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__date_from
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__date_from
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__date_from
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__date_from
+msgid "Date From"
+msgstr "Fecha inicio"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__date_to
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__date_to
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__date_to
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__date_to
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__date_to
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__date_to
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__date_to
+msgid "Date To"
+msgstr "Fecha de fin"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+msgid "Datos PRIMA"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_payroll_quinquennial_data_view_form
+msgid "Datos Quinquenal"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_quinquennial_data
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Datos Quinquenio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__department_id
+msgid "Departamento"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_desahucio
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__eviction
+msgid "Desahucio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_tree
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Desde"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Dias"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bm_riesg_ext_day
+msgid "Dias aplicar en  Baja Médica RiesgO Extraordinario"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bm_acc_lab_day
+msgid "Dias aplicar en Baja Médica Accidente Laboral"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_baja_bmec_day
+msgid "Dias aplicar en Baja Médica Enfermedad Común"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bm_postnatal_day
+msgid "Dias aplicar en Baja Médica Postnatal"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_bm_prenatal_day
+msgid "Dias aplicar en Baja Médica Prenatal"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__12
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__12
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__12
+msgid "Diciembre"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__different_amount
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Diferencia"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_tree
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Documento"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_work_mondat
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_work_mondat
+msgid "Domingo trabajado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_sunday_worked
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__sunday_worked
+msgid "Domingos Trabajados"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__sunday_worked
+msgid "Domingos trabajados"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_sunday_overtime
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sunday_overtime
+msgid "Dominical y Dom. Trab. "
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_worked_days
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_worked_days
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_worked_days
+msgid "DÍAS TRABAJADOS"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Días"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__indemnity_day_amount
+msgid "Días Importe"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__days_considered
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Días considerados"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_leave_days
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_leave_days
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_leave_days
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_leave_days
+msgid "Días de ausencia"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__holidays_days
+msgid "Días de vacaciones"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__worked_days
+msgid "Días trabajados"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_bonus_payment__days_considered
+msgid ""
+"Días trabajados en la gestión a pagar por el cual se paga el monto de prima"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__employee_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__employee_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__employee_id
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_tree
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Empleado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_employee
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__employee_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__employee_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__employee_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__employee_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__employee_id
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__new_wage
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__old_wage
+msgid "Employee's monthly gross wage."
+msgstr "Salario bruto mensual del trabajador."
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__old_date_end
+msgid "End date of the contract (if it's a fixed-term contract)."
+msgstr "Fecha de finalización del contrato (si es de duración determinada)."
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__1
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__1
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__1
+msgid "Enero"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__state
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payroll_overtime_hours.py:0
+#, python-format
+msgid "Existe intervalo."
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Export Payslip"
+msgstr "Exportar nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_leave_unjustified_absence
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_leave_unjustified_absence
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_leave_unjustified_absence
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_leave_unjustified_absence
+msgid "Falta injustificada"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__2
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__2
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__2
+msgid "Febrero"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__date_month
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_housing_development_unit_search
+msgid "Fecha"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__date_hire
+msgid "Fecha contratación"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__date_from
+msgid "Fecha de inicio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__date_from
+msgid "Fecha de inicio de formulario de pago de quinquenio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_finiquito__date_hire
+msgid "Fecha de inicio del primer contrato"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__date_pay
+msgid "Fecha de pago"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__date_pay
+msgid "Fecha de pago de quinquenio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__report_date
+msgid "Fecha de reporte"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__old_date_end
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__date_to
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Fecha fin"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__date_to
+msgid "Fecha fin de formulario de pago de quinquenio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__date_end
+msgid "Fecha fin del contrato"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__new_date_start
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__old_date_start
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Fecha inicio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_total
+#: model:ir.actions.act_window,name:l10n_bo_hr_payroll.action_hr_payroll_finiquito
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__finiquito
+#: model:ir.ui.menu,name:l10n_bo_hr_payroll.hr_co_menu_hr_payroll_finiquito
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_tree
+msgid "Finiquito"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_other_bonuses_finiquito
+msgid "Finiquito Otros bonos extraordinarios"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_vac_finiquito
+msgid "Finiquito Vacaciones"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_search
+msgid "Generados de la nómina"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+msgid "Generar nuevos contratos"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Group By"
+msgstr "Agrupado por"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_overtime_amount
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_overtime_amount
+msgid "HORAS EXTRAS"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_overtime_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_overtime_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_overtime_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_overtime_amount_average
+msgid "HORAS EXTRAS PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "HR Prima"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_tree
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_list_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Hasta"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_sunday_overtime
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__sunday_overtime
+msgid "Horas Extra Dominical"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Horas Extras"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__overtime_total
+msgid "Horas Extras Total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__overtime1
+msgid "Horas Extras mes 1"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__overtime2
+msgid "Horas Extras mes 2"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__overtime3
+msgid "Horas Extras mes 3"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_hours_night_overtime
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__hours_night_overtime
+msgid "Horas Recargo nocturno"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.leave.type,name:l10n_bo_hr_payroll.holiday_type_leave_hours
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_leave_hours
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_leave_hours
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_leave_hours
+msgid "Horas de ausencia"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__sunday_overtime
+msgid "Horas extra dominical"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.work.entry.type,name:l10n_bo_hr_payroll.hr_work_entry_type_overtime
+#: model:ir.actions.act_window,name:l10n_bo_hr_payroll.action_hr_payroll_overtime_hours
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_overtime_hours
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__overtime
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__overtime
+#: model:ir.ui.menu,name:l10n_bo_hr_payroll.hr_co_menu_hr_payroll_overtime_hours
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_list_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_tree
+msgid "Horas extras"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_overtime_hours_list
+msgid "Horas extras List"
+msgstr "Horas extras Lista"
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payroll_overtime_hours.py:0
+#, python-format
+msgid "Horas extras para %s"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__night_overtime_hours
+msgid "Horas recargo nocturno"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__worked_hours
+msgid "Horas trabajadas"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_tax
+msgid "IMPUESTO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_tax_neto_rc_iva
+msgid "IMPUESTO NETO RC-IVA"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_tax_ret
+msgid "IMPUESTO RETENIDO A PAGAR"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_bo_hr_payroll.BASIC_INF
+msgid "INFORMACIÓN BASICA"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_iva_form_110
+msgid "IVA FORM.110"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__amount_paid
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Importe Pagado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__christmas_bonus_month_amount
+msgid "Importe de Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__christmas_bonus_day_amount
+msgid "Importe de Aguinaldo en días"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__holidays_amount
+msgid "Importe de vacaciones"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_indemnity
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Indemnización"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_salary_rule__retroactive
+msgid "Influye en el pago retroactivo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Información"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Input Data"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payroll_overtime_hours.py:0
+#, python-format
+msgid "Intervalo invalido."
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip__is_retroactive
+msgid "Is Retroactive"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__7
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__7
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__7
+msgid "Julio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__6
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__6
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__6
+msgid "Junio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_quinquennial_data__state__open
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Listo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_net
+msgid "LÍQUIDO PAGABLE"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_anc_amount_1
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_anc_amount_1
+msgid "MONTO ANS 1%"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_anc_amount_10
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_anc_amount_10
+msgid "MONTO ANS 10%"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_anc_amount_5
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_anc_amount_5
+msgid "MONTO ANS 5%"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Mark a paids"
+msgstr "Marcar un pago"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__3
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__3
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__3
+msgid "Marzo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__5
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__5
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__5
+msgid "Mayo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payments_wizard__month_pay
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__month
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Mes"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_search
+msgid "Mes actual"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__month_init_pay
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__month_init_pay
+msgid "Mes inicio de pago"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Meses"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__indemnity_month_amount
+msgid "Meses Importe"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_list_view_form
+msgid "Meses procesados"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__month1
+msgid "Month1"
+msgstr "Mes1"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__month2
+msgid "Month2"
+msgstr "Mes2"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__month3
+msgid "Month3"
+msgstr "Mes3"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__amount
+msgid "Monto anterior"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__sunday_worked_amount
+msgid "Monto domingo trabajado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__overtime_amount
+msgid "Monto horas extras"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__sunday_overtime_amount
+msgid "Monto horas extras dominical"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__night_overtime_hours_amount
+msgid "Monto horas recargo nocturno"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__amount_retroactive
+msgid "Monto recalculado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_multas
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__penalties
+msgid "Multas"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__name
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__name
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_list_view_form
+msgid "Name"
+msgstr "Nombre"
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_employee.py:0
+#: code:addons/l10n_bo_hr_payroll/models/hr_payroll_overtime_hours.py:0
+#, python-format
+msgid "No puede borrar el registro si no esta en estado borrador."
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payroll_employee_retroactive_payments.py:0
+#, python-format
+msgid ""
+"No puede borrar el registro si no esta en estado contractos realizados."
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payroll.py:0
+#, python-format
+msgid ""
+"No puedes crear dos registro para el trabajador en el mismo periodo de "
+"tiempo."
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__11
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__11
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__11
+msgid "Noviembre"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__payslip
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Nómina"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.ui.menu,name:l10n_bo_hr_payroll.hr_menu_payroll_bolivia
+msgid "Nómina bolivia"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_other_bonuses_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_other_bonuses_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_other_bonuses_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_other_bonuses_average
+msgid "OTROS BONOS PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_other_discount
+msgid "OTROS DESCUENTOS"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__10
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__10
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__10
+msgid "Octubre"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Other Info"
+msgstr "Otra información"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Other Inputs"
+msgstr "Otras entradas"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Otros Bonos"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__other_extraordinary_bonuses
+msgid "Otros Bonos extraordinarios"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__other_bonuses
+msgid "Otros bonos"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__other_bonuses1
+msgid "Otros bonos 1"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__other_bonuses2
+msgid "Otros bonos 2"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__other_bonuses3
+msgid "Otros bonos 3"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Otros bonos extraordinarios"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_other_bonuses
+msgid "Otros bonos extraordinarios\t"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__other_bonuses_total
+msgid "Otros bonos total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__overtime_hours_ids
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__overtime_hours_id
+msgid "Overtime Hours"
+msgstr "Horas extraordinarias"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_payed
+msgid "PAGO RETROACTIVO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_bo_hr_payroll.FOR_TAX
+msgid "PARA IMPUESTO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima
+msgid "PRIMA"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_promedio
+msgid "PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_total_gained_day
+msgid "PROMEDIO DIARIO AL AÑO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_finiquito__state__paid
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_quinquennial_data__state__paid
+msgid "Pagado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Pagar Seg Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Pago"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_quinquennial_data__type_of_payment__0001
+msgid "Pago de Quinquenio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_bonus_payment
+msgid "Pago de prima"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__state__generated
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__state__generated
+msgid "Pago generado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_employee__quinquennial_ids
+msgid "Pago quinquenal"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.actions.act_window,name:l10n_bo_hr_payroll.action_hr_payroll_employee_payments_retroactive
+#: model:ir.actions.act_window,name:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_action
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__retroactive
+#: model:ir.ui.menu,name:l10n_bo_hr_payroll.hr_co_menu_hr_payroll_employee_payments_retroactive
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_list_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_graph
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_pivot
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_tree
+msgid "Pago retroactivo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_employee_payments_retroactive_list
+msgid "Pago retroactivo nóminas"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payroll_employee_retroactive_payments.py:0
+#, python-format
+msgid "Pago retroactivo para %s"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_employee_payments_retroactive
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_tree
+msgid "Pagos retroactivos"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_pay_retroactive_report
+msgid "Pagos retroactivos realizados"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__paid_percentage
+msgid "Paid Percentage"
+msgstr "Porcentaje pagado"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Recibo de nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_tree
+msgid "PaySlip"
+msgstr "Nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__payment_retroactive_ids
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__payment_retroactive_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__payment_retroactive_id
+msgid "Payment Retroactive"
+msgstr "Pago retroactivo"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__payment_retroactive_contract_ids
+msgid "Payment Retroactive Contract"
+msgstr "Pago retroactivo Contrato"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payments_wizard
+msgid "Payments Wizard"
+msgstr "Asistente de pagos"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Payroll supplementary work"
+msgstr "Trabajo suplementario de nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__payslip_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__payslip_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__payslip_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__payslip_id
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Payslip"
+msgstr "Nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payslip_line
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Payslip Line"
+msgstr "Línea de recibo de nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip__line_ids2
+msgid "Payslip Lines"
+msgstr "Líneas de recibo de nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payslip_worked_days
+msgid "Payslip Worked Days"
+msgstr "Días trabajados en el recibo de nómina"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__slip_ids
+msgid "Payslips"
+msgstr "Nóminas"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_list_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Period"
+msgstr "Periodo"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Poner listo para ser calculado por la nómina"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Ponerlo en borrador para modificarlo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,help:l10n_bo_hr_payroll.field_hr_bonus_payment__paid_percentage
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Porcentaje pagado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__basic_percent
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__basic_percent
+msgid "Porciento de incremento del salario basico"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__smn_percent
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__smn_percent
+msgid "Porciento de incremento del salario minimo nacional"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_payed
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__prima
+msgid "Prima"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_afp_prc
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_afp_prc
+msgid "Prima riesgo común"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__average
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Promedio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__earned_average
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_hr_bonus_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_employee_view_form_inherit
+msgid "Promedio Ganado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_christmas_bonus_accruals
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_christmas_bonus_accruals
+msgid "Prov Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prov_indemnification
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_prov_indemnification
+msgid "Prov Indemnización"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_provisions_utility_bonus
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_provisions_utility_bonus
+msgid "Prov Prima utilidades"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_second_christmas_bonus_accruals
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_second_christmas_bonus_accruals
+msgid "Prov Segundo Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__job_id
+msgid "Puesto de trabajo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial
+msgid "QUINQUENAL"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_year
+msgid "QUINQUENAL AÑOS"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_average
+msgid "QUINQUENAL PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_night_overtime
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_night_overtime
+msgid "RECARGO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_night_overtime_hours_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_night_overtime_hours_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_night_overtime_hours_amount_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_night_overtime_hours_amount_average
+msgid "RECARGO PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Recompute the payslip lines only, not the worked days / input lines"
+msgstr "Recalcular sólo las líneas de nómina, no las de días trabajados / entradas"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_bonus_payment__number
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__number
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Refrescar"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Refund"
+msgstr "Reembolso"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Regla"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Remuneración"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__monthly_compensation1
+msgid "Remuneración Mensual mes 1"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__monthly_compensation2
+msgid "Remuneración Mensual mes 2"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__monthly_compensation3
+msgid "Remuneración Mensual mes 3"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__monthly_compensation_total
+msgid "Remuneración Mensual total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip_line__retroactive
+msgid "Retroactive"
+msgstr "Retroactivo"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Retroactivo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__salary_rule_id
+msgid "Rule"
+msgstr "Regla"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_wage_daily
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_wage_daily
+msgid "SALARIO DIARIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_smn
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_smn
+msgid "SALARIO MINIMO NACIONAL"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_saldo_fisco
+msgid "SALDO A FAVOR DE FISCO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_saldo_depend
+msgid "SALDO A FAVOR DEL DEPENDIENTE"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_saldo_favor_mes_ant
+msgid "SALDO A FAVOR MES ANTERIOR"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_amount_next_month
+msgid "SALDO A FAVOR MES SIGUIENTE "
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sal_ant_act
+msgid "SALDO ANTERIOR ACTUALIZADO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sal_use
+msgid "SALDO UTILIZADO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_christmas_bonus
+msgid "SEGUNDO AGUINALDO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_frontier_subsidy_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_frontier_subsidy_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_quinquenial_frontier_subsidy_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_frontier_subsidy_average
+msgid "SUBSIDIO EN FRONTERA PROMEDIO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_frontier_subsidy
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_frontier_subsidy
+msgid "SUBSIDIO FRONTERA"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__new_wage
+msgid "Salario actual"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_contract_list__old_wage
+msgid "Salario anterior"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__basic
+msgid "Salario basico"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_basic
+msgid "Salario básico total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__gross
+msgid "Salario devengado"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__net_salary
+msgid "Salario neto"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Salary Attachments"
+msgstr "Anexos salariales"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Salary Computation"
+msgstr "Cálculo del salario"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_salary_rule
+msgid "Salary Rule"
+msgstr "Regla salarial"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Salary Structure"
+msgstr "Estructura salarial"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_employee__balance
+msgid "Saldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__credit_next_month
+msgid "Saldo proximo mes"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__pay_second
+msgid "Segundo Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__christmas_bonus_two
+msgid "Segundo aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payments_wizard__month_pay__9
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive__month_init_pay__9
+#: model:ir.model.fields.selection,name:l10n_bo_hr_payroll.selection__hr_payroll_employee_payments_retroactive_list__month_init_pay__9
+msgid "Septiembre"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Set to Draft"
+msgstr "Establecer como borrador"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip__smn_percent
+msgid "Smn Percent"
+msgstr "Smn Porciento"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive__state
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__state
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__state
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours__state
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_overtime_hours_list__state
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_pay_retroactive_report_view_search
+msgid "Subsidio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_closing_table__frontier_subsidy
+msgid "Subsidio de frontera"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_neto_deduciones
+msgid "Sueldo neto menos deducciones"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_form
+msgid "Supplementary Work"
+msgstr "Trabajo suplementario"
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_tax_smn
+msgid "TAX * 2 SMN"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_anc_amount_total_afp
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_anc_amount_total_afp
+msgid "TOTAL AFP"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_prima_total_gained_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_gross
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_sa_total_gained_average
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_total_gained_average
+msgid "TOTAL GANADO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_closing_table
+msgid "Tabla Cierre de nómina"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#. odoo-python
+#: code:addons/l10n_bo_hr_payroll/models/hr_payslip.py:0
+#: code:addons/l10n_bo_hr_payroll/models/hr_payslip.py:0
+#, python-format
+msgid ""
+"There's no contract set on payslip %s for %s. Check that there is at least a"
+" contract set on the employee form."
+msgstr ""
+"No hay contrato establecido en la nómina %s para %s. Compruebe que existe al menos un"
+" contrato establecido en la nómina del empleado."
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__has_christmas_bonus_one
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Tiene Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__has_eviction
+msgid "Tiene Desahucio"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__has_penalties
+msgid "Tiene Multa"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__has_christmas_bonus_two
+msgid "Tiene Seg Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Tiene Segundo Aguinaldo"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__total_total
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__total
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payslip_line__different_amount
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Total"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__total1
+msgid "Total 1"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__total2
+msgid "Total 2"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_finiquito__total3
+msgid "Total 3"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Total Amount"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_retroactive_total_descuento
+msgid "Total DESCUENTO"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_total_descuento
+msgid "Total Descuento"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Total Working Days"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Total Working Hours"
+msgstr "Total de Horas Trabajadas"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Total de finiquito"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_housing_development_unit_search
+msgid "UFV"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_current_ufv
+msgid "UFV MES ACTUAL"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_last_ufv
+msgid "UFV MES ANTERIOR"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_closing_table_view_search
+msgid "Ultimo mes"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.actions.act_window,name:l10n_bo_hr_payroll.action_hr_payroll_housing_development_unit
+#: model:ir.model,name:l10n_bo_hr_payroll.model_hr_payroll_housing_development_unit
+#: model:ir.ui.menu,name:l10n_bo_hr_payroll.menu_hr_payroll_housing_development_unit
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_housing_development_unit_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_housing_development_unit_tree
+msgid "Unidad de Fomento de Vivienda"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_finiquito_vacaciones
+#: model:hr.salary.rule,name:l10n_bo_hr_payroll.datec_l10n_bo_hr_payroll_vac_payed
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_finiquito_view_form
+msgid "Vacaciones"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_housing_development_unit__ufv_value
+msgid "Valor UFV"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Work Entries"
+msgstr "Entradas de trabajo"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Worked Day"
+msgstr "Dia trabajado"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Worked Days"
+msgstr "Días trabajados"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.view_hr_payslip_form_modif
+msgid "Worked Days & Inputs"
+msgstr "Días trabajados y entradas"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_overtime_hours_view_search
+msgid "Year"
+msgstr "Año"
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_employee_payments_retroactive_list__contract_id
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_quinquennial_data__contract_id
+msgid "contract employee"
+msgstr "empleado contratado"
+
+#. module: l10n_bo_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr_payroll.hr_payroll_employee_payments_retroactive_view_form
+msgid "contratos"
+msgstr ""
+
+#. module: l10n_bo_hr_payroll
+#: model:ir.model.fields,field_description:l10n_bo_hr_payroll.field_hr_payroll_pay_retroactive_report__number
+msgid "número de nómina"
+msgstr ""

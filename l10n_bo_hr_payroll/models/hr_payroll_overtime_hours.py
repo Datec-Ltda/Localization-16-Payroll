@@ -7,6 +7,18 @@ import time
 from datetime import datetime, timedelta
 from dateutil import relativedelta
 from odoo.exceptions import UserError, ValidationError
+MES_LITERAL = [('1', 'Enero'),
+               ('2', 'Febrero'),
+               ('3', 'Marzo'),
+               ('4', 'Abril'),
+               ('5', 'Mayo'),
+               ('6', 'Junio'),
+               ('7', 'Julio'),
+               ('8', 'Agosto'),
+               ('9', 'Septiembre'),
+               ('10', 'Octubre'),
+               ('11', 'Noviembre'),
+               ('12', 'Diciembre')]
 
 
 class HrPayrollOvertimeHours(models.Model):
@@ -27,7 +39,7 @@ class HrPayrollOvertimeHours(models.Model):
     def onchange_name(self):
         if self.date_from and self.date_to:
             ttyme = datetime.fromtimestamp(time.mktime(self.date_from.timetuple()))
-            self.name = _('Horas extras para %s') % (tools.ustr(ttyme.strftime('%B-%Y')))
+            self.name = _('Horas extras para %s-%s') % (MES_LITERAL[ttyme.month-1][1], tools.ustr(ttyme.strftime('%Y')))
 
     name = fields.Char(string='Name', readonly=True, required=True,
                        states={'draft': [('readonly', False)]})

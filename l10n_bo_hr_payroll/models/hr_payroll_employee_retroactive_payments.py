@@ -53,7 +53,7 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
     def onchange_name(self):
         if self.date_from:
             ttyme = datetime.fromtimestamp(time.mktime(self.date_from.timetuple()))
-            self.name = _('Pago retroactivo para %s') % (tools.ustr(ttyme.strftime('%B-%Y')))
+            self.name = _('Pago retroactivo para %s-%s') % (MES_LITERAL[ttyme.month-1][1], tools.ustr(ttyme.strftime('%Y')))
 
     name = fields.Char(string='Name', readonly=True, required=True,
                        states={'draft': [('readonly', False)]})

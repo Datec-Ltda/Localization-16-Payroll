@@ -1,0 +1,770 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_bo_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e-20230909\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-25 20:06+0000\n"
+"PO-Revision-Date: 2024-01-25 20:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_partner__l10n_bo_afp
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_users__l10n_bo_afp
+msgid "Administradora de fondo de pensiones"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__aft_quotation_type_id
+msgid "Aft Quotation Type"
+msgstr "Tipo de cotización"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__aft_quotation_type_details_ids
+msgid "Aft Quotation Type Details"
+msgstr "detalles del tipo de cotización"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__give_aft
+msgid "Aporta AFT"
+msgstr "Aporte"
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_1_details_3
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_8_details_3
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__solidarity_contribution
+msgid "Aporte solidario"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type,name:l10n_bo_hr.hr_aft_quotation_type_C
+msgid "Asegurado con pensión del sip < 65 años que no aporta"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type,name:l10n_bo_hr.hr_aft_quotation_type_D
+msgid "Asegurado con pensión del sip > 65 años que no aporta"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.view_partner_l10n_co_edi_form
+msgid "Aseguradoras"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Asignación Organizativa"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__attachment_ids
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__doc_attachment_id
+msgid "Attachment"
+msgstr "Adjunto"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_age
+msgid "Años"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_departure_wizard__bank_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__bank_id
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.view_departure_wizard_tree_inherited
+msgid "Banco"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.document.extension,name:l10n_bo_hr.hr_document_extension_2
+msgid "CB Cochabamba"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.communications.forms,name:l10n_bo_hr.hr_communications_forms_2
+msgid "Celular personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields.selection,name:l10n_bo_hr.selection__hr_departure_wizard__pay_in__chk
+#: model:ir.model.fields.selection,name:l10n_bo_hr.selection__hr_employee__pay_in__chk
+#: model:ir.model.fields.selection,name:l10n_bo_hr.selection__hr_employee__payment_method__c
+msgid "Cheque"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__communications_forms_id
+msgid "Clase"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Clase de Rescisión"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_type_identification_document
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__type_identification_document_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__name
+msgid "Clase de documento"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_type_identification_document_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_type_identification_document_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_type_identification_document_tree
+msgid "Clase documento"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_type_identification_document
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_type_identification_document
+msgid "Clase documentos"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_aft_quotation_type_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_communications_form_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_document_extension_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_payroll_area_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_area_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_group_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staff_division_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staffing_subdivision_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_type_identification_document_search
+msgid "Code"
+msgstr "Código"
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_1_details_4
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_8_details_4
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_commission
+msgid "Comisión AFP"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Comunicación"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_1_details_1
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_8_details_1
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__monthly_quotation
+msgid "Cotización mensual "
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__create_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__create_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__current_date
+msgid "Current date"
+msgstr "Fecha actual"
+
+#. module: l10n_bo_hr
+#: model:hr.type.identification.document,name:l10n_bo_hr.hr_type_identification_document_1
+msgid "Cédula de identidad"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__communications_code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__health_box_code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_partner__l10n_bo_afp_code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_partner__l10n_bo_health_box_code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_users__l10n_bo_afp_code
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_users__l10n_bo_health_box_code
+msgid "Código"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.type.identification.document,name:l10n_bo_hr.hr_type_identification_document_3
+msgid "Código de Dependiente"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Datos Afp"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Datos del seguro"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Departure"
+msgstr "Salida"
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_departure_wizard
+msgid "Departure Wizard"
+msgstr "Asistente de salida"
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type,name:l10n_bo_hr.hr_aft_quotation_type_1
+msgid "Dependiente o asegurado con pensión del sip < 65 años que aporta"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type,name:l10n_bo_hr.hr_aft_quotation_type_8
+msgid "Dependiente o asegurado con pensión del sip > 65 años que aporta"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__description
+msgid "Descripción"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__name
+msgid "Desglose AFP"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__disabled
+msgid "Discapacitado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__display_name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_employee_staff_division
+#: model:ir.model,name:l10n_bo_hr.model_hr_employee_staff_division
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__staff_division_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__division_id
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_employee_staff_division
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staff_division_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staff_division_view_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staff_division_view_tree
+msgid "División de personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_identification_document_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_identification_document_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_identification_document_tree
+msgid "Documento de identificación"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Documentos"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_l10n_bo_hr_employee_docs
+msgid "Documentos adjuntos del empleado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_identification_documents
+msgid "Documentos de Identificacion"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_age_days
+msgid "Días"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_age_str
+msgid "Edad"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields.selection,name:l10n_bo_hr.selection__hr_departure_wizard__pay_in__ef
+#: model:ir.model.fields.selection,name:l10n_bo_hr.selection__hr_employee__pay_in__ef
+#: model:ir.model.fields.selection,name:l10n_bo_hr.selection__hr_employee__payment_method__e
+msgid "Efectivo"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.constraint,message:l10n_bo_hr.constraint_hr_employee_payroll_area_code_uniq
+#: model:ir.model.constraint,message:l10n_bo_hr.constraint_hr_employee_personnel_area_code_uniq
+#: model:ir.model.constraint,message:l10n_bo_hr.constraint_hr_employee_personnel_group_code_uniq
+#: model:ir.model.constraint,message:l10n_bo_hr.constraint_hr_employee_staff_division_code_uniq
+#: model:ir.model.constraint,message:l10n_bo_hr.constraint_hr_employee_staffing_subdivision_code_uniq
+#: model:ir.model.constraint,message:l10n_bo_hr.constraint_hr_type_identification_document_code_uniq
+msgid "El código ya existe !"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__employee_id
+msgid "Empleado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.ui.menu,name:l10n_bo_hr.hr_menu_empleado_bolivia
+msgid "Empleado bolivia"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_employee
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__employee_id
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_document_extension
+#: model:ir.model,name:l10n_bo_hr.model_hr_document_extension
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__name
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__document_extension_id
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_document_extension
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_document_extension_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_document_extension_tree
+msgid "Extensión de documento"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__date_of_pay
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.view_departure_wizard_tree_inherited
+msgid "Fecha de Pago"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Fecha de Rescisión"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_departure_wizard__date_of_pay
+msgid "Fecha de pago"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_retired_date
+msgid "Fecha de retiro"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__valid_date
+msgid "Fecha de validez"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_communications_form
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_communications_form
+msgid "Formas de Comunicacion"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_communications_forms
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__name
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_communications_form_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_communications_form_tree
+msgid "Formas de comunicación"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_employee_personnel_group
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_employee_personnel_group
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_group_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_group_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_group_tree
+msgid "Grupo de Personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_employee_personnel_group
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__personnel_group_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__personnel_group_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__name
+msgid "Grupo de personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "ID Personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__communications_desc
+msgid "ID Sistema"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,help:l10n_bo_hr.field_hr_employee__afp_retired_date
+msgid "Identifica la fecha en que se jubila el empleado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__identification_documents
+msgid "Identification Documents"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_retired
+msgid "Jubilado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document____last_update
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__write_uid
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_communications_forms__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_document_extension__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_group__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staff_division__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_type_identification_document__write_date
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: l10n_bo_hr
+#: model:hr.type.identification.document,name:l10n_bo_hr.hr_type_identification_document_2
+msgid "Licencia de Conducir"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_age_months
+msgid "Meses"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__payment_method
+msgid "Metodo de pago"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__currency_id
+msgid "Moneda de pago"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__afp_nua_cua
+msgid "NUA/CUA"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_l10n_bo_hr_employee_docs__name
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Nombre"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__insured_number
+msgid "Número de Asegurado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_identification_documents__document_number
+msgid "Número de documento"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+msgid "Observación"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_departure_wizard__pay_in
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__pay_in
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.view_departure_wizard_tree_inherited
+msgid "Pago en"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,help:l10n_bo_hr.field_hr_employee__afp_retired
+msgid "Para identificar que el empleado esta jubilado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,help:l10n_bo_hr.field_hr_employee__give_aft
+msgid "Para idientificar que el empleado jubilado aporta AFT"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__percent
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type_details__percent
+msgid "Porciento"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_1_details_2
+#: model:hr.aft.quotation.type.details,name:l10n_bo_hr.hr_aft_quotation_type_8_details_2
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__common_risk_premium
+msgid "Prima riesgo común"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:hr.document.extension,name:l10n_bo_hr.hr_document_extension_1
+msgid "SC Santa Cruz"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_type_identification_document_search
+msgid "Search Clases de documentos"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staff_division_view_search
+msgid "Search División de personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_identification_document_search
+msgid "Search Documento de identificación"
+msgstr "Buscar Documento de identificación"
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_document_extension_search
+msgid "Search Extensión de documento"
+msgstr "Buscar Extensión de documento"
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_communications_form_search
+msgid "Search Formas de comunicación"
+msgstr "Buscar Formas de comunicación"
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_group_search
+msgid "Search Grupo de Personal"
+msgstr "Buscar Grupo de Personal"
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staffing_subdivision_search
+msgid "Search Subdivisión de personal"
+msgstr "Buscar Subdivisión de personal"
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_aft_quotation_type_search
+msgid "Search Tipo de cotización"
+msgstr "Buscar Tipo de cotización"
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_payroll_area_search
+msgid "Search Área de nómina"
+msgstr "Buscar Área de nómina"
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_area_search
+msgid "Search Área de personal"
+msgstr "Buscar Área de personal"
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__health_box_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_partner__l10n_bo_health_box
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_res_users__l10n_bo_health_box
+msgid "Seguro de la caja de salud"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_employee_staffing_subdivision
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__staffing_subdivision_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_staffing_subdivision__name
+msgid "SubDivisión de personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_employee_staffing_subdivision
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_employee_staffing_subdivision
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staffing_subdivision_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staffing_subdivision_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_staffing_subdivision_tree
+msgid "Subdivisión de personal"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_aft_quotation_type__name
+msgid "Tipo cotización"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__aft_quotation_type
+msgid "Tipo de Cotización"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_aft_quotation_type
+msgid "Tipo de cotización"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_aft_quotation_type
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_aft_quotation_type
+msgid "Tipo de cotización AFP"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_aft_quotation_type_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_aft_quotation_type_tree
+msgid "Tipo de cotización afp"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model,name:l10n_bo_hr.model_hr_aft_quotation_type_details
+msgid "Tipo de cotización detalles"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields.selection,name:l10n_bo_hr.selection__hr_employee__payment_method__t
+msgid "Tranferencia bancaria"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__tutor_disabled
+msgid "Tutor de Discapacitado"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.constraint,message:l10n_bo_hr.constraint_hr_identification_documents_code_uniq
+msgid "Ya el empleado tiene asignado ese tipo de documento."
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.model.fields,help:l10n_bo_hr.field_l10n_bo_hr_employee_docs__doc_attachment_id
+msgid "You can attach the copy of your document"
+msgstr "Puede adjuntar la copia de su documento"
+
+#. module: l10n_bo_hr
+#: model:hr.communications.forms,name:l10n_bo_hr.hr_communications_forms_1
+msgid "correo electrónico oficina"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_employee_payroll_area
+#: model:ir.model,name:l10n_bo_hr.model_hr_employee_payroll_area
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__payroll_area_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_payroll_area__name
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_employee_payroll_area
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_aft_quotation_type_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_payroll_area_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_payroll_area_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_payroll_area_tree
+msgid "Área de nómina"
+msgstr ""
+
+#. module: l10n_bo_hr
+#: model:ir.actions.act_window,name:l10n_bo_hr.action_hr_employee_personnel_area
+#: model:ir.model,name:l10n_bo_hr.model_hr_employee_personnel_area
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee__personnel_area_id
+#: model:ir.model.fields,field_description:l10n_bo_hr.field_hr_employee_personnel_area__name
+#: model:ir.ui.menu,name:l10n_bo_hr.menu_hr_employee_personnel_area
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_area_form
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_area_search
+#: model_terms:ir.ui.view,arch_db:l10n_bo_hr.hr_employee_personnel_area_tree
+msgid "Área de personal"
+msgstr ""
