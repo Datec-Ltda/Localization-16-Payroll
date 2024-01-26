@@ -15,7 +15,6 @@ class HrEmployee(models.Model):
     identification_documents = fields.One2many('hr.identification.documents', 'employee_id')
 
     # Datos de la AFP
-    
     afp_id = fields.Many2one('res.partner', string='Administradora de fondo de pensiones',
                              domain=[('l10n_bo_afp', '=', True)])
     afp_code = fields.Char(related='afp_id.l10n_bo_afp_code', readonly=True, string="Código")
@@ -102,7 +101,7 @@ class HrEmployee(models.Model):
                 rec.afp_age_months = diff.months
                 rec.afp_age_days = diff.days
                 rec.afp_age_str = str(rec.afp_age) + ' años ' + str(rec.afp_age_months) + ' meses ' + str(rec.afp_age_days) + ' días'
-                # rec.age = dToday.year - dBday.year - ((dToday.month, dToday.day) < (dBday.month, dBday.day))
+
 
     attachment_ids = fields.One2many('l10n_bo_hr.employee_docs', 'employee_id')
 

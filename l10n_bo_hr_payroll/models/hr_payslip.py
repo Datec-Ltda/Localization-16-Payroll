@@ -309,11 +309,6 @@ class HrPayslip(models.Model):
             out_days, out_hours = 0, 0
             reference_calendar = self._get_out_of_contract_calendar()
             if self.date_from < contract.date_start:
-                # start = fields.Datetime.to_datetime(self.date_from)
-                # stop = fields.Datetime.to_datetime(contract.date_start) + relativedelta(days=-1, hour=23, minute=59)
-                # out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
-                #                                                      domain=['|', ('work_entry_type_id', '=', False), (
-                #                                                      'work_entry_type_id.is_leave', '=', False)])
                 if self.date_from.month == contract.date_start.month:
                     out_day = contract.date_start + relativedelta(days=-1, hour=23, minute=59)
                     out_days += out_day.day
@@ -322,11 +317,6 @@ class HrPayslip(models.Model):
                     out_days += 30
                     out_hours += 240
             if contract.date_end and contract.date_end < self.date_to:
-                # start = fields.Datetime.to_datetime(contract.date_end) + relativedelta(days=1)
-                # stop = fields.Datetime.to_datetime(self.date_to) + relativedelta(hour=23, minute=59)
-                # out_time = reference_calendar.get_work_duration_data(start, stop, compute_leaves=False,
-                #                                                      domain=['|', ('work_entry_type_id', '=', False), (
-                #                                                      'work_entry_type_id.is_leave', '=', False)])
                 if self.date_to.month == contract.date_end.month:
                     out_day = 30 - contract.date_end.day
                     out_days += out_day
@@ -588,12 +578,6 @@ class HrPayslip(models.Model):
                 for rule in payslip.struct_id.rule_ids.filtered(lambda x: x.code == line.code):
                     if rule.id in blacklisted_rule_ids:
                         continue
-                    # localdict.update({
-                    #     'result': None,
-                    #     'result_qty': 1.0,
-                    #     'result_rate': 100,
-                    #     'result_name': False
-                    # })
                     if rule._satisfy_condition(localdict):
                         # Retrieve the line name in the employee's lang
                         employee_lang = payslip.employee_id.sudo().address_home_id.lang
@@ -607,10 +591,6 @@ class HrPayslip(models.Model):
                                 amount_retroactive, qty, rate = rule._compute_rule(localdict)
                                 localdict = rule.category_id._sum_salary_rule_category(localdict,
                                                                                        amount_retroactive)
-                                # if rule.code == 'BASIC':
-                                #     amount_retroactive += (amount_retroactive * basic_porcent)/100
-                                # if rule.code == 'SMN':
-                                #     amount_retroactive += (amount_retroactive * nmn_porcent)/100
                                 line.write({
                                     'retroactive': rule.retroactive,
                                     'amount_retroactive': amount_retroactive,
@@ -621,16 +601,9 @@ class HrPayslip(models.Model):
                             previous_amount = rule.code in localdict and localdict[rule.code] or 0.0
                             #set/overwrite the amount computed for this rule in the localdict
                             localdict[rule.code] = amount_retroactive
-                            # result_rules_dict[rule.code] = {'amount_retroactive': amount_retroactive}
                             rules_dict[rule.code] = rule
                             # sum the amount for its salary category
                             localdict = rule.category_id._sum_salary_rule_category(localdict, amount_retroactive - previous_amount)
-                            # rule_name = payslip._get_rule_name(localdict, rule, employee_lang)
-                            # create/overwrite the rule in the temporary results
-                            # if rule.code == 'BASIC':
-                            #     amount_retroactive += (amount_retroactive * basic_porcent) / 100
-                            # if rule.code == 'SMN':
-                            #     amount_retroactive += (amount_retroactive * nmn_porcent) / 100
                             line.write({
                                 'retroactive': rule.retroactive,
                                 'amount_retroactive': amount_retroactive,
@@ -723,7 +696,6 @@ def days_total_worked(payslip, employee, aguinaldo):
                     total_days = days_month + days
                     return total_days
     return total_days
-
 
 
 def total_average_earned(payslip, employee, ruler, months):

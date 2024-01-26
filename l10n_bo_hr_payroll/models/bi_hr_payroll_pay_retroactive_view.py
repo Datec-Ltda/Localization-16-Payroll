@@ -81,8 +81,3 @@ class HrPayrollPayRetroactiveReport(models.Model):
                 sql.SQL(query)
             ))
 
-
-        # tools.drop_view_if_exists(self.env.cr, 'hr_organizational_structure_report')
-        # self.env.cr.execute(""" CREATE VIEW hr_organizational_structure_report AS (
-        #       )
-        #       """)

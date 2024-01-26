@@ -131,8 +131,6 @@ class HrPayrollFiniquito(models.Model):
 
     has_penalties = fields.Boolean(string="Tiene Multa", required=True)
 
-    # second_aguinaldo = fields.Boolean(string="Segundo Aguinaldo", default=False)
-
     penalties = fields.Float(string="Multas", compute='_get_penalties', store=True)
 
     finiquito = fields.Float(string="Finiquito", compute='_get_finiquito', store=True)
@@ -325,11 +323,6 @@ class HrPayrollFiniquito(models.Model):
             self.border_bonus1 = values_basic['mes 1']
             self.border_bonus2 = values_basic['mes 2']
             self.border_bonus3 = values_basic['mes 3']
-        # values_basic = self.get_previous_month_rule('')
-        # if values_basic:
-            # self.commissions1 = values_basic['mes 1']
-            # self.commissions2 = values_basic['mes 2']
-            # self.commissions3 = values_basic['mes 3']
         values_basic = self.get_previous_month_rule('EXTRAS')
         if values_basic:
             self.overtime1 = values_basic['mes 1']

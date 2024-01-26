@@ -9,5 +9,34 @@
             <field name='code'>CB</field>
             <field name='name'>CB Cochabamba</field>
         </record>
+        <record id='hr_document_extension_3' model='hr.document.extension'>
+            <field name='code'>TJ</field>
+            <field name='name'>TJ Tarija</field>
+        </record>
+        <record id='hr_document_extension_4' model='hr.document.extension'>
+            <field name='code'>CH</field>
+            <field name='name'>CH Chuquisaca</field>
+        </record>
+        <record id='hr_document_extension_5' model='hr.document.extension'>
+            <field name='code'>OR</field>
+            <field name='name'>OR Oruro</field>
+        </record>
+        <record id='hr_document_extension_6' model='hr.document.extension'>
+            <field name='code'>LP</field>
+            <field name='name'>LP La Paz</field>
+        </record>
+        <record id='hr_document_extension_7' model='hr.document.extension'>
+            <field name='code'>BE</field>
+            <field name='name'>BE Beni</field>
+        </record>
+        <record id='hr_document_extension_8' model='hr.document.extension'>
+            <field name='code'>PA</field>
+            <field name='name'>PA Pando</field>
+        </record>
+        <record id='hr_document_extension_9' model='hr.document.extension'>
+            <field name='code'>PO</field>
+            <field name='name'>PO Potosi</field>
+        </record>
+
     </data>
 </odoo>
