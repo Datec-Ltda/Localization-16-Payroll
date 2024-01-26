@@ -73,7 +73,20 @@ class HrPayrollPayRetroactiveReport(models.Model):
                hrpeprl.date_from,
                hrpeprl.date_to,
                hp.name AS payslip,
-               to_char(hp.date_from, 'TMMonth') AS month,
+               CASE 
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'January' THEN 'Enero'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'February' THEN 'Febrero'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'March' THEN 'Marzo'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'April' THEN 'Abril'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'May' THEN 'Mayo'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'June' THEN 'Junio'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'July' THEN 'Julio'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'August' THEN 'Agosto'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'September' THEN 'Septiembre'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'October' THEN 'Octubre'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'November' THEN 'Noviembre'
+                   WHEN to_char(hp.date_from, 'TMMonth') = 'December' THEN 'Diciembre'                                                                            
+               END AS month,
                hp.department_id,
                hp.job_id,
                hp.number,
@@ -92,7 +105,7 @@ class HrPayrollPayRetroactiveReport(models.Model):
         ORDER BY hrpepr.id, hrpeprl.id, hp.id, hpl.sequence
          """
         tools.drop_view_if_exists(self.env.cr, self._table)
-        self.env.cr.execute("SET lc_time TO 'es_ES';")  # Establecer el idioma a español
+        # self.env.cr.execute("SET lc_time TO 'es_ES';")  # Establecer el idioma a español
         self.env.cr.execute(
             sql.SQL("CREATE or REPLACE VIEW {} as ({})").format(
                 sql.Identifier(self._table),
