@@ -153,15 +153,15 @@ class HrPayslip(models.Model):
         payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done' and not slip.closing_table)
 
         for slip in payslips_to_post:
-            for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL']):
-                if line.code == 'QUINQUENAL':
-                    quinquennial_env = self.env['hr.payroll.quinquennial.data']
-                    quinquennial_element = quinquennial_env.search([('contract_id', '=', slip.contract_id.id),
-                                                                    ('date_pay', '>=', slip.date_from),
-                                                                    ('date_pay', '<=', slip.date_to),
-                                                                    ('state', '=', 'open')])
-                    if quinquennial_element:
-                        move = quinquennial_element.sudo().write({'state': 'paid'})
+            struct = self.env.ref('l10n_bo_hr_payroll.structure_quinquennial')
+            if slip.struct_id.id == struct.id:
+                quinquennial_env = self.env['hr.payroll.quinquennial.data']
+                quinquennial_element = quinquennial_env.search([('employee_id', '=', slip.employee_id.id),
+                                                                ('date_pay', '>=', slip.date_from),
+                                                                ('date_pay', '<=', slip.date_to),
+                                                                ('state', '=', 'open')])
+                if quinquennial_element:
+                    move = quinquennial_element.sudo().write({'state': 'paid'})
 
     def _action_quinquennial_cancel(self):
         precision = self.env['decimal.precision'].precision_get('Payroll')
@@ -179,15 +179,15 @@ class HrPayslip(models.Model):
         payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done' and not slip.closing_table)
 
         for slip in payslips_to_post:
-            for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL']):
-                if line.code == 'QUINQUENAL':
-                    quinquennial_env = self.env['hr.payroll.quinquennial.data']
-                    quinquennial_element = quinquennial_env.search([('contract_id', '=', slip.contract_id.id),
-                                                                    ('date_pay', '>=', slip.date_from),
-                                                                    ('date_pay', '<=', slip.date_to),
-                                                                    ('state', '=', 'paid')])
-                    if quinquennial_element:
-                        move = quinquennial_element.sudo().write({'state': 'open'})
+            struct = self.env.ref('l10n_bo_hr_payroll.structure_quinquennial')
+            if slip.struct_id.id == struct.id:
+                quinquennial_env = self.env['hr.payroll.quinquennial.data']
+                quinquennial_element = quinquennial_env.search([('employee_id', '=', slip.employee_id.id),
+                                                                ('date_pay', '>=', slip.date_from),
+                                                                ('date_pay', '<=', slip.date_to),
+                                                                ('state', '=', 'paid')])
+                if quinquennial_element:
+                    move = quinquennial_element.sudo().write({'state': 'open'})
 
     def _action_finiquito_pay(self):
         precision = self.env['decimal.precision'].precision_get('Payroll')
@@ -205,52 +205,52 @@ class HrPayslip(models.Model):
         payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done' and not slip.closing_table)
 
         for slip in payslips_to_post:
-            for line in slip.line_ids.filtered(lambda x: x.code in ['FINIQUITO']):
-                if line.code == 'FINIQUITO':
-                    finiquito_env = self.env['hr.payroll.finiquito']
-                    finiquito_element = finiquito_env.search([('contract_id', '=', slip.contract_id.id),
-                                                                    ('report_date', '>=', slip.date_from),
-                                                                    ('report_date', '<=', slip.date_to),
-                                                                    ('state', '=', 'open')])
-                    if finiquito_element:
-                        move = finiquito_element.sudo().write({'state': 'paid'})
-                        if finiquito_element.holidays_days > 0:
-                            # generar la petición de usencia con los dias pedidos
-                            current_employee = self.env.user.employee_id
-                            date_to = finiquito_element.date_end + relativedelta(days=finiquito_element.holidays_days)
-                            values = [{
-                                'date_from': finiquito_element.date_end,
-                                'date_to': date_to,
-                                'request_date_from': finiquito_element.date_end,
-                                'request_date_to': date_to,
-                                'holiday_status_id': 1,
-                                'employee_id': finiquito_element.employee_id.id,
-                                'employee_company_id': finiquito_element.contract_id.company_id.id,
-                                'department_id': finiquito_element.contract_id.department_id.id,
-                                'first_approver_id': current_employee.id,
-                                'second_approver_id': current_employee.id,
-                                'private_name': 'vacaciones liquidadas por finiquito'  + finiquito_element.employee_id.name,
-                                'state': 'draft',
-                                'duration_display': finiquito_element.holidays_days,
-                                'holiday_type': 'employee',
-                                'payslip_state': 'done',
-                            }]
-                            leave_env = self.env['hr.leave']
-                            # work_days_data = leave_env._get_work_days_data_batch(finiquito_element.date_end, date_to)
-                            if finiquito_element.leave_id:
-                                leave_element = leave_env.search([('id', '=', finiquito_element.leave_id.id)])
-                                if leave_element:
-                                    leave_element.update({
-                                        'state': 'draft',
-                                    })
-                                    move = leave_element.sudo().unlink()
-                            leave = leave_env.sudo().create(values)
-                            leave.update({
-                                'state': 'validate',
-                                'number_of_days': finiquito_element.holidays_days,
-                                'duration_display': finiquito_element.holidays_days,
-                            })
-                            finiquito_element.write({'leave_id': leave.id})
+            struct = self.env.ref('l10n_bo_hr_payroll.structure_finiquito')
+            if slip.struct_id.id == struct.id:
+                finiquito_env = self.env['hr.payroll.finiquito']
+                finiquito_element = finiquito_env.search([('contract_id', '=', slip.contract_id.id),
+                                                                ('report_date', '>=', slip.date_from),
+                                                                ('report_date', '<=', slip.date_to),
+                                                                ('state', '=', 'open')])
+                if finiquito_element:
+                    move = finiquito_element.sudo().write({'state': 'paid'})
+                    if finiquito_element.holidays_days > 0:
+                        # generar la petición de usencia con los dias pedidos
+                        current_employee = self.env.user.employee_id
+                        date_to = finiquito_element.date_end + relativedelta(days=finiquito_element.holidays_days)
+                        values = [{
+                            'date_from': finiquito_element.date_end,
+                            'date_to': date_to,
+                            'request_date_from': finiquito_element.date_end,
+                            'request_date_to': date_to,
+                            'holiday_status_id': 1,
+                            'employee_id': finiquito_element.employee_id.id,
+                            'employee_company_id': finiquito_element.contract_id.company_id.id,
+                            'department_id': finiquito_element.contract_id.department_id.id,
+                            'first_approver_id': current_employee.id,
+                            'second_approver_id': current_employee.id,
+                            'private_name': 'vacaciones liquidadas por finiquito'  + finiquito_element.employee_id.name,
+                            'state': 'draft',
+                            'duration_display': finiquito_element.holidays_days,
+                            'holiday_type': 'employee',
+                            'payslip_state': 'done',
+                        }]
+                        leave_env = self.env['hr.leave']
+                        # work_days_data = leave_env._get_work_days_data_batch(finiquito_element.date_end, date_to)
+                        if finiquito_element.leave_id:
+                            leave_element = leave_env.search([('id', '=', finiquito_element.leave_id.id)])
+                            if leave_element:
+                                leave_element.update({
+                                    'state': 'draft',
+                                })
+                                move = leave_element.sudo().unlink()
+                        leave = leave_env.sudo().create(values)
+                        leave.update({
+                            'state': 'validate',
+                            'number_of_days': finiquito_element.holidays_days,
+                            'duration_display': finiquito_element.holidays_days,
+                        })
+                        finiquito_element.write({'leave_id': leave.id})
 
     def _action_finiquito_cancel(self):
         precision = self.env['decimal.precision'].precision_get('Payroll')
@@ -268,22 +268,22 @@ class HrPayslip(models.Model):
         payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done' and not slip.closing_table)
 
         for slip in payslips_to_post:
-            for line in slip.line_ids.filtered(lambda x: x.code in ['FINIQUITO']):
-                if line.code == 'FINIQUITO':
-                    finiquito_env = self.env['hr.payroll.finiquito']
-                    finiquito_element = finiquito_env.search([('contract_id', '=', slip.contract_id.id),
-                                                                    ('report_date', '>=', slip.date_from),
-                                                                    ('report_date', '<=', slip.date_to),
-                                                                    ('state', '=', 'paid')])
-                    if finiquito_element:
-                        move = finiquito_element.sudo().update({'state': 'open'})
-                        leave_env = self.env['hr.leave']
-                        if finiquito_element.leave_id:
-                            leave_element = leave_env.search([('id', '=', finiquito_element.leave_id.id)])
-                            leave_element.update({
-                                'state': 'draft',
-                            })
-                            move = leave_element.sudo().unlink()
+            struct = self.env.ref('l10n_bo_hr_payroll.structure_finiquito')
+            if slip.struct_id.id == struct.id:
+                finiquito_env = self.env['hr.payroll.finiquito']
+                finiquito_element = finiquito_env.search([('contract_id', '=', slip.contract_id.id),
+                                                                ('report_date', '>=', slip.date_from),
+                                                                ('report_date', '<=', slip.date_to),
+                                                                ('state', '=', 'paid')])
+                if finiquito_element:
+                    move = finiquito_element.sudo().update({'state': 'open'})
+                    leave_env = self.env['hr.leave']
+                    if finiquito_element.leave_id:
+                        leave_element = leave_env.search([('id', '=', finiquito_element.leave_id.id)])
+                        leave_element.update({
+                            'state': 'draft',
+                        })
+                        move = leave_element.sudo().unlink()
 
     def _action_create_prima_table(self):
         precision = self.env['decimal.precision'].precision_get('Payroll')
@@ -304,29 +304,29 @@ class HrPayslip(models.Model):
             bonus_table = {'payslip_id': slip.id, 'contract_id': slip.contract_id.id,
                              'employee_id': slip.employee_id.id, 'date_from': slip.date_from, 'date_to': slip.date_to,
                              'earned_average': 0.0, 'paid_percentage': 0.0, 'days_considered': 0.0, 'amount_paid': 0.0}
-            # Para el caso que el pago quinquenal no archivar en la tabla bonus
-            for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL', 'FINIQUITO']):
-                if line.code == 'QUINQUENAL' or line.code == 'FINIQUITO':
-                    return 0
-            for line in slip.line_ids.filtered(lambda x: x.code in ['TOTAL_GANADO', 'PERCEN_PAY', 'DIAS_TRAB', 'PRIMA']):
-                if line.code == 'TOTAL_GANADO':
-                    bonus_table['earned_average'] = line.amount
-                if line.code == 'PERCEN_PAY':
-                    bonus_table['paid_percentage'] = line.amount
-                if line.code == 'DIAS_TRAB':
-                    bonus_table['days_considered'] = line.amount
-                if line.code == 'PRIMA':
-                    bonus_table['amount_paid'] = line.amount
+            # Solo archivar en la tabla bonus las nominas primas
 
-            bonus_table_env = self.env['hr.bonus.payment']
-            bonus_table_element = bonus_table_env.search([('contract_id', '=', slip.contract_id.id),
-                                                          ('date_from', '=', slip.date_from,),
-                                                          ('date_to', '=', slip.date_to)])
+            struct = self.env.ref('l10n_bo_hr_payroll.structure_prima')
+            if slip.struct_id.id == struct.id:
+                for line in slip.line_ids.filtered(lambda x: x.code in ['TOTAL_GANADO', 'PERCEN_PAY', 'DIAS_TRAB', 'PRIMA']):
+                    if line.code == 'TOTAL_GANADO':
+                        bonus_table['earned_average'] = line.amount
+                    if line.code == 'PERCEN_PAY':
+                        bonus_table['paid_percentage'] = line.amount
+                    if line.code == 'DIAS_TRAB':
+                        bonus_table['days_considered'] = line.amount
+                    if line.code == 'PRIMA':
+                        bonus_table['amount_paid'] = line.amount
 
-            if bonus_table_element:
-                move = bonus_table_element.sudo().update(bonus_table)
-            else:
-                move = bonus_table_env.sudo().create(bonus_table)
+                bonus_table_env = self.env['hr.bonus.payment']
+                bonus_table_element = bonus_table_env.search([('contract_id', '=', slip.contract_id.id),
+                                                              ('date_from', '=', slip.date_from,),
+                                                              ('date_to', '=', slip.date_to)])
+
+                if bonus_table_element:
+                    move = bonus_table_element.sudo().update(bonus_table)
+                else:
+                    move = bonus_table_env.sudo().create(bonus_table)
 
     def _action_prima_cancel(self):
         precision = self.env['decimal.precision'].precision_get('Payroll')
@@ -342,13 +342,14 @@ class HrPayslip(models.Model):
 
         # A payslip need to have a done state and not an accounting move.
         payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done' and not slip.closing_table)
-
+        struct = self.env.ref('l10n_bo_hr_payroll.structure_prima')
         for slip in payslips_to_post:
-            for line in slip.line_ids.filtered(lambda x: x.code in ['PRIMA']):
-                if line.code == 'PRIMA':
-                    bonus_table_env = self.env['hr.bonus.payment']
-                    bonus_table_element = bonus_table_env.search([('contract_id', '=', slip.contract_id.id),
-                                                                  ('date_from', '=', slip.date_from,),
-                                                                  ('date_to', '=', slip.date_to)])
-                    if bonus_table_element:
-                        move = bonus_table_element.sudo().unlink()
+            if slip.struct_id.id == struct.id:
+            # for line in slip.line_ids.filtered(lambda x: x.code in ['PRIMA']):
+            #     if line.code == 'PRIMA':
+                bonus_table_env = self.env['hr.bonus.payment']
+                bonus_table_element = bonus_table_env.search([('contract_id', '=', slip.contract_id.id),
+                                                              ('date_from', '=', slip.date_from,),
+                                                              ('date_to', '=', slip.date_to)])
+                if bonus_table_element:
+                    move = bonus_table_element.sudo().unlink()
