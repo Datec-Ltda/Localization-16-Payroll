@@ -39,7 +39,7 @@ class HrPayrollPayRetroactiveReport(models.Model):
     date_from = fields.Date(string='Date From')
     date_to = fields.Date(string='Date To')
     year = fields.Char(compute="_compute_year", string="Año", store=True)
-    # month = fields.Char(compute="_compute_month", string="Mes", store=True)
+    month_number = fields.Integer(string="Numero del Mes", store=True)
     month = fields.Char(string="Mes")
     payslip = fields.Char(string="Nómina")
     department_id = fields.Many2one('hr.department', string='Departamento')
@@ -74,19 +74,20 @@ class HrPayrollPayRetroactiveReport(models.Model):
                hrpeprl.date_to,
                hp.name AS payslip,
                CASE 
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'January' THEN 'Enero'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'February' THEN 'Febrero'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'March' THEN 'Marzo'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'April' THEN 'Abril'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'May' THEN 'Mayo'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'June' THEN 'Junio'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'July' THEN 'Julio'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'August' THEN 'Agosto'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'September' THEN 'Septiembre'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'October' THEN 'Octubre'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'November' THEN 'Noviembre'
-                   WHEN to_char(hp.date_from, 'TMMonth') = 'December' THEN 'Diciembre'                                                                            
+                   WHEN date_part('month', hp.date_from) = 1 THEN 'Enero'
+                   WHEN date_part('month', hp.date_from) = 2 THEN 'Febrero'
+                   WHEN date_part('month', hp.date_from) = 3 THEN 'Marzo'
+                   WHEN date_part('month', hp.date_from) = 4 THEN 'Abril'
+                   WHEN date_part('month', hp.date_from) = 5 THEN 'Mayo'
+                   WHEN date_part('month', hp.date_from) = 6 THEN 'Junio'
+                   WHEN date_part('month', hp.date_from) = 7 THEN 'Julio'
+                   WHEN date_part('month', hp.date_from) = 8 THEN 'Agosto'
+                   WHEN date_part('month', hp.date_from) = 9 THEN 'Septiembre'
+                   WHEN date_part('month', hp.date_from) = 10 THEN 'Octubre'
+                   WHEN date_part('month', hp.date_from) = 11 THEN 'Noviembre'
+                   WHEN date_part('month', hp.date_from) = 12 THEN 'Diciembre'                                                                            
                END AS month,
+               date_part('month', hp.date_from) as month_number,
                hp.department_id,
                hp.job_id,
                hp.number,
@@ -105,7 +106,6 @@ class HrPayrollPayRetroactiveReport(models.Model):
         ORDER BY hrpepr.id, hrpeprl.id, hp.id, hpl.sequence
          """
         tools.drop_view_if_exists(self.env.cr, self._table)
-        # self.env.cr.execute("SET lc_time TO 'es_ES';")  # Establecer el idioma a español
         self.env.cr.execute(
             sql.SQL("CREATE or REPLACE VIEW {} as ({})").format(
                 sql.Identifier(self._table),
