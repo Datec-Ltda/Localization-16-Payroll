@@ -6,6 +6,19 @@ from odoo import models, fields, api
 from odoo.tools.translate import _
 from odoo.exceptions import ValidationError
 
+MES_LITERAL = [('1', 'Enero'),
+               ('2', 'Febrero'),
+               ('3', 'Marzo'),
+               ('4', 'Abril'),
+               ('5', 'Mayo'),
+               ('6', 'Junio'),
+               ('7', 'Julio'),
+               ('8', 'Agosto'),
+               ('9', 'Septiembre'),
+               ('10', 'Octubre'),
+               ('11', 'Noviembre'),
+               ('12', 'Diciembre')]
+
 
 class HrPayrollPayRetroactiveReport(models.Model):
     _name = "hr.payroll.pay.retroactive.report"
@@ -26,7 +39,8 @@ class HrPayrollPayRetroactiveReport(models.Model):
     date_from = fields.Date(string='Date From')
     date_to = fields.Date(string='Date To')
     year = fields.Char(compute="_compute_year", string="Año", store=True)
-    month = fields.Char(string="Mes")
+    month = fields.Char(compute="_compute_month", string="Año", store=True)
+    # month = fields.Char(string="Mes")
     payslip = fields.Char(string="Nómina")
     department_id = fields.Many2one('hr.department', string='Departamento')
     job_id = fields.Many2one('hr.job', string='Puesto de trabajo')
@@ -43,6 +57,9 @@ class HrPayrollPayRetroactiveReport(models.Model):
     def _compute_year(self):
         return self.date_from.year
 
+    @api.depends('date_from')
+    def _compute_month(self):
+        return MES_LITERAL[self.date_from.month-1][1]
 
     def init(self):
         query = """              
@@ -56,7 +73,7 @@ class HrPayrollPayRetroactiveReport(models.Model):
                hrpeprl.date_from,
                hrpeprl.date_to,
                hp.name AS payslip,
-               to_char(hp.date_from, 'TMMonth') AS month,
+               to_char(hp.date_from, 'TMMonth') AS month_old,
                hp.department_id,
                hp.job_id,
                hp.number,
