@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from . import hr_employee_bonus_payment
+from . import hr_payroll_quinquennial
 from . import hr_employee
 from . import hr_payroll
 from . import hr_payslip

@@ -707,6 +707,7 @@ def get_ufv_from_code(payslip, code):
     ufv = payslip.dict._get_ufv_from_code(payslip.date_to, code)
     return ufv
 
+
 def get_medical_leave_percent(payslip, code):
     percent = 0
     if payslip:
