@@ -12,6 +12,13 @@ from odoo.exceptions import ValidationError
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
+    hide_fields_legislation = fields.Boolean(
+        string="Hide Fields Legislation",
+        related="company_id.hide_fields_legislation",
+        readonly=False,
+        store=True,
+    )
+
     identification_documents = fields.One2many('hr.identification.documents', 'employee_id')
 
     # Datos de la AFP

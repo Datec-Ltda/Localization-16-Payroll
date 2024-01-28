@@ -8,9 +8,39 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
+            <field name="address_home_id" position="after">
+                <field name="hide_fields_legislation" invisible="1"  />
+            </field>
             <field name="address_home_id" position="attributes">
                 <attribute name="domain">[('is_company', '=', False), ('l10n_bo_afp', '=', False), ('l10n_bo_health_box', '=', False)]</attribute>
             </field>
+            <field name="visa_no" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <field name="permit_no" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <field name="visa_expire" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <field name="work_permit_expiration_date" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <field name="work_permit_name" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <field name="has_work_permit" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <field name="has_work_permit" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <field name="identification_id" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </field>
+            <xpath expr="//separator[@name='has_work_permit']" position="attributes">
+                <attribute name="attrs">{'invisible': [('hide_fields_legislation', '=', True)]}</attribute>
+            </xpath>
             <xpath expr="//field[@name='bank_account_id']" position="after">
                 <field name="currency_id"/>
                 <field name="payment_method"/>

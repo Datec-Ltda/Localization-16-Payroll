@@ -7,5 +7,6 @@ from . import hr_staff_division
 from . import hr_staffing_subdivision
 from . import hr_employee
 from . import hr_employee_docs
+from . import res_company
 
 

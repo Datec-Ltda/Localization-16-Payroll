@@ -30,6 +30,7 @@
         'views/hr_document_extension_view.xml',
         'views/hr_identification_document_view.xml',
         'views/hr_type_identification_doc_view.xml',
+        'views/res_company_bo_config_view.xml',
         # 'report/hr_employee_payroll_report_views.xml',
 
     ],

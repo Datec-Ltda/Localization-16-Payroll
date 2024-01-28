@@ -3,33 +3,31 @@
     <data>
         <record model="ir.ui.view" id="view_company_co_config_inherit_form">
             <field name="name">res.company.form.inherit</field>
-            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="inherit_id" ref="l10n_bo_hr.view_company_co_config_inherit_form"/>
             <field name="model">res.company</field>
             <field name="arch" type="xml">
-                <xpath expr="//notebook//page[@name='general_info']" position="after">
-                    <page string="Configuración Bolivia" name="conf_bolivia">
-                        <group string="Contingente de Vacaciones">
-                            <field name="init_load_vacation_date"/>
-                            <field name="vacation_quota_table_ids">
-                                <tree>
-                                    <field name="description"/>
-                                    <field name="years_of_service_start"/>
-                                    <field name="years_of_service_end"/>
-                                    <field name="vacation_days"/>
-                                </tree>
-                            </field>
-                        </group>
-                        <group string="Bono de Antigüedad">
-                            <field name="antiquity_bonus_table_ids">
-                                <tree>
-                                    <field name="description"/>
-                                    <field name="years_of_antiquity_bonus_start"/>
-                                    <field name="years_of_antiquity_bonus_end"/>
-                                    <field name="percentage"/>
-                                </tree>
-                            </field>
-                        </group>
-                    </page>
+                <xpath expr="//notebook//page[@name='conf_bolivia']" position="inside">
+                    <group string="Contingente de Vacaciones">
+                        <field name="init_load_vacation_date"/>
+                        <field name="vacation_quota_table_ids">
+                            <tree>
+                                <field name="description"/>
+                                <field name="years_of_service_start"/>
+                                <field name="years_of_service_end"/>
+                                <field name="vacation_days"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Bono de Antigüedad">
+                        <field name="antiquity_bonus_table_ids">
+                            <tree>
+                                <field name="description"/>
+                                <field name="years_of_antiquity_bonus_start"/>
+                                <field name="years_of_antiquity_bonus_end"/>
+                                <field name="percentage"/>
+                            </tree>
+                        </field>
+                    </group>
                 </xpath>
             </field>
         </record>

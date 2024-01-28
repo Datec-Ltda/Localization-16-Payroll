@@ -10,6 +10,7 @@ class Company(models.Model):
     antiquity_bonus_table_ids = fields.One2many('hr.antiquity.bonus.table', 'company_id', string='Bono de Antigüedad')
     init_load_vacation_date = fields.Date(string='Carga inicial de vacaciones')
 
+
 class HrVacationQuotaTable(models.Model):
     _name = 'hr.vacation.quota.table'
     _description = 'Contingente de Vacaciones'
