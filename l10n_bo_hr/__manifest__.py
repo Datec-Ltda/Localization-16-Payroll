@@ -1,6 +1,6 @@
 {
     'name': "Datec: Nómina Bolivia empleado",
-    'version': '16.0.0.0.4',
+    'version': '16.0.0.0.5',
     'depends': ['hr_bo_employee_lastnames'],
     'author': "Datec",
     'license': 'OPL-1',
