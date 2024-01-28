@@ -2,7 +2,7 @@ from odoo import api, fields, tools, models, _
 from odoo.exceptions import UserError
 from odoo.tools import float_compare, float_is_zero
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from dateutil import relativedelta
 from odoo.exceptions import UserError, ValidationError
 
@@ -74,14 +74,20 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
 
         contract_env = self.env['hr.contract']
         for record in self.payment_retroactive_contract_ids:
-            new_contract = contract_env.search([
-                ('id', '=', record.new_contract_id.id),
-            ])
-            if new_contract:
-                try:
+            try:
+                new_contract = contract_env.search([
+                    ('id', '=', record.new_contract_id.id),
+                ])
+                if new_contract:
                     # 1. Buscar y eliminar las entradas de trabajo asociadas al contrato
                     work_entries = self.env['hr.work.entry'].search([('contract_id', '=', new_contract.id)])
                     work_entries.unlink()
+                    payslip = self.env['hr.payslip'].search([('contract_id', '=', new_contract.id)])
+                    if payslip:
+                        record.update({
+                            'comments': 'Ya a realizado nóminas para este contrato no se puede borrar',
+                        })
+                        continue
                     new_contract.unlink()  # Intenta eliminar el contrato
                     # Si se elimina quitarle al anterior la fecha de fin y ponerlo en Ejecución
                     old_contract = contract_env.search([
@@ -90,9 +96,10 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
                     old_contract.write({'date_end': False, 'state': 'open'})
                     # Si se elimina correctamente, quitarlo de la lista
                     record.unlink()
-                except Exception as e:
-                    # Si hay un error, registrar el comentario en el campo de comentarios
-                    record.comments += f"Error al eliminar contrato {new_contract.id}: {str(e)}\n"
+            except UserError as e:
+                continue
+            except Exception as e:
+                pass
         return True
 
     def action_period_contract(self):
@@ -256,6 +263,28 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
                     'new_contract_id': new_contract.id,
                 }
                 contract_retroactive_env.create(value)
+        # Cambiar el parametro de porciento de recargo al SMN
+        domain_parameter_value = [
+            ('code', '=', 'RECARGO'),
+            ('date_from', '=', self.date_from),
+        ]
+        parameter_value_env = self.env['hr.rule.parameter.value']
+        parameter_value = parameter_value_env.search(domain_parameter_value)
+        if parameter_value:
+            value = {
+                'parameter_value': self.smn_percent/100,
+            }
+            parameter_value.update(value)
+        else:
+            parameter_env = self.env['hr.rule.parameter']
+            parameter = parameter_env.search([('code', '=', 'RECARGO')])
+            value = {
+                'date_from': self.date_from,
+                'rule_parameter_id': parameter.id,
+                'parameter_value': self.smn_percent/100,
+            }
+            parameter_value_env.create(value)
+        # Cambiar el salario minimo nacional a partir del mes de comienzo del recalculo (analizar)
         self.action_period_contract()
         return True
 

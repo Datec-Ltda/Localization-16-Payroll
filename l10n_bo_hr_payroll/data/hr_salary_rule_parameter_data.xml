@@ -186,7 +186,7 @@
             <field name="country_id" ref="base.bo"/>
         </record>
         <record id="rule_parameter_value_percent_surcharge" model="hr.rule.parameter.value">
-            <field name="parameter_value">0.30</field>
+            <field name="parameter_value">0.03</field>
             <field name="rule_parameter_id" ref="rule_parameter_percent_surcharge"/>
             <field name="date_from" eval="datetime(2022, 1, 1).date()"/>
         </record>

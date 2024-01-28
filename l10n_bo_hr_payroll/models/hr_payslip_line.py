@@ -26,7 +26,7 @@ class HrPayslipLine(models.Model):
     @api.depends('amount_retroactive')
     def _compute_different(self):
         for line in self:
-            line.different_amount =  line.amount_retroactive - line.amount
+            line.different_amount = line.amount_retroactive - line.amount
 
 
 def special_round(number):

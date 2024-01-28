@@ -22,6 +22,7 @@ class HrPayslip(models.Model):
         self._action_quinquennial_cancel()
         self._action_finiquito_cancel()
         self._action_prima_cancel()
+        self._action_retroactive_cancel()
         return super(HrPayslip, self).action_payslip_cancel()
 
     def action_payslip_done(self):
@@ -34,6 +35,7 @@ class HrPayslip(models.Model):
         self._action_quinquennial_pay()
         self._action_finiquito_pay()
         self._action_create_prima_table()
+        self._action_retroactive_pay()
         return res
 
     # def _action_close_suplementary_work(self):
@@ -353,3 +355,57 @@ class HrPayslip(models.Model):
                                                               ('date_to', '=', slip.date_to)])
                 if bonus_table_element:
                     move = bonus_table_element.sudo().unlink()
+
+    # Para marcar el registro retroactivo como pagado
+    def _action_retroactive_pay(self):
+        precision = self.env['decimal.precision'].precision_get('Payroll')
+
+        # Add payslip without run
+        payslips_to_post = self.filtered(lambda slip: not slip.payslip_run_id)
+
+        # Adding pay slips from a batch and deleting pay slips with a batch that is not ready for validation.
+        payslip_runs = (self - payslips_to_post).mapped('payslip_run_id')
+        for run in payslip_runs:
+            if run._are_payslips_ready():
+                payslips_to_post |= run.slip_ids
+
+        # A payslip need to have a done state and not an accounting move.
+        payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done')
+
+        for slip in payslips_to_post:
+            struct = self.env.ref('l10n_bo_hr_payroll.structure_retroactive')
+            if slip.struct_id.id == struct.id:
+                retroactive_env = self.env['hr.payroll.employee.payments.retroactive.list']
+                retroactive_element = retroactive_env.search([('employee_id', '=', slip.employee_id.id),
+                                                                ('date_from', '=', slip.date_from),
+                                                                ('date_to', '=', slip.date_to),
+                                                                ('state', '=', 'open')])
+                if retroactive_element:
+                    move = retroactive_element.sudo().write({'state': 'closed'})
+                    retroactive_element.payment_retroactive_id.write({'state': 'closed'})
+
+    def _action_retroactive_cancel(self):
+        precision = self.env['decimal.precision'].precision_get('Payroll')
+
+        # Add payslip without run
+        payslips_to_post = self.filtered(lambda slip: not slip.payslip_run_id)
+
+        # Adding pay slips from a batch and deleting pay slips with a batch that is not ready for validation.
+        payslip_runs = (self - payslips_to_post).mapped('payslip_run_id')
+        for run in payslip_runs:
+            if run._are_payslips_ready():
+                payslips_to_post |= run.slip_ids
+
+        # A payslip need to have a done state and not an accounting move.
+        payslips_to_post = payslips_to_post.filtered(lambda slip: slip.state == 'done')
+
+        for slip in payslips_to_post:
+            struct = self.env.ref('l10n_bo_hr_payroll.structure_retroactive')
+            if slip.struct_id.id == struct.id:
+                retroactive_env = self.env['hr.payroll.employee.payments.retroactive.list']
+                retroactive_element = retroactive_env.search([('employee_id', '=', slip.employee_id.id),
+                                                                ('date_from', '=', slip.date_from),
+                                                                ('date_to', '<=', slip.date_to),
+                                                                ('state', '=', 'closed')])
+                if retroactive_element:
+                    move = retroactive_element.sudo().write({'state': 'open'})
