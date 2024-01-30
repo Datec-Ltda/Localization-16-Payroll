@@ -381,8 +381,8 @@ class HrPayslip(models.Model):
                                                                 ('date_to', '=', slip.date_to),
                                                                 ('state', '=', 'open')])
                 if retroactive_element:
-                    move = retroactive_element.sudo().write({'state': 'closed'})
-                    retroactive_element.payment_retroactive_id.write({'state': 'closed'})
+                    move = retroactive_element.sudo().write({'state': 'paid'})
+                    retroactive_element.payment_retroactive_id.write({'state': 'paid'})
 
     def _action_retroactive_cancel(self):
         precision = self.env['decimal.precision'].precision_get('Payroll')
@@ -406,6 +406,6 @@ class HrPayslip(models.Model):
                 retroactive_element = retroactive_env.search([('employee_id', '=', slip.employee_id.id),
                                                                 ('date_from', '=', slip.date_from),
                                                                 ('date_to', '<=', slip.date_to),
-                                                                ('state', '=', 'closed')])
+                                                                ('state', '=', 'paid')])
                 if retroactive_element:
                     move = retroactive_element.sudo().write({'state': 'open'})

@@ -15,7 +15,7 @@
                                 states="contract"/>
                         <button name="action_period_draft" type="object" string="Borrador" class="oe_highlight"
                                 states="contract"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,contract,generated,open,closed"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,contract,generated,open,paid"/>
 <!--                        <field name="state" readonly="1" />-->
                         <button string="Abrir" name="action_period_open" type="object" states="generated" class="oe_highlight"/>
                         <button string="A Generar" name="action_period_generated" states="open" type='object' class="oe_highlight" />
@@ -26,14 +26,15 @@
                             <field name="name"/>
                             <label for="date_from" string="Period" />
                             <div>
-                                <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'closed'])]}"/>
+                                <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'paid'])]}"/>
                             </div>
-                            <field name="month_init_pay" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
-                            <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />
+                            <field name="year_retroactive" invisible="1" />
+                            <field name="month_init_pay" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}" />
+                            <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'paid'])]}" />
                         </group>
                         <group>
-                            <field name="basic_percent" attrs="{'readonly': [('state', 'in', ['contract','generated', 'open', 'closed'])]}" />
-                            <field name="smn_percent" attrs="{'readonly': [('state', 'in', ['contract', 'generated', 'open', 'closed'])]}" />
+                            <field name="basic_percent" attrs="{'readonly': [('state', 'in', ['contract','generated', 'open', 'paid'])]}" />
+                            <field name="smn_percent" attrs="{'readonly': [('state', 'in', ['contract', 'generated', 'open', 'paid'])]}" />
                         </group>
                     </group>
                     <notebook>
@@ -87,9 +88,8 @@
                 <form string="Pago retroactivo">
                     <header>
                         <button string="Abrir" name="action_period_open" type="object" states="contract"/>
-<!--                        <button string="Close" name="action_period_closed" states="open" type='object' />-->
                         <button string="A contrato" name="action_period_draft" states="open" type='object' />
-                        <field name="state" widget="statusbar" statusbar_visible="draft,contract,open,closed"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,contract,open,paid"/>
                     </header>
                     <sheet>
                         <div class="oe_title" invisible="1">
@@ -98,21 +98,6 @@
                                 <field name="name" attrs="{'readonly':[('state','!=','draft')]}" placeholder="Name"/>
                             </h1>
                         </div>
-<!--                        <group>-->
-<!--                            <group>-->
-<!--                                <field name="name"/>-->
-<!--                                <label for="date_from" string="Period" />-->
-<!--                                <div>-->
-<!--                                    <field name="date_from" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state',  'in', ['open', 'closed'])]}"/>-->
-<!--                                </div>-->
-<!--                                <field name="month_init_pay" class="oe_inline" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />-->
-<!--                                <field name="company_id" attrs="{'readonly': [('state', 'in', ['open', 'closed'])]}" />-->
-<!--                            </group>-->
-<!--                            <group>-->
-<!--                                <field name="employee_id"/>-->
-<!--                                <field name="contract_id" domain="[('state', '=', 'open'), ('employee_id', '=', employee_id)]"/>-->
-<!--                            </group>-->
-<!--                        </group>-->
                     </sheet>
                     <notebook>
                         <page string="Meses procesados">

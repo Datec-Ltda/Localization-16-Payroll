@@ -45,9 +45,16 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
     date_from = fields.Date(string='Date From', readonly=True, required=True,
                             default=time.strftime('%Y-%m-01'),
                             states={'draft': [('readonly', False)], 'open': [('readonly', False)]})
+    year_retroactive = fields.Char(compute="_compute_year", string="Año", store=True)
     date_to = fields.Date(string='Date To', readonly=True, required=True,
                           default=str(datetime.now() + relativedelta.relativedelta(months=+1, day=1, days=-1))[:10],
                           states={'draft': [('readonly', False)], 'open': [('readonly', False)]})
+
+    @api.depends('date_from')
+    def _compute_year(self):
+        for record in self:
+            if record.date_from:
+                record.year_retroactive = record.date_from.year
 
     @api.onchange('date_from')
     def onchange_name(self):
@@ -63,13 +70,13 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
         ('contract', 'Contrato Generado'),
         ('generated', 'Pago generado'),
         ('open', 'Abierto'),
-        ('closed', 'Cerrado'),
+        ('paid', 'pagado'),
     ], string='Status', index=True, readonly=True, copy=False, default='draft')
 
     def action_period_draft(self):
         self.write({'state': 'draft'})
         for record in self.payment_retroactive_ids:
-            if record.state != 'closed':
+            if record.state != 'paid':
                 record.write({'state': 'draft'})
 
         contract_env = self.env['hr.contract']
@@ -105,27 +112,27 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
     def action_period_contract(self):
         self.write({'state': 'contract'})
         for record in self.payment_retroactive_ids:
-            if record.state != 'closed':
+            if record.state != 'paid':
                 record.write({'state': 'contract'})
         return True
 
     def action_period_generated(self):
         self.write({'state': 'generated'})
         for record in self.payment_retroactive_ids:
-            if record.state != 'closed':
+            if record.state != 'paid':
                 record.write({'state': 'generated'})
         return True
 
     def action_period_open(self):
         self.write({'state': 'open'})
         for record in self.payment_retroactive_ids:
-            if record.state != 'closed':
+            if record.state != 'paid':
                 record.write({'state': 'open'})
         return True
 
-    def action_period_closed(self):
-        self.write({'state': 'closed'})
-        self.payment_retroactive_ids.write({'state': 'closed'})
+    def action_period_paid(self):
+        self.write({'state': 'paid'})
+        self.payment_retroactive_ids.write({'state': 'paid'})
         return True
 
     payment_retroactive_ids = fields.One2many(
@@ -173,11 +180,13 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
         # Recorrer el diccionario
         for month in months:
             end_contrat = self.date_from - timedelta(days=1)
+            old_contract_ids = self.payment_retroactive_contract_ids.mapped('old_contract_id')
             # Los contratos que se pasaron a estado cerrado con la fecha final igual a un dia antes
             # de la fecha de inicio del procesamiento de retroactivo
             domain = [
                 ('state', '=', 'close'),
                 ('date_end', '=', end_contrat),
+                ('id', 'in', old_contract_ids.ids),
             ]
             # Buscar los empleados con contratos en estado "En proceso" para el mes actual
             employees = self.env['hr.contract'].search(domain).mapped('employee_id')
@@ -227,13 +236,23 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
 
     def create_new_contract(self):
         end_contrat = self.date_from - timedelta(days=1)
+        domain_contract_paid = [
+            ('year_retroactive', '=', str(self.date_from.year)),
+            ('state', '=', 'paid')]
+        contract_env_paid = self.env['hr.payroll.employee.payments.retroactive']
+        retroactive_records = contract_env_paid.search(domain_contract_paid)
+        old_contract_ids = retroactive_records.mapped('payment_retroactive_contract_ids.old_contract_id')
         contract_domain = [
             ('state', '=', 'open'),
             ('date_end', '=', False),
             ('date_start', '<', end_contrat),
+            ('id', 'not in', old_contract_ids.ids),
             ]
         end_contrat = self.date_from - timedelta(days=1)
         contracts_in_progress = self.env['hr.contract'].search(contract_domain)
+        if not contracts_in_progress:
+            raise UserError(
+                _('No existen contratos nuevos para procesar.'))
         for contract in contracts_in_progress:
             # Crear una copia del contrato con fecha de inicio modificada y salario cambiado
             new_contract = contract.copy(default={'name': contract.name + ' ' + str(self.date_from),
@@ -252,7 +271,7 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
                 ('new_contract_id', '=', new_contract.id),
             ]
 
-            contract_retroactive_env =  self.env['hr.payroll.employee.payments.retroactive.contract.list']
+            contract_retroactive_env = self.env['hr.payroll.employee.payments.retroactive.contract.list']
             contracts_move = contract_retroactive_env.search(domain_contract_mov)
             if not contracts_move:
                 value = {
@@ -288,6 +307,23 @@ class PayrollEmployeePaymentsRetroactive(models.Model):
         self.action_period_contract()
         return True
 
+    @api.constrains('date_from', 'date_to')
+    def _check_dates(self):
+        """ make sure date_from < date_to"""
+
+        for rec in self:
+            if rec.date_from and rec.date_to:
+                if rec.date_from > rec.date_to:
+                    raise ValidationError(_('Intervalo invalido.'))
+                domain = [
+                    ('id', '!=', rec.id),
+                    ('year_retroactive', '=', str(rec.date_from.year)),
+                    ('state', 'in', ['draft', 'contract', 'generated', 'open'])]
+                overlaps = self.search(domain).ids
+                if len(overlaps) > 0:
+                    raise ValidationError(_('Existe ese pago retroactivo sin pagar en ese año "%s" ', rec.date_from.year))
+
+
 
 class PayrollEmployeePaymentsRetroactiveList(models.Model):
     _name = 'hr.payroll.employee.payments.retroactive.list'
@@ -321,7 +357,7 @@ class PayrollEmployeePaymentsRetroactiveList(models.Model):
         ('contract', 'Contrato Generado'),
         ('generated', 'Pago generado'),
         ('open', 'Abierto'),
-        ('closed', 'Cerrado'),
+        ('paid', 'pagado'),
     ], string='Status', index=True, readonly=True, copy=False, default='draft')
     company_id = fields.Many2one('res.company', string='Company', readonly=True, copy=False,
                                  default=lambda self: self.env['res.company']._company_default_get(),
@@ -339,8 +375,8 @@ class PayrollEmployeePaymentsRetroactiveList(models.Model):
         self.write({'state': 'open'})
         return True
 
-    def action_period_closed(self):
-        self.write({'state': 'closed'})
+    def action_period_paid(self):
+        self.write({'state': 'paid'})
         return True
 
     def unlink(self):
