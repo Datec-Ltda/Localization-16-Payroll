@@ -567,6 +567,10 @@ class HrPayslip(models.Model):
             localdict = self.env.context.get('force_payslip_localdict', None)
             if localdict is None:
                 localdict = payslip._get_localdict()
+            # Para asignarle el nuevo contrato para el calculo
+            if localdict['contract'].state != 'open':
+                contract = self.env['hr.contract'].search([('employee_id', '=', localdict['employee'].id), ('state', '=','open')], limit=1)
+                localdict['contract'] = contract
 
             rules_dict = localdict['rules'].dict
             result_rules_dict = localdict['result_rules'].dict
