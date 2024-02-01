@@ -64,10 +64,14 @@ class HrPayslip(models.Model):
                              'sunday_overtime_amount': 0.0, 'sunday_worked_amount': 0.0, 'night_overtime_hours_amount': 0.0, 'gross': 0.0,
                              'worked_days': 0.0, 'worked_hours': 0.0, 'overtime': 0.0, 'sunday_overtime': 0.0,
                              'prima': 0.0, 'night_overtime_hours': 0.0, 'sunday_worked': 0.0}
-            # Para el caso que el pago quinquenal no archivar en la tabla de cierre, si es una estructura aparte
-            for line in slip.line_ids.filtered(lambda x: x.code in ['QUINQUENAL', 'FINIQUITO']):
-                if line.code == 'QUINQUENAL' or line.code == 'FINIQUITO':
-                    return 0
+            # Para el caso que el pago quinquenal, finiquito y retroactiva no archivar en la tabla de cierre, si es una estructura aparte
+            struct = [self.env.ref('l10n_bo_hr_payroll.structure_quinquennial'),
+                      self.env.ref('l10n_bo_hr_payroll.structure_finiquito'),
+                      self.env.ref('l10n_bo_hr_payroll.structure_retroactive'),
+                      self.env.ref('l10n_bo_hr_payroll.structure_christmas_bonus'),
+                      self.env.ref('l10n_bo_hr_payroll.structure_christmas_bonus_second')]
+            if slip.struct_id in struct:
+                return 0
             for line in slip.line_ids.filtered(lambda x: x.code in ['BASIC', 'BONO_ANT', 'BONO_PROD', 'SUBS_FRONTERA', 'EXTRAS', 'DOMINGO', 'DT', 'RECARGO', 'NET', 'SAL_PROX_MES', 'PRIMA']):
                 if line.code == 'BASIC':
                     closing_table['basic'] = line.amount
