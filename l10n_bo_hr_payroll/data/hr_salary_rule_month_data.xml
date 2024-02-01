@@ -310,7 +310,7 @@ result = -total_afp
         <field name="condition_python">result = worked_days.LEAVE_HOURS</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = worked_days.LEAVE_HOURS.number_of_hours * BC_DIARIA_HORAS
+result = -(worked_days.LEAVE_HOURS.number_of_hours * BC_DIARIA_HORAS)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -325,7 +325,7 @@ result = worked_days.LEAVE_HOURS.number_of_hours * BC_DIARIA_HORAS
         <field name="condition_python">result = worked_days.LEAVE_DAYS</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = worked_days.LEAVE_DAYS.number_of_days * BC_DIARIA
+result = -(worked_days.LEAVE_DAYS.number_of_days * BC_DIARIA)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
@@ -340,7 +340,7 @@ result = worked_days.LEAVE_DAYS.number_of_days * BC_DIARIA
         <field name="condition_python">result = worked_days.LEAVE_UNJUSTIFIED</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
-result = worked_days.LEAVE_UNJUSTIFIED.number_of_days * BC_DIARIA_FALTA
+result = -(worked_days.LEAVE_UNJUSTIFIED.number_of_days * BC_DIARIA_FALTA)
         </field>
         <field name="struct_id" ref="structure_month"/>
     </record>
