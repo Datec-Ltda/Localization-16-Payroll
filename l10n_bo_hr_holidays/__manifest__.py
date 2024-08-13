@@ -1,7 +1,7 @@
 {
     'name': "Datec: Nómina Bolivia ausencia",
     'version': '16.0.0.0.7',
-    'depends': ['l10n_bo_hr_contract', 'hr_holidays'],
+    'depends': ['l10n_bo_hr_contract', 'hr_holidays','hr_work_entry'],
     'author': "Datec",
     'license': 'OPL-1',
     'category': 'Línea base Bolivia/Human Resources/Time Off',

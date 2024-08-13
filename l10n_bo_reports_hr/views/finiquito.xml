@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- boton para abrir wizard -->
+    <record id="finiquito_button_wizard" model="ir.ui.view">
+        <field name="name">finiquito.button.wizard</field>
+        <field name="model">hr.payroll.finiquito</field>
+        <field name="inherit_id" ref="l10n_bo_hr_payroll.hr_payroll_finiquito_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="header" position="inside">
+                <button name="action_generate_report" type="object" string="Generar"
+                    class="oe_highlight" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

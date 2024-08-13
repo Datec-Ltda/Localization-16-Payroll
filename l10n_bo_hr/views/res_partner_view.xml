@@ -6,6 +6,10 @@
             <field name="name">view.partner.l10n.co.edi.form</field>
             <field name="inherit_id" ref="base.view_partner_form" />
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="l10n_bo_document_type"/>
+                    <field name="l10n_bo_document_city_id"/>
+                </xpath>
                 <xpath expr="//notebook" position="inside">
                     <page name="aseg" string="Aseguradoras">
                         <group>
@@ -22,4 +26,3 @@
         </record>
     </data>
 </odoo>
-

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_mintra_form_wizard" model="ir.ui.view">
+            <field name="name">Mintra</field>
+            <field name="model">hr.payroll.mintra.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Formulario mintra">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="month" />
+                            <field name="year" />
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_generate_mintra" string="Generar" type="object" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

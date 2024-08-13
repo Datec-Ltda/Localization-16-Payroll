@@ -11,7 +11,6 @@
             <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>
             <field name="leave_validation_type">both</field>
             <field name="company_id" eval="False"/>
-            <field name="work_entry_type_id" ref="hr_work_entry_type_VAC"/>
         </record>
     </data>
 </odoo>
